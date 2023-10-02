@@ -298,6 +298,14 @@ public class CommonTool
         }
     }
     #endregion
+    //https://discussions.unity.com/t/base64-encode-decoding/12507
+    public static string DecodeBase64(string encodedText)
+    {
+        byte[] decodedBytes = Convert.FromBase64String(encodedText);
+        string decodedText = Encoding.UTF8.GetString(decodedBytes);
+        return decodedText;
+    }
+
    public static void DeepCopyStringList(List<string> origin, List<string> copy)
     {
         origin.Clear();

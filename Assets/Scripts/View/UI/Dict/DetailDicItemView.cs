@@ -151,6 +151,7 @@ public class DetailDicItemView : MonoBehaviour
         //detailTxt.OnClick(RegexHashChineseTag, Color.blue, hashtag => RegexDicDetailView(hashtag));
         detailTxt.OnClick(RegexHypertext.GRM_ABBR_TAG, Color.blue, hashtag => RegexDicDetailView(hashtag));
     }
+    //按钮事件
     void RegexDicDetailView(string content)
     {
         string value = UserGrammar.grm_abbr[content];

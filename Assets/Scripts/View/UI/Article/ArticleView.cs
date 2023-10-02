@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Hypertext;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +24,7 @@ public class ArticleView : MonoBehaviour
     public RectTransform paliScrollContent;
     public RectTransform nextAndPrevGroup;
     public NextPrevGroupView nextAndPrevGroupView;
-    public Text contentText;
+    public RegexHypertext contentText;
     public Text textRuler;
     Stack<ArticleTreeNode> articleTreeNodeStack;
     Stack<Book> bookTreeNodeStack;

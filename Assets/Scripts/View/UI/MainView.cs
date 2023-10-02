@@ -16,6 +16,8 @@ public class MainView : MonoBehaviour
     public CalendarView calendarView;
     public UserView userView;
     public SettingView settingView;
+
+    public Dropdown settingDropdown;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,7 @@ public class MainView : MonoBehaviour
         calendarToggle.onValueChanged.AddListener(OnCalendarToggleValueChanged);
         userToggle.onValueChanged.AddListener(OnUserToggleValueChanged);
         settingToggle.onValueChanged.AddListener(OnSettingToggleValueChanged);
+        settingDropdown.onValueChanged.AddListener(OnSettingDropdownValueChanged);
     }
     public void SetDicOn()
     {
@@ -54,6 +57,20 @@ public class MainView : MonoBehaviour
     {
         settingView.gameObject.SetActive(value);
     }
+
+    private void OnSettingDropdownValueChanged(int index)
+    {
+        Debug.Log(index);
+        switch (index)
+        {
+            case 0: break;
+            case 1: break;
+            case 2: break;
+            //case 1: break;
+            default: break;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

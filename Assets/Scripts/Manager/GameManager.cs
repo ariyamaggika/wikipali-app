@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public StarGroupArticleView articleStarGroup;
     public MainView mainView;
     public ArticleView articleView;
+    public PreView preView;
 
     public string appVersion;//= Application.version;
     //public bool canUpdate = false;
@@ -109,7 +110,7 @@ public class GameManager : MonoBehaviour
         settingView.HideCommonGroupView();
     }
     public void UpdateSettingViewOfflineDBTimeText()
-    { 
+    {
         settingView.UpdateSettingViewOfflineDBTimeText();
     }
     public void ShowSettingViewUpdatePage(UpdateInfo currentUInfo)
@@ -157,5 +158,10 @@ public class GameManager : MonoBehaviour
     {
         mainView.SetDicOn();
         mainView.dicView.OnItemDicClick(word);
+    }
+    //检测隐私政策版本
+    public void CheckPrivacyVersion(int newVersion, string url)
+    {
+        preView.CheckPrivacyVersion(newVersion, url);
     }
 }

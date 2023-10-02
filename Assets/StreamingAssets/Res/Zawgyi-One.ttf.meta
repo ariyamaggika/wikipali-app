@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 3871da6566a0de24fbfda234f8e0969b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Zawgyi-One
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

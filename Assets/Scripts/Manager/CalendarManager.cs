@@ -22,7 +22,6 @@ public class CalendarManager
     LocationService location = Input.location;
     public void StartLocation()
     {
-
         location.Start();
     }
     public void StopLocation()
@@ -54,7 +53,8 @@ public class CalendarManager
         var sunPhases = SunCalc.GetSunPhases(newDate, lat, lng, height, ts.Hours).ToList();
 
         var sunPhaseValueSolarNoon = sunPhases.First(x => x.Name.Value == solarNoon.Name.Value);
-        string sunPhaseTimeSolarNoon = sunPhaseValueSolarNoon.PhaseTime.ToString("HH:mm:ss");
+        //string sunPhaseTimeSolarNoon = sunPhaseValueSolarNoon.PhaseTime.ToString("HH:mm:ss");
+        string sunPhaseTimeSolarNoon = sunPhaseValueSolarNoon.PhaseTime.ToString("HH:mm");
         return sunPhaseTimeSolarNoon;
     }
 

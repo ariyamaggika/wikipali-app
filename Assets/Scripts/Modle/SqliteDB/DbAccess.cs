@@ -430,6 +430,14 @@ namespace Imdork.SQLite
             return ExecuteQuery(query);
         }
         /// <summary>
+        /// 匹配查询，通用
+        /// </summary>
+        public SqliteDataReader SelectSame(string tableName, string inputStr, string word, int limit)
+        {
+            string query = "SELECT * FROM " + "'" + tableName + "'" + " WHERE " + word + " = " + "'" + inputStr + "' limit " + limit.ToString();
+            return ExecuteQuery(query);
+        }
+        /// <summary>
         /// 匹配查询,文章用
         /// </summary>
         public SqliteDataReader SelectArticleTag(string[] tagIDArr)

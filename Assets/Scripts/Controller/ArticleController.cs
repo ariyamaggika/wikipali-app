@@ -467,6 +467,7 @@ public class ArticleController
                     {
                         //sb.AppendLine();
                         string sentenceTransNormalize = MarkdownText.RemoveHTMLStyle(sentenceTrans[i].content);
+                        ArticleMarkdownManager.Instance().SentenceSetMarkDown(sentenceTransNormalize,"","");
                         //string sentenceRead = sentenceTransNormalize;
                         //if写在for里了，浪费性能，但是没办法，代码太ugly了
                         ReadTextInfo transSentenceTextInfo = null;

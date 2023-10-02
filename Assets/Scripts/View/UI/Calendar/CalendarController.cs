@@ -81,6 +81,123 @@ public class CalendarController : MonoBehaviour
         return MoonType.MoonOther;
 
     }
+    //获取月相准确时间
+    //4分一天，4*6=24,
+    //确定月相时间在哪6小时范围内
+    //然后遍历6*60分钟，遍历360次精确到分钟
+    //todo :可以用算法：无限循环2分法
+    public static DateTime GetPreciseMoonTime(DateTime date, MoonType mt)
+    {
+        float minP = 0;
+        float maxP = 0;
+        switch (mt)
+        {
+            case MoonType.Moon0:
+                minP = 0.1f;
+                maxP = 0.9f;
+                break;
+            case MoonType.Moon1:
+                minP = 0.25f;
+                maxP = 0.25f;
+                break;
+            case MoonType.Moon2:
+                minP = 0.5f;
+                maxP = 0.5f;
+                break;
+            case MoonType.Moon3:
+                minP = 0.75f;
+                maxP = 0.75f;
+                break;
+        }
+        DateTime time0 = new DateTime(date.Year, date.Month, date.Day, 0, 0, 1);
+        DateTime time6 = new DateTime(date.Year, date.Month, date.Day, 6, 0, 0);
+        DateTime time12 = new DateTime(date.Year, date.Month, date.Day, 12, 0, 0);
+        DateTime time18 = new DateTime(date.Year, date.Month, date.Day, 18, 0, 0);
+        DateTime time24 = new DateTime(date.Year, date.Month, date.Day, 23, 59, 59);
+        MoonIllumination moonIllum0 = MoonCalc.GetMoonIllumination(time0);
+        MoonIllumination moonIllum6 = MoonCalc.GetMoonIllumination(time6);
+        MoonIllumination moonIllum12 = MoonCalc.GetMoonIllumination(time12);
+        MoonIllumination moonIllum18 = MoonCalc.GetMoonIllumination(time18);
+        MoonIllumination moonIllum24 = MoonCalc.GetMoonIllumination(time24);
+        DateTime resMin = time0;
+        DateTime resMax = time0;
+        if (mt != MoonType.Moon0)
+        {
+            if ((moonIllum0.Phase <= minP) && (moonIllum6.Phase >= maxP))
+            {
+                resMin = time0;
+                resMax = time6;
+            }
+            else if ((moonIllum6.Phase <= minP) && (moonIllum12.Phase >= maxP))
+            {
+                resMin = time6;
+                resMax = time12;
+            }
+            else if ((moonIllum12.Phase <= minP) && (moonIllum18.Phase >= maxP))
+            {
+                resMin = time12;
+                resMax = time18;
+            }
+            else if ((moonIllum18.Phase <= minP) && (moonIllum24.Phase >= maxP))
+            {
+                resMin = time18;
+                resMax = time24;
+            }
+            DateTime resStart = resMin;
+            DateTime resStartAdd = resMin;// +h1;
+            TimeSpan m1 = new TimeSpan(0, 1, 0);
+            for (int i = 0; i < 360; i++)
+            {
+                resStart = resStart + m1;
+                resStartAdd = resStart + m1;
+                MoonIllumination moonIllumStart = MoonCalc.GetMoonIllumination(resStart);
+                MoonIllumination moonIllumAdd = MoonCalc.GetMoonIllumination(resStartAdd);
+                if ((moonIllumStart.Phase <= minP) && (moonIllumAdd.Phase >= maxP))
+                {
+                    return resStart;
+                }
+            }
+        }
+        else
+        {
+            if ((moonIllum0.Phase >= maxP) && (moonIllum6.Phase <= minP))
+            {
+                resMin = time0;
+                resMax = time6;
+            }
+            else if ((moonIllum6.Phase >= maxP) && (moonIllum12.Phase <= minP))
+            {
+                resMin = time6;
+                resMax = time12;
+            }
+            else if ((moonIllum12.Phase >= maxP) && (moonIllum18.Phase <= minP))
+            {
+                resMin = time12;
+                resMax = time18;
+            }
+            else if ((moonIllum18.Phase >= maxP) && (moonIllum24.Phase <= minP))
+            {
+                resMin = time18;
+                resMax = time24;
+            }
+            DateTime resStart = resMin;
+            DateTime resStartAdd = resMin;// +h1;
+            TimeSpan m1 = new TimeSpan(0, 1, 0);
+            for (int i = 0; i < 360; i++)
+            {
+                resStart = resStart + m1;
+                resStartAdd = resStart + m1;
+                MoonIllumination moonIllumStart = MoonCalc.GetMoonIllumination(resStart);
+                MoonIllumination moonIllumAdd = MoonCalc.GetMoonIllumination(resStartAdd);
+                if ((moonIllumStart.Phase >= maxP) && (moonIllumAdd.Phase <= minP))
+                {
+                    return resStart;
+                }
+            }
+        }
+        return date;
+    }
+
     //过去一个月后前八天是否有新月或满月
     void GetLastMonthMyanmarMoon(DateTime date)
     {
@@ -250,14 +367,23 @@ public class CalendarController : MonoBehaviour
                     if (CalendarManager.Instance().isLocationed())
                     {
                         MoonType moon = MoonType.MoonOther;
+                        string moonTime = "";
                         if (calType == 1)
                             moon = GetMoonTypeMyanmar(thatDay);
                         else if (calType == 2)
+                        {
                             moon = GetMoonType(thatDay);
+                            if (moon != MoonType.MoonOther)
+                            {
+                                //Debug.LogError(moon);
+                                //Debug.LogError(GetPreciseMoonTime(thatDay, moon));
+                                moonTime = GetPreciseMoonTime(thatDay, moon).ToString("HH:mm");
+                            }
+                        }
                         else if (calType == 3)
                             moon = GetMoonTypeFarmer(thatDay);
 
-                        _dateItems[i].SetMoon(moon);
+                        _dateItems[i].SetMoon(moon, moonTime);
                         _dateItems[i].SetSolarNoonTextActive(true);
                     }
                     else
@@ -266,14 +392,14 @@ public class CalendarController : MonoBehaviour
                         if (calType == 1)
                         {
                             moon = GetMoonTypeMyanmar(thatDay);
-                            _dateItems[i].SetMoon(moon);
+                            _dateItems[i].SetMoon(moon, "");
                         }
                         else if (calType == 2)
-                            _dateItems[i].SetMoon(MoonType.MoonOther);
+                            _dateItems[i].SetMoon(MoonType.MoonOther,"");
                         else if (calType == 3)
                         {
                             moon = GetMoonTypeFarmer(thatDay);
-                            _dateItems[i].SetMoon(moon);
+                            _dateItems[i].SetMoon(moon, "");
                         }
 
                         _dateItems[i].SetSolarNoonTextActive(false);

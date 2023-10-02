@@ -258,6 +258,8 @@ public class UpdateManager
         public string offlinePackIndexUrl;//离线包index.Json
         public string offlinePackUrl;//离线包URL前缀
         public OfflinePackIndexJson json;//index信息
+        public string privacyUrl;//隐私政策网站地址
+        public int privacyVersion;//隐私政策版本号
     }
     public void GetOtherInfo()
     {
@@ -279,9 +281,12 @@ public class UpdateManager
                 OtherInfo oInfo = new OtherInfo();
                 oInfo.offlinePackIndexUrl = lines[0];
                 oInfo.offlinePackUrl = lines[1];
+                oInfo.privacyUrl = lines[2];
+                oInfo.privacyVersion = int.Parse(lines[3]);
                 currentOInfo = oInfo;
                 GetOfflinePackIndex(oInfo.offlinePackIndexUrl);
-
+                //检测隐私政策
+                GameManager.Instance().CheckPrivacyVersion(oInfo.privacyVersion,oInfo.privacyUrl);
             }
             else
             {

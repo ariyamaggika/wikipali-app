@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
+using System.IO;
 using System.Security.Cryptography;
 using UnityEngine;
 
@@ -44,6 +45,8 @@ public class SettingManager
             {
                 PlayerPrefs.SetString("saveVersion", Application.version);
                 PlayerPrefs.SetInt("isUnZiped", 0);
+                //删除旧的数据库文件
+                DeleteOldZipFile();
                 //覆盖Init文件内容
                 LoadInitInfo();
             }
@@ -85,6 +88,10 @@ public class SettingManager
         {
             SettingManager.Instance().SetTransContent(1);
         }
+        if (!PlayerPrefs.HasKey("PrivacyVersion"))
+        {
+            SettingManager.Instance().SetPrivacyVersion(0);
+        }
         //todo 目前是只在最开始解压数据库，要添加用户误删数据库的情况，判断数据库是否Exist，压缩包是否Exist，不Exist提示重新安装
         //是否已解压数据库
         //PlayerPrefs.SetInt("isUnZiped", 0);
@@ -93,7 +100,9 @@ public class SettingManager
         {
             ZipManager.Instance().UnZipDB();
         }
-        CalendarManager.Instance().StartLocation();
+        //是否有权限
+        if (GetPrivacyVersion() > 0)
+            CalendarManager.Instance().StartLocation();
         //加载单词本
         DictManager.Instance().LoadAllDicGroup();
         //加载文章收藏
@@ -101,6 +110,11 @@ public class SettingManager
         //??????没执行到这里，有报错？？？
         //CalendarManager.Instance().StartLocation();
 
+    }
+    void DeleteOldZipFile()
+    {
+        File.Delete(Application.persistentDataPath + "/DB/" + "Dict.db");
+        File.Delete(Application.persistentDataPath + "/DB/" + "Sentence.db");
     }
     public void UnZipFin()
     {
@@ -374,5 +388,17 @@ public class SettingManager
         PlayerPrefs.SetInt("DBPackChapterCount", count);
     }
     #endregion
+    #endregion
+    #region 隐私政策
+    //设置隐私政策版本号
+    public void SetPrivacyVersion(int version)
+    {
+        PlayerPrefs.SetInt("PrivacyVersion", version);
+    }
+    //获取隐私政策版本号
+    public int GetPrivacyVersion()
+    {
+        return PlayerPrefs.GetInt("PrivacyVersion");
+    }
     #endregion
 }

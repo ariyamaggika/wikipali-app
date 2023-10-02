@@ -53,7 +53,7 @@ public class CommonGroupView : MonoBehaviour
         string uStr = "";
         uStr += "当前离线包更新时间：" + SettingManager.Instance().GetDBPackTime() + "\r\n";
         uStr += "最新离线包更新时间：" + currentOInfo.json.create_at + "\r\n\r\n";
-        uStr += "章节数对比："+ SettingManager.Instance().GetDBPackChapterCount()+ "→<color=Red>"+ currentOInfo.json.chapter+ "</color>\r\n\r\n";
+        uStr += "章节数对比："+ SettingManager.Instance().GetDBPackChapterCount()+ "-><color=Red>"+ currentOInfo.json.chapter+ "</color>\r\n\r\n";
         uStr += "更新请预留出1G存储空间";
         updateText.text = uStr;
         addBtn.gameObject.SetActive(false);

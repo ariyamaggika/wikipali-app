@@ -11,6 +11,7 @@ public class CalendarDateItem : MonoBehaviour
     public Text dateText;
     public Text chineseDateText;
     public Text solarNoonText;
+    public Text moonPhaseTimeText;
     public Image moon0Img;
     public Image moon1Img;
     public Image moon2Img;
@@ -72,12 +73,13 @@ public class CalendarDateItem : MonoBehaviour
         CalendarController._calendarInstance.OnDateItemClick(gameObject.GetComponentInChildren<Text>().text);
     }
 
-    public void SetMoon(MoonType moonType)
+    public void SetMoon(MoonType moonType,string time)
     {
         moon0Img.gameObject.SetActive(false);
         moon1Img.gameObject.SetActive(false);
         moon2Img.gameObject.SetActive(false);
         moon3Img.gameObject.SetActive(false);
+        moonPhaseTimeText.gameObject.SetActive(false);
         switch (moonType)
         {
             case MoonType.Moon0:
@@ -92,6 +94,11 @@ public class CalendarDateItem : MonoBehaviour
             case MoonType.Moon3:
                 moon3Img.gameObject.SetActive(true);
                 break;
+        }
+        if (moonType != MoonType.MoonOther)
+        {
+            moonPhaseTimeText.gameObject.SetActive(true);
+            moonPhaseTimeText.text = time;
         }
     }
 }
