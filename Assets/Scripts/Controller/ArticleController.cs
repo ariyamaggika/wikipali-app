@@ -430,6 +430,8 @@ public class ArticleController
         if (isTrans)
             tl = sentenceTrans.Count;
         int lineCount = 0;
+        ArticleMarkdownManager.Instance().ClearTermDic();
+
         for (int i = 0; i < l; i++)
         {
             if (!isTrans || transContent)
@@ -467,7 +469,7 @@ public class ArticleController
                     {
                         //sb.AppendLine();
                         string sentenceTransNormalize = MarkdownText.RemoveHTMLStyle(sentenceTrans[i].content);
-                        ArticleMarkdownManager.Instance().SentenceSetMarkDown(sentenceTransNormalize,"","");
+                        sentenceTransNormalize = ArticleMarkdownManager.Instance().SentenceSetMarkDown(sentenceTransNormalize, "", "");
                         //string sentenceRead = sentenceTransNormalize;
                         //if写在for里了，浪费性能，但是没办法，代码太ugly了
                         ReadTextInfo transSentenceTextInfo = null;
@@ -507,6 +509,7 @@ public class ArticleController
                 sb.Clear();
             }
         }
+
         //res.Add(MarkdownText.RemoveHTMLStyle(sb.ToString()));
         res.Add(sb.ToString());
         sb.Clear();

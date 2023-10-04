@@ -322,6 +322,15 @@ public class ArticleView : MonoBehaviour
                 currentChannelName = cNode.channelData.name;
             }
         }
+        //测试数据
+        //book.id = 67;
+        //book.paragraph = 761;
+        //channel = "7ac4d13b-a43d-4409-91b5-5f2a82b916b3";
+        //cNode.paragraph = 761;
+        //cNode.bookID = 67;
+        //cNode.channel_id = "7ac4d13b-a43d-4409-91b5-5f2a82b916b3";
+        //cNode.channelData.channel_id = "7ac4d13b-a43d-4409-91b5-5f2a82b916b3";
+
         currentChannelId = channel;
         nextAndPrevGroupView.SetChapter(book, (isTrans ? channel : ""), isTrans);
         contentViewGO.SetActive(true);
@@ -353,6 +362,8 @@ public class ArticleView : MonoBehaviour
             inst.name = i.ToString();
             inst.transform.position = contentText.transform.position;
             Text contentTextInst = inst.GetComponent<Text>();
+            //????????兼容RegexHypertext,文字要超过text框大小，不然匹配的位置是乱的，后面考虑换成，TextMeshPro
+            text[i] = text[i] + "\r\n";
             contentTextInst.text = MarkdownText.PreprocessText(text[i]);
             inst.SetActive(true);
             contentTextInst.rectTransform.sizeDelta = new Vector2(contentTextInst.rectTransform.sizeDelta.x, textRuler.rectTransform.sizeDelta.y);// new Vector2(PaliContentTextRect.sizeDelta.x, PaliContentText.textComponent.fontSize * (lineCount + 1));

@@ -28,7 +28,8 @@ public class ArticleMarkdownManager
     const string MARKDOWN_TERM = "term";        //术语
     const string MARKDOWN_SENT = "sent";        //句子
     const string MARKDOWN_NOTE = "note";        //注释
-    Regex r_term = new Regex(@"\{\{term\|(\w+)\}\}");
+    //Regex r_term = new Regex(@"\{\{term\|(.*)\}\}");
+    Regex r_term = new Regex(@"\{\{term\|(.+?)\}\}");
     Regex r = new Regex(@"\{\{(\w+)\}\}");
     //翻译文章的句子显示术语
     public string SentenceSetMarkDown(string sentence, string channel, string owner)
@@ -38,9 +39,15 @@ public class ArticleMarkdownManager
         return res;
     }
     Dictionary<string, TermInfoJson> termDic = new Dictionary<string, TermInfoJson>();
+    public void ClearTermDic()
+    { 
+        termDic.Clear();
+
+    }
     string PrefilterSentenceTerm(string sentence)
     {
-        termDic.Clear();
+        //sentence = "<span><p>590.<strong>以[缘起]支的差别</strong>者，于此[缘起支]中，为了显示{{term|eyJ3b3JkIjoiYmhhdmFjYWtrYSIsInBhcmVudENoYW5uZWxJZCI6IjdhYzRkMTNiLWE0M2QtNDQwOS05MWI1LTVmMmE4MmI5MTZiMyIsInBhcmVudFN0dWRpb0lkIjoiYmMwZGM2MmEtNDY4Ni00Y2RlLThhMWUtNjAyMGFmYTkxODQ1IiwiaWQiOiJlMGE1MWE1YS1hYTI1LTRjNjctYTE5Mi0xM2UzYTRlMWQ1YjIiLCJtZWFuaW5nIjoiXHU2NzA5XHU4ZjZlIiwiY2hhbm5lbCI6IiIsImlubmVySHRtbCI6Ilx1NjcwOVx1OGY2ZShiaGF2YWNha2thKSJ9}}的不断而说{{term|eyJ3b3JkIjoic29rYSIsInBhcmVudENoYW5uZWxJZCI6IjdhYzRkMTNiLWE0M2QtNDQwOS05MWI1LTVmMmE4MmI5MTZiMyIsInBhcmVudFN0dWRpb0lkIjoiYmMwZGM2MmEtNDY4Ni00Y2RlLThhMWUtNjAyMGFmYTkxODQ1IiwiaWQiOiJiMGM3OTIwYi05NzM0LTQ3ZjctOTY2NS1mZmQ0NjA5OGEwN2YiLCJtZWFuaW5nIjoiXHU2MTAxIiwiY2hhbm5lbCI6IiIsImlubmVySHRtbCI6Ilx1NjEwMShzb2thKSJ9}}等。</p>\r\n</span>\r\n";
+        //sentence = MarkdownText.ReplaceHTMLStyle(sentence);
         string res = sentence;
         MatchCollection mcs = r_term.Matches(sentence);
         Match[] mArr = mcs.ToArray();
@@ -50,6 +57,7 @@ public class ArticleMarkdownManager
         {
             string term = mArr[i].Value.Substring("{{term|".Length);
             term = term.Substring(0, term.Length - 2);
+            Debug.LogError(term);
             TermInfoJson json = GetTermInfo(term);
             //Debug.LogError(mArr[i].Index + "," + mArr[i].Value);
             if (!termDic.ContainsKey(json.word))

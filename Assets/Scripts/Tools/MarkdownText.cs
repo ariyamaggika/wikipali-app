@@ -249,11 +249,13 @@ public class MarkdownText
     }
     public static string RemoveHTMLStyle(string text)
     {
-        return text.Replace("<br />", "").Replace("<span>", "").Replace("</span>", "");
+        return text.Replace("<br>", "\r\n").Replace("<span>", "").Replace("</span>", "").
+            Replace("<p>", "").Replace("</p>", "").Replace("<strong>", "").Replace("</strong>", "");
     }
     public static string ReplaceHTMLStyle(string text)
     {
-        return text.Replace("<br>", "\r\n").Replace("<span>", "").Replace("</span>", ""); 
+        return text.Replace("<br>", "\r\n").Replace("<span>", "").Replace("</span>", "").
+            Replace("<p>", "").Replace("</p>", "").Replace("<strong>", "").Replace("</strong>", ""); 
     }
     //去除括号及其中内容
     public static string RemoveBracket(string text)
