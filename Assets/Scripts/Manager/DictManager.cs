@@ -141,7 +141,7 @@ public class DictManager
                     };
                     //减去词头长度(因为note字段含义会把单词拼写放在前面)
                     m.chineseNoteIndex = m.meaning.IndexOf(inputStr) - word.Length;
-                    m.meaning = m.meaning.Replace(inputStr, "<color=#5895FF>" + inputStr + "</color>");
+                    m.meaning = m.meaning.Replace(inputStr, CommonTool.COLOR_BLUE_FLAG + inputStr + "</color>");
                     wordList.Add(m.word);
                     matchedWordList.Add(m);
                     matchedWordDic.Add(m.word, m);

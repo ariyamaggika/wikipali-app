@@ -476,24 +476,24 @@ public class ArticleController
                         if (SettingManager.Instance().GetPaliRemoveBracket() == 1)
                         {
                             //sentenceRead = MarkdownText.RemoveBracket(sentenceRead);
-                            transSentenceTextInfo = new ReadTextInfo(sentenceTransNormalize, sbRemoveBracket.Length + "<color=#5895FF>".Length, res.Count);
-                            sbRemoveBracket.AppendFormat("<color=#5895FF>{0}</color>", sentenceTransNormalize);
+                            transSentenceTextInfo = new ReadTextInfo(sentenceTransNormalize, sbRemoveBracket.Length + CommonTool.COLOR_BLACK_FLAG.Length, res.Count);
+                            sbRemoveBracket.AppendFormat(CommonTool.COLOR_BLACK_FLAG + "{0}</color>", sentenceTransNormalize);
                             sbRemoveBracket.AppendLine("");
                             sbRemoveBracket.AppendLine("");
                         }
                         else
                         {
-                            transSentenceTextInfo = new ReadTextInfo(sentenceTransNormalize, sb.Length + "<color=#5895FF>".Length, res.Count);
+                            transSentenceTextInfo = new ReadTextInfo(sentenceTransNormalize, sb.Length + CommonTool.COLOR_BLACK_FLAG.Length, res.Count);
                         }
 
 
-                        //ReadTextInfo transSentenceTextInfo = new ReadTextInfo(sentenceTransNormalize, sb.Length + "<color=#5895FF>".Length, res.Count);
+                        //ReadTextInfo transSentenceTextInfo = new ReadTextInfo(sentenceTransNormalize, sb.Length + "<color=#1B1B1B>".Length, res.Count);
                         transSentenceList.Add(transSentenceTextInfo);
                         //if (i == 0 && j == 0)
                         //{
                         //    testCN = sentenceTransNormalize;
                         //}
-                        sb.AppendFormat("<color=#5895FF>{0}</color>", sentenceTransNormalize);
+                        sb.AppendFormat(CommonTool.COLOR_BLACK_FLAG + "{0}</color>", sentenceTransNormalize);
                         sb.AppendLine("");
                         sb.AppendLine("");
                         lineCount += 3;

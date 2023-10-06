@@ -8,12 +8,16 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using static ArticleMarkdownManager;
 
 namespace Hypertext
 {
     public class RegexHypertext : HypertextBase
     {
         public const string GRM_ABBR_TAG = "#INCLUDE_GRM_ABBR";
+        public const string TERM_TAG = "#INCLUDE_TERM";
+
+        public const string TERM_REGEX = @"\<(.+?)\>";
         readonly List<Entry> entries = new List<Entry>();
 
         struct Entry
@@ -27,6 +31,16 @@ namespace Hypertext
                 RegexPattern = regexPattern;
                 Color = color;
                 Callback = callback;
+            }
+            //termTag
+            //1. 自己数据 蓝色
+            //2. 社区数据 绿色
+            //3. 没匹配到 红色
+            public Entry(string regexPattern, Action<string> callback)
+            {
+                RegexPattern = regexPattern;
+                Callback = callback;
+                Color = Color.black;
             }
         }
 
@@ -82,11 +96,11 @@ namespace Hypertext
                             int startIndex = 0;
                             while (true)
                             {
-                                int index = text.IndexOf( kvp.Key,startIndex);
+                                int index = text.IndexOf(kvp.Key, startIndex);
                                 if (index == -1)
                                     break;
                                 OnClick(index, kvp.Key.Length, entry.Color, entry.Callback);
-                                startIndex = index+kvp.Key.Length;
+                                startIndex = index + kvp.Key.Length;
                                 if (startIndex >= text.Length)
                                     break;
                             }
@@ -96,6 +110,30 @@ namespace Hypertext
                         //    OnClick(match.Index, match.Value.Length, entry.Color, entry.Callback);
                         //}
 
+                    }
+                }
+                else if (TERM_TAG == entry.RegexPattern)//术语采用多种颜色格式
+                {
+                    Color color = Color.black;
+
+                    foreach (Match match in Regex.Matches(text, TERM_REGEX))
+                    {
+                        string term = match.Value.Substring(1);
+                        term = term.Substring(0, term.Length - 1);
+                        TermInfoJson termJ = ArticleMarkdownManager.Instance().GetTermByWord(term);
+                        if (termJ == null)
+                        {
+                            color = Color.yellow;
+                        }
+                        else
+                        {
+                            if (termJ.isCommunity)
+                                color = Color.green;
+                            else
+                                color = Color.blue;
+
+                        }
+                        OnClick(match.Index, match.Value.Length, color, entry.Callback);
                     }
                 }
                 else//正则表达式

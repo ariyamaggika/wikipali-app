@@ -11,13 +11,13 @@ public class ArticleRegexText : MonoBehaviour
     public PopTermView popTView;
 
     public RegexHypertext articleText;
-    const string RegexHashTag = @"\<(\w+)\>";
+    const string RegexHashTag = @"\<(.+?)\>";
 
     // Start is called before the first frame update
     void Start()
     {
         //articleText.OnClick(RegexHashTag, new Color(0, 0.2235f, 0.898f, 1), hashtag => TermText(hashtag));
-        articleText.OnClick(RegexHashTag, Color.red, hashtag => TermText(hashtag));
+        articleText.OnClick(RegexHypertext.TERM_TAG, hashtag => TermText(hashtag));
 
     }
     void TermText(string regex)
@@ -28,7 +28,7 @@ public class ArticleRegexText : MonoBehaviour
         if (term != null)
         {
             string title = term.meaning;
-            string content = "<color=#5895FF>" + term.word + "</color>\r\n" + term.meaning2 + "\r\n" + term.summary;
+            string content = CommonTool.COLOR_BLUE_FLAG + term.word + "</color>\r\n" + term.summary;
             popTView.Init(title, content);
         }
 

@@ -40,7 +40,7 @@ public class ArticleMarkdownManager
     }
     Dictionary<string, TermInfoJson> termDic = new Dictionary<string, TermInfoJson>();
     public void ClearTermDic()
-    { 
+    {
         termDic.Clear();
 
     }
@@ -57,17 +57,22 @@ public class ArticleMarkdownManager
         {
             string term = mArr[i].Value.Substring("{{term|".Length);
             term = term.Substring(0, term.Length - 2);
-            Debug.LogError(term);
+            //Debug.LogError(term);
             TermInfoJson json = GetTermInfo(term);
             //Debug.LogError(mArr[i].Index + "," + mArr[i].Value);
-            if (!termDic.ContainsKey(json.word))
+            string fillWord = json.meaning;
+            //第一次出现术语，要以这个格式meaing(word,meaning2)显示
+            if (!termDic.ContainsKey(json.meaning))
             {
-                termDic.Add(json.word, json);
+                fillWord = json.meaning + "(" + json.word + (string.IsNullOrEmpty(json.meaning2) ? "" : ("," + json.meaning2)) + ")";
+                termDic.Add(fillWord, json);
+                termDic.Add(json.meaning, json);
             }
+
             string front = res.Substring(0, mArr[i].Index - offset);
             string back = res.Substring(mArr[i].Index + mArr[i].Value.Length - offset, res.Length - mArr[i].Index - mArr[i].Value.Length + offset);
-            res = front + "<" + json.word + ">" + back;
-            offset += mArr[i].Value.Length - json.word.Length - 2;//<>占两个符号
+            res = front + "<" + fillWord + ">" + back;
+            offset += mArr[i].Value.Length - fillWord.Length - 2;//<>占两个符号
         }
         return res;
     }

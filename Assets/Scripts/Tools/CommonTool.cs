@@ -13,6 +13,16 @@ using static SpeechManager;
 
 public class CommonTool
 {
+    #region 宏
+    public static string COLOR_BLUE = "#5895FF";
+    public static string COLOR_BLACK = "#1B1B1B";
+    public static string COLOR_BROWN = "#A52A2A";
+
+    public static string COLOR_BLUE_FLAG = "<color=#5895FF>";
+    public static string COLOR_BLACK_FLAG = "<color=#1B1B1B>";
+    public static string COLOR_BROWN_FLAG = "<color=#A52A2A>";
+    #endregion
+
     //返回翻译标题
     //todo：不同语言 标题不同
     public static string GetBookTranslateName(Book book)
@@ -306,7 +316,7 @@ public class CommonTool
         return decodedText;
     }
 
-   public static void DeepCopyStringList(List<string> origin, List<string> copy)
+    public static void DeepCopyStringList(List<string> origin, List<string> copy)
     {
         origin.Clear();
         int c = copy.Count;

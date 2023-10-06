@@ -363,7 +363,7 @@ public class ArticleView : MonoBehaviour
             inst.transform.position = contentText.transform.position;
             Text contentTextInst = inst.GetComponent<Text>();
             //????????兼容RegexHypertext,文字要超过text框大小，不然匹配的位置是乱的，后面考虑换成，TextMeshPro
-            text[i] = text[i] + "\r\n";
+            text[i] = text[i] + "\r\n \r\n \r\n \r\n \r\n \r\n";
             contentTextInst.text = MarkdownText.PreprocessText(text[i]);
             inst.SetActive(true);
             contentTextInst.rectTransform.sizeDelta = new Vector2(contentTextInst.rectTransform.sizeDelta.x, textRuler.rectTransform.sizeDelta.y);// new Vector2(PaliContentTextRect.sizeDelta.x, PaliContentText.textComponent.fontSize * (lineCount + 1));
