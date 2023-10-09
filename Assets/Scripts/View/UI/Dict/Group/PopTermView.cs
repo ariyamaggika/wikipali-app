@@ -10,15 +10,25 @@ public class PopTermView : MonoBehaviour
     public Text detailText;
     public Button closeBackGroupBtn;
     public RectTransform verticalLayoutGroup;
-    public void Init(string title, string detail)
+    public Button dicBtn;
+
+    string dicWord;
+    public void Init(string title, string detail, bool isDic = false, string _dicWord = "")
     {
         titleText.text = MarkdownText.PreprocessText(title, titleText.fontSize);
         detailText.text = MarkdownText.PreprocessText(detail, detailText.fontSize);
         this.gameObject.SetActive(true);
+        dicBtn.gameObject.SetActive(false);
+        if (isDic)
+        {
+            dicWord = _dicWord;
+            dicBtn.gameObject.SetActive(true);
+        }
         //content size fitter 下一帧才会刷新富文本格式后的text大小
         //等下一帧UI刷新后获取位置
         StartCoroutine(SetHeight());
         //SetHeight();
+
     }
     IEnumerator SetHeight()
     {
@@ -42,7 +52,14 @@ public class PopTermView : MonoBehaviour
     void Start()
     {
         closeBackGroupBtn.onClick.AddListener(OnCloseBackBtnClick);
+        dicBtn.onClick.AddListener(OnDicBtnClick);
 
+    }
+    public void OnDicBtnClick()
+    {
+        //dicBtn.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
+        GameManager.Instance().ShowDicWord(dicWord);
     }
     public void OnCloseBackBtnClick()
     {

@@ -130,7 +130,7 @@ namespace Hypertext
                             if (termJ.isCommunity)
                                 color = Color.green;
                             else
-                                color = Color.blue;
+                                color = new Color(0,0.34f,0.58f);
 
                         }
                         OnClick(match.Index, match.Value.Length, color, entry.Callback);

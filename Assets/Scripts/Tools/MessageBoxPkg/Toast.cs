@@ -131,7 +131,11 @@ public class Toast {
         }
     }
 
-
+    public static void Show(MonoBehaviour caller, string message, int duration, Type type, Gravity gravity, int size)
+    {
+        Show(caller, message, duration, type, gravity);
+        toastCanvas.GetComponentInChildren<Text>().fontSize = size;
+    }
     public static void Show(MonoBehaviour caller, string message, int duration, Type type, Gravity gravity)
     {
         if (isActive)

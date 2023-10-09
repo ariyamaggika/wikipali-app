@@ -73,6 +73,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    UITool.ShowToastUp(this, "请允许wikipali app使用定位权限\r\n为了提供您所在位置的明相日中等服务。\r\n我们需要获取您设备的所在定位信息。\r\n不授权不影响您使用APP"
+        //        , 10, 80);
+        //}
+
         if (isStartUnZipProgress)
         {
             int progressFin = ZipManager.Instance().lzmafileProgress[0];
@@ -163,5 +169,15 @@ public class GameManager : MonoBehaviour
     public void CheckPrivacyVersion(int newVersion, string url)
     {
         preView.CheckPrivacyVersion(newVersion, url);
+    }
+    public void StartLocation()
+    {
+        StartCoroutine(StartLocationI());
+
+    }
+    IEnumerator StartLocationI()
+    {
+        yield return new WaitForSeconds(0.5f);
+        CalendarManager.Instance().StartLocation();
     }
 }

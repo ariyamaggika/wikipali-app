@@ -430,7 +430,7 @@ public class ArticleController
         if (isTrans)
             tl = sentenceTrans.Count;
         int lineCount = 0;
-        ArticleMarkdownManager.Instance().ClearTermDic();
+        ArticleMarkdownManager.Instance().ClearMarkdownInfo();
 
         for (int i = 0; i < l; i++)
         {
@@ -454,8 +454,8 @@ public class ArticleController
                 }
 
                 paliSentenceList.Add(paliSentenceTextInfo);
-
-                sb.AppendLine(sentenceNormalize);
+                //sb.AppendLine(sentenceNormalize);
+                sb.AppendFormat(CommonTool.COLOR_BROWN_FLAG + "{0}</color>", sentenceNormalize);
                 sb.AppendLine("");
                 sentenceRes.Add(sentenceNormalize);
 
@@ -493,6 +493,7 @@ public class ArticleController
                         //{
                         //    testCN = sentenceTransNormalize;
                         //}
+                        //Debug.LogError(sentenceTransNormalize);
                         sb.AppendFormat(CommonTool.COLOR_BLACK_FLAG + "{0}</color>", sentenceTransNormalize);
                         sb.AppendLine("");
                         sb.AppendLine("");

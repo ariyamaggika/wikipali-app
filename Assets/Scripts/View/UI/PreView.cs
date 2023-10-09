@@ -1,4 +1,5 @@
 using Hypertext;
+using Org.BouncyCastle.Bcpg;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -40,8 +41,17 @@ public class PreView : MonoBehaviour
         //请求权限
         //Permission.RequestUserPermission("android.hardware.location");
         //Permission.RequestUserPermission("android.hardware.location.gps");
-        CalendarManager.Instance().StartLocation();
+        UITool.ShowToastUp(GameManager.Instance(), "请允许wikipali app使用定位权限\r\n为了提供您所在位置的明相日中等服务。\r\n我们需要获取您设备的所在定位信息。\r\n不授权不影响您使用APP"
+    , 4, 80);
+        //延后一帧获取定位权限，确保弹窗先出来
+        GameManager.Instance().StartLocation();
+        //StartCoroutine(StartLocation());
 
+    }
+    IEnumerator StartLocation()
+    {
+        yield return null;
+        CalendarManager.Instance().StartLocation();
     }
     public void QuitBtn()
     {

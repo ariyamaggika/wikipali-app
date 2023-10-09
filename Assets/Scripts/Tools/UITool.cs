@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Toast;
 
 public class UITool
 {
@@ -18,6 +19,9 @@ public class UITool
     {
         Toast.Show(caller, message, 2, Toast.Type.MESSAGE,fontsize);
     }
-
+    public static void ShowToastUp(MonoBehaviour caller, string message,int time, int fontsize)
+    {
+        Toast.Show(caller, message, time, Toast.Type.MESSAGE, Gravity.TOP, fontsize);
+    }
 
 }
