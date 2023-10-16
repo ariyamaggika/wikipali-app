@@ -95,14 +95,14 @@ public class SettingManager
         //todo 目前是只在最开始解压数据库，要添加用户误删数据库的情况，判断数据库是否Exist，压缩包是否Exist，不Exist提示重新安装
         //是否已解压数据库
         //PlayerPrefs.SetInt("isUnZiped", 0);
-        int isUnZipedDB = PlayerPrefs.GetInt("isUnZiped", 0);
-        if (isUnZipedDB == 0)
-        {
-            ZipManager.Instance().UnZipDB();
-        }
         //是否有权限
         if (GetPrivacyVersion() > 0)
+        {
+            UnzipDB();
+            //是否有权限
+
             CalendarManager.Instance().StartLocation();
+        }
         //加载单词本
         DictManager.Instance().LoadAllDicGroup();
         //加载文章收藏
@@ -110,6 +110,14 @@ public class SettingManager
         //??????没执行到这里，有报错？？？
         //CalendarManager.Instance().StartLocation();
 
+    }
+    public void UnzipDB()
+    {
+        int isUnZipedDB = PlayerPrefs.GetInt("isUnZiped", 0);
+        if (isUnZipedDB == 0)
+        {
+            ZipManager.Instance().UnZipDB();
+        }
     }
     void DeleteOldZipFile()
     {

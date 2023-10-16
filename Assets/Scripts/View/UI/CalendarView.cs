@@ -124,6 +124,7 @@ public class CalendarView : MonoBehaviour
         float lat = 24;
         float lng = 103;
         (lat, lng) = CalendarManager.Instance().GetLocation();
+
         var height = 0;// 2000;
         TimeSpan ts = TimeZoneInfo.Local.GetUtcOffset(time);
         //Act

@@ -160,14 +160,15 @@ public class ArticleView : MonoBehaviour
             if (!isReturn)
                 bookTreeNodeStack.Push(info);
             //TODO?:点进书本只显示书本路径，前面是否需要显示Article路径？
-            string aPath = "";
-            int length = bookTreeNodeStack.Count;
-            Book[] arr = bookTreeNodeStack.ToArray();
-            for (int i = length - 1; i > -1; i--)
-            {
-                aPath += arr[i].toc + "/";
-            }
-            returnBtn.SetPath(aPath);
+            SetTitleRootPath(false, "");
+            //string aPath = "";
+            //int length = bookTreeNodeStack.Count;
+            //Book[] arr = bookTreeNodeStack.ToArray();
+            //for (int i = length - 1; i > -1; i--)
+            //{
+            //    aPath += arr[i].toc + "/";
+            //}
+            //returnBtn.SetPath(aPath);
         }
         else
         {
@@ -186,16 +187,17 @@ public class ArticleView : MonoBehaviour
 
                 bookTreeNodeStack.Push(info);
                 //TODO?:点进书本只显示书本路径，前面是否需要显示Article路径？
-                string aPath = "";
-                int length = bookTreeNodeStack.Count;
-                Book[] arr = bookTreeNodeStack.ToArray();
-                for (int i = length - 1; i > -1; i--)
-                {
-                    aPath += arr[i].toc + "/";
-                }
-                //todo 译文版本名字改为版本风格名
-                aPath += "译文版本";
-                returnBtn.SetPath(aPath);
+                SetTitleRootPath(true, "");
+                //string aPath = "";
+                //int length = bookTreeNodeStack.Count;
+                //Book[] arr = bookTreeNodeStack.ToArray();
+                //for (int i = length - 1; i > -1; i--)
+                //{
+                //    aPath += arr[i].toc + "/";
+                //}
+                ////todo 译文版本名字改为版本风格名
+                //aPath += "译文版本";
+                //returnBtn.SetPath(aPath);
             }
         }
     }
@@ -204,16 +206,37 @@ public class ArticleView : MonoBehaviour
         bookTreeNodeStack.Pop();
         bookTreeNodeStack.Push(nextBook);
         //TODO?:点进书本只显示书本路径，前面是否需要显示Article路径？
+        //string aPath = "";
+        //int length = bookTreeNodeStack.Count;
+        //Book[] arr = bookTreeNodeStack.ToArray();
+        //for (int i = length - 1; i > -1; i--)
+        //{
+        //    aPath += arr[i].toc + "/";
+        //}
+        ////todo 译文版本名字改为版本风格名
+        //aPath += "译文版本";
+        //returnBtn.SetPath(aPath);
+    }
+    public void SetTitleRootPath(bool isTransTitle, string channlName)
+    {
         string aPath = "";
+
         int length = bookTreeNodeStack.Count;
         Book[] arr = bookTreeNodeStack.ToArray();
         for (int i = length - 1; i > -1; i--)
         {
             aPath += arr[i].toc + "/";
         }
-        //todo 译文版本名字改为版本风格名
-        aPath += "译文版本";
+        if (isTransTitle)
+            aPath += "译文版本";
+        if (string.IsNullOrEmpty(channlName))
+        {
+            returnBtn.SetPath(aPath);
+            return;
+        }
+        aPath += "/" + channlName;
         returnBtn.SetPath(aPath);
+
     }
     //点击显示channel的节点
     public void ChannelBtnClick()

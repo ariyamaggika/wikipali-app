@@ -387,11 +387,27 @@ namespace Imdork.SQLite
             return ExecuteQuery(query);
         }
         /// <summary>
+        /// 模糊查询，查词用
+        /// </summary>
+        public SqliteDataReader SelectDictLikeAll(string tableName, string inputStr, string word, int limit)
+        {
+            string query = "SELECT * FROM " + "'" + tableName + "'" + " WHERE " + word + " LIKE " + "'" + inputStr + "%' limit " + limit.ToString();
+            return ExecuteQuery(query);
+        }
+        /// <summary>
         /// 匹配查询，查词用
         /// </summary>
         public SqliteDataReader SelectDictSame(string tableName, string inputStr, string word, int limit)
         {
             string query = "SELECT `id`,`word`,`note`,`dict_id` FROM " + "'" + tableName + "'" + " WHERE " + word + " = " + "'" + inputStr + "' limit " + limit.ToString();
+            return ExecuteQuery(query);
+        }
+        /// <summary>
+        /// 匹配查询，查词用
+        /// </summary>
+        public SqliteDataReader SelectDictSameAll(string tableName, string inputStr, string word, int limit)
+        {
+            string query = "SELECT * FROM " + "'" + tableName + "'" + " WHERE " + word + " = " + "'" + inputStr + "' limit " + limit.ToString();
             return ExecuteQuery(query);
         }
         /// <summary>

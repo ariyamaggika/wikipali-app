@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 using static UpdateManager;
 
 public class GameManager : MonoBehaviour
@@ -170,14 +171,43 @@ public class GameManager : MonoBehaviour
     {
         preView.CheckPrivacyVersion(newVersion, url);
     }
-    public void StartLocation()
+    public void StartUserPermission()
     {
-        StartCoroutine(StartLocationI());
+        StartCoroutine(StartUserPermissionLoction());
 
     }
-    IEnumerator StartLocationI()
+    IEnumerator StartUserPermissionLoction()
     {
         yield return new WaitForSeconds(0.5f);
         CalendarManager.Instance().StartLocation();
+
+        StartCoroutine(StartUserPermissionStorage());
+
     }
+    IEnumerator StartUserPermissionStorage()
+    {
+        yield return null;
+        CalendarManager.Instance().StartLocation();
+
+        if (Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead))
+        {
+        }
+        else
+        {
+            Permission.RequestUserPermission(Permission.ExternalStorageRead);
+        }
+        if (Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
+        {
+            SettingManager.Instance().UnzipDB();
+        }
+        else
+        {
+            PermissionCallbacks callBack = new PermissionCallbacks();
+            Action<string> a = (string s) => { SettingManager.Instance().UnzipDB(); };
+            callBack.PermissionGranted += a;
+            Permission.RequestUserPermission(Permission.ExternalStorageWrite, callBack);
+        }
+
+    }
+
 }

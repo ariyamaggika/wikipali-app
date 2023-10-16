@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using static ArticleController;
+using static ArticleManager;
 using static DictManager;
 /// <summary>
 /// 文章句子特殊语法
@@ -31,6 +32,7 @@ public class ArticleMarkdownManager
     //Regex r_term = new Regex(@"\{\{term\|(.*)\}\}");
     Regex r_term = new Regex(@"\{\{term\|(.+?)\}\}");
     Regex r_note = new Regex(@"\{\{note\|(.+?)\}\}");
+    Regex r_sent = new Regex(@"\{\{sent\|(.+?)\}\}");
     Regex r = new Regex(@"\{\{(\w+)\}\}");
     //翻译文章的句子显示术语
     public string SentenceSetMarkDown(string sentence, string channel, string owner)
@@ -203,7 +205,7 @@ public class ArticleMarkdownManager
     #region note注释
     Dictionary<string, NoteJson> noteDic = new Dictionary<string, NoteJson>();
     // List<NoteJson> noteList = new List<NoteJson>();
-    public string PrefilterSentenceNote(string sentence)
+    string PrefilterSentenceNote(string sentence)
     {
         //sentence = "{{note|eyJub3RlIjoiYmxhIDxiPmJvbGQ8XC9iPiA8aT5lbTxcL2k+IGJsYVxuXG4iLCJ0cmlnZ2VyIjoia2FjYXlhbmEifQ==}}";
         string res = sentence;
@@ -217,7 +219,8 @@ public class ArticleMarkdownManager
             note = note.Substring(0, note.Length - 2);
             //Debug.LogError(term);
             NoteJson json = GetMarkdownInfo<NoteJson>(note);
-
+            //note里会包含巴利原文
+            json.note = PrefilterSentenceSent(json.note);
             string id = (noteDic.Count + 1).ToString() + (string.IsNullOrEmpty(json.trigger) ? "" : (":" + json.trigger));
             noteDic.Add(id, json);
 
@@ -243,5 +246,53 @@ public class ArticleMarkdownManager
         public string trigger;//界面上显示的文字。如果没有的话。你就放个按钮。我现在是放了一个图标。你放啥都行。类似word这种 [1]也行
         public string note;//注释内容
     }
+    #endregion
+    #region sent 巴利原文
+    // List<NoteJson> noteList = new List<NoteJson>();
+    public string PrefilterSentenceSent(string sentence)
+    {
+        string res = sentence;
+        MatchCollection mcs = r_sent.Matches(sentence);
+        Match[] mArr = mcs.ToArray();
+        int offset = 0;
+
+        for (int i = 0; i < mArr.Length; i++)
+        {
+            string sent = mArr[i].Value.Substring("{{sent|".Length);
+            sent = sent.Substring(0, sent.Length - 2);
+            //Debug.LogError(term);
+            SentJson json = GetMarkdownInfo<SentJson>(sent);
+            string sentStr = "";
+            if (json != null && json.book != 0)
+            {
+                List<SentenceDBData> sentDataList = ArticleManager.Instance().GetPaliSentenceByBookParagraph(json.book, json.wordStart, json.wordEnd);
+                if (sentDataList != null && sentDataList.Count > 0)
+                {
+                    sentStr = CommonTool.COLOR_BROWN_FLAG + MarkdownText.RemoveHTMLStyle(sentDataList[0].content) + CommonTool.COLOR_END_FLAG;
+                }
+            }
+
+            string front = res.Substring(0, mArr[i].Index - offset);
+            string back = res.Substring(mArr[i].Index + mArr[i].Value.Length - offset, res.Length - mArr[i].Index - mArr[i].Value.Length + offset);
+            res = front + sentStr + back;
+            offset += mArr[i].Value.Length - sentStr.ToString().Length;
+        }
+        return res;
+
+    }
+    [Serializable]
+    public class SentJson
+    {
+        //      origin?: ISentence[];
+        //translation?: ISentence[];
+        public string layout;// "row" | "column";
+        public int book;
+        public int para;
+        public int wordStart;
+        public int wordEnd;
+        public string sentId;
+        public string error;
+    }
+
     #endregion
 }

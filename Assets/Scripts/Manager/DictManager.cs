@@ -180,6 +180,53 @@ public class DictManager
                 break;
         }
     }
+    //反向搜索
+    List<MatchedWord> SelectDictLikeMyanmar(DbAccess db, Dictionary<string, MatchedWord> matchedWordDic, string tableName, string inputStr)
+    {
+        List<MatchedWord> matchedWordList = new List<MatchedWord>();
+        List<string> wordList = new List<string>();
+        var reader = db.SelectDictLikeAll(tableName, inputStr, "word", LIMIT_COUNT);
+        //调用SQLite工具  解析对应数据
+        Dictionary<string, object>[] pairs = SQLiteTools.GetValues(reader);
+        if (pairs != null)
+        {
+            int length = pairs.Length;
+            for (int i = 0; i < length; i++)
+            {
+                string word = pairs[i]["word"].ToString();
+                if (!matchedWordDic.ContainsKey(word))
+                {
+                    MatchedWord m = new MatchedWord()
+                    {
+                        id = pairs[i]["id"].ToString(),
+                        word = word,
+                        //反向查找的高亮
+                        meaning = pairs[i]["note"].ToString() + "   " + pairs[i]["note2"].ToString(),
+                        dicID = pairs[i]["dict_id"].ToString(),
+                    };
+                    //减去词头长度(因为note字段含义会把单词拼写放在前面)
+                    //m.chineseNoteIndex = m.meaning.IndexOf(inputStr) - word.Length;
+                    //m.meaning = m.meaning.Replace(inputStr, CommonTool.COLOR_BLUE_FLAG + inputStr + "</color>");
+                    wordList.Add(m.word);
+                    matchedWordList.Add(m);
+                    matchedWordDic.Add(m.word, m);
+                }
+            };
+        }
+        return matchedWordList;
+    }
+    //反向搜索
+    void GetDictLikeMyanmar(List<MatchedWord> matchedWordList, DbAccess db, Dictionary<string, MatchedWord> matchedWordDic, string inputStr)
+    {
+        string[] dicIDArr = dicIDArr_MYEN;
+        for (int i = 0; i < dicIDArr.Length; i++)
+        {
+            //todo:AddRange性能问题
+            matchedWordList.AddRange(SelectDictLikeMyanmar(db, matchedWordDic, dicIDArr[i], inputStr));
+            if (matchedWordList.Count >= LIMIT_COUNT)
+                break;
+        }
+    }
     /// <summary>
     /// 根据用户输入搜索数据库，返回显示需要的结果
     /// 逻辑根据选择语言，优先选择筛选的数据库
@@ -240,6 +287,31 @@ public class DictManager
         }, DBManager.DictDBurl);
         //排序方式，词意中，匹配的词越靠前，说明该单词越可能是该意思
         MatchedWord[] resT = SortWordChineseList(matchedWordList.ToArray());
+        int length = resT.Length > LIMIT_COUNT ? LIMIT_COUNT : resT.Length;
+        //裁剪List到LIMIT_COUNT以下
+        MatchedWord[] res = new MatchedWord[length];
+        for (int i = 0; i < length; i++)
+        {
+            res[i] = resT[i];
+        }
+        return res;
+    }
+    //根据词义反向查词
+    public MatchedWord[] MatchWordMyanmar(string inputStr)
+    {
+        if (string.IsNullOrEmpty(inputStr))
+            return new MatchedWord[0];
+        List<MatchedWord> matchedWordList = new List<MatchedWord>();
+
+        dbManager.Getdb(db =>
+        {
+            //key: word,value: MatchedWord
+            Dictionary<string, MatchedWord> matchedWordDic = new Dictionary<string, MatchedWord>();
+            GetDictLikeMyanmar(matchedWordList, db, matchedWordDic, inputStr);
+            //matchedWordList = SelectDictLike(db, matchedWordDic,"", inputStr);
+        }, DBManager.DictDBurl);
+        //排序方式，词意中，匹配的词越靠前，说明该单词越可能是该意思
+        MatchedWord[] resT = SortWordList(matchedWordList.ToArray());
         int length = resT.Length > LIMIT_COUNT ? LIMIT_COUNT : resT.Length;
         //裁剪List到LIMIT_COUNT以下
         MatchedWord[] res = new MatchedWord[length];
@@ -378,6 +450,11 @@ public class DictManager
             "abhi_terms_paper",//4788
             "vinaya_terms_paper",//924
 };
+    //缅英字典
+    static string[] dicIDArr_MYEN = new string[]
+{
+            "my_en",
+};
     //系统语言与优先查询词典
     Dictionary<Language, string[]> DicLangDic = new Dictionary<Language, string[]>
     {
@@ -462,6 +539,51 @@ public class DictManager
                         SelectDicDetail(db, matchedWordList, AllDictList[i][j], word);
                 }
             }
+        }, DBManager.DictDBurl);
+
+        currMatchedWordDetail = matchedWordList.ToArray();
+        return currMatchedWordDetail;
+    }
+    //查询每个词典，准确匹配
+    public MatchedWordDetail[] MatchWordDetailMyanmar(string word)
+    {
+        if (string.IsNullOrEmpty(word))
+        {
+            currMatchedWordDetail = new MatchedWordDetail[0];
+            return currMatchedWordDetail;
+        }
+        List<MatchedWordDetail> matchedWordList = new List<MatchedWordDetail>();
+
+        dbManager.Getdb(db =>
+        {
+            //优先查询当前系统语言词典
+            string[] langDic = dicIDArr_MYEN;
+            int l = langDic.Length;
+            for (int i = 0; i < l; i++)
+            {
+                var reader = db.SelectDictSameAll(langDic[i], word, "word", 1);
+
+                //调用SQLite工具  解析对应数据
+                Dictionary<string, object> pairs = SQLiteTools.GetValue(reader);
+                if (pairs != null)
+                {
+
+                    MatchedWordDetail m = new MatchedWordDetail()
+                    {
+                        id = pairs["id"].ToString(),
+                        word = pairs["word"].ToString(),
+                        meaning = pairs["note"].ToString() + "\r\n" + pairs["note2"].ToString(),
+                        dicID = pairs["dict_id"].ToString(),
+                    };
+                    m.meaning = MarkdownText.ReplaceHTMLStyle(m.meaning);
+                    var readerDic = db.SelectDic(m.dicID);
+                    Dictionary<string, object> dicPairs = SQLiteTools.GetValue(readerDic);
+                    m.dicName = dicPairs["dictname"].ToString();
+                    matchedWordList.Add(m);
+                }
+
+            }
+
         }, DBManager.DictDBurl);
 
         currMatchedWordDetail = matchedWordList.ToArray();

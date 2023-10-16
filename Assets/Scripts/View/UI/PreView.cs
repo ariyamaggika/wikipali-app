@@ -41,10 +41,10 @@ public class PreView : MonoBehaviour
         //请求权限
         //Permission.RequestUserPermission("android.hardware.location");
         //Permission.RequestUserPermission("android.hardware.location.gps");
-        UITool.ShowToastUp(GameManager.Instance(), "请允许wikipali app使用定位权限\r\n为了提供您所在位置的明相日中等服务。\r\n我们需要获取您设备的所在定位信息。\r\n不授权不影响您使用APP"
-    , 4, 80);
-        //延后一帧获取定位权限，确保弹窗先出来
-        GameManager.Instance().StartLocation();
+        UITool.ShowToastUp(GameManager.Instance(), "请允许wikipali app使用存储权限与定位权限\r\n为了提供您词典查询、单词本与收藏夹服务和所在位置的明相日中等服务。\r\n我们需要获取您设备的存储权限和所在定位信息。\r\n不授权将会影响您使用APP"
+    , 3, 80);
+        //延后一帧获取权限，确保弹窗先出来
+        GameManager.Instance().StartUserPermission();
         //StartCoroutine(StartLocation());
 
     }

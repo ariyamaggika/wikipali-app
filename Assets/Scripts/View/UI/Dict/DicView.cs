@@ -62,11 +62,16 @@ public class DicView : MonoBehaviour
             return;
         }
         bool isChinese = CommonTool.CheckStringIsChinese(inputStr);
+        bool isMyanmar = CommonTool.CheckStringIsMyanmar(inputStr);
         MatchedWord[] matchedWordArr = null;
         //反向查询，中文
         if (isChinese)
         {
             matchedWordArr = dicManager.MatchWordChinese(inputStr);
+        }
+        else if (isMyanmar)
+        {
+            matchedWordArr = dicManager.MatchWordMyanmar(inputStr);
         }
         else//正向查询
         {
@@ -100,14 +105,16 @@ public class DicView : MonoBehaviour
             inst.SetActive(true);
             itemDicList.Add(inst);
         }
-        //去格位除尾查
-        GameObject instC = Instantiate(itemDicBtn.gameObject, summaryScrollContent, false);
-        instC.transform.position = itemDicBtn.transform.position;
-        instC.GetComponent<ItemDicView>().SetCaseWord(inputStr);
-        instC.SetActive(true);
-        itemDicList.Add(instC);
-        //summaryScrollContent.sizeDelta = new Vector2(summaryScrollContent.sizeDelta.x, height * 1);
-        summaryScrollContent.sizeDelta = new Vector2(summaryScrollContent.sizeDelta.x, height * (length + 1));
+        if (!isMyanmar && !isChinese)
+        {  //去格位除尾查
+            GameObject instC = Instantiate(itemDicBtn.gameObject, summaryScrollContent, false);
+            instC.transform.position = itemDicBtn.transform.position;
+            instC.GetComponent<ItemDicView>().SetCaseWord(inputStr);
+            instC.SetActive(true);
+            itemDicList.Add(instC);
+            //summaryScrollContent.sizeDelta = new Vector2(summaryScrollContent.sizeDelta.x, height * 1);
+            summaryScrollContent.sizeDelta = new Vector2(summaryScrollContent.sizeDelta.x, height * (length + 1));
+        }
         // }
 
     }
@@ -200,7 +207,9 @@ public class DicView : MonoBehaviour
         userInput.text = word;
         isComplement = false;
 
-        MatchedWordDetail[] matchedWordArr = dicManager.MatchWordDetail(word);
+        bool isMyanmar = CommonTool.CheckStringIsMyanmar(word[0].ToString());
+
+        MatchedWordDetail[] matchedWordArr = isMyanmar ? dicManager.MatchWordDetailMyanmar(word) : dicManager.MatchWordDetail(word);
         //去格位除尾查
         Dictionary<string, List<string>> caseWordList = DicCase.CaseEndingUnion2(new Dictionary<string, List<string>>(), word);
         //if(caseWordList.Count == 0)

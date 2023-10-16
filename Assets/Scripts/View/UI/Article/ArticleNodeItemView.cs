@@ -45,7 +45,7 @@ public class ArticleNodeItemView : MonoBehaviour
             //尝试去掉空格的小写
             if (!isHaveTs)
             {
-                string temp = aNode.name.ToLower().Replace(" ","");
+                string temp = aNode.name.ToLower().Replace(" ", "");
                 isHaveTs = ArticleController.Instance().tsDic.TryGetValue(temp, out ts);
             }
             if (isHaveTs)
@@ -108,9 +108,19 @@ public class ArticleNodeItemView : MonoBehaviour
             sw.Start();
 #endif
             if (channel != null)    //pali&翻译
+            {
                 articleView.ShowPaliContentTrans(book, channel, true);
+                string channelName = "";
+                channelName = channel == null ? "" : (channel.channelData == null ? "" : channel.channelData.name);
+                articleView.SetTitleRootPath(true, channelName);
+
+            }
             else                    //pali原文
+            {
                 articleView.ShowPaliContentTrans(book, null, false);
+                articleView.SetTitleRootPath(false, "");
+
+            }
 #if DEBUG_PERFORMANCE || UNITY_EDITOR
             sw.Stop();
             Debug.LogError("【性能】查询pali耗时：" + sw.ElapsedMilliseconds);

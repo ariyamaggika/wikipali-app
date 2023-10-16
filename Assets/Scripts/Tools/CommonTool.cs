@@ -21,6 +21,8 @@ public class CommonTool
     public static string COLOR_BLUE_FLAG = "<color=#5895FF>";
     public static string COLOR_BLACK_FLAG = "<color=#1B1B1B>";
     public static string COLOR_BROWN_FLAG = "<color=#A52A2A>";
+
+    public static string COLOR_END_FLAG = "</color>";
     #endregion
 
     //返回翻译标题
@@ -361,6 +363,15 @@ public class CommonTool
         if (string.IsNullOrEmpty(str))
             return false;
         if (str[0] >= 0x4e00 && str[0] <= 0x9fbb)
+            return true;
+        return false;
+    }
+    //判断首字母是否是缅语
+    public static bool CheckStringIsMyanmar(string str)
+    {
+        if (string.IsNullOrEmpty(str))
+            return false;
+        if (str[0] >= 0x1000 && str[0] <= 0x109F)
             return true;
         return false;
     }
