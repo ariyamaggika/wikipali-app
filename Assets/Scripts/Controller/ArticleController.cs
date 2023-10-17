@@ -468,7 +468,7 @@ public class ArticleController
                     if (sentenceTrans[j].paragraph == sentence[i].paragraph && sentenceTrans[j].word_start == sentence[i].word_start)
                     {
                         //sb.AppendLine();
-                        string sentenceTransNormalize = MarkdownText.RemoveHTMLStyle(sentenceTrans[i].content);
+                        string sentenceTransNormalize = MarkdownText.RemoveHTMLStyle(sentenceTrans[j].content);
                         sentenceTransNormalize = ArticleMarkdownManager.Instance().SentenceSetMarkDown(sentenceTransNormalize, "", "");
                         //string sentenceRead = sentenceTransNormalize;
                         //if写在for里了，浪费性能，但是没办法，代码太ugly了

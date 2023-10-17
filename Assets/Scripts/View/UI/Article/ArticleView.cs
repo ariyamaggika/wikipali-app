@@ -238,6 +238,10 @@ public class ArticleView : MonoBehaviour
         returnBtn.SetPath(aPath);
 
     }
+    public void SetTitleRootPath(string title)
+    {
+        returnBtn.SetPath(title);
+    }
     //点击显示channel的节点
     public void ChannelBtnClick()
     {
@@ -428,6 +432,12 @@ public class ArticleView : MonoBehaviour
             contentTextInst.text = MarkdownText.PreprocessText(textBackupOrign[i]);
         }
     }
+    //收藏夹点开文章，恢复书和文章堆栈路径
+    //todo
+    public void RepairBookTreeNodeStack()
+    {
+        //bookTreeNodeStack
+    }
     public void ShowPaliContentFromStar(int bookID, int bookParagraph, int bookChapterLen, string channelId)
     {
         //保存上次预览记录
@@ -476,6 +486,11 @@ public class ArticleView : MonoBehaviour
 
         textRuler.gameObject.SetActive(false);
         nextAndPrevGroup.SetAsLastSibling();
+
+        //string bookName = (string.IsNullOrEmpty(book.translateName) ? book.toc : book.translateName);
+        //SetTitleRootPath(isTrans ? bookName + "/" + cdata.name : bookName);
+        //todo显示root name
+        SetTitleRootPath("");
         //PaliContentText.lin
     }
 
