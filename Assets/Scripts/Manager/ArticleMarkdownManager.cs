@@ -27,17 +27,18 @@ public class ArticleMarkdownManager
         return manager;
     }
     const string MARKDOWN_TERM = "term";        //术语
-    const string MARKDOWN_SENT = "sent";        //句子
+    const string MARKDOWN_SENT = "sentread";        //句子
     const string MARKDOWN_NOTE = "note";        //注释
     //Regex r_term = new Regex(@"\{\{term\|(.*)\}\}");
     Regex r_term = new Regex(@"\{\{term\|(.+?)\}\}");
     Regex r_note = new Regex(@"\{\{note\|(.+?)\}\}");
-    Regex r_sent = new Regex(@"\{\{sent\|(.+?)\}\}");
+    Regex r_sent = new Regex(@"\{\{sentread\|(.+?)\}\}");
     Regex r = new Regex(@"\{\{(\w+)\}\}");
     //翻译文章的句子显示术语
     public string SentenceSetMarkDown(string sentence, string channel, string owner)
     {
-        string res = PrefilterSentenceTerm(sentence);
+        string res = PrefilterSentenceSent(sentence);
+        res = PrefilterSentenceTerm(res);
         res = PrefilterSentenceNote(res);
 
         return res;
@@ -251,6 +252,7 @@ public class ArticleMarkdownManager
     // List<NoteJson> noteList = new List<NoteJson>();
     public string PrefilterSentenceSent(string sentence)
     {
+        //sentence = "{{sentread|eyJpZCI6IjE0MC01MzUtMi0yIiwiYm9vayI6MTQwLCJwYXJhIjo1MzUsIndvcmRTdGFydCI6Miwid29yZEVuZCI6Miwib3JpZ2luIjpbeyJjb250ZW50IjoiIiwiaHRtbCI6IjxzcGFuPlBhaGl0ZXlldmFhbnVqXHUwMTAxbmFuYWthdGhcdTAxMDE8XC9zcGFuPiIsImJvb2siOjE0MCwicGFyYSI6NTM1LCJ3b3JkU3RhcnQiOjIsIndvcmRFbmQiOjIsImNoYW5uZWwiOnsibmFtZSI6Il9TeXN0ZW1fUGFsaV9WUklfIiwidHlwZSI6Im9yaWdpbmFsIiwiaWQiOiIyOGYyZTMzYS03OTRmLTExZWQtOTQ4MS0xMzk1ZjZlY2UyZGUifSwic3R1ZGlvIjp7ImlkIjoiNmUxMmY4ZWEtZWU0ZC00ZTBmLWE2YjAtNDcyZjJkOTlhODE0Iiwibmlja05hbWUiOiJBZG1pbmlzdHJhdG9yIiwicmVhbE5hbWUiOiJhZG1pbiIsInN0dWRpb05hbWUiOiJhZG1pbiIsImF2YXRhciI6IiJ9LCJ1cGRhdGVBdCI6IjIwMjMtMTAtMDYgMTQ6Mzg6MjUuMCBVVEMiLCJzdWdnZXN0aW9uQ291bnQiOnsic3VnZ2VzdGlvbiI6MCwiZGlzY3Vzc2lvbiI6MH0sImlkIjoiYWViMzNhZDQtYzNhNC00YTc1LTgxYzctZjM0Y2IxMmViMDc1IiwiY29udGVudFR5cGUiOiJodG1sIiwiZWRpdG9yIjp7ImlkIjoiNmUxMmY4ZWEtZWU0ZC00ZTBmLWE2YjAtNDcyZjJkOTlhODE0Iiwibmlja05hbWUiOiJBZG1pbmlzdHJhdG9yIiwidXNlck5hbWUiOiJhZG1pbiIsInJlYWxOYW1lIjoiYWRtaW4iLCJhdmF0YXIiOiIifSwiY3JlYXRlZEF0IjoiMjAyMi0xMi0xN1QwMzowNTozOS4wMDAwMDBaIn1dLCJ0cmFuc2xhdGlvbiI6W3siY29udGVudCI6IiIsImh0bWwiOiIiLCJib29rIjoxNDAsInBhcmEiOjUzNSwid29yZFN0YXJ0IjoyLCJ3b3JkRW5kIjoyLCJjaGFubmVsIjp7Im5hbWUiOiJcdThiZDFcdTY1ODdcdTRlOGMiLCJ0eXBlIjoidHJhbnNsYXRpb24iLCJpZCI6IjAwYWUyYzQ4LWMyMDQtNDA4Mi1hZTc5LTc5YmEyNzQwZDUwNiJ9LCJzdHVkaW8iOnsiaWQiOiJiYTU0NjNmMy03MmQxLTQ0MTAtODU4ZS1lYWRkMTA4ODQ3MTMiLCJuaWNrTmFtZSI6InZpc3VkZGhpbmFuZGEiLCJyZWFsTmFtZSI6InZpc3VkZGhpbmFuZGEiLCJzdHVkaW9OYW1lIjoidmlzdWRkaGluYW5kYSIsImF2YXRhciI6IiJ9LCJ1cGRhdGVBdCI6IiIsInN1Z2dlc3Rpb25Db3VudCI6eyJzdWdnZXN0aW9uIjowfX1dLCJwYXRoIjpbeyJib29rIjowLCJwYXJhZ3JhcGgiOjAsInRpdGxlIjoic2FtYW50YXBcdTAxMDFzXHUwMTAxZGlrXHUwMTAxIiwibGV2ZWwiOjAsInBhbGlUaXRsZSI6InNhbWFudGFwXHUwMTAxc1x1MDEwMWRpa1x1MDEwMSJ9LHsiYm9vayI6IjE0MCIsInBhcmFncmFwaCI6MywidGl0bGUiOiIoU1ApIE1haFx1MDEwMXZhZ2dhLWFcdTFlNmRcdTFlNmRoYWthdGhcdTAxMDEiLCJsZXZlbCI6IjEiLCJwYWxpVGl0bGUiOiIoU1ApIE1haFx1MDEwMXZhZ2dhLWFcdTFlNmRcdTFlNmRoYWthdGhcdTAxMDEifSx7ImJvb2siOiIxNDAiLCJwYXJhZ3JhcGgiOjUyMiwidGl0bGUiOiIzLiBWYXNzXHUwMTZicGFuXHUwMTAxeWlrYWtraGFuZGhha2FcdTFlNDMiLCJsZXZlbCI6IjIiLCJwYWxpVGl0bGUiOiIzLiBWYXNzXHUwMTZicGFuXHUwMTAxeWlrYWtraGFuZGhha2FcdTFlNDMifV0sInRyYW5OdW0iOjEsIm5pc3NheWFOdW0iOjAsImNvbW1OdW0iOjAsIm9yaWdpbk51bSI6MSwic2ltTnVtIjpudWxsfQ==}}";
         string res = sentence;
         MatchCollection mcs = r_sent.Matches(sentence);
         Match[] mArr = mcs.ToArray();
@@ -258,17 +260,26 @@ public class ArticleMarkdownManager
 
         for (int i = 0; i < mArr.Length; i++)
         {
-            string sent = mArr[i].Value.Substring("{{sent|".Length);
+            string sent = mArr[i].Value.Substring("{{sentread|".Length);
             sent = sent.Substring(0, sent.Length - 2);
             //Debug.LogError(term);
             SentJson json = GetMarkdownInfo<SentJson>(sent);
             string sentStr = "";
             if (json != null && json.book != 0)
             {
-                List<SentenceDBData> sentDataList = ArticleManager.Instance().GetPaliSentenceByBookParagraph(json.book, json.wordStart, json.wordEnd);
-                if (sentDataList != null && sentDataList.Count > 0)
+                //todo是否会出现数组为空的情况
+                int sCount = json.origin.Count > json.translation.Count ? json.origin.Count : json.translation.Count;
+
+                for (int j = 0; j < sCount; j++)
                 {
-                    sentStr = CommonTool.COLOR_BROWN_FLAG + MarkdownText.RemoveHTMLStyle(sentDataList[0].content) + CommonTool.COLOR_END_FLAG;
+                    if (json.origin != null && json.origin.Count > j && !string.IsNullOrEmpty(json.origin[j].html))
+                    {
+                        sentStr += CommonTool.COLOR_BROWN_FLAG + MarkdownText.RemoveHTMLStyle(json.origin[j].html) + CommonTool.COLOR_END_FLAG + "\r\n";
+                    }
+                    if (json.translation != null && json.translation.Count > j && !string.IsNullOrEmpty(json.translation[j].html))
+                    {
+                        sentStr += CommonTool.COLOR_BLACK_FLAG + MarkdownText.RemoveHTMLStyle(json.translation[j].html) + CommonTool.COLOR_END_FLAG + "\r\n";
+                    }
                 }
             }
 
@@ -283,16 +294,45 @@ public class ArticleMarkdownManager
     [Serializable]
     public class SentJson
     {
-        //      origin?: ISentence[];
-        //translation?: ISentence[];
-        public string layout;// "row" | "column";
+        public string id;
         public int book;
         public int para;
         public int wordStart;
         public int wordEnd;
-        public string sentId;
-        public string error;
-    }
+        public List<ISentence> origin;
+        public List<ISentence> translation;
+        //public path
+        public string layout;// "row" | "column";
+        public int tranNum;
+        public int nissayaNum;
+        public int commNum;
+        public int originNum;
+        public int simNum;
 
+
+        //public string sentId;
+        //public string error;
+    }
+    [Serializable]
+    public class ISentence
+    {
+        public string id;
+        public string content;
+        public string contentType;
+        public string html;
+        public int book;
+        public int para;
+        public int wordStart;
+        public int wordEnd;
+        //public string editor: IUser;
+        //public string acceptor?: IUser;
+        public string prEditAt;
+        //public string channel: IChannel;
+        //public string studio?: IStudio;
+        //public string updateAt: string;
+        //public string suggestionCount?: ISuggestionCount;
+        //public string openInEditMode?: boolean;
+        //public string translationChannels?: string[];
+    }
     #endregion
 }
