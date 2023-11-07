@@ -1,4 +1,4 @@
-using Hypertext;
+ï»¿using Hypertext;
 using Org.BouncyCastle.Bcpg;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,14 +6,14 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.UI;
-//ÒşË½Õş²ßÈ·ÈÏ½çÃæ
+//éšç§æ”¿ç­–ç¡®è®¤ç•Œé¢
 public class PreView : MonoBehaviour
 {
-    //1.¼ì²éÊÇ·ñÁªÍø
-    //2.»ñÈ¡°æ±¾ºÅ
-    //3.±È¶Ô±¾µØ´æ´¢°æ±¾ºÅ
-    //4.Èç¹û²»ÏàÍ¬¾Íµ¯³öÒşË½Õş²ß
-    //5.±¾µØ±£´æÒşË½Õş²ß°æ±¾ºÅ
+    //1.æ£€æŸ¥æ˜¯å¦è”ç½‘
+    //2.è·å–ç‰ˆæœ¬å·
+    //3.æ¯”å¯¹æœ¬åœ°å­˜å‚¨ç‰ˆæœ¬å·
+    //4.å¦‚æœä¸ç›¸åŒå°±å¼¹å‡ºéšç§æ”¿ç­–
+    //5.æœ¬åœ°ä¿å­˜éšç§æ”¿ç­–ç‰ˆæœ¬å·
 
     public RegexHypertext textBig;
     public Text textSmall;
@@ -38,12 +38,12 @@ public class PreView : MonoBehaviour
     {
         SaveNewPrivacyVersion();
         this.gameObject.SetActive(false);
-        //ÇëÇóÈ¨ÏŞ
+        //è¯·æ±‚æƒé™
         //Permission.RequestUserPermission("android.hardware.location");
         //Permission.RequestUserPermission("android.hardware.location.gps");
-        UITool.ShowToastUp(GameManager.Instance(), "ÇëÔÊĞíwikipali appÊ¹ÓÃ´æ´¢È¨ÏŞÓë¶¨Î»È¨ÏŞ\r\nÎªÁËÌá¹©Äú´Êµä²éÑ¯¡¢µ¥´Ê±¾ÓëÊÕ²Ø¼Ğ·şÎñºÍËùÔÚÎ»ÖÃµÄÃ÷ÏàÈÕÖĞµÈ·şÎñ¡£\r\nÎÒÃÇĞèÒª»ñÈ¡ÄúÉè±¸µÄ´æ´¢È¨ÏŞºÍËùÔÚ¶¨Î»ĞÅÏ¢¡£\r\n²»ÊÚÈ¨½«»áÓ°ÏìÄúÊ¹ÓÃAPP"
-    , 3, 80);
-        //ÑÓºóÒ»Ö¡»ñÈ¡È¨ÏŞ£¬È·±£µ¯´°ÏÈ³öÀ´
+        UITool.ShowToastUp(GameManager.Instance(), "è¯·å…è®¸wikipali appä½¿ç”¨å­˜å‚¨æƒé™ä¸å®šä½æƒé™\r\nä¸ºäº†æä¾›æ‚¨è¯å…¸æŸ¥è¯¢ã€å•è¯æœ¬ä¸æ”¶è—å¤¹æœåŠ¡å’Œæ‰€åœ¨ä½ç½®çš„æ˜ç›¸æ—¥ä¸­ç­‰æœåŠ¡ã€‚\r\næˆ‘ä»¬éœ€è¦è·å–æ‚¨è®¾å¤‡çš„å­˜å‚¨æƒé™å’Œæ‰€åœ¨å®šä½ä¿¡æ¯ã€‚\r\nä¸æˆæƒå°†ä¼šå½±å“æ‚¨ä½¿ç”¨APP"
+    , 3, 70);
+        //å»¶åä¸€å¸§è·å–æƒé™ï¼Œç¡®ä¿å¼¹çª—å…ˆå‡ºæ¥
         GameManager.Instance().StartUserPermission();
         //StartCoroutine(StartLocation());
 
@@ -61,7 +61,7 @@ public class PreView : MonoBehaviour
     {
         SettingManager.Instance().SetPrivacyVersion(pVersion);
     }
-    const string RegexHashTag = @"¡¶(\w+)¡·";
+    const string RegexHashTag = @"ã€Š(\w+)ã€‹";
 
     public bool CheckPrivacyVersion(int newVersion, string url)
     {
@@ -83,26 +83,26 @@ public class PreView : MonoBehaviour
     }
     void HttpLink(string content)
     {
-        if (content == "¡¶ÓÃ»§Òş Ë½Õş²ß¡·" || content == "¡¶ÓÃ»§ÒşË½Õş²ß¡·")
+        if (content == "ã€Šç”¨æˆ·éš ç§æ”¿ç­–ã€‹" || content == "ã€Šç”¨æˆ·éšç§æ”¿ç­–ã€‹")
         {
             Application.OpenURL(pUrl);
         }
     }
     string PrivacyTextBig(string url)
     {
-        string res = "»¶Ó­Ê¹ÓÃ¡°wikipali app¡±ÎÒÃÇ·Ç³£ÖØÊÓÄú µÄ¸öÈËĞÅÏ¢ºÍÒşË½±£»¤¡£ÔÚÄúÊ¹ÓÃ¡°wikipali app¡±·şÎñÖ®Ç°£¬Çë×ĞÏ¸ÔÄ¶Á¡¶ÓÃ»§ÒşË½Õş²ß¡·ÎÒÃÇ½«°´ÕÕÄúÍ¬ÒâµÄÌõ¿îÊ¹ÓÃÄúµÄ¸öÈËĞÅÏ¢£¬ÒÔ±ãÎªÄúÌá¹©·şÎñ¡£";
+        string res = "æ¬¢è¿ä½¿ç”¨â€œwikipali appâ€æˆ‘ä»¬éå¸¸é‡è§†æ‚¨ çš„ä¸ªäººä¿¡æ¯å’Œéšç§ä¿æŠ¤ã€‚åœ¨æ‚¨ä½¿ç”¨â€œwikipali appâ€æœåŠ¡ä¹‹å‰ï¼Œè¯·ä»”ç»†é˜…è¯»ã€Šç”¨æˆ·éšç§æ”¿ç­–ã€‹æˆ‘ä»¬å°†æŒ‰ç…§æ‚¨åŒæ„çš„æ¡æ¬¾ä½¿ç”¨æ‚¨çš„ä¸ªäººä¿¡æ¯ï¼Œä»¥ä¾¿ä¸ºæ‚¨æä¾›æœåŠ¡ã€‚";
         return res;
 
     }
     string PrivacyTextBigUpdate(string url)
     {
-        string res = "»¶Ó­Ê¹ÓÃ¡°wikipali app¡±ÎÒÃÇµÄÓÃ»§ÒşË½Õş²ßÓĞ¸üĞÂ¡£ÔÚÄúÊ¹ÓÃ¡°wikipali app¡±·şÎñÖ®Ç°£¬Çë×ĞÏ¸ÔÄ¶Á¡¶ÓÃ»§ÒşË½Õş²ß¡·ÎÒÃÇ½«°´ÕÕÄúÍ¬ÒâµÄÌõ¿îÊ¹ÓÃÄúµÄ¸öÈËĞÅÏ¢£¬ÒÔ±ãÎªÄúÌá¹©·şÎñ¡£";
+        string res = "æ¬¢è¿ä½¿ç”¨â€œwikipali appâ€æˆ‘ä»¬çš„ç”¨æˆ·éšç§æ”¿ç­–æœ‰æ›´æ–°ã€‚åœ¨æ‚¨ä½¿ç”¨â€œwikipali appâ€æœåŠ¡ä¹‹å‰ï¼Œè¯·ä»”ç»†é˜…è¯»ã€Šç”¨æˆ·éšç§æ”¿ç­–ã€‹æˆ‘ä»¬å°†æŒ‰ç…§æ‚¨åŒæ„çš„æ¡æ¬¾ä½¿ç”¨æ‚¨çš„ä¸ªäººä¿¡æ¯ï¼Œä»¥ä¾¿ä¸ºæ‚¨æä¾›æœåŠ¡ã€‚";
         return res;
 
     }
     string PrivacyTextSmall()
     {
-        string res = "ÈçÄúÍ¬Òâ´ËÕş²ß£¬Çëµã»÷¡°Í¬Òâ¡±²¢¿ªÊ¼Ê¹ÓÃÎÒÃÇµÄ²úÆ·ºÍ·şÎñ£¬ÎÒÃÇ¾¡È«Á¦±£»¤ÄúµÄ¸öÈËĞÅÏ¢°²È«¡£";
+        string res = "å¦‚æ‚¨åŒæ„æ­¤æ”¿ç­–ï¼Œè¯·ç‚¹å‡»â€œåŒæ„â€å¹¶å¼€å§‹ä½¿ç”¨æˆ‘ä»¬çš„äº§å“å’ŒæœåŠ¡ï¼Œæˆ‘ä»¬å°½å…¨åŠ›ä¿æŠ¤æ‚¨çš„ä¸ªäººä¿¡æ¯å®‰å…¨ã€‚";
         return res;
     }
 }

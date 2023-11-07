@@ -256,11 +256,12 @@ public class UpdateManager
     public class OtherInfo
     {
         public string offlinePackIndexUrl;//离线包index.Json
-        public string offlinePackUrl;//离线包URL前缀
-        public OfflinePackIndexJson json;//index信息
+        //public string offlinePackUrl;//离线包URL前缀
+        public OfflinePackInfoJson json;//index信息
         public string privacyUrl;//隐私政策网站地址
         public int privacyVersion;//隐私政策版本号
     }
+
     public void GetOtherInfo()
     {
         OtherInfo oInfo = new OtherInfo();
@@ -280,7 +281,7 @@ public class UpdateManager
             {
                 OtherInfo oInfo = new OtherInfo();
                 oInfo.offlinePackIndexUrl = lines[0];
-                oInfo.offlinePackUrl = lines[1];
+                //oInfo.offlinePackUrl = lines[1];
                 oInfo.privacyUrl = lines[2];
                 oInfo.privacyVersion = int.Parse(lines[3]);
                 currentOInfo = oInfo;
@@ -296,18 +297,35 @@ public class UpdateManager
 
         return null;
     }
+    //[Serializable]
+    //public class OfflinePackIndexJson
+    //{
+    //    public string filename;
+    //    public string url;
+    //    public string create_at;
+    //    public int chapter;
+    //    public int filesize;//size/1024/1024
+    //}
     [Serializable]
-    public class OfflinePackIndexJson
+    public class OfflinePackInfoJson
     {
         public string filename;
-        public string url;
-        public string create_at;
+        public List<OfflinePackInfoURLJson> url;
+        public string create_at;//隐私政策网站地址
         public int chapter;
         public int filesize;//size/1024/1024
+        public string min_app_ver;
     }
-    public OfflinePackIndexJson GetOfflinePackIndex(string url)
+    [Serializable]
+    public class OfflinePackInfoURLJson
     {
-        OfflinePackIndexJson indexJson = new OfflinePackIndexJson();
+        public string link;//下载链接
+        public string hostname;
+
+    }
+    public OfflinePackInfoJson GetOfflinePackIndex(string url)
+    {
+        OfflinePackInfoJson indexJson = new OfflinePackInfoJson();
         DownloadManager dm = new DownloadManager();
         dm.DownLoad(Application.persistentDataPath, url, OnDownLoadIndexJsonOver, "index.json");
         //下载版本信息
@@ -325,7 +343,7 @@ public class UpdateManager
             {
                 //去掉首尾大括号
                 lines = lines.Substring(1).Substring(0, lines.Length - 2);
-                OfflinePackIndexJson indexJson = JsonUtility.FromJson<OfflinePackIndexJson>(lines);
+                OfflinePackInfoJson indexJson = JsonUtility.FromJson<OfflinePackInfoJson>(lines);
                 currentOInfo.json = indexJson;
                 if (indexJson.create_at == SettingManager.Instance().GetDBPackTime())
                 {

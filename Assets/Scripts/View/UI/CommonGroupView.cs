@@ -53,7 +53,7 @@ public class CommonGroupView : MonoBehaviour
         string uStr = "";
         uStr += "当前离线包更新时间：" + SettingManager.Instance().GetDBPackTime() + "\r\n";
         uStr += "最新离线包更新时间：" + currentOInfo.json.create_at + "\r\n\r\n";
-        uStr += "章节数对比："+ SettingManager.Instance().GetDBPackChapterCount()+ "-><color=Red>"+ currentOInfo.json.chapter+ "</color>\r\n\r\n";
+        uStr += "章节数对比：" + SettingManager.Instance().GetDBPackChapterCount() + "-><color=Red>" + currentOInfo.json.chapter + "</color>\r\n\r\n";
         uStr += "更新请预留出1G存储空间";
         updateText.text = uStr;
         addBtn.gameObject.SetActive(false);
@@ -95,6 +95,8 @@ public class CommonGroupView : MonoBehaviour
         returnBtn.onClick.AddListener(OnCloseBtnClick);
         addBtn.onClick.AddListener(OnAddBtnClick);
         updateBtn.onClick.AddListener(OnUpdateBtnClick);
+
+        //Debug.LogError(CommonTool.CheckGPSIsInChina());
     }
     public void OnCloseBtnClick()
     {
@@ -118,7 +120,10 @@ public class CommonGroupView : MonoBehaviour
         }
         else if (currViewType == PopViewType.OfflinePack)
         {
-            string url = UpdateManager.Instance().currentOInfo.offlinePackUrl + UpdateManager.Instance().currentOInfo.json.filename;
+            string url = UpdateManager.Instance().currentOInfo.json.url[0].link;
+            if(!CommonTool.CheckGPSIsInChina())
+                url = UpdateManager.Instance().currentOInfo.json.url[1].link;
+            //string url = UpdateManager.Instance().currentOInfo.offlinePackUrl + UpdateManager.Instance().currentOInfo.json.filename;
             UpdateManager.Instance().UpdateDBPack(url);
         }
     }

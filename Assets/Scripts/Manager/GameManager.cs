@@ -79,7 +79,11 @@ public class GameManager : MonoBehaviour
         //    UITool.ShowToastUp(this, "请允许wikipali app使用定位权限\r\n为了提供您所在位置的明相日中等服务。\r\n我们需要获取您设备的所在定位信息。\r\n不授权不影响您使用APP"
         //        , 10, 80);
         //}
-
+        if (isStartUnzip)
+        {
+            isStartUnzip = false;
+            SettingManager.Instance().UnzipDB();
+        }
         if (isStartUnZipProgress)
         {
             int progressFin = ZipManager.Instance().lzmafileProgress[0];
@@ -87,6 +91,9 @@ public class GameManager : MonoBehaviour
             ulong sizeOfEntry = ZipManager.Instance().sizeOfEntry;
             ulong bwrite = lzma.getBytesWritten();
             float progress = ((float)bwrite / (float)sizeOfEntry);
+            //progress值在解压.lzma文件是不对的，所以暂时限制在99
+            if (progress > 0.99f)
+                progress = 0.99f;
             //Debug.LogError("s:" + sizeOfEntry);
             //Debug.LogError("b:" + bwrite);
             SetInitViewProgress(progress);
@@ -189,13 +196,13 @@ public class GameManager : MonoBehaviour
         yield return null;
         CalendarManager.Instance().StartLocation();
 
-        if (Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead))
-        {
-        }
-        else
-        {
-            Permission.RequestUserPermission(Permission.ExternalStorageRead);
-        }
+        //if (Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead))
+        //{
+        //}
+        //else
+        //{
+        //    Permission.RequestUserPermission(Permission.ExternalStorageRead);
+        //}
         if (Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
         {
             SettingManager.Instance().UnzipDB();
@@ -203,11 +210,36 @@ public class GameManager : MonoBehaviour
         else
         {
             PermissionCallbacks callBack = new PermissionCallbacks();
-            Action<string> a = (string s) => { SettingManager.Instance().UnzipDB(); };
-            callBack.PermissionGranted += a;
-            Permission.RequestUserPermission(Permission.ExternalStorageWrite, callBack);
+            //Action<string> a = (string s) => { SettingManager.Instance().UnzipDB(); };
+            //callBack.PermissionGranted += a;
+            callBack.PermissionGranted += PermissionCallbacks_PermissionGranted;
+            //Permission.RequestUserPermission(Permission.ExternalStorageWrite, callBack);
+            Permission.RequestUserPermissions(new string[2] { Permission.ExternalStorageRead, Permission.ExternalStorageWrite }, callBack);
         }
 
     }
+    bool isStartUnzip = false;
+    internal void PermissionCallbacks_PermissionGranted(string permissionName)
+    {
+        isStartUnzip = true;
+        //Debug.LogError("IEnumerator StartUnZip");
+        //SettingManager.Instance().UnzipDB();
+    }
+
+    //IEnumerator StartUnZip()
+    //{
+    //    yield return new WaitForSeconds(0.15f);
+    //    Debug.LogError("IEnumerator StartUnZip");
+
+    //    SettingManager.Instance().UnzipDB();
+
+    //}
+
+    //public object StartUnZipDBSentence()
+    //{
+    //    StartCoroutine(ZipManager.Instance().UnZipDBSentence());
+    //    return null;
+    //}
+
 
 }

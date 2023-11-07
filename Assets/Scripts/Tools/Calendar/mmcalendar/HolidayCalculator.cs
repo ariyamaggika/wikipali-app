@@ -1,4 +1,4 @@
-//package mmcalendar;
+ï»¿//package mmcalendar;
 
 //import java.util.ArrayList;
 //import java.util.List;
@@ -113,7 +113,7 @@ public /*final*/ class HolidayCalculator
 	 *            Moon phase [0=waxing, 1=full moon, 2=waning, 3=new moon]
 	 * @return Name of Holiday Strings List if exist
 	 */
-    //»ñÈ¡Ãåµé½ÚÈÕ
+    //è·å–ç¼…ç”¸èŠ‚æ—¥
     public static List<string> myanmarHoliday(double myear, int mmonth, int westMonth, int monthDay, int moonPhase, int lastDayMoonPhase)
     {
 
@@ -121,32 +121,32 @@ public /*final*/ class HolidayCalculator
 
         if ((mmonth == 2) && (moonPhase == 1))
         {
-            //holiday.Add("Buddha Day");//¾´·ğ½Ú
-            holiday.Add("¾´·ğ½Ú");//¾´·ğ½Ú
+            //holiday.Add("Buddha Day");//æ•¬ä½›èŠ‚
+            holiday.Add("æ•¬ä½›èŠ‚");//æ•¬ä½›èŠ‚
         }
-        //Î÷Àú2ÔÂ
+        //è¥¿å†2æœˆ
         else if ((westMonth == 2) && (moonPhase == 1))
         {
-            holiday.Add("¾´É®½Ú");
+            holiday.Add("æ•¬åƒ§èŠ‚");
         }
         // Vesak day
         //Full Moon Day of Waso
         //else if ((mmonth == 4) && (moonPhase == 1))
-        //Î÷Àú7ÔÂ
+        //è¥¿å†7æœˆ
         else if ((westMonth == 7) && (moonPhase == 1))
         {
-            holiday.Add("¾´·¨½Ú");
+            holiday.Add("æ•¬æ³•èŠ‚");
         }
         else if ((westMonth == 7) && (lastDayMoonPhase == 1))
         {
-            holiday.Add("ÈëÓê°²¾Ó");//ÈëÓê°²¾Ó
-            //holiday.Add("Start of Buddhist Lent");//ÈëÓê°²¾Ó
+            holiday.Add("å…¥é›¨å®‰å±…");//å…¥é›¨å®‰å±…
+            //holiday.Add("Start of Buddhist Lent");//å…¥é›¨å®‰å±…
         }
         // Warso day
         else if ((mmonth == 7) && (moonPhase == 1))
         {
-            holiday.Add("³öÓê°²¾Ó");//³öÓê°²¾Ó
-            //holiday.Add("End of Buddhist Lent");//³öÓê°²¾Ó
+            holiday.Add("å‡ºé›¨å®‰å±…");//å‡ºé›¨å®‰å±…
+            //holiday.Add("End of Buddhist Lent");//å‡ºé›¨å®‰å±…
         }
         //else if ((myear >= 1379) && (mmonth == 7) && (monthDay == 14 || monthDay == 16))
         //{
@@ -176,89 +176,89 @@ public /*final*/ class HolidayCalculator
         return holiday;
     }
 
-    //»ñÈ¡Å©Àú½ÚÈÕ
+    //è·å–å†œå†èŠ‚æ—¥
     public static List<string> farmerHoliday(int fmonth, string fday, bool isLeapYear, bool isLeapMon, int leapMon)
     {
-        //Å©Àú ÈıÔÂ15 ¾´·ğ½Ú
+        //å†œå† ä¸‰æœˆ15 æ•¬ä½›èŠ‚
         List<string> holiday = new List<string>();
 
-        if ((fmonth == 3) && (fday == "Ê®Îå"))
+        if ((fmonth == 3) && (fday == "åäº”"))
         {
-            holiday.Add("¾´·ğ½Ú");//¾´·ğ½Ú // Vesak day
+            holiday.Add("æ•¬ä½›èŠ‚");//æ•¬ä½›èŠ‚ // Vesak day
         }
-        //Å©Àú  8ÔÂ15 ³öÓê°²¾Ó
-        else if (!isLeapMon && (fmonth == 8) && (fday == "Ê®Îå"))
+        //å†œå†  8æœˆ15 å‡ºé›¨å®‰å±…
+        else if (!isLeapMon && (fmonth == 8) && (fday == "åäº”"))
         {
-            holiday.Add("³öÓê°²¾Ó");
+            holiday.Add("å‡ºé›¨å®‰å±…");
         }
-        //Å©Àú  8ÔÂ15µ¹ÍËÈı¸öÔÂµÄ×î½üµÄÔÂÔ²ÈÕµÄºóÒ»Ìì ÈëÓê°²¾Ó
+        //å†œå†  8æœˆ15å€’é€€ä¸‰ä¸ªæœˆçš„æœ€è¿‘çš„æœˆåœ†æ—¥çš„åä¸€å¤© å…¥é›¨å®‰å±…
         if (isLeapYear)
         {
-            //ÈòÔÂµÄÇé¿ö
+            //é—°æœˆçš„æƒ…å†µ
             if (leapMon == 8)
             {
-                if ((fmonth == 5) && (fday == "Ê®Áù"))
+                if ((fmonth == 5) && (fday == "åå…­"))
                 {
-                    holiday.Add("ÈëÓê°²¾Ó");
+                    holiday.Add("å…¥é›¨å®‰å±…");
                 }
             }
             else if (leapMon == 7)
             {
-                if ((fmonth == 6) && (fday == "Ê®Áù"))
+                if ((fmonth == 6) && (fday == "åå…­"))
                 {
-                    holiday.Add("ÈëÓê°²¾Ó");
+                    holiday.Add("å…¥é›¨å®‰å±…");
                 }
             }
             else if (leapMon == 6)
             {
-                if (!isLeapMon && (fmonth == 6) && (fday == "Ê®Áù"))
+                if (!isLeapMon && (fmonth == 6) && (fday == "åå…­"))
                 {
-                    holiday.Add("ÈëÓê°²¾Ó");
+                    holiday.Add("å…¥é›¨å®‰å±…");
                 }
             }
             else if (leapMon == 5)
             {
-                if (isLeapMon && (fmonth == 5) && (fday == "Ê®Áù"))
+                if (isLeapMon && (fmonth == 5) && (fday == "åå…­"))
                 {
-                    holiday.Add("ÈëÓê°²¾Ó");
+                    holiday.Add("å…¥é›¨å®‰å±…");
                 }
             }
             else
             {
-                if ((fmonth == 5) && (fday == "Ê®Áù"))
+                if ((fmonth == 5) && (fday == "åå…­"))
                 {
-                    holiday.Add("ÈëÓê°²¾Ó");
+                    holiday.Add("å…¥é›¨å®‰å±…");
                 }
             }
         }
         else
         {
-            if ((fmonth == 5) && (fday == "Ê®Áù"))
+            if ((fmonth == 5) && (fday == "åå…­"))
             {
-                holiday.Add("ÈëÓê°²¾Ó");
+                holiday.Add("å…¥é›¨å®‰å±…");
             }
         }
 
         //else if ((mmonth == 7) && (moonPhase == 1))
         //{
-        //    holiday.Add("³öÓê°²¾Ó");//³öÓê°²¾Ó
-        //    //holiday.Add("End of Buddhist Lent");//³öÓê°²¾Ó
+        //    holiday.Add("å‡ºé›¨å®‰å±…");//å‡ºé›¨å®‰å±…
+        //    //holiday.Add("End of Buddhist Lent");//å‡ºé›¨å®‰å±…
         //}
 
 
         return holiday;
     }
-    //»ñÈ¡ÈçÊµÀú½ÚÈÕ
-    //Ô¤ÏÈ¼ÆËãÒ»Äê½ÚÈÕ
+    //è·å–å¦‚å®å†èŠ‚æ—¥
+    //é¢„å…ˆè®¡ç®—ä¸€å¹´èŠ‚æ—¥
     public static Dictionary<DateTime, string> preYearTrueHoliday(int year)
     {
         Dictionary<DateTime, string> res = new Dictionary<DateTime, string>();
         TimeSpan day1 = new TimeSpan(1, 0, 0, 0);
-        //4ÔÂ16ÈÕ×î½üµÄÔÂÔ²ÈÕ£¬ÎÀÈû½Ú(¾´·ğ½Ú)
+        //4æœˆ16æ—¥æœ€è¿‘çš„æœˆåœ†æ—¥ï¼Œå«å¡èŠ‚(æ•¬ä½›èŠ‚)
         DateTime dateW = new DateTime(year, 4, 16);
         if (CalendarController.GetMoonType(dateW) == CalendarController.MoonType.Moon2)
         {
-            res.Add(dateW, "¾´·ğ½Ú");
+            res.Add(dateW, "æ•¬ä½›èŠ‚");
         }
         else
         {
@@ -269,21 +269,21 @@ public /*final*/ class HolidayCalculator
                 DateTime dateWN = dateW + dayPass;
                 if (CalendarController.GetMoonType(dateWP) == CalendarController.MoonType.Moon2)
                 {
-                    res.Add(dateWP, "¾´·ğ½Ú");
+                    res.Add(dateWP, "æ•¬ä½›èŠ‚");
                     break;
                 }
                 if (CalendarController.GetMoonType(dateWN) == CalendarController.MoonType.Moon2)
                 {
-                    res.Add(dateWN, "¾´·ğ½Ú");
+                    res.Add(dateWN, "æ•¬ä½›èŠ‚");
                     break;
                 }
             }
         }
-        //³öÓê°²¾Ó 9ÔÂ27ÈÕ×î½üµÄÔÂÔ²ÈÕ
+        //å‡ºé›¨å®‰å±… 9æœˆ27æ—¥æœ€è¿‘çš„æœˆåœ†æ—¥
         DateTime dateC = new DateTime(year, 9, 27);
         if (CalendarController.GetMoonType(dateC) == CalendarController.MoonType.Moon2)
         {
-            res.Add(dateC, "³öÓê°²¾Ó");
+            res.Add(dateC, "å‡ºé›¨å®‰å±…");
         }
         else
         {
@@ -294,23 +294,23 @@ public /*final*/ class HolidayCalculator
                 DateTime dateCN = dateC + dayPass;
                 if (CalendarController.GetMoonType(dateCP) == CalendarController.MoonType.Moon2)
                 {
-                    res.Add(dateCP, "³öÓê°²¾Ó");
+                    res.Add(dateCP, "å‡ºé›¨å®‰å±…");
                     dateC = dateCP;
                     break;
                 }
                 if (CalendarController.GetMoonType(dateCN) == CalendarController.MoonType.Moon2)
                 {
-                    res.Add(dateCN, "³öÓê°²¾Ó");
+                    res.Add(dateCN, "å‡ºé›¨å®‰å±…");
                     dateC = dateCN;
                     break;
                 }
             }
         }
-        //³öÓê°²¾Ó µÄÇ°Èı¸öÔÂÔ²ÈÕµÄºóÒ»ÌìÊÇÈëÓê°²¾Ó
+        //å‡ºé›¨å®‰å±… çš„å‰ä¸‰ä¸ªæœˆåœ†æ—¥çš„åä¸€å¤©æ˜¯å…¥é›¨å®‰å±…
         DateTime dateR = new DateTime(dateC.Year, dateC.Month - 3, dateC.Day);
         if (CalendarController.GetMoonType(dateR) == CalendarController.MoonType.Moon2)
         {
-            res.Add(dateR + day1, "ÈëÓê°²¾Ó");
+            res.Add(dateR + day1, "å…¥é›¨å®‰å±…");
         }
         else
         {
@@ -321,19 +321,19 @@ public /*final*/ class HolidayCalculator
                 DateTime dateRN = dateR + dayPass;
                 if (CalendarController.GetMoonType(dateRP) == CalendarController.MoonType.Moon2)
                 {
-                    res.Add(dateRP + day1, "ÈëÓê°²¾Ó");
+                    res.Add(dateRP + day1, "å…¥é›¨å®‰å±…");
                     break;
                 }
                 if (CalendarController.GetMoonType(dateRN) == CalendarController.MoonType.Moon2)
                 {
-                    res.Add(dateRN + day1, "ÈëÓê°²¾Ó");
+                    res.Add(dateRN + day1, "å…¥é›¨å®‰å±…");
                     break;
                 }
             }
         }
         return res;
     }
-    //»ñÈ¡ÈçÊµÀú½ÚÈÕ
+    //è·å–å¦‚å®å†èŠ‚æ—¥
     public static List<string> trueHoliday(Dictionary<DateTime, string> yearHoliday, DateTime date)
     {
         List<string> holiday = new List<string>();

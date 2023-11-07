@@ -67,6 +67,26 @@ public class CommonTool
         return path;
     }
 
+    public static string CopyIOSPathToPersistent(string datebasePath)
+    {
+
+        string path;
+
+
+        path = Application.persistentDataPath + "/" + datebasePath;
+
+        //如果查找该文件路径
+        if (File.Exists(path))
+        {
+            Debug.LogError("找到了！" + path);
+            //返回该数据库路径
+            return path;
+        }
+
+        File.Copy(Application.streamingAssetsPath + "/" + datebasePath, path);
+
+        return path;
+    }
 
     /// <summary>
     /// 对相机截图
@@ -374,5 +394,19 @@ public class CommonTool
         if (str[0] >= 0x1000 && str[0] <= 0x109F)
             return true;
         return false;
+    }
+    //通过GPS定位判断是否在国内
+    //检查经度是否在中国的经度范围内，即判断经度是否在 73.66 度到 135.05 度之间。
+    //检查纬度是否在中国的纬度范围内，即判断纬度是否在 3.86 度到 53.55 度之间。
+    public static bool CheckGPSIsInChina()
+    {
+        float longitude = Input.location.lastData.longitude;
+        float latitude = Input.location.lastData.latitude;
+        if (longitude == 0 && latitude == 0)
+            return true;
+        if ((longitude >= 73.66f && longitude <= 135.05f) && (latitude >= 3.86f && latitude <= 53.55f))
+            return true;
+        else
+            return false;
     }
 }

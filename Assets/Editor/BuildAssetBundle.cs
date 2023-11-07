@@ -26,9 +26,9 @@ public class BuildAssetBundle
         BuildAssetBundleOptions.None,
         BuildTarget.Android);
 #elif UNITY_IPHONE//iOS平台
-    BuildPipeline.BuildAssetBundles(Application.streamingAssetsPath,
-    BuildAssetBundleOptions.UncompressedAssetBundle,
-    BuildTarget.IOS);
+    //BuildPipeline.BuildAssetBundles(Application.streamingAssetsPath,
+    //BuildAssetBundleOptions.UncompressedAssetBundle,
+    //BuildTarget.IOS);
 #elif UNITY_STANDALONE_WIN || UNITY_EDITOR
         BuildPipeline.BuildAssetBundles(
             Application.streamingAssetsPath,//打包后文件的存放路径

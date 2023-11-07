@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -66,12 +66,17 @@ namespace Imdork.SQLite
 #if UNITY_EDITOR
             path = Application.streamingAssetsPath + "/" + datebasePath;
 #elif UNITY_ANDROID
-            Debug.LogError("找数据库路径");
+            Debug.LogError("找数据库路径Android");
 
             // 沙盘路径
             path = CommonTool.CopyAndroidPathToPersistent(datebasePath);
+#elif UNITY_IPHONE
+            Debug.LogError("找数据库路径IOS");
+
+            // 沙盘路径
+            path = CommonTool.CopyIOSPathToPersistent(datebasePath);
 #else
-       path = Application.streamingAssetsPath + "/" + datebasePath;
+            path = Application.streamingAssetsPath + "/" + datebasePath;
 #endif
             return path;
         }

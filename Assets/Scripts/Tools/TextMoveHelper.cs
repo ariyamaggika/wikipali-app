@@ -4,15 +4,34 @@ using UnityEngine.UI;
 //用于获取text里某文字的坐标，用于实现文字中的按钮
 public class TextMoveHelper : MonoBehaviour
 {
+    public Text t;
+    public Canvas c;
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Debug.LogError("abc" + GetPosAtText(c, t, "abc"));
+            Debug.LogError("def" + GetPosAtText(c, t, "def"));
+            Debug.LogError("df" + GetPosAtText(c, t, "df"));
+            Debug.LogError("zzz" + GetPosAtText(c, t, "zzz"));
+            Debug.LogError("ww" + GetPosAtText(c, t, "ww"));
 
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.LogError("--" + Input.mousePosition);
+            // Debug.LogError("++" + Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        }
+
+    }
     //public Text textComp;
     //public Canvas canvas;
 
     //public Text text;
     public void NewTextBtn(Canvas canvas, Text text, string strFragment, Event btnEvent)
     {
- 
-        int startIndex =  GetTextIndex(text, strFragment);
+
+        int startIndex = GetTextIndex(text, strFragment);
         int endIndex = startIndex + strFragment.Length;
         Vector3 startPos = GetPosAtTextIndex(canvas, text, strFragment, startIndex);
         Vector3 endPos = GetPosAtTextIndex(canvas, text, strFragment, endIndex);
@@ -24,9 +43,9 @@ public class TextMoveHelper : MonoBehaviour
             RectTransform rt = hp_bar.GetComponent<RectTransform>();
         }
         else//换行了
-        { 
-        
-        
+        {
+
+
         }
 
 
@@ -38,7 +57,10 @@ public class TextMoveHelper : MonoBehaviour
     }
     public Vector3 GetPosAtText(Canvas canvas, Text text, string strFragment)
     {
+        //todo: 换行有问题
+        //string test = text.text.Replace("\n","");
         int strFragmentIndex = text.text.IndexOf(strFragment);//-1表示不包含strFragment
+                                                              // int strFragmentIndex = test.IndexOf(strFragment);//-1表示不包含strFragment
         Vector3 stringPos = Vector3.zero;
         if (strFragmentIndex > -1)
         {
@@ -52,7 +74,7 @@ public class TextMoveHelper : MonoBehaviour
         }
         return stringPos;
     }
-    public Vector3 GetPosAtTextIndex(Canvas canvas, Text text, string strFragment,int strFragmentIndex)
+    public Vector3 GetPosAtTextIndex(Canvas canvas, Text text, string strFragment, int strFragmentIndex)
     {
         //int strFragmentIndex = text.text.IndexOf(strFragment);//-1表示不包含strFragment
         Vector3 stringPos = Vector3.zero;

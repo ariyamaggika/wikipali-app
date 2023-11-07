@@ -141,7 +141,8 @@ public class ZipManager
 #if UNITY_EDITOR
     string filepath = Application.dataPath + "/StreamingAssets/";
 #elif UNITY_IPHONE
-    string filepath = Application.dataPath +"/Raw/";
+    //string filepath = Application.dataPath +"/Raw/";
+   string filepath = Application.streamingAssetsPath + "/";
 #elif UNITY_ANDROID
     string filepath = "jar:file://" + Application.dataPath + "!/assets/";
 #endif
@@ -160,16 +161,47 @@ public class ZipManager
     //解压安装包中的7z压缩包
     public void UnZipDB()
     {
-        GameManager.Instance().StartUnZipProgress(GameManager.Instance().EndUnZipDB, "初始化进度");
+       // GameManager.Instance().StartUnZipProgress(GameManager.Instance().StartUnZipDBSentence, "初始化进度");
+        GameManager.Instance().StartUnZipProgress(UnZipDBSentence, "初始化进度");
         //安卓中需要把StreamingAsset路径下数据库压缩包拷贝到PersistentAsset下面，因为前者文件夹只读不能解压，后者文件夹读写都可以
+        Debug.LogError("UnZipDB()");
 #if UNITY_ANDROID && !UNITY_EDITOR
         filepath = CommonTool.CopyAndroidPathToPersistent("DB.7z");
         filepath = filepath.Replace("DB.7z","");
-        Debug.LogError("复制到" + filepath);
+        Debug.LogError("CopyAndroidPathToPersistent()");
+
+        Debug.LogError("复制到Android" + filepath);
+#elif UNITY_IPHONE
+        filepath = CommonTool.CopyIOSPathToPersistent("DB.7z");
+        filepath = filepath.Replace("DB.7z","");
+        Debug.LogError("复制到IOS" + filepath);
 #endif
         sizeOfEntry = lzma.get7zSize(filepath + "DB.7z");
         Debug.LogError("大小" + sizeOfEntry);
         DecompressDBLZMA();
+    }
+    //解压初始化句子的.lzma压缩包
+    public object UnZipDBSentence()
+    {
+      //  yield return null;
+        //yield return new WaitForSeconds(0.15f);
+        lzmafileProgress[0] = 0;
+
+        GameManager.Instance().StartUnZipProgress(GameManager.Instance().EndUnZipDB, "初始化进度");
+        // GameManager.Instance().StartUnZipProgress(UnZipDBPackOver);
+        //文件下载到Persistent目录，直接解压
+#if UNITY_ANDROID && !UNITY_EDITOR
+        filepath = CommonTool.CopyAndroidPathToPersistent("Sentence.lzma");
+        filepath = filepath.Replace("Sentence.lzma","");
+        Debug.LogError("复制到" + filepath);
+#endif
+        Debug.LogError(filepath + "Sentence.lzma");
+        UnzipLZMAFile(filepath + "Sentence.lzma", filepath + "DB/" + "Sentence.db");
+        Debug.LogError(filepath + "DB/" + "Sentence.db");
+        //sizeOfEntry = lzma.get7zSize(filepath + "DB.7z");
+        //Debug.LogError("大小" + sizeOfEntry);
+        //DecompressDBLZMA();
+        return null;
     }
     //解压服务器下载的.lzma压缩包
     //下载到位置Application.persistentDataPath(可读写)
@@ -235,7 +267,7 @@ public class ZipManager
     //解压.lzma文件
     public void UnzipLZMAFile(string inPath, string outPath)
     {
-        sizeOfEntry = (ulong)lzma.getFileSize(inPath)*10;///1024;//???????????????
+        sizeOfEntry = (ulong)lzma.getFileSize(inPath) * 10;///1024;//???????????????
         Debug.LogError("开始解压.lzma");
         //gzFileProgress[0] = 0;
         lzmafileProgress[0] = 0;
