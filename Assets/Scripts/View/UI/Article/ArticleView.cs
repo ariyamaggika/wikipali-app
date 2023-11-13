@@ -1,6 +1,7 @@
 ﻿using Hypertext;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -24,8 +25,10 @@ public class ArticleView : MonoBehaviour
     public RectTransform paliScrollContent;
     public RectTransform nextAndPrevGroup;
     public NextPrevGroupView nextAndPrevGroupView;
-    public RegexHypertext contentText;
+    //public RegexHypertext contentText;
+    public TextMeshProUGUI contentTextTMP;
     public Text textRuler;
+    public TextMeshProUGUI textRulerTMP;
     Stack<ArticleTreeNode> articleTreeNodeStack;
     Stack<Book> bookTreeNodeStack;
     // Start is called before the first frame update
@@ -322,7 +325,87 @@ public class ArticleView : MonoBehaviour
     public string currentChannelId;
     public string currentChannelName;
     public Book currentBook;
+    //public void ShowPaliContentTransOld(Book book, ChapterDBData cNode, bool isTrans)
+    //{
+    //    InitPaliScroll();
+    //    if (isTrans && cNode == null)
+    //        Debug.LogError("!!!!");
+    //    if (isTrans && cNode.channelData == null)
+    //        Debug.LogError("!!!!");
+    //    if (isTrans && cNode.channelData != null && cNode.channelData.channel_id == null)
+    //        Debug.LogError("!!!!");
 
+    //    //保存上次预览记录
+    //    string channel = "";
+    //    currentChannelName = "pāli原文";
+    //    if (isTrans)
+    //    {
+    //        if (cNode.channelData == null)
+    //        {
+    //            channel = cNode.channel_id;
+    //            currentChannelName = cNode.title;
+    //        }
+    //        else
+    //        {
+    //            channel = cNode.channelData.channel_id;
+    //            currentChannelName = cNode.channelData.name;
+    //        }
+    //    }
+    //    //测试数据
+    //    //book.id = 67;
+    //    //book.paragraph = 761;
+    //    //channel = "7ac4d13b-a43d-4409-91b5-5f2a82b916b3";
+    //    //cNode.paragraph = 761;
+    //    //cNode.bookID = 67;
+    //    //cNode.channel_id = "7ac4d13b-a43d-4409-91b5-5f2a82b916b3";
+    //    //cNode.channelData.channel_id = "7ac4d13b-a43d-4409-91b5-5f2a82b916b3";
+
+    //    currentChannelId = channel;
+    //    nextAndPrevGroupView.SetChapter(book, (isTrans ? channel : ""), isTrans);
+    //    contentViewGO.SetActive(true);
+    //    listViewGO.SetActive(false);
+    //    //每50行新建一个text
+    //    List<string> text;
+    //    List<string> sentence;
+    //    currentChapterData = cNode;
+    //    currentBook = book;
+    //    (text, sentence) = controller.GetPaliContentTransText(book, (isTrans ? cNode.channelData : null), isTrans);
+    //    CommonTool.DeepCopyStringList(textBackup, text);
+    //    CommonTool.DeepCopyStringList(textBackupOrign, text);
+    //    if (SettingManager.Instance().GetPaliRemoveBracket() == 1)
+    //        textBackup = MarkdownText.RemoveBracketStringList(textBackup);
+    //    //textBackup = text;
+    //    articleContent = sentence;
+    //    if (text == null)
+    //    {
+    //        Debug.LogError("【预警】book id:" + book.id + "  没有文章内容 text = null");
+    //        return;
+    //    }
+    //    textRuler.gameObject.SetActive(true);
+    //    int l = text.Count;
+    //    for (int i = 0; i < l; i++)
+    //    {
+    //        textRuler.text = text[i];
+    //        LayoutRebuilder.ForceRebuildLayoutImmediate(textRuler.rectTransform);
+    //        GameObject inst = Instantiate(contentText.gameObject, contentText.transform.parent);
+    //        inst.name = i.ToString();
+    //        inst.transform.position = contentText.transform.position;
+    //        Text contentTextInst = inst.GetComponent<Text>();
+    //        //????????兼容RegexHypertext,文字要超过text框大小，不然匹配的位置是乱的，后面考虑换成，TextMeshPro
+    //        text[i] = text[i] + "\r\n \r\n \r\n \r\n \r\n \r\n";
+    //        contentTextInst.text = MarkdownText.PreprocessText(text[i]);
+    //        inst.SetActive(true);
+    //        contentTextInst.rectTransform.sizeDelta = new Vector2(contentTextInst.rectTransform.sizeDelta.x, textRuler.rectTransform.sizeDelta.y);// new Vector2(PaliContentTextRect.sizeDelta.x, PaliContentText.textComponent.fontSize * (lineCount + 1));
+    //        contentList.Add(inst);
+    //    }
+
+    //    textRuler.gameObject.SetActive(false);
+    //    nextAndPrevGroup.SetAsLastSibling();
+
+    //    ArticleManager.Instance().SetArticleStar(book.translateName, book.id, book.paragraph, book.chapter_len, channel);
+    //    SettingManager.Instance().SaveOpenLastArticle(book.id, book.paragraph, book.chapter_len, channel);
+    //    //PaliContentText.lin
+    //}
     public void ShowPaliContentTrans(Book book, ChapterDBData cNode, bool isTrans)
     {
         InitPaliScroll();
@@ -379,25 +462,25 @@ public class ArticleView : MonoBehaviour
             Debug.LogError("【预警】book id:" + book.id + "  没有文章内容 text = null");
             return;
         }
-        textRuler.gameObject.SetActive(true);
+        textRulerTMP.gameObject.SetActive(true);
         int l = text.Count;
         for (int i = 0; i < l; i++)
         {
-            textRuler.text = text[i];
-            LayoutRebuilder.ForceRebuildLayoutImmediate(textRuler.rectTransform);
-            GameObject inst = Instantiate(contentText.gameObject, contentText.transform.parent);
+            textRulerTMP.text = text[i];
+            LayoutRebuilder.ForceRebuildLayoutImmediate(textRulerTMP.rectTransform);
+            GameObject inst = Instantiate(contentTextTMP.gameObject, contentTextTMP.transform.parent);
             inst.name = i.ToString();
-            inst.transform.position = contentText.transform.position;
-            Text contentTextInst = inst.GetComponent<Text>();
+            inst.transform.position = contentTextTMP.transform.position;
+            TextMeshProUGUI contentTextInst = inst.GetComponent<TextMeshProUGUI>();
             //????????兼容RegexHypertext,文字要超过text框大小，不然匹配的位置是乱的，后面考虑换成，TextMeshPro
             text[i] = text[i] + "\r\n \r\n \r\n \r\n \r\n \r\n";
             contentTextInst.text = MarkdownText.PreprocessText(text[i]);
             inst.SetActive(true);
-            contentTextInst.rectTransform.sizeDelta = new Vector2(contentTextInst.rectTransform.sizeDelta.x, textRuler.rectTransform.sizeDelta.y);// new Vector2(PaliContentTextRect.sizeDelta.x, PaliContentText.textComponent.fontSize * (lineCount + 1));
+            contentTextInst.rectTransform.sizeDelta = new Vector2(contentTextInst.rectTransform.sizeDelta.x, textRulerTMP.rectTransform.sizeDelta.y);// new Vector2(PaliContentTextRect.sizeDelta.x, PaliContentText.textComponent.fontSize * (lineCount + 1));
             contentList.Add(inst);
         }
 
-        textRuler.gameObject.SetActive(false);
+        textRulerTMP.gameObject.SetActive(false);
         nextAndPrevGroup.SetAsLastSibling();
 
         ArticleManager.Instance().SetArticleStar(book.translateName, book.id, book.paragraph, book.chapter_len, channel);
@@ -438,6 +521,61 @@ public class ArticleView : MonoBehaviour
     {
         //bookTreeNodeStack
     }
+    //public void ShowPaliContentFromStarOld(int bookID, int bookParagraph, int bookChapterLen, string channelId)
+    //{
+    //    //保存上次预览记录
+    //    SettingManager.Instance().SaveOpenLastArticle(bookID, bookParagraph, bookChapterLen, channelId);
+    //    bool isTrans = !string.IsNullOrEmpty(channelId);
+    //    InitPaliScroll();
+    //    string channel = channelId;
+    //    Book book = new Book();
+    //    book.id = bookID;
+    //    book.paragraph = bookParagraph;
+    //    book.chapter_len = bookChapterLen;
+    //    nextAndPrevGroupView.SetChapter(book, (isTrans ? channel : ""), isTrans);
+    //    contentViewGO.SetActive(true);
+    //    listViewGO.SetActive(false);
+    //    //每50行新建一个text
+    //    List<string> starText;
+    //    List<string> sentence;
+    //    ChannelChapterDBData cdata = new ChannelChapterDBData();
+    //    cdata.channel_id = channel;
+    //    (starText, sentence) = controller.GetPaliContentTransText(book, (isTrans ? cdata : null), isTrans);
+    //    CommonTool.DeepCopyStringList(textBackup, starText);
+    //    CommonTool.DeepCopyStringList(textBackupOrign, starText);
+    //    if (SettingManager.Instance().GetPaliRemoveBracket() == 1)
+    //        textBackup = MarkdownText.RemoveBracketStringList(textBackup);
+    //    articleContent = sentence;
+    //    if (starText == null)
+    //    {
+    //        Debug.LogError("【预警】book id:" + book.id + "  没有文章内容 text = null");
+    //        return;
+    //    }
+    //    textRuler.gameObject.SetActive(true);
+    //    int l = starText.Count;
+    //    for (int i = 0; i < l; i++)
+    //    {
+    //        textRuler.text = starText[i];
+    //        LayoutRebuilder.ForceRebuildLayoutImmediate(textRuler.rectTransform);
+    //        GameObject inst = Instantiate(contentText.gameObject, contentText.transform.parent);
+    //        inst.name = i.ToString();
+    //        inst.transform.position = contentText.transform.position;
+    //        Text contentTextInst = inst.GetComponent<Text>();
+    //        contentTextInst.text = MarkdownText.PreprocessText(starText[i]);
+    //        inst.SetActive(true);
+    //        contentTextInst.rectTransform.sizeDelta = new Vector2(contentTextInst.rectTransform.sizeDelta.x, textRuler.rectTransform.sizeDelta.y);// new Vector2(PaliContentTextRect.sizeDelta.x, PaliContentText.textComponent.fontSize * (lineCount + 1));
+    //        contentList.Add(inst);
+    //    }
+
+    //    textRuler.gameObject.SetActive(false);
+    //    nextAndPrevGroup.SetAsLastSibling();
+
+    //    //string bookName = (string.IsNullOrEmpty(book.translateName) ? book.toc : book.translateName);
+    //    //SetTitleRootPath(isTrans ? bookName + "/" + cdata.name : bookName);
+    //    //todo显示root name
+    //    SetTitleRootPath("");
+    //    //PaliContentText.lin
+    //}
     public void ShowPaliContentFromStar(int bookID, int bookParagraph, int bookChapterLen, string channelId)
     {
         //保存上次预览记录
@@ -468,19 +606,21 @@ public class ArticleView : MonoBehaviour
             Debug.LogError("【预警】book id:" + book.id + "  没有文章内容 text = null");
             return;
         }
-        textRuler.gameObject.SetActive(true);
+        textRulerTMP.gameObject.SetActive(true);
         int l = starText.Count;
         for (int i = 0; i < l; i++)
         {
-            textRuler.text = starText[i];
-            LayoutRebuilder.ForceRebuildLayoutImmediate(textRuler.rectTransform);
-            GameObject inst = Instantiate(contentText.gameObject, contentText.transform.parent);
+            textRulerTMP.text = starText[i];
+            LayoutRebuilder.ForceRebuildLayoutImmediate(textRulerTMP.rectTransform);
+            GameObject inst = Instantiate(contentTextTMP.gameObject, contentTextTMP.transform.parent);
             inst.name = i.ToString();
-            inst.transform.position = contentText.transform.position;
-            Text contentTextInst = inst.GetComponent<Text>();
+            inst.transform.position = contentTextTMP.transform.position;
+            TextMeshProUGUI contentTextInst = inst.GetComponent<TextMeshProUGUI>();
+            //????????兼容RegexHypertext,文字要超过text框大小，不然匹配的位置是乱的，后面考虑换成，TextMeshPro
+            starText[i] = starText[i] + "\r\n \r\n \r\n \r\n \r\n \r\n";
             contentTextInst.text = MarkdownText.PreprocessText(starText[i]);
             inst.SetActive(true);
-            contentTextInst.rectTransform.sizeDelta = new Vector2(contentTextInst.rectTransform.sizeDelta.x, textRuler.rectTransform.sizeDelta.y);// new Vector2(PaliContentTextRect.sizeDelta.x, PaliContentText.textComponent.fontSize * (lineCount + 1));
+            contentTextInst.rectTransform.sizeDelta = new Vector2(contentTextInst.rectTransform.sizeDelta.x, textRulerTMP.rectTransform.sizeDelta.y);// new Vector2(PaliContentTextRect.sizeDelta.x, PaliContentText.textComponent.fontSize * (lineCount + 1));
             contentList.Add(inst);
         }
 

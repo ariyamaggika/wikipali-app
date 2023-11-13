@@ -430,7 +430,7 @@ public class ArticleController
         if (isTrans)
             tl = sentenceTrans.Count;
         int lineCount = 0;
-        ArticleMarkdownManager.Instance().ClearMarkdownInfo();
+        ArticleMarkdownTMPManager.Instance().ClearMarkdownInfo();
 
         for (int i = 0; i < l; i++)
         {
@@ -469,7 +469,7 @@ public class ArticleController
                     {
                         //sb.AppendLine();
                         string sentenceTransNormalize = MarkdownText.RemoveHTMLStyle(sentenceTrans[j].content);
-                        sentenceTransNormalize = ArticleMarkdownManager.Instance().SentenceSetMarkDown(sentenceTransNormalize, "", "");
+                        sentenceTransNormalize = ArticleMarkdownTMPManager.Instance().SentenceSetMarkDown(sentenceTransNormalize, "", "");
                         //string sentenceRead = sentenceTransNormalize;
                         //if写在for里了，浪费性能，但是没办法，代码太ugly了
                         ReadTextInfo transSentenceTextInfo = null;

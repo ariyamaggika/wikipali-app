@@ -17,12 +17,19 @@ public class CommonTool
     public static string COLOR_BLUE = "#5895FF";
     public static string COLOR_BLACK = "#1B1B1B";
     public static string COLOR_BROWN = "#A52A2A";
+    public static string COLOR_DARK_BLUE = "#005794";
+    public static string COLOR_DARK_BLUE2 = "#0039E5";
+    public static string COLOR_DARK_YELLOW = "#E3C822";
+    public static string COLOR_DARK_GREEN = "#3ABA1F";
 
     public static string COLOR_BLUE_FLAG = "<color=#5895FF>";
     public static string COLOR_BLACK_FLAG = "<color=#1B1B1B>";
     public static string COLOR_BROWN_FLAG = "<color=#A52A2A>";
 
     public static string COLOR_END_FLAG = "</color>";
+
+    public static string TPM_RICHTEXT_LINK_FLAG = "<link=\"{0}\">{1}</link>";
+    public static string RICHTEXT_COLOR_FLAG = "<color={0}>{1}</color>";
     #endregion
 
     //返回翻译标题
