@@ -8,12 +8,13 @@ public class PopDragWordSearchView : MonoBehaviour
     public Button searchWordBtn;
     public Button closeBackGroupBtn;
     public string word;
+    public float btnSizeX;
     // Start is called before the first frame update
     void Start()
     {
         searchWordBtn.onClick.AddListener(OnSearchWordBtnClick);
         closeBackGroupBtn.onClick.AddListener(OnCloseBackBtnClick);
-
+        btnSizeX = searchWordBtn.GetComponent<RectTransform>().sizeDelta.x;
     }
     public void OnSearchWordBtnClick()
     {
@@ -29,7 +30,7 @@ public class PopDragWordSearchView : MonoBehaviour
         float sizeBtnX = searchWordBtn.GetComponent<RectTransform>().sizeDelta.x;
         float fontsize = 30;
         searchWordBtn.GetComponent<RectTransform>().localPosition = Vector3.zero;
-        searchWordBtn.GetComponent<RectTransform>().localPosition = new Vector3(pos.x+ sizeBtnX*0.5f, pos.y - sizeY * 1.5f- sizeBtnY*0.5f- fontsize, pos.z);
+        searchWordBtn.GetComponent<RectTransform>().localPosition = new Vector3(pos.x + sizeBtnX * 0.5f, pos.y - sizeY * 1.5f - sizeBtnY * 0.5f - fontsize, pos.z);
     }
     public void OnCloseBackBtnClick()
     {

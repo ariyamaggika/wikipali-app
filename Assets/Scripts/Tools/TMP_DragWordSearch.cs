@@ -13,15 +13,16 @@ namespace TMPro.Examples
     public class TMP_DragWordSearch : MonoBehaviour, IPointerDownHandler, IPointerUpHandler//, IPointerClickHandler//, IPointerUpHandler
     {
         public PopDragWordSearchView dragWordSearchView;
+        public RectTransform contentTrans;
 
-        public RectTransform TextPopup_Prefab_01;
+        //public RectTransform TextPopup_Prefab_01;
 
-        private RectTransform m_TextPopup_RectTransform;
+        //private RectTransform m_TextPopup_RectTransform;
         private TextMeshProUGUI m_TextPopup_TMPComponent;
         private const string k_LinkText = "You have selected link <#ffff00>";
         private const string k_WordText = "Word Index: <#ffff00>";
 
-       // Color32 highLightColor = new Color32(200, 200, 30, 255);// Color.yellow;
+        // Color32 highLightColor = new Color32(200, 200, 30, 255);// Color.yellow;
         private TextMeshProUGUI m_TextMeshPro;
         private Canvas m_Canvas;
         private Camera m_Camera;
@@ -50,10 +51,10 @@ namespace TMPro.Examples
                 m_Camera = m_Canvas.worldCamera;
 
             // Create pop-up text object which is used to show the link information.
-            m_TextPopup_RectTransform = Instantiate(TextPopup_Prefab_01) as RectTransform;
-            m_TextPopup_RectTransform.SetParent(m_Canvas.transform, false);
-            m_TextPopup_TMPComponent = m_TextPopup_RectTransform.GetComponentInChildren<TextMeshProUGUI>();
-            m_TextPopup_RectTransform.gameObject.SetActive(false);
+            //m_TextPopup_RectTransform = Instantiate(TextPopup_Prefab_01) as RectTransform;
+            //m_TextPopup_RectTransform.SetParent(m_Canvas.transform, false);
+            //m_TextPopup_TMPComponent = m_TextPopup_RectTransform.GetComponentInChildren<TextMeshProUGUI>();
+            //m_TextPopup_RectTransform.gameObject.SetActive(false);
         }
 
 
@@ -177,7 +178,7 @@ namespace TMPro.Examples
                 if (wordIndex != startWordIndex)
                     Reset();
                 // Clear previous word selection.
-                if (m_TextPopup_RectTransform != null && m_selectedWord != -1 && (wordIndex == -1 || wordIndex != m_selectedWord))
+                if (/*m_TextPopup_RectTransform != null &&*/ m_selectedWord != -1 && (wordIndex == -1 || wordIndex != m_selectedWord))
                 {
                     TMP_WordInfo wInfo = m_TextMeshPro.textInfo.wordInfo[m_selectedWord];
 
@@ -218,7 +219,22 @@ namespace TMPro.Examples
                     TMP_WordInfo wInfo = m_TextMeshPro.textInfo.wordInfo[wordIndex];
                     //todo 设置位置为单词最后一个字的位置
                     var lastCharInfo = m_TextMeshPro.textInfo.characterInfo[wInfo.lastCharacterIndex];
-                    dragWordSearchView.DragWord(wInfo.GetWord(), lastCharInfo.bottomRight);
+                    //Debug.LogError(lastCharInfo.bottomRight);
+                    //Debug.LogError(m_Canvas.GetComponent<RectTransform>().sizeDelta.x);
+                    //Debug.LogError(contentTrans.localPosition.y);
+                    float screenSizeX = m_Canvas.GetComponent<RectTransform>().sizeDelta.x;
+                    float btnXPos = lastCharInfo.bottomRight.x;
+                    if (lastCharInfo.bottomRight.x + dragWordSearchView.btnSizeX > screenSizeX * 0.5f)
+                    {
+                        btnXPos = screenSizeX * 0.5f - dragWordSearchView.btnSizeX;
+                    }
+                    RectTransform tmp_Trans = m_TextMeshPro.GetComponent<RectTransform>();
+                    float tmpYOffset = 0;// tmp_Trans.localPosition.y + tmp_Trans.sizeDelta.y * 0.5f;
+                    //Debug.LogError(lastCharInfo.bottomRight.y);
+                    //Debug.LogError(contentTrans.localPosition.y);
+                    //Debug.LogError(tmp_Trans.localPosition.y);
+                    //Debug.LogError("----------------------");
+                    dragWordSearchView.DragWord(wInfo.GetWord(), new Vector3(btnXPos, lastCharInfo.bottomRight.y + contentTrans.localPosition.y+ tmp_Trans.localPosition.y*0.5f /*+ tmpYOffset*/, lastCharInfo.bottomRight.z));
 
                     // Iterate through each of the characters of the word.
                     for (int i = 0; i < wInfo.characterCount; i++)

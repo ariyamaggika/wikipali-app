@@ -400,7 +400,7 @@ public class ArticleController
     public bool trans;
     public string testPl;
     public string testCN;
-    const int LINE_COUNT_LIMIT = 50;
+    const int LINE_COUNT_LIMIT = 5000;
     //获取整个巴利原文以及所有翻译
     //由于文字过长无法显示的问题，每50行，返回一个数组
     //todo 用行数衡量是否不准，是否需要改为字节数量
