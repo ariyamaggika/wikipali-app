@@ -416,4 +416,49 @@ public class CommonTool
         else
             return false;
     }
+
+    public static Color32 TintRGB(Color32 c1, float tint)
+    {
+        byte r = (byte)(Mathf.Clamp(c1.r / 255f * tint * 255, 0, 255));
+        byte g = (byte)(Mathf.Clamp(c1.g / 255f * tint * 255, 0, 255));
+        byte b = (byte)(Mathf.Clamp(c1.b / 255f * tint * 255, 0, 255));
+        //byte a = (byte)(Mathf.Clamp(c1.a / 255f * tint * 255, 0, 255));
+
+        return new Color32(r, g, b, c1.a);
+    }
+    public static Color32 TintUpArticleColorRGB(Color32 c1, float tint)
+    {
+        //红字
+        byte r = (byte)(Mathf.Clamp(c1.r / 255f * tint * 255, 0, 255));
+        byte g = (byte)(Mathf.Clamp(c1.g / 255f * tint * 255, 0, 255));
+        byte b = (byte)(Mathf.Clamp(c1.b / 255f * tint * 255, 0, 255));
+        //黑字
+        if (c1.r < 40)
+        {
+            r = (byte)(Mathf.Clamp(c1.r + 150, 0, 255));
+            g = (byte)(Mathf.Clamp(c1.g + 150, 0, 255));
+            // b = (byte)(Mathf.Clamp(c1.b / 255f * tint * 255, 0, 255));
+        }
+
+
+        //byte a = (byte)(Mathf.Clamp(c1.a / 255f * tint * 255, 0, 255));
+
+        return new Color32(r, g, b, c1.a);
+    }
+    public static Color32 TintDownArticleColorRGB(Color32 c1, float tint)
+    {
+        //红字
+        byte r = (byte)(Mathf.Clamp(c1.r / 255f * tint * 255, 0, 255));
+        byte g = (byte)(Mathf.Clamp(c1.g / 255f * tint * 255, 0, 255));
+        byte b = (byte)(Mathf.Clamp(c1.b / 255f * tint * 255, 0, 255));
+        //黑字
+        if (c1.g > 140)
+        {
+            r = (byte)(Mathf.Clamp(c1.r - 150, 0, 255));
+            g = (byte)(Mathf.Clamp(c1.g - 150, 0, 255));
+            // b = (byte)(Mathf.Clamp(c1.b / 255f * tint * 255, 0, 255));
+        }
+
+        return new Color32(r, g, b, c1.a);
+    }
 }

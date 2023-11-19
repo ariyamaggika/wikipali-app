@@ -3,6 +3,8 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.TextCore;
+using UnityEngine.TextCore.Text;
 
 
 #pragma warning disable 0618 // Disabled warning due to SetVertices being deprecated until new release with SetMesh() is available.
@@ -49,7 +51,7 @@ namespace TMPro.Examples
                 m_Camera = null;
             else
                 m_Camera = m_Canvas.worldCamera;
-
+            dragWordSearchView.Init();
             // Create pop-up text object which is used to show the link information.
             //m_TextPopup_RectTransform = Instantiate(TextPopup_Prefab_01) as RectTransform;
             //m_TextPopup_RectTransform.SetParent(m_Canvas.transform, false);
@@ -79,7 +81,42 @@ namespace TMPro.Examples
                 m_cachedMeshInfoVertexData = m_TextMeshPro.textInfo.CopyMeshInfoVertexData();
             }
         }
+        public void ClearPrevSearch()
+        {
+            //if (/*m_TextPopup_RectTransform != null &&*/ m_selectedWord != -1 && (wordIndex == -1 || wordIndex != m_selectedWord))
+            {
+                TMP_WordInfo wInfo = m_TextMeshPro.textInfo.wordInfo[m_selectedWord];
 
+                // Iterate through each of the characters of the word.
+                for (int i = 0; i < wInfo.characterCount; i++)
+                {
+                    int characterIndex = wInfo.firstCharacterIndex + i;
+
+                    // Get the index of the material / sub text object used by this character.
+                    int meshIndex = m_TextMeshPro.textInfo.characterInfo[characterIndex].materialReferenceIndex;
+
+                    // Get the index of the first vertex of this character.
+                    int vertexIndex = m_TextMeshPro.textInfo.characterInfo[characterIndex].vertexIndex;
+
+                    // Get a reference to the vertex color
+                    Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
+
+                    Color32 c = CommonTool.TintDownArticleColorRGB(vertexColors[vertexIndex + 0], 0.75f); //(1.33333f);
+
+                    vertexColors[vertexIndex + 0] = c;
+                    vertexColors[vertexIndex + 1] = c;
+                    vertexColors[vertexIndex + 2] = c;
+                    vertexColors[vertexIndex + 3] = c;
+                }
+
+                // Update Geometry
+                m_TextMeshPro.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+
+                m_selectedWord = -1;
+            }
+
+
+        }
 
         void LateUpdate()
         {
@@ -91,85 +128,9 @@ namespace TMPro.Examples
             {
                 Reset();
                 // Check if Mouse Intersects any of the characters. If so, assign a random color.
-                #region Handle Character Selection
-                int charIndex = TMP_TextUtilities.FindIntersectingCharacter(m_TextMeshPro, Input.mousePosition, m_Camera, true);
+                //#region Handle Character Selection
 
-                // Undo Swap and Vertex Attribute changes.
-                if (charIndex == -1 || charIndex != m_lastIndex)
-                {
-                    RestoreCachedVertexAttributes(m_lastIndex);
-                    m_lastIndex = -1;
-                }
-
-                if (charIndex != -1 && charIndex != m_lastIndex && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
-                {
-                    m_lastIndex = charIndex;
-
-                    // Get the index of the material / sub text object used by this character.
-                    int materialIndex = m_TextMeshPro.textInfo.characterInfo[charIndex].materialReferenceIndex;
-
-                    // Get the index of the first vertex of the selected character.
-                    int vertexIndex = m_TextMeshPro.textInfo.characterInfo[charIndex].vertexIndex;
-
-                    // Get a reference to the vertices array.
-                    Vector3[] vertices = m_TextMeshPro.textInfo.meshInfo[materialIndex].vertices;
-
-                    // Determine the center point of the character.
-                    Vector2 charMidBasline = (vertices[vertexIndex + 0] + vertices[vertexIndex + 2]) / 2;
-
-                    // Need to translate all 4 vertices of the character to aligned with middle of character / baseline.
-                    // This is needed so the matrix TRS is applied at the origin for each character.
-                    Vector3 offset = charMidBasline;
-
-                    // Translate the character to the middle baseline.
-                    vertices[vertexIndex + 0] = vertices[vertexIndex + 0] - offset;
-                    vertices[vertexIndex + 1] = vertices[vertexIndex + 1] - offset;
-                    vertices[vertexIndex + 2] = vertices[vertexIndex + 2] - offset;
-                    vertices[vertexIndex + 3] = vertices[vertexIndex + 3] - offset;
-
-                    float zoomFactor = 1.5f;
-
-                    // Setup the Matrix for the scale change.
-                    m_matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Vector3.one * zoomFactor);
-
-                    // Apply Matrix operation on the given character.
-                    vertices[vertexIndex + 0] = m_matrix.MultiplyPoint3x4(vertices[vertexIndex + 0]);
-                    vertices[vertexIndex + 1] = m_matrix.MultiplyPoint3x4(vertices[vertexIndex + 1]);
-                    vertices[vertexIndex + 2] = m_matrix.MultiplyPoint3x4(vertices[vertexIndex + 2]);
-                    vertices[vertexIndex + 3] = m_matrix.MultiplyPoint3x4(vertices[vertexIndex + 3]);
-
-                    // Translate the character back to its original position.
-                    vertices[vertexIndex + 0] = vertices[vertexIndex + 0] + offset;
-                    vertices[vertexIndex + 1] = vertices[vertexIndex + 1] + offset;
-                    vertices[vertexIndex + 2] = vertices[vertexIndex + 2] + offset;
-                    vertices[vertexIndex + 3] = vertices[vertexIndex + 3] + offset;
-
-                    // Change Vertex Colors of the highlighted character
-                    Color32 c = new Color32(255, 255, 192, 255);
-
-                    // Get a reference to the vertex color
-                    Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[materialIndex].colors32;
-
-                    vertexColors[vertexIndex + 0] = c;
-                    vertexColors[vertexIndex + 1] = c;
-                    vertexColors[vertexIndex + 2] = c;
-                    vertexColors[vertexIndex + 3] = c;
-
-
-                    // Get a reference to the meshInfo of the selected character.
-                    TMP_MeshInfo meshInfo = m_TextMeshPro.textInfo.meshInfo[materialIndex];
-
-                    // Get the index of the last character's vertex attributes.
-                    int lastVertexIndex = vertices.Length - 4;
-
-                    // Swap the current character's vertex attributes with those of the last element in the vertex attribute arrays.
-                    // We do this to make sure this character is rendered last and over other characters.
-                    meshInfo.SwapVertexData(vertexIndex, lastVertexIndex);
-
-                    // Need to update the appropriate 
-                    m_TextMeshPro.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-                }
-                #endregion
+                //#endregion
 
 
                 #region Word Selection Handling
@@ -178,50 +139,16 @@ namespace TMPro.Examples
                 if (wordIndex != startWordIndex)
                     Reset();
                 // Clear previous word selection.
-                if (/*m_TextPopup_RectTransform != null &&*/ m_selectedWord != -1 && (wordIndex == -1 || wordIndex != m_selectedWord))
-                {
-                    TMP_WordInfo wInfo = m_TextMeshPro.textInfo.wordInfo[m_selectedWord];
-
-                    // Iterate through each of the characters of the word.
-                    for (int i = 0; i < wInfo.characterCount; i++)
-                    {
-                        int characterIndex = wInfo.firstCharacterIndex + i;
-
-                        // Get the index of the material / sub text object used by this character.
-                        int meshIndex = m_TextMeshPro.textInfo.characterInfo[characterIndex].materialReferenceIndex;
-
-                        // Get the index of the first vertex of this character.
-                        int vertexIndex = m_TextMeshPro.textInfo.characterInfo[characterIndex].vertexIndex;
-
-                        // Get a reference to the vertex color
-                        Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
-
-                        Color32 c = vertexColors[vertexIndex + 0].Tint(1.33333f);
-
-                        vertexColors[vertexIndex + 0] = c;
-                        vertexColors[vertexIndex + 1] = c;
-                        vertexColors[vertexIndex + 2] = c;
-                        vertexColors[vertexIndex + 3] = c;
-                    }
-
-                    // Update Geometry
-                    m_TextMeshPro.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-
-                    m_selectedWord = -1;
-                }
-
 
                 // Word Selection Handling
-                if (wordIndex != -1 && wordIndex != m_selectedWord && !(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
+                if (wordIndex != -1 && wordIndex != m_selectedWord)//&& !(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
                 {
                     m_selectedWord = wordIndex;
 
                     TMP_WordInfo wInfo = m_TextMeshPro.textInfo.wordInfo[wordIndex];
                     //todo 设置位置为单词最后一个字的位置
                     var lastCharInfo = m_TextMeshPro.textInfo.characterInfo[wInfo.lastCharacterIndex];
-                    //Debug.LogError(lastCharInfo.bottomRight);
-                    //Debug.LogError(m_Canvas.GetComponent<RectTransform>().sizeDelta.x);
-                    //Debug.LogError(contentTrans.localPosition.y);
+
                     float screenSizeX = m_Canvas.GetComponent<RectTransform>().sizeDelta.x;
                     float btnXPos = lastCharInfo.bottomRight.x;
                     if (lastCharInfo.bottomRight.x + dragWordSearchView.btnSizeX > screenSizeX * 0.5f)
@@ -229,13 +156,32 @@ namespace TMPro.Examples
                         btnXPos = screenSizeX * 0.5f - dragWordSearchView.btnSizeX;
                     }
                     RectTransform tmp_Trans = m_TextMeshPro.GetComponent<RectTransform>();
-                    float tmpYOffset = 0;// tmp_Trans.localPosition.y + tmp_Trans.sizeDelta.y * 0.5f;
-                    //Debug.LogError(lastCharInfo.bottomRight.y);
-                    //Debug.LogError(contentTrans.localPosition.y);
-                    //Debug.LogError(tmp_Trans.localPosition.y);
-                    //Debug.LogError("----------------------");
-                    dragWordSearchView.DragWord(wInfo.GetWord(), new Vector3(btnXPos, lastCharInfo.bottomRight.y + contentTrans.localPosition.y+ tmp_Trans.localPosition.y*0.5f /*+ tmpYOffset*/, lastCharInfo.bottomRight.z));
+                    float textHeight = tmp_Trans.sizeDelta.y;
 
+                    float tmpYOffset = -m_TextMeshPro.fontSize * 0.5f - dragWordSearchView.btnSizeY;//半个字体大小
+                    float dragViewSize = Screen.height;// dragWordSearchView.GetComponent<RectTransform>().sizeDelta.y;
+                    //float y = lastCharInfo.bottomRight.y + contentTrans.localPosition.y + tmp_Trans.localPosition.y * 0.5f + tmpYOffset;
+                    float y = dragViewSize * 0.5f - (textHeight - ((textHeight * 0.5f) + lastCharInfo.bottomRight.y) - contentTrans.localPosition.y) + tmpYOffset;// - dragViewSize*0.5f;
+                    //float y = lastCharInfo.bottomRight.y  + tmpYOffset;
+                    Debug.LogError(dragViewSize * 0.5f);
+                    Debug.LogError((textHeight - ((textHeight * 0.5f) + lastCharInfo.bottomRight.y) - contentTrans.localPosition.y));
+                    //Debug.LogError(contentTrans.localPosition.y);
+                    Debug.LogError(y);
+                    Debug.LogError("----------------------");
+                    dragWordSearchView.DragWord(wInfo.GetWord(), this, new Vector3(btnXPos, y, lastCharInfo.bottomRight.z));
+
+                    //string text = m_TextMeshPro.text;
+                    //int subTextLength = wInfo.characterCount;// + 1;
+                    //string subTextFront = text.Substring(0, wInfo.firstCharacterIndex);// wInfo, subTextLength);
+                    //string subTextLast = text.Substring(wInfo.lastCharacterIndex+1);// wInfo, subTextLength);
+                    //string highlight_tag = "<mark=#ffff00aa>" + wInfo.GetWord() + "</mark>";
+
+                    //m_TextMeshPro.text = subTextFront + highlight_tag + subTextLast;
+                    //wInfo.textComponent.fontStyle |= FontStyles.Highlight;
+                    //wInfo.textComponent.
+                    //var startCharInfo = m_TextMeshPro.textInfo.characterInfo[wInfo.firstCharacterIndex];
+                    //int vertexIndex2 = m_TextMeshPro.textInfo.characterInfo[wInfo.firstCharacterIndex].vertexIndex;
+                    //DrawTextHighlight(startCharInfo.topLeft, lastCharInfo.bottomRight, wInfo.textComponent.textInfo,new Color32(0,0,0,255),ref vertexIndex2, new Color32(255, 255, 0, 200));
                     // Iterate through each of the characters of the word.
                     for (int i = 0; i < wInfo.characterCount; i++)
                     {
@@ -245,11 +191,17 @@ namespace TMPro.Examples
                         int meshIndex = m_TextMeshPro.textInfo.characterInfo[characterIndex].materialReferenceIndex;
 
                         int vertexIndex = m_TextMeshPro.textInfo.characterInfo[characterIndex].vertexIndex;
+                        //  m_TextMeshPro.textInfo.characterInfo[characterIndex].highlightColor = new Color32(255, 255, 0, 100);
+                        //  TMP_Offset highlightPadding = TMP_Offset.zero;
+                        //  m_TextMeshPro.textInfo.characterInfo[characterIndex].highlightState = new HighlightState(new Color32(255, 255, 0,100), highlightPadding);
+                        //// m_TextMeshPro.textInfo.characterInfo[characterIndex].style |= FontStyles.Highlight;
+                        //  m_TextMeshPro.textInfo.characterInfo[characterIndex].style = FontStyles.Highlight;
 
                         // Get a reference to the vertex color
                         Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
 
-                        Color32 c = vertexColors[vertexIndex + 0].Tint(0.75f);
+                        // Color32 c = vertexColors[vertexIndex + 0].Tint(1.33333f);//(0.75f);
+                        Color32 c = CommonTool.TintUpArticleColorRGB(vertexColors[vertexIndex + 0], 1.33333f); //(1.33333f);
 
                         vertexColors[vertexIndex + 0] = c;
                         vertexColors[vertexIndex + 1] = c;
@@ -314,6 +266,77 @@ namespace TMPro.Examples
             }
 
         }
+        void DrawTextHighlight(Vector3 start, Vector3 end, TMP_TextInfo m_textInfo, Color32 m_fontColor32, ref int index, Color32 highlightColor)
+        {
+            int underlineMaterialIndex = 0;// m_Underline.materialIndex;
+
+            int verticesCount = index + 4;
+
+            // Check to make sure our current mesh buffer allocations can hold these new Quads.
+            if (verticesCount > m_textInfo.meshInfo[underlineMaterialIndex].vertices.Length)
+            {
+                // Resize Mesh Buffers
+                m_textInfo.meshInfo[underlineMaterialIndex].ResizeMeshInfo(verticesCount / 4);
+            }
+
+            // UNDERLINE VERTICES FOR (3) LINE SEGMENTS
+            #region HIGHLIGHT VERTICES
+            Vector3[] vertices = m_textInfo.meshInfo[underlineMaterialIndex].vertices;
+
+            // Front Part of the Underline
+            vertices[index + 0] = start; // BL
+            vertices[index + 1] = new Vector3(start.x, end.y, 0); // TL
+            vertices[index + 2] = end; // TR
+            vertices[index + 3] = new Vector3(end.x, start.y, 0); // BR
+            #endregion
+
+            // UNDERLINE UV0
+            #region HANDLE UV0
+            Vector2[] uvs0 = m_textInfo.meshInfo[underlineMaterialIndex].uvs0;
+
+            int atlasWidth = m_textInfo.textComponent.font.atlasWidth;
+            int atlasHeight = m_textInfo.textComponent.font.atlasHeight;
+            bool isUsingAlternativeTypeface;
+            TMP_Character character = TMP_FontAssetUtilities.GetCharacterFromFontAsset(0x2026, TMP_Settings.defaultFontAsset, true, m_textInfo.textComponent.fontStyle, m_textInfo.textComponent.fontWeight, out isUsingAlternativeTypeface);
+
+            GlyphRect glyphRect = character.glyph.glyphRect;
+
+            // Calculate UV
+            //Vector2 uv0 = new Vector2(((float)glyphRect.x + glyphRect.width / 2) / atlasWidth, (glyphRect.y + (float)glyphRect.height / 2) / atlasHeight);  // bottom left
+
+            //// UVs for the Quad
+            //uvs0[0 + index] = uv0; // BL
+            //uvs0[1 + index] = uv0; // TL
+            //uvs0[2 + index] = uv0; // TR
+            //uvs0[3 + index] = uv0; // BR
+            #endregion
+
+            // HIGHLIGHT UV2
+            #region HANDLE UV2 - SDF SCALE
+            //Vector2[] uvs2 = m_textInfo.meshInfo[underlineMaterialIndex].uvs2;
+            //Vector2 customUV = new Vector2(0, 1);
+            //uvs2[0 + index] = customUV;
+            //uvs2[1 + index] = customUV;
+            //uvs2[2 + index] = customUV;
+            //uvs2[3 + index] = customUV;
+            #endregion
+
+            // HIGHLIGHT VERTEX COLORS
+            #region
+            // Alpha is the lower of the vertex color or tag color alpha used.
+            highlightColor.a = m_fontColor32.a < highlightColor.a ? m_fontColor32.a : highlightColor.a;
+
+            Color32[] colors32 = m_textInfo.meshInfo[underlineMaterialIndex].colors32;
+            colors32[0 + index] = highlightColor;
+            colors32[1 + index] = highlightColor;
+            colors32[2 + index] = highlightColor;
+            colors32[3 + index] = highlightColor;
+            #endregion
+
+            index += 4;
+        }
+
+
         public float maxHoverTime = 0.8f;
         public float hoverTime = 0;
         int startWordIndex = -1;
@@ -331,6 +354,7 @@ namespace TMPro.Examples
             isHoveringObject = false;
             hoverTime = 0;
             startWordIndex = -1;
+            //m_TextMeshPro.text = m_TextMeshPro.text.Replace("<mark=#ffff00aa>","").Replace("</mark>", "");
         }
         //public void OnPointerClick(PointerEventData eventData)
         //{
