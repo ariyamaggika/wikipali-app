@@ -589,6 +589,49 @@ public class DictManager
         currMatchedWordDetail = matchedWordList.ToArray();
         return currMatchedWordDetail;
     }
+    //快速获取一个最接近的单词结果
+    public MatchedWordDetail MatchWordDetailFastest(string word)
+    {
+        List<MatchedWordDetail> matchedWordList = new List<MatchedWordDetail>();
+
+        dbManager.Getdb(db =>
+        {
+            //优先查询当前系统语言词典
+            string[] langDic = DicLangDic[SettingManager.Instance().language];
+            int l = langDic.Length;
+            for (int i = 0; i < l; i++)
+            {
+                if (matchedWordList.Count > 0)
+                {
+                    break;
+                }
+                SelectDicDetail(db, matchedWordList, langDic[i], word);
+            }
+            if (matchedWordList.Count == 0)
+            {
+                int c = AllDictList.Count;
+                //其他语言结果
+                for (int i = 0; i < c; i++)
+                {
+                    if (AllDictList[i][0] != langDic[0])
+                    {
+                        int cl = AllDictList[i].Length;
+                        for (int j = 0; j < cl; j++)
+                        {
+                            if (matchedWordList.Count > 0)
+                            {
+                                break;
+                            }
+                            SelectDicDetail(db, matchedWordList, AllDictList[i][j], word);
+                        }
+                    }
+                }
+            }
+        }, DBManager.DictDBurl);
+        if (matchedWordList.Count > 0)
+            return matchedWordList[0];
+        return null;
+    }
     //是否存在该词，只查最全面的巴缅词典
     public bool IsHaveWord(string word)
     {
