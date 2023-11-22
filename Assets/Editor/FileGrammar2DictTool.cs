@@ -97,5 +97,41 @@ public class FileGrammar2DictTool
 
         File.WriteAllLines("Assets/Editor/GrmAbbr.txt", sb.ToArray());
     }
+    //去掉TMP字体库重复字
+    [MenuItem("Assets/Tools/GenTMPFontLib")]
+    public static void GenTMPFontLib()
+    {
+        Dictionary<char, bool> resFont = new Dictionary<char, bool>();
+        Dictionary<string, string[]> res = new Dictionary<string, string[]>();
+        //支持多选
+        string[] guids = Selection.assetGUIDs;//获取当前选中的asset的GUID
+        for (int j = 0; j < guids.Length; j++)
+        {
+            string assetPath = AssetDatabase.GUIDToAssetPath(guids[j]);//通过GUID获取路径
+                                                                       //TextAsset textAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(assetPath);
 
+            string[] textTxt = File.ReadAllLines(assetPath);
+            string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(assetPath);
+            //res.Add(fileNameWithoutExtension, textTxt);
+
+            foreach (string txt in textTxt)
+            {
+                foreach (char c in txt)
+                {
+                    if (!resFont.ContainsKey(c))
+                    {
+                        resFont.Add(c, false);
+                    }
+                }
+            }
+            StringBuilder sb = new StringBuilder();
+            foreach (KeyValuePair<char, bool> kvp in resFont)
+            {
+                sb.Append(kvp.Key);
+            }
+            //File.WriteAllLines("Assets/Editor/grammer_CN.txt", resText.ToArray());
+            //File.WriteAllLines("Assets/Editor/grammer_EN.txt", resText.ToArray());
+            File.WriteAllText(string.Format("Assets/Editor/{0}.txt", fileNameWithoutExtension+"Small"), sb.ToString());
+        }
+    }
 }

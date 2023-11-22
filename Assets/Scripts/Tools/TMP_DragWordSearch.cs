@@ -16,6 +16,9 @@ namespace TMPro.Examples
     {
         public PopDragWordSearchView dragWordSearchView;
         public RectTransform contentTrans;
+        public RectTransform scrollTrans;
+        public RectTransform titleTrans;
+        public RectTransform title2Trans;
 
         //public RectTransform TextPopup_Prefab_01;
 
@@ -150,25 +153,22 @@ namespace TMPro.Examples
                     var lastCharInfo = m_TextMeshPro.textInfo.characterInfo[wInfo.lastCharacterIndex];
 
                     float screenSizeX = m_Canvas.GetComponent<RectTransform>().sizeDelta.x;
-                    float btnXPos = lastCharInfo.bottomRight.x;
-                    if (lastCharInfo.bottomRight.x + dragWordSearchView.btnSizeX > screenSizeX * 0.5f)
+                    float btnXPos = lastCharInfo.bottomRight.x + dragWordSearchView.btnSizeX * 0.5f;// + screenSizeX * 0.5f;
+                    if (btnXPos + dragWordSearchView.btnSizeX > screenSizeX * 0.5f)
                     {
-                        btnXPos = screenSizeX * 0.5f - dragWordSearchView.btnSizeX;
+                        btnXPos = screenSizeX * 0.5f - dragWordSearchView.btnSizeX * 0.5f;
                     }
                     RectTransform tmp_Trans = m_TextMeshPro.GetComponent<RectTransform>();
                     float textHeight = tmp_Trans.sizeDelta.y;
 
-                    float tmpYOffset = -m_TextMeshPro.fontSize * 0.5f - dragWordSearchView.btnSizeY;//半个字体大小
-                    float dragViewSize = Screen.height;// dragWordSearchView.GetComponent<RectTransform>().sizeDelta.y;
+                    float tmpYOffset =/* -m_TextMeshPro.fontSize * 0.5f*/ -dragWordSearchView.btnSizeY * 0.5f
+                        - titleTrans.GetComponent<RectTransform>().sizeDelta.y - title2Trans.GetComponent<RectTransform>().sizeDelta.y;//半个字体大小
+                    float dragViewSize = m_Canvas.GetComponent<RectTransform>().sizeDelta.y;// (float)Screen.height;// dragWordSearchView.GetComponent<RectTransform>().sizeDelta.y;
                     //float y = lastCharInfo.bottomRight.y + contentTrans.localPosition.y + tmp_Trans.localPosition.y * 0.5f + tmpYOffset;
                     float y = dragViewSize * 0.5f - (textHeight - ((textHeight * 0.5f) + lastCharInfo.bottomRight.y) - contentTrans.localPosition.y) + tmpYOffset;// - dragViewSize*0.5f;
                     //float y = lastCharInfo.bottomRight.y  + tmpYOffset;
-                    Debug.LogError(dragViewSize * 0.5f);
-                    Debug.LogError((textHeight - ((textHeight * 0.5f) + lastCharInfo.bottomRight.y) - contentTrans.localPosition.y));
-                    //Debug.LogError(contentTrans.localPosition.y);
-                    Debug.LogError(y);
-                    Debug.LogError("----------------------");
-                    dragWordSearchView.DragWord(wInfo.GetWord(), this, new Vector3(btnXPos, y, lastCharInfo.bottomRight.z));
+
+                    dragWordSearchView.DragWord(wInfo.GetWord(), this, new Vector3(btnXPos, y, 0));
 
                     //string text = m_TextMeshPro.text;
                     //int subTextLength = wInfo.characterCount;// + 1;
