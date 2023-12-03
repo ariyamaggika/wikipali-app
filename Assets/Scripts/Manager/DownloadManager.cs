@@ -29,7 +29,7 @@ public class DownloadManager
     public void DownloadAPK(MonoBehaviour ui)
     {
         //判断是否有网
-        if (!NetworkMangaer.Instance().PingNetAddress())
+        if (!NetworkMangaer.Instance().CheckIsHaveNetwork())
         {
             UITool.ShowToastMessage(ui, "无网络连接", 35);
             return;
@@ -57,7 +57,7 @@ public class DownloadManager
     public void DownloadPack(MonoBehaviour ui,Func<object,object> callbackFunc,string savePath,string url,string fileName)
     {
         //判断是否有网
-        if (!NetworkMangaer.Instance().PingNetAddress())
+        if (!NetworkMangaer.Instance().CheckIsHaveNetwork())
         {
             UITool.ShowToastMessage(ui, "无网络连接", 35);
             return;

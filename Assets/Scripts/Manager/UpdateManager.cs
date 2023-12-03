@@ -75,7 +75,7 @@ public class UpdateManager
         //}
 
 
-        if (!NetworkMangaer.Instance().PingNetAddress())
+        if (!NetworkMangaer.Instance().CheckIsHaveNetwork())
         {
             UITool.ShowToastMessage(ui, "无网络连接", 35);
             return;
@@ -87,7 +87,7 @@ public class UpdateManager
     //打开App自动检测更新显示红点
     public void CheckUpdateRedPoint()
     {
-        if (!NetworkMangaer.Instance().PingNetAddress())
+        if (!NetworkMangaer.Instance().CheckIsHaveNetwork())
         {
             return;
             // return false;

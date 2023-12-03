@@ -498,7 +498,7 @@ public class ArticleView : MonoBehaviour
         //int l = textBackup.Count;
         //for (int i = 0; i < l; i++)
         //{
-        Text contentTextInst = contentList[textID].GetComponent<Text>();
+        TextMeshProUGUI contentTextInst = contentList[textID].GetComponent<TextMeshProUGUI>();
         string newText = textBackup[textID];
         newText = newText.Substring(0, hlStartID) + "<color=" + HIGHLIGHT_COLOR + ">" +
            newText.Substring(hlStartID, hlLength) + "</color>" + newText.Substring(hlStartID + hlLength);
@@ -511,7 +511,7 @@ public class ArticleView : MonoBehaviour
         int l = textBackupOrign.Count;
         for (int i = 0; i < l; i++)
         {
-            Text contentTextInst = contentList[i].GetComponent<Text>();
+            TextMeshProUGUI contentTextInst = contentList[i].GetComponent<TextMeshProUGUI>();
             contentTextInst.text = MarkdownText.PreprocessText(textBackupOrign[i]);
         }
     }

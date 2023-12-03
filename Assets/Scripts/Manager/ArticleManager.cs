@@ -530,7 +530,7 @@ public class ArticleManager
                     string content = "";
                     if (paliPairs[p].ContainsKey("content"))
                         content = paliPairs[p]["content"].ToString();
-                    SentenceDBData s = new SentenceDBData()
+                        SentenceDBData s = new SentenceDBData()
                     {
                         //id = paliPairs[p]["id"].ToString(),
                         bookID = int.Parse(paliPairs[p]["book"].ToString()),

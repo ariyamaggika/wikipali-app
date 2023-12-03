@@ -30,7 +30,7 @@ public class NetworkMangaer
         return false;
     }
     //判断当前是否联网
-    public bool PingNetAddress()
+    public bool CheckIsHaveNetwork()
     {
         if (Application.internetReachability == UnityEngine.NetworkReachability.NotReachable)
         {

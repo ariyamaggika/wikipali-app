@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -105,4 +106,33 @@ public class ProcessCSVFile
     {
         Debug.LogError(DateTime.Now.ToString());
     }
+    //json转class文字
+    [MenuItem("Assets/Tools/PrintJson2Class")]
+    public static void PrintJson2Class()
+    {
+        string str = "{\r\n  \"ok\": true,\r\n  \"message\": {\r\n    \"title\": \"string\",\r\n    \"toc\": \"string\",\r\n    \"book\": \"string\",\r\n    \"para\": \"string\",\r\n    \"path\": \"string\",\r\n    \"tags\": {\r\n      \"id\": \"string\",\r\n      \"name\": \"string\",\r\n      \"description\": \"string\"\r\n    },\r\n    \"channel\": {\r\n      \"name\": \"string\",\r\n      \"owner_uid\": \"string\"\r\n    },\r\n    \"studio\": {\r\n      \"id\": \"string\",\r\n      \"nickName\": \"string\",\r\n      \"studioName\": \"string\",\r\n      \"realName\": \"string\",\r\n      \"avatar\": \"string\"\r\n    },\r\n    \"channel_id\": \"string\",\r\n    \"summary\": \"string\",\r\n    \"view\": 0,\r\n    \"like\": 0,\r\n    \"status\": 0,\r\n    \"progress\": 0,\r\n    \"progress_line\": 0,\r\n    \"created_at\": \"string\",\r\n    \"updated_at\": \"string\"\r\n  }\r\n}";
+        string[] strSplit = str.Split("\r\n");
+        string res = "";
+        for (int i = 0; i < strSplit.Length; i++)
+        {
+            if (strSplit[i].Contains(":"))
+            {
+                string[] childStrSplit = strSplit[i].Split(":");
+                string name = childStrSplit[0].Replace("\"", "").Replace(",", "");
+                string typeName = childStrSplit[1].Replace("\"", "");
+                if (typeName.Contains("0"))
+                    res += "public int" + name + ";";
+                else if (typeName.Contains("true") || typeName.Contains("false"))
+                    res += "public bool" + name + ";";
+                else
+                    res += "public " + typeName + name + ";";
+            }
+            else
+                res += strSplit[i];
+            res += "\r\n";
+        }
+
+        Debug.LogError(res);
+    }
+
 }

@@ -3,6 +3,7 @@ using Microsoft.CognitiveServices.Speech;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 //using UnityEditor.PackageManager.UI;
@@ -632,7 +633,9 @@ public class SpeechManager : MonoBehaviour
             //Debug.LogError(curwordBoundary.Text);
             ReadTextInfo info = transList[highLightTransID];
             ArticleManager.Instance().articleView.SetTextHighLight(info.textID, info.offsetIndex + (int)curwordBoundary.TextOffset/*+15*/, (int)curwordBoundary.WordLength);
-
+            Debug.LogError(info.offsetIndex);
+            Debug.LogError((int)curwordBoundary.TextOffset);
+            Debug.LogError("??????????????????????????????");
         }
 
 
@@ -699,9 +702,16 @@ public class SpeechManager : MonoBehaviour
             //Debug.LogError("rSpaceID:" + rSpaceID);
             //Debug.LogError("iID:" + iID);
             //Debug.LogError("Length:" + orignArr[rSpaceID].Length);
+            //todo 换成TMP之后富文本朗读高亮会有错位问题
             ArticleManager.Instance().articleView.SetTextHighLight(info.textID,
-                info.offsetIndex + iID, orignArr[rSpaceID].Length);
-
+                info.offsetIndex + iID+CommonTool.COLOR_BROWN_FLAG.Length, orignArr[rSpaceID].Length);
+            //        ArticleManager.Instance().articleView.SetTextHighLight(0,
+            //0 + 1, 3);
+            //Debug.LogError(info.textID);
+            //Debug.LogError(info.offsetIndex);
+            //Debug.LogError(iID);
+            //Debug.LogError(orignArr[rSpaceID].Length);
+            //Debug.LogError("------------------------------------------");
         }
 
     }

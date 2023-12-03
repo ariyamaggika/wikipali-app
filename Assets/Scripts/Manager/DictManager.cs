@@ -4,6 +4,7 @@ using UnityEngine;
 using Mono.Data.Sqlite;
 using Imdork.SQLite;
 using static SettingManager;
+using System.Linq;
 
 public class DictManager
 {
@@ -150,7 +151,7 @@ public class DictManager
         }
         //查单词出现次数
         if (wordList.Count > 0)
-        { 
+        {
             var reader2 = db.SelectIn("word_count", "word", wordList.ToArray());
             //调用SQLite工具  解析对应数据
             Dictionary<string, object>[] pairs2 = SQLiteTools.GetValues(reader2);
@@ -483,24 +484,40 @@ public class DictManager
     }
     void SelectDicDetail(DbAccess db, List<MatchedWordDetail> matchedWordList, string tableName, string word)
     {
-        var reader = db.SelectDictSame(tableName, word, "word", 1);
+        var reader = db.SelectDictSame(tableName, word, "word", 5);
 
         //调用SQLite工具  解析对应数据
-        Dictionary<string, object> pairs = SQLiteTools.GetValue(reader);
-        if (pairs != null)
+        Dictionary<string, object>[] pairs = SQLiteTools.GetValues(reader);
+        if (pairs != null && pairs.Length > 0)
         {
-
-            MatchedWordDetail m = new MatchedWordDetail()
+            MatchedWordDetail m = new MatchedWordDetail();
+            int pLength = pairs.Length;
+            for (int p = 0; p < pLength; p++)
             {
-                id = pairs["id"].ToString(),
-                word = pairs["word"].ToString(),
-                meaning = pairs["note"].ToString(),
-                dicID = pairs["dict_id"].ToString(),
-            };
-            m.meaning = MarkdownText.ReplaceHTMLStyle(m.meaning);
-            var readerDic = db.SelectDic(m.dicID);
-            Dictionary<string, object> dicPairs = SQLiteTools.GetValue(readerDic);
-            m.dicName = dicPairs["dictname"].ToString();
+                if (p == 0)
+                {
+
+                    m.id = pairs[p]["id"].ToString();
+                    m.word = pairs[p]["word"].ToString();
+                    if (pLength > 1)
+                    {
+                        m.meaning = "词条1：\r\n" + pairs[p]["note"].ToString();
+                    }
+                    else
+                    {
+                        m.meaning = pairs[p]["note"].ToString();
+                    }
+                    m.dicID = pairs[p]["dict_id"].ToString();
+                    m.meaning = MarkdownText.ReplaceHTMLStyle(m.meaning);
+                    var readerDic = db.SelectDic(m.dicID);
+                    Dictionary<string, object> dicPairs = SQLiteTools.GetValue(readerDic);
+                    m.dicName = dicPairs["dictname"].ToString();
+                }
+                else
+                {
+                    m.meaning += "\r\n" + "词条" + (p + 1) + "：\r\n" + MarkdownText.ReplaceHTMLStyle(pairs[p]["note"].ToString());
+                }
+            }
             matchedWordList.Add(m);
         }
 

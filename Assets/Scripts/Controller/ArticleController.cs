@@ -248,6 +248,13 @@ public class ArticleController
         currentBookList = res;
         return res;
     }
+    //异步 从服务端取圣典信息
+    public List<Book> GetBooksAsyn(ArticleTreeNode node)
+    {
+
+
+        return null;
+    }
     Book SetChapterListByBookData(Book book, List<ChapterDBData> cDataList)
     {
         if (cDataList == null || cDataList.Count == 0)
