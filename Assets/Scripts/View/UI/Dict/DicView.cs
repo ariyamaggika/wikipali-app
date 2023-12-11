@@ -218,13 +218,28 @@ public class DicView : MonoBehaviour
         dicManager.SetWordStar(word);
         int length = matchedWordArr.Length;
         //float height = 0;
-        for (int i = 0; i < length; i++)
+        for (int i = 0; i < length + 1; i++)
         {
             GameObject inst = Instantiate(detailDicItem.gameObject, detailScrollContent, false);
             inst.transform.position = detailDicItem.transform.position;
             //inst.GetComponent<RectTransform>().position -= Vector3.up * height;
             DetailDicItemView ddiv = inst.GetComponent<DetailDicItemView>();
-            ddiv.Init(matchedWordArr[i]);
+            //社区词典
+            if (i == 0)
+            {
+                ddiv.InitCommunityDic(word);
+                NetworkMangaer.Instance().GetCommunityDic(word, (str) =>
+                {
+                    ddiv.SetCommunityDic(str);
+                    //等下一帧UI刷新后获取位置
+                    StartCoroutine(SetHeight());
+                    return null;
+                });
+            }
+            else
+            {
+                ddiv.Init(matchedWordArr[i - 1]);
+            }
             //float textHeight = ddiv.GetHeight();
             //inst.GetComponent<RectTransform>().sizeDelta += new Vector2(0, textHeight);
             //height += textHeight;
@@ -254,8 +269,8 @@ public class DicView : MonoBehaviour
             //height += ddiv.GetHeight() + 200;
         }
         detailScrollContent.sizeDelta = new Vector2(detailScrollContent.sizeDelta.x, height);
-
     }
+
     //销毁词典列表GO
     private void DestroyDetailDicItemList()
     {

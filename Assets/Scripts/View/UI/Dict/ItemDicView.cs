@@ -34,6 +34,7 @@ public class ItemDicView : MonoBehaviour
         detailTxt.text = mean;
         word = matchedWord;
     }
+
     // Start is called before the first frame update
     void Start()
     {

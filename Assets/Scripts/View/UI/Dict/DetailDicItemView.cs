@@ -73,6 +73,7 @@ public class DetailDicItemView : MonoBehaviour
         LayoutRebuilder.ForceRebuildLayoutImmediate(dicView.detailScrollContent);
 
     }
+
     public float GetHeight()
     {
         float height = titleBtn.GetComponent<RectTransform>().sizeDelta.y;
@@ -98,7 +99,27 @@ public class DetailDicItemView : MonoBehaviour
         }
         return height;
     }
+    //社区词典
+    public void InitCommunityDic(string dicWord)
+    {
+        word = new MatchedWordDetail();
+        word.word = dicWord;
+        titleTxt.text = "社区词典";
+        //string detail = word.meaning;
+        detailTxt.text = "";
 
+        LayoutRebuilder.ForceRebuildLayoutImmediate(detailTxt.rectTransform);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(dicView.detailScrollContent);
+    }
+    public void SetCommunityDic(string mean)
+    {
+        string detail = mean;
+
+        detailTxt.text = detail;
+
+        //LayoutRebuilder.ForceRebuildLayoutImmediate(detailTxt.rectTransform);
+        //LayoutRebuilder.ForceRebuildLayoutImmediate(dicView.detailScrollContent);
+    }
     public void OnBtnClick()
     {
         if (isFolded)

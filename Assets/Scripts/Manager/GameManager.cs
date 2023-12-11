@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public MainView mainView;
     public ArticleView articleView;
     public PreView preView;
+    public LoadingTexView titleLoadingTexView;
 
     public string appVersion;//= Application.version;
     //public bool canUpdate = false;
@@ -273,5 +274,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region UI
+    public void StartTitleLoading()
+    {
+        titleLoadingTexView.StartLoadingTex();
+    }
+    public void StopTitleLoading()
+    {
+        titleLoadingTexView.StopLoadingTex();
+    }
     #endregion
 }

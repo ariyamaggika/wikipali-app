@@ -4161,7 +4161,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &158351538
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4169,17 +4169,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 158351537}
-  m_LocalRotation: {x: -0, y: 0, z: -0.977508, w: -0.21089858}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1378708946}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 515.65}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -213, y: -71}
+  m_AnchoredPosition: {x: -222, y: -71.10017}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &158351539
@@ -4195,7 +4195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.74509805, g: 0.74509805, b: 0.74509805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4232,6 +4232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1aaac4cc519f414a91b0c54b4c29ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 220
 --- !u!1 &161460226
 GameObject:
   m_ObjectHideFlags: 0
@@ -17510,7 +17511,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -91.89957}
+  m_AnchoredPosition: {x: 0, y: -91.8996}
   m_SizeDelta: {x: 0, y: -154.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &494762241
@@ -19133,6 +19134,7 @@ MonoBehaviour:
   mainView: {fileID: 1146448375}
   articleView: {fileID: 2108809201}
   preView: {fileID: 1673018718}
+  titleLoadingTexView: {fileID: 158351541}
   appVersion: 
 --- !u!114 &534669907
 MonoBehaviour:
@@ -33969,7 +33971,7 @@ Canvas:
   m_RenderMode: 1
   m_Camera: {fileID: 534669904}
   m_PlaneDistance: 100
-  m_PixelPerfect: 1
+  m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -40795,7 +40797,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000091552734}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1382210783

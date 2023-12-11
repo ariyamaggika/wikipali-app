@@ -34,11 +34,11 @@ public class NetworkMangaer
     {
         if (Application.internetReachability == UnityEngine.NetworkReachability.NotReachable)
         {
-       //     UITool.ShowToastMessage(GameManager.Instance(), "无网络连接", 35);
+            //     UITool.ShowToastMessage(GameManager.Instance(), "无网络连接", 35);
 
             return false;
         }
-       // UITool.ShowToastMessage(GameManager.Instance(), "有网络连接", 35);
+        // UITool.ShowToastMessage(GameManager.Instance(), "有网络连接", 35);
 
         return true;
         //try
@@ -84,4 +84,16 @@ public class NetworkMangaer
             return false;
         }
     }
+
+    #region 功能方法
+    //获取社区词典
+    public void GetCommunityDic(string word, Func<string, object> callback)
+    {
+        if (CheckIsHaveNetwork())
+            C2SDicGetInfo.GetCommunityDicData(word, callback);
+    }
+
+
+
+    #endregion
 }

@@ -110,7 +110,7 @@ public class ProcessCSVFile
     [MenuItem("Assets/Tools/PrintJson2Class")]
     public static void PrintJson2Class()
     {
-        string str = "{\r\n  \"ok\": true,\r\n  \"message\": {\r\n    \"title\": \"string\",\r\n    \"toc\": \"string\",\r\n    \"book\": \"string\",\r\n    \"para\": \"string\",\r\n    \"path\": \"string\",\r\n    \"tags\": {\r\n      \"id\": \"string\",\r\n      \"name\": \"string\",\r\n      \"description\": \"string\"\r\n    },\r\n    \"channel\": {\r\n      \"name\": \"string\",\r\n      \"owner_uid\": \"string\"\r\n    },\r\n    \"studio\": {\r\n      \"id\": \"string\",\r\n      \"nickName\": \"string\",\r\n      \"studioName\": \"string\",\r\n      \"realName\": \"string\",\r\n      \"avatar\": \"string\"\r\n    },\r\n    \"channel_id\": \"string\",\r\n    \"summary\": \"string\",\r\n    \"view\": 0,\r\n    \"like\": 0,\r\n    \"status\": 0,\r\n    \"progress\": 0,\r\n    \"progress_line\": 0,\r\n    \"created_at\": \"string\",\r\n    \"updated_at\": \"string\"\r\n  }\r\n}";
+        string str = "id: string;\r\nword: string;\r\ntype?: string | null;\r\ngrammar?: string | null;\r\nmean?: string | null;\r\nparent?: string | null;\r\nnote?: string | null;\r\nfactors?: string | null;\r\nfactormean?: string | null;\r\nlanguage: string;\r\ndict?: IDictInfo;\r\ndict_id: string;\r\ndict_name?: string;\r\ndict_shortname?: string;\r\nshortname?: string;\r\nconfidence: number;\r\ncreator_id: number;\r\nupdated_at: string;\r\nexp?: number;\r\neditor?: IUser;";
         string[] strSplit = str.Split("\r\n");
         string res = "";
         for (int i = 0; i < strSplit.Length; i++)
@@ -118,14 +118,16 @@ public class ProcessCSVFile
             if (strSplit[i].Contains(":"))
             {
                 string[] childStrSplit = strSplit[i].Split(":");
-                string name = childStrSplit[0].Replace("\"", "").Replace(",", "");
-                string typeName = childStrSplit[1].Replace("\"", "");
+                string name = childStrSplit[0].Replace("\"", "").Replace(",", "").Replace("?", "");
+                string typeName = childStrSplit[1].Replace("\"", "").Replace(",", "").Replace(" | null","").Replace(";", "");
                 if (typeName.Contains("0"))
+                    res += "public int" + name + ";";
+                else if (typeName.Contains("number"))
                     res += "public int" + name + ";";
                 else if (typeName.Contains("true") || typeName.Contains("false"))
                     res += "public bool" + name + ";";
                 else
-                    res += "public " + typeName + name + ";";
+                    res += "public " + typeName+" " + name + ";";
             }
             else
                 res += strSplit[i];

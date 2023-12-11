@@ -1,10 +1,16 @@
 ﻿using CI.HttpClient;
+using iTextSharp.text;
 using iTextSharp.text.pdf.parser;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using UnityEngine;
+using static ArticleController;
 using static ArticleManager;
+using static DictManager;
 
 public class C2SArticleGetNewDBInfo
 {
@@ -142,10 +148,58 @@ public class C2SArticleGetNewDBInfo
     }
     #endregion
     #region 获取文章Sentence内容
+    public class SentenceDataListJson
+    {
+        public bool ok;
+        public string message;
+        public List<SentenceDataJson> data;
+    }
+    public class SentenceDataJson
+    {
+        public string uid;
+        public string book_id;
+        public string paragraph;
+        public string word_start;
+        public string word_end;
+        public string content;
+        public string content_type;
+        public string channel_uid;
+        public string editor_uid;
+        public string language;
+        public string updated_at;
+        public string created_at;
+    }
 
+    //https://staging.wikipali.org/api/v2/sentence?view=chapter&book=1&para=1&channels=1&html=true&format=unity
+    public static void GetSentenceData(int bookID, string channelID, int parMin, int parMax)
+    {
+        string parList = "";
+        for (int i = parMin; i < parMax + 1; i++)
+        {
+            parList += i;
+            if (i == parMax)
+            {
+                parList += ",";
+            }
+        }
+        HttpClient client = new HttpClient();
+
+        client.Get(new System.Uri(string.Format(@"https://staging.wikipali.org/api/v2/sentence?view=chapter&book={0}&para={1}&channels={2}&html=true&format=unity", bookID, parList, channelID)),
+            HttpCompletionOption.StreamResponseContent, (r) =>
+            {
+                //RightText.text = "Download: " + r.PercentageComplete.ToString() + "%";
+                //ProgressSlider.value = 100 - r.PercentageComplete;
+                byte[] responseData = r.ReadAsByteArray();
+                string json = Encoding.Default.GetString(responseData);
+                Debug.LogError(json);
+            });
+    }
 
     #endregion
 
+    #region 获取最新文章列表
+
+    #endregion
 
 
 }
