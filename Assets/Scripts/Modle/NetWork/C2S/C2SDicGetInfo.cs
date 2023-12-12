@@ -4,6 +4,7 @@ using iTextSharp.text.pdf.parser;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
@@ -34,13 +35,15 @@ public class C2SDicGetInfo
     public class WordJsonData
     {
         //public string id;
+
         public string word;
         public string type;
         public string grammar;//语法
         public string mean;
         public string parent;//词干
+
         //public string note;
-        public string factors;
+        //public string factors;
         //public string factormean;
         //public string language;
         //public IDictInfo dict;
@@ -57,7 +60,7 @@ public class C2SDicGetInfo
     [Serializable]
     public class WordUserJsonData
     {
-        public int id;
+        //public int id;
         public string uid;
         public string nickName;
         //public string userName;
@@ -84,6 +87,11 @@ public class C2SDicGetInfo
             //如果消息长，会返回多次消息，已json结尾作为判断是否返回的是最后一条消息
             if (json.Contains("\"message\":\"\"}"))
             {
+
+                //communityDicJson = communityDicJson.Substring(1);
+                //communityDicJson = communityDicJson.Substring(0, communityDicJson.Length - 1);
+                //communityDicJson = File.ReadAllText("Assets/jsonTest.txt");
+                //Debug.LogError(communityDicJson);
                 //用户名 按经验值排序
                 List<UserData> user = new List<UserData>();
                 List<string> userDuplicateCheck = new List<string>();
@@ -97,7 +105,7 @@ public class C2SDicGetInfo
                 List<StringIntData> meanCountData = new List<StringIntData>();
                 List<StringIntData> parentCountData = new List<StringIntData>();
                 //Debug.LogError(communityDicJson);
-                WordListJson wordList = JsonUtility.FromJson<WordListJson>(json);
+                WordListJson wordList = JsonUtility.FromJson<WordListJson>(communityDicJson);
                 //处理数据
                 int count = wordList.data.rows.Count;
                 for (int i = 0; i < count; i++)
@@ -132,7 +140,6 @@ public class C2SDicGetInfo
                     //{
                     //    grammarCount.Add(wordList.data.rows[i].grammar, 1);
                     //}
-
                 }
                 GetSIData(typeCount, ref typeCountData);
                 GetSIData(grammarCount, ref grammarCountData);
@@ -178,7 +185,9 @@ public class C2SDicGetInfo
         }
         else
         {
-            count.Add(jsonValue, 1);
+            //不接受空值
+            if (!string.IsNullOrEmpty(jsonValue))
+                count.Add(jsonValue, 1);
         }
     }
     static void GetSIData(Dictionary<string, int> count, ref List<StringIntData> sidList)
@@ -233,7 +242,7 @@ public class C2SDicGetInfo
 
         for (int j = start; j < end; j++)
         {
-            if (array[j].count < x.count)
+            if (array[j].count > x.count)
             {
                 //将下标j的值与下标i的值交换 保证i的前面都小于判定值
                 StringIntData temp = array[j];
