@@ -10,6 +10,7 @@ using System.Text;
 using UnityEngine;
 using static ArticleController;
 using static ArticleManager;
+using static C2SDicGetInfo;
 using static DictManager;
 
 public class C2SArticleGetNewDBInfo
@@ -198,6 +199,65 @@ public class C2SArticleGetNewDBInfo
     #endregion
 
     #region 获取最新文章列表
+    [Serializable]
+    public class NewArticleListJson
+    {
+        public bool ok;
+        public NewArticleRowListJson data;
+        public string message;
+    }
+    [Serializable]
+    public class NewArticleRowListJson
+    {
+        public List<NewArticleData> rows;
+        public int count;
+    }
+    [Serializable]
+    public class NewArticleData
+    {
+        public string uid;
+        public int book;
+        public int para;
+        public string channel_id;
+        public string title;
+        public string toc;
+        public string path;
+        public float progress;
+        public string summary;
+        public string created_at;
+        public string updated_at;
+        public ChannelData channel;
+    }
+    [Serializable]
+    public class ChannelData
+    {
+        public string name;
+        public string owner_uid;
+    }
+    //https://next.wikipali.cc/api/v2/progress?view=chapter&lang=zh&channel_type=translation&limit=10&offset=0
+    public static void GetNewArticleList(Func<NewArticleListJson, object> callback)
+    {
+        HttpClient client = new HttpClient();
+        string communityDicJson = "";
+
+        client.Get(new System.Uri(string.Format(@"https://next.wikipali.cc/api/v2/progress?view=chapter&lang={0}&channel_type=translation&limit={1}&offset=0", "zh", 10)),
+            HttpCompletionOption.StreamResponseContent, (r) =>
+            {
+                //RightText.text = "Download: " + r.PercentageComplete.ToString() + "%";
+                //ProgressSlider.value = 100 - r.PercentageComplete;
+                byte[] responseData = r.ReadAsByteArray();
+                string json = Encoding.Default.GetString(responseData);
+                communityDicJson += json;
+                //Debug.LogError(json);
+                if (json.Contains("\"message\":\"\"}"))
+                {
+                    NewArticleListJson wordList = JsonUtility.FromJson<NewArticleListJson>(communityDicJson);
+                    callback(wordList);
+                }
+            });
+    }
+
+
 
     #endregion
 

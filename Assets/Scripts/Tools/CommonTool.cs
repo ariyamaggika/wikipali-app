@@ -461,4 +461,90 @@ public class CommonTool
 
         return new Color32(r, g, b, c1.a);
     }
+    #region 获取时间距离
+    public static string DateFormatToString(DateTime dt)
+
+    {
+
+        //TimeSpan表示时间间隔
+
+        TimeSpan span = (DateTime.Now - dt).Duration();//表示取timespan绝对值
+        if (span.TotalDays > 60)
+        {
+            return dt.ToString("yyyy-MM-dd");
+        }
+        else if (span.TotalDays > 30)
+        {
+            return "1个月前";
+        }
+        else if (span.TotalDays > 14)
+        {
+            return "2周前";
+        }
+        else if (span.TotalDays > 7)
+        {
+            return "1周前";
+        }
+        else if (span.TotalDays > 1)
+        {
+            return string.Format("{0}天前", (int)Math.Floor(span.TotalDays));
+        }
+        else if (span.TotalHours > 1)
+        {
+            return string.Format("{0}小时前", (int)Math.Floor(span.TotalHours));
+        }
+        else if (span.TotalMinutes > 1)
+        {
+            return string.Format("{0}分钟前", (int)Math.Floor(span.TotalMinutes));
+        }
+        else if (span.TotalSeconds >= 1)
+        {
+            return string.Format("{0}秒前", (int)Math.Floor(span.TotalSeconds));
+        }
+        else
+        {
+            return "1秒前";
+        }
+
+    }
+    public static string FormatDate(DateTime dt)
+    {
+        var byTime = new long[] { 24 * 60 * 60, 60 * 60, 60, 1 };
+        var unit = new string[] { "天", "小时", "分钟", "秒" };
+
+        var ct = (DateTime.Now - dt).TotalSeconds;
+        if (ct < 0)
+        {
+            return "";
+        }
+
+        var sb = new System.Text.StringBuilder();
+        for (var i = 0; i < byTime.Length; i++)
+        {
+            if (ct < byTime[i])
+            {
+                continue;
+            }
+            var temp = Math.Floor(ct / byTime[i]);
+            ct = ct % byTime[i];
+            if (temp > 0)
+            {
+                sb.Append(temp + unit[i]);
+            }
+
+
+            /*一下控制最多输出几个时间单位：
+                一个时间单位如：N分钟前
+                两个时间单位如：M分钟N秒前
+                三个时间单位如：M年N分钟X秒前
+            以此类推
+            */
+            if (sb.Length >= 1)
+            {
+                break;
+            }
+        }
+        return sb.ToString() + "前";
+    }
+    #endregion
 }
