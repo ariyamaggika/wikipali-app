@@ -6,19 +6,35 @@ using static C2SArticleGetNewDBInfo;
 
 public class NewArticleView : MonoBehaviour
 {
+    public LoadingTexView loadingTexView;
     public NewArticleNodeItemView nodeItem;
+    public NewArticleScrollRectRef thisSrr;
     NewArticleListJson thisArticle;
     //下拉刷新
     // Start is called before the first frame update
     void Start()
     {
+        //thisSrr.callback1 = (state) => { s.SetActive(state); };
+        //thisSrr.callback1 = (a) => { Debug.LogError(1); Debug.LogError(a); return null; };
+        thisSrr.endDragUpdateCallback = () => { SendServerRequest();Debug.LogError("刷新列表"); return null; };
         SendServerRequest();
 
     }
+    //加载旋转动画
+    void StartLoadingAnim()
+    {
+        loadingTexView.transform.parent.gameObject.SetActive(true);
+        loadingTexView.StartLoadingTex();
+    }
+    void StopLoadingAnim()
+    {
+        loadingTexView.transform.parent.gameObject.SetActive(false);
+        loadingTexView.StopLoadingTex();
+    }
     public void SendServerRequest()
     {
+        StartLoadingAnim();
         C2SArticleGetNewDBInfo.GetNewArticleList(CallBack);
-
     }
     List<GameObject> nodeList = new List<GameObject>();
     //销毁下拉列表GO
@@ -35,6 +51,8 @@ public class NewArticleView : MonoBehaviour
     }
     object CallBack(NewArticleListJson article)
     {
+        StopLoadingAnim();
+
         thisArticle = article;
         RefreshList(article);
         return null;

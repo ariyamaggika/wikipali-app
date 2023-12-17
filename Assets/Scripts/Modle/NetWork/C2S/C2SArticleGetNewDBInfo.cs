@@ -240,7 +240,7 @@ public class C2SArticleGetNewDBInfo
         HttpClient client = new HttpClient();
         string communityDicJson = "";
 
-        client.Get(new System.Uri(string.Format(@"https://next.wikipali.cc/api/v2/progress?view=chapter&lang={0}&channel_type=translation&limit={1}&offset=0", "zh", 10)),
+        client.Get(new System.Uri(string.Format(@"https://next.wikipali.org/api/v2/progress?view=chapter&lang={0}&channel_type=translation&limit={1}&offset=0", "zh", 10)),
             HttpCompletionOption.StreamResponseContent, (r) =>
             {
                 //RightText.text = "Download: " + r.PercentageComplete.ToString() + "%";
