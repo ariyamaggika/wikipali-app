@@ -190,7 +190,7 @@ public class ArticleController
         public bool isGetChannelData = false;
     }
     public List<Book> currentBookList;
-    //获取level<=2的所有书籍&章节
+    //获取level<=2的所有书籍&章节 
     public List<Book> GetBooks(ArticleTreeNode node)
     {
         List<Book> res = new List<Book>();
@@ -412,7 +412,7 @@ public class ArticleController
     //由于文字过长无法显示的问题，每50行，返回一个数组
     //todo 用行数衡量是否不准，是否需要改为字节数量
     //return 显示用的文章List，分享用的句子List
-    public (List<string>, List<string>) GetPaliContentTransText(Book book, ChannelChapterDBData channel, bool isTrans)
+    public (List<string>, List<string>) GetPaliContentTransText(Book book, ChannelChapterDBData channel, bool isTrans, List<SentenceDBData> sentenceTransOnline = null)
     {
         if (book == null)
             return (null, null);
@@ -424,7 +424,12 @@ public class ArticleController
         List<SentenceDBData> sentence = GetPaliSentenceByBook(book);
         List<SentenceDBData> sentenceTrans = null;
         if (isTrans)
-            sentenceTrans = GetPaliSentenceTranslateByBookChannel(book, channel);
+        {
+            if (sentenceTransOnline != null)
+                sentenceTrans = sentenceTransOnline;
+            else
+                sentenceTrans = GetPaliSentenceTranslateByBookChannel(book, channel);
+        }
         if (sentence == null || sentence.Count == 0)
             return (null, null);
         List<string> res = new List<string>();
@@ -438,7 +443,6 @@ public class ArticleController
             tl = sentenceTrans.Count;
         int lineCount = 0;
         ArticleMarkdownTMPManager.Instance().ClearMarkdownInfo();
-
         for (int i = 0; i < l; i++)
         {
             if (!isTrans || transContent)
@@ -472,6 +476,7 @@ public class ArticleController
             if (isTrans)
                 for (int j = 0; j < tl; j++)
                 {
+                    //此处解决：有可能有某句pali没有翻译，空了一段，这时翻译和原文就对不上了，需要按照word start一一对应pali原文和译文，严重问题
                     if (sentenceTrans[j].paragraph == sentence[i].paragraph && sentenceTrans[j].word_start == sentence[i].word_start)
                     {
                         //sb.AppendLine();
@@ -523,5 +528,6 @@ public class ArticleController
         sb.Clear();
         return (res, sentenceRes);
     }
+
     #endregion
 }

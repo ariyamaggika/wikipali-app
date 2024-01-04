@@ -94,14 +94,14 @@ public class NextPrevGroupView : MonoBehaviour
                 {
                     //todo:在此处获取channelData是否合适
                     cDatas[i].channelData = ArticleManager.Instance().GetChannelDataByID(cDatas[i].channel_id);
-                    articleView.ShowPaliContentTrans(prevBook, cDatas[i], true);
+                    articleView.contentView.ShowPaliContentTrans(prevBook, cDatas[i], true);
                     articleView.SetTitleRootPath(true, cDatas[i].channelData.name);
                     return;
                 }
             }
         }
         /// else
-        articleView.ShowPaliContentTrans(prevBook, null, false);
+        articleView.contentView.ShowPaliContentTrans(prevBook, null, false);
         articleView.SetTitleRootPath(false,"");
     }
     public void OnNextBtnClick()
@@ -118,14 +118,14 @@ public class NextPrevGroupView : MonoBehaviour
                 {
                     //todo:在此处获取channelData是否合适
                     cDatas[i].channelData = ArticleManager.Instance().GetChannelDataByID(cDatas[i].channel_id);
-                    articleView.ShowPaliContentTrans(nextBook, cDatas[i], true);
+                    articleView.contentView.ShowPaliContentTrans(nextBook, cDatas[i], true);
                     articleView.SetTitleRootPath(true, cDatas[i].channelData.name);
                     return;
                 }
             }
         }
         /// else
-        articleView.ShowPaliContentTrans(nextBook, null, false);
+        articleView.contentView.ShowPaliContentTrans(nextBook, null, false);
         articleView.SetTitleRootPath(false,"");
     }
     public void SetAllBtnOff()

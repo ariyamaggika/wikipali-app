@@ -600,7 +600,7 @@ public class SpeechManager : MonoBehaviour
             if (!aus.isPlaying)//transACList[highLightTransID].length <= aus.time)
             {
                 isStartHighLight = false;
-                ArticleManager.Instance().articleView.RestoreTextHighLight();
+                ArticleManager.Instance().articleView.contentView.RestoreTextHighLight();
                 return;
             }
         }
@@ -632,7 +632,7 @@ public class SpeechManager : MonoBehaviour
         {
             //Debug.LogError(curwordBoundary.Text);
             ReadTextInfo info = transList[highLightTransID];
-            ArticleManager.Instance().articleView.SetTextHighLight(info.textID, info.offsetIndex + (int)curwordBoundary.TextOffset/*+15*/, (int)curwordBoundary.WordLength);
+            ArticleManager.Instance().articleView.contentView.SetTextHighLight(info.textID, info.offsetIndex + (int)curwordBoundary.TextOffset/*+15*/, (int)curwordBoundary.WordLength);
             Debug.LogError(info.offsetIndex);
             Debug.LogError((int)curwordBoundary.TextOffset);
             Debug.LogError("??????????????????????????????");
@@ -649,7 +649,7 @@ public class SpeechManager : MonoBehaviour
             if (!aus.isPlaying)
             {
                 isStartHighLight = false;
-                ArticleManager.Instance().articleView.RestoreTextHighLight();
+                ArticleManager.Instance().articleView.contentView.RestoreTextHighLight();
                 return;
             }
         }
@@ -703,7 +703,7 @@ public class SpeechManager : MonoBehaviour
             //Debug.LogError("iID:" + iID);
             //Debug.LogError("Length:" + orignArr[rSpaceID].Length);
             //todo 换成TMP之后富文本朗读高亮会有错位问题
-            ArticleManager.Instance().articleView.SetTextHighLight(info.textID,
+            ArticleManager.Instance().articleView.contentView.SetTextHighLight(info.textID,
                 info.offsetIndex + iID+CommonTool.COLOR_BROWN_FLAG.Length, orignArr[rSpaceID].Length);
             //        ArticleManager.Instance().articleView.SetTextHighLight(0,
             //0 + 1, 3);

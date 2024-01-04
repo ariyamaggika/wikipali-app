@@ -35,8 +35,8 @@ public class ItemDicGroupPopView : MonoBehaviour
         if (articleGroupInfo.bookTitleList != null)
             wordCountText.text = articleGroupInfo.bookTitleList.Count.ToString();
         wordGroupName.text = articleGroupInfo.groupName;
-        Book currentBook = articleView.currentBook;
-        ChapterDBData currentChapterData = articleView.currentChapterData;
+        Book currentBook = articleView.contentView.currentBook;
+        ChapterDBData currentChapterData = articleView.contentView.currentChapterData;
         string channelID = currentChapterData == null ? "" : currentChapterData.id;
         bool isOn = ArticleManager.Instance().IsContainsArticle(articleGroupInfo.groupID, currentBook.translateName,currentBook.id, currentBook.paragraph, currentBook.chapter_len, channelID);
         SetToggleValue(isOn);

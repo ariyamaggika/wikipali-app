@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour
     {
         yield return null;
         mainView.SetArticleOn();
-        mainView.articleView.ShowPaliContentFromStar(bookID, bookParagraph, bookChapterLen, channelId);
+        mainView.articleView.contentView.ShowPaliContentFromStar(bookID, bookParagraph, bookChapterLen, channelId);
     }
     public void ShowDicWord(string word)
     {

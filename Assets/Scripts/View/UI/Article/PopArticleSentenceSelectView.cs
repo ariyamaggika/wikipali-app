@@ -26,11 +26,11 @@ public class PopArticleSentenceSelectView : MonoBehaviour
     Book currentBook;
     public void Init()
     {
-        content = articleView.articleContent;
+        content = articleView.contentView.articleContent;
         RefreshGroupList();
         shareView.gameObject.SetActive(true);
-        currentChapterData = articleView.currentChapterData;
-        currentBook = articleView.currentBook;
+        currentChapterData = articleView.contentView.currentChapterData;
+        currentBook = articleView.contentView.currentBook;
     }
     bool isSelectedAll = false;
     public void OnSelectAllBtnClick()

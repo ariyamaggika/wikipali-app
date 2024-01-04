@@ -481,6 +481,17 @@ public class ArticleManager
         public int word_start;
         public int word_end;
         public string content;
+        public SentenceDBData()
+        { 
+        }
+        public SentenceDBData(int _bookID, int _paragraph, int _word_start, int _word_end, string _content)
+        {
+            bookID = _bookID;
+            paragraph = _paragraph;
+            word_start = _word_start;
+            word_end = _word_end;
+            content = _content;
+        }
     }
     public List<SentenceDBData> GetPaliSentenceByBookParagraph(int bookID, int min, int max)
     {
@@ -530,7 +541,7 @@ public class ArticleManager
                     string content = "";
                     if (paliPairs[p].ContainsKey("content"))
                         content = paliPairs[p]["content"].ToString();
-                        SentenceDBData s = new SentenceDBData()
+                    SentenceDBData s = new SentenceDBData()
                     {
                         //id = paliPairs[p]["id"].ToString(),
                         bookID = int.Parse(paliPairs[p]["book"].ToString()),
@@ -679,7 +690,7 @@ public class ArticleManager
         PlayerPrefsX.SetStringArray("channelID" + groupID, allArticleGroup[groupID].channelIDList.ToArray());
         PlayerPrefsX.SetStringArray("channelName" + groupID, allArticleGroup[groupID].channelNameList.ToArray());
     }
-    public void AddArticle(int groupID, string articleTitle, int bookID, int bookParagraph, int bookChapterLen, string channelID,string channelName)
+    public void AddArticle(int groupID, string articleTitle, int bookID, int bookParagraph, int bookChapterLen, string channelID, string channelName)
     {
         allArticleGroup[groupID].bookTitleList.Add(articleTitle);
         allArticleGroup[groupID].bookIDList.Add(bookID);

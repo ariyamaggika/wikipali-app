@@ -149,43 +149,47 @@ public class C2SArticleGetNewDBInfo
     }
     #endregion
     #region 获取文章Sentence内容
+    [Serializable]
     public class SentenceDataListJson
     {
         public bool ok;
+        public SentenceDataRowsJson data;
         public string message;
-        public List<SentenceDataJson> data;
     }
+    [Serializable]
+    public class SentenceDataRowsJson
+    {
+        public int count;
+        public List<SentenceDataJson> rows;
+    }
+    [Serializable]
     public class SentenceDataJson
     {
-        public string uid;
-        public string book_id;
-        public string paragraph;
-        public string word_start;
-        public string word_end;
-        public string content;
-        public string content_type;
-        public string channel_uid;
-        public string editor_uid;
-        public string language;
-        public string updated_at;
-        public string created_at;
+        public string id;
+        public string html;
+        public int book;
+        public int paragraph;
+        public int word_start;
+        public int word_end;
     }
 
-    //https://staging.wikipali.org/api/v2/sentence?view=chapter&book=1&para=1&channels=1&html=true&format=unity
-    public static void GetSentenceData(int bookID, string channelID, int parMin, int parMax)
+    //https://staging.wikipali.org/api/v2/sentence?view=paragraph&book=66&para=1182,1183&channels=7fea264d-7a26-40f8-bef7-bc95102760fb&html=true&format=unity
+    public static void GetSentenceData(int bookID, string channelID, int parMin, int parMax, Func<List<SentenceDBData>, object> callback)
     {
         string parList = "";
         for (int i = parMin; i < parMax + 1; i++)
         {
             parList += i;
-            if (i == parMax)
+            if (i != parMax)
             {
                 parList += ",";
             }
         }
         HttpClient client = new HttpClient();
+        string allJson = "";
 
-        client.Get(new System.Uri(string.Format(@"https://staging.wikipali.org/api/v2/sentence?view=chapter&book={0}&para={1}&channels={2}&html=true&format=unity", bookID, parList, channelID)),
+        client.Get(new System.Uri(string.Format(@"https://next.wikipali.org/api/v2/sentence?view=paragraph&book={0}&para={1}&channels={2}&html=true&format=unity", bookID, parList, channelID)),
+        //client.Get(new System.Uri(@"https://next.wikipali.org/api/v2/sentence?view=paragraph&book=66&para=1182,1183&channels=7fea264d-7a26-40f8-bef7-bc95102760fb&html=true&format=unity"),
             HttpCompletionOption.StreamResponseContent, (r) =>
             {
                 //RightText.text = "Download: " + r.PercentageComplete.ToString() + "%";
@@ -193,6 +197,21 @@ public class C2SArticleGetNewDBInfo
                 byte[] responseData = r.ReadAsByteArray();
                 string json = Encoding.Default.GetString(responseData);
                 Debug.LogError(json);
+                allJson += json;
+                if (json.Contains("\"message\":\"\"}"))
+                {
+                    SentenceDataListJson dataList = JsonUtility.FromJson<SentenceDataListJson>(allJson);
+                    List<SentenceDBData> sentenceTransOnline = new List<SentenceDBData>();
+                    int c = dataList.data.rows.Count;
+                    for (int i = 0; i < c; i++)
+                    {
+                        SentenceDataJson ad = dataList.data.rows[i];
+                        SentenceDBData data = new SentenceDBData(ad.book,
+                          ad.paragraph, ad.word_start, ad.word_end,ad.html);
+                        sentenceTransOnline.Add(data);
+                    }
+                    callback(sentenceTransOnline);
+                }
             });
     }
 
@@ -238,7 +257,7 @@ public class C2SArticleGetNewDBInfo
     public static void GetNewArticleList(Func<NewArticleListJson, object> callback)
     {
         HttpClient client = new HttpClient();
-        string communityDicJson = "";
+        string allJson = "";
 
         client.Get(new System.Uri(string.Format(@"https://next.wikipali.org/api/v2/progress?view=chapter&lang={0}&channel_type=translation&limit={1}&offset=0", "zh", 10)),
             HttpCompletionOption.StreamResponseContent, (r) =>
@@ -247,12 +266,12 @@ public class C2SArticleGetNewDBInfo
                 //ProgressSlider.value = 100 - r.PercentageComplete;
                 byte[] responseData = r.ReadAsByteArray();
                 string json = Encoding.Default.GetString(responseData);
-                communityDicJson += json;
+                allJson += json;
                 //Debug.LogError(json);
                 if (json.Contains("\"message\":\"\"}"))
                 {
-                    NewArticleListJson wordList = JsonUtility.FromJson<NewArticleListJson>(communityDicJson);
-                    callback(wordList);
+                    NewArticleListJson dataList = JsonUtility.FromJson<NewArticleListJson>(allJson);
+                    callback(dataList);
                 }
             });
     }

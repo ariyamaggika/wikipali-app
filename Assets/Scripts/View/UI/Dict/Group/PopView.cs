@@ -86,9 +86,9 @@ public class PopView : MonoBehaviour
         int l = itemList.Count;
         bool isDirty = false;
 
-        Book currentBook = articleView.currentBook;
-        string channelID = articleView.currentChannelId;
-        string channelName = articleView.currentChannelName;
+        Book currentBook = articleView.contentView.currentBook;
+        string channelID = articleView.contentView.currentChannelId;
+        string channelName = articleView.contentView.currentChannelName;
         for (int i = 0; i < l; i++)
         {
 
