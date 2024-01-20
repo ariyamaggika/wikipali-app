@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -6,12 +6,12 @@ using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.Networking;
 using static ArticleController;
-//°æ±¾¸üĞÂ
+//ç‰ˆæœ¬æ›´æ–°
 public class UpdateManager
 {
     private UpdateManager() { }
     private static UpdateManager manager = null;
-    //¾²Ì¬¹¤³§·½·¨ 
+    //é™æ€å·¥å‚æ–¹æ³• 
     public static UpdateManager Instance()
     {
         if (manager == null)
@@ -20,8 +20,8 @@ public class UpdateManager
         }
         return manager;
     }
-    #region ¸üĞÂAPKÓë°æ±¾ÓëAzureµÈ
-    //°²×°APK
+    #region æ›´æ–°APKä¸ç‰ˆæœ¬ä¸Azureç­‰
+    //å®‰è£…APK
     public bool InstallApk(string apkPath)
     {
         AndroidJavaClass javaClass = new AndroidJavaClass("com.wikipali.apkupdatelibrary.Install");
@@ -43,15 +43,15 @@ public class UpdateManager
         }
         else
         {
-            //print("ÒÑ¾­´æÔÚ£¬");
+            //print("å·²ç»å­˜åœ¨ï¼Œ");
         }
     }
     public UpdateInfo currentUInfo;
     public OtherInfo currentOInfo;
-    //µã»÷¼ì²â¸üĞÂ
+    //ç‚¹å‡»æ£€æµ‹æ›´æ–°
     public void CheckUpdateOpenPage(MonoBehaviour ui)
     {
-        ////²âÊÔ´úÂë
+        ////æµ‹è¯•ä»£ç 
         //UITool.ShowToastMessage(ui, Application.internetReachability.ToString(), 35);
 
         //try
@@ -60,12 +60,12 @@ public class UpdateManager
         //    PingReply pr = ping.Send("www.baidu.com", 3000);
         //    if (pr.Status == IPStatus.Success)
         //    {
-        //        UITool.ShowToastMessage(ui, "ping³É¹¦", 35);
+        //        UITool.ShowToastMessage(ui, "pingæˆåŠŸ", 35);
         //        return ;
         //    }
         //    else
         //    {
-        //        UITool.ShowToastMessage(ui, "pingÊ§°Ü", 35);
+        //        UITool.ShowToastMessage(ui, "pingå¤±è´¥", 35);
         //        return;
         //    }
         //}
@@ -77,14 +77,14 @@ public class UpdateManager
 
         if (!NetworkMangaer.Instance().CheckIsHaveNetwork())
         {
-            UITool.ShowToastMessage(ui, "ÎŞÍøÂçÁ¬½Ó", 35);
+            UITool.ShowToastMessage(ui, "æ— ç½‘ç»œè¿æ¥", 35);
             return;
             // return false;
         }
         GetUpdateInfo();
 
     }
-    //´ò¿ªApp×Ô¶¯¼ì²â¸üĞÂÏÔÊ¾ºìµã
+    //æ‰“å¼€Appè‡ªåŠ¨æ£€æµ‹æ›´æ–°æ˜¾ç¤ºçº¢ç‚¹
     public void CheckUpdateRedPoint()
     {
         if (!NetworkMangaer.Instance().CheckIsHaveNetwork())
@@ -99,28 +99,28 @@ public class UpdateManager
     public class UpdateInfo
     {
         public string version;
-        public string apkSize;//°üÌå´óĞ¡
-        public string downLoadUrl1;//¹úÄÚ
-        public string downLoadUrl2;//¹úÍâ
-        public string updateContent;//¸üĞÂÄÚÈİ
+        public string apkSize;//åŒ…ä½“å¤§å°
+        public string downLoadUrl1;//å›½å†…
+        public string downLoadUrl2;//å›½å¤–
+        public string updateContent;//æ›´æ–°å†…å®¹
     }
-    //const string UPDATE_ONFO_URl_1 = "https://gitee.com/wolf96/wikipali-app/releases/download/version/version.txt";//¹úÄÚ
-    //const string UPDATE_ONFO_URl_1 = "https://gitee.com/wolf96/wikipali-app/releases/download/apk/wpa_T_1.0.1.apk";//¹úÄÚ
-    //ºìµãĞÅÏ¢
-    const string UPDATE_INFO_URl_1 = "https://gitee.com/wolf96/wikipali-app/raw/main/version.txt";//¹úÄÚ
-    //const string UPDATE_ONFO_URl_2 = "https://github.com/ariyamaggika/wikipali-app/releases/download/apk/version.txt";//¹úÍâ
-    const string UPDATE_INFO_URl_2 = "https://raw.githubusercontent.com/ariyamaggika/wikipali-app/master/version.txt";//¹úÍâ
+    //const string UPDATE_ONFO_URl_1 = "https://gitee.com/wolf96/wikipali-app/releases/download/version/version.txt";//å›½å†…
+    //const string UPDATE_ONFO_URl_1 = "https://gitee.com/wolf96/wikipali-app/releases/download/apk/wpa_T_1.0.1.apk";//å›½å†…
+    //çº¢ç‚¹ä¿¡æ¯
+    const string UPDATE_INFO_URl_1 = "https://gitee.com/wolf96/wikipali-app/raw/main/version.txt";//å›½å†…
+    //const string UPDATE_ONFO_URl_2 = "https://github.com/ariyamaggika/wikipali-app/releases/download/apk/version.txt";//å›½å¤–
+    const string UPDATE_INFO_URl_2 = "https://raw.githubusercontent.com/ariyamaggika/wikipali-app/master/version.txt";//å›½å¤–
 
-    const string AZURE_INFO_URl_1 = "https://gitee.com/wolf96/wikipali-app/raw/main/font.font";//¹úÄÚ
-    const string AZURE_INFO_URl_2 = "https://raw.githubusercontent.com/ariyamaggika/wikipali-app/master/font.font";//¹úÍâ
-    //ÆäËûĞÅÏ¢
-    const string OTHER_INFO_URl_1 = "https://gitee.com/wolf96/wikipali-app/raw/main/info.txt";//¹úÄÚ
-    const string OTHER_INFO_URl_2 = "https://raw.githubusercontent.com/ariyamaggika/wikipali-app/master/info.txt";//¹úÍâ
+    const string AZURE_INFO_URl_1 = "https://gitee.com/wolf96/wikipali-app/raw/main/font.font";//å›½å†…
+    const string AZURE_INFO_URl_2 = "https://raw.githubusercontent.com/ariyamaggika/wikipali-app/master/font.font";//å›½å¤–
+    //å…¶ä»–ä¿¡æ¯
+    const string OTHER_INFO_URl_1 = "https://gitee.com/wolf96/wikipali-app/raw/main/info.txt";//å›½å†…
+    const string OTHER_INFO_URl_2 = "https://raw.githubusercontent.com/ariyamaggika/wikipali-app/master/info.txt";//å›½å¤–
 
 
     /// <summary>
-    /// »ñÈ¡¸üĞÂĞÅÏ¢ÏÔÊ¾ºìµã
-    /// ´ÓÍøÕ¾ÉÏ»ñÈ¡°æ±¾ºÅ&¹úÄÚ¹úÍâÏÂÔØµØÖ·W
+    /// è·å–æ›´æ–°ä¿¡æ¯æ˜¾ç¤ºçº¢ç‚¹
+    /// ä»ç½‘ç«™ä¸Šè·å–ç‰ˆæœ¬å·&å›½å†…å›½å¤–ä¸‹è½½åœ°å€W
     /// </summary>
     public void GetUpdateInfoRedPoint()
     {
@@ -128,7 +128,7 @@ public class UpdateManager
         dm.DownLoad(Application.persistentDataPath, UPDATE_INFO_URl_1, OnDownLoadVersionOverRedPoint, "version.txt");
     }
     /// <summary>
-    /// ÏÂÔØAzureKey
+    /// ä¸‹è½½AzureKey
     /// </summary>
     public void GetAzureKey()
     {
@@ -151,12 +151,12 @@ public class UpdateManager
                 CreatQR.CreatQr();
                 if (uInfo.version == GameManager.Instance().appVersion)
                 {
-                    // UITool.ShowToastMessage(GameManager.Instance(), "µ±Ç°ÒÑÊÇ×îĞÂ°æ±¾", 35);
+                    // UITool.ShowToastMessage(GameManager.Instance(), "å½“å‰å·²æ˜¯æœ€æ–°ç‰ˆæœ¬", 35);
                     return false;
                 }
                 else
                 {
-                    //ÏÔÊ¾ºìµã
+                    //æ˜¾ç¤ºçº¢ç‚¹
                     GameManager.Instance().ShowSettingViewUpdateRedPoint();
                     return true;
                 }
@@ -164,7 +164,7 @@ public class UpdateManager
             else
             {
                 return null;
-                // UITool.ShowToastMessage(GameManager.Instance(), "ÎŞÍøÂçÁ¬½Ó", 35);
+                // UITool.ShowToastMessage(GameManager.Instance(), "æ— ç½‘ç»œè¿æ¥", 35);
             }
         }
 
@@ -194,15 +194,15 @@ public class UpdateManager
         return null;
     }
     /// <summary>
-    /// »ñÈ¡¸üĞÂĞÅÏ¢ÏêÇé½çÃæ
-    /// ´ÓÍøÕ¾ÉÏ»ñÈ¡°æ±¾ºÅ&¹úÄÚ¹úÍâÏÂÔØµØÖ·W
+    /// è·å–æ›´æ–°ä¿¡æ¯è¯¦æƒ…ç•Œé¢
+    /// ä»ç½‘ç«™ä¸Šè·å–ç‰ˆæœ¬å·&å›½å†…å›½å¤–ä¸‹è½½åœ°å€W
     /// </summary>
     public UpdateInfo GetUpdateInfo()
     {
         UpdateInfo uInfo = new UpdateInfo();
         DownloadManager dm = new DownloadManager();
         dm.DownLoad(Application.persistentDataPath, UPDATE_INFO_URl_1, OnDownLoadVersionOver, "version.txt");
-        //ÏÂÔØ°æ±¾ĞÅÏ¢
+        //ä¸‹è½½ç‰ˆæœ¬ä¿¡æ¯
         return uInfo;
     }
     object OnDownLoadVersionOver(object _realSavePath)
@@ -220,7 +220,7 @@ public class UpdateManager
                 uInfo.apkSize = lines[1];
                 uInfo.downLoadUrl1 = lines[3];
                 uInfo.downLoadUrl2 = lines[4];
-                uInfo.updateContent += "¸üĞÂÄÚÈİ£º\r\n";
+                uInfo.updateContent += "æ›´æ–°å†…å®¹ï¼š\r\n";
                 for (int i = 5; i < lines.Length; i++)
                 {
                     uInfo.updateContent += lines[i] + "\r\n";
@@ -228,38 +228,38 @@ public class UpdateManager
                 currentUInfo = uInfo;
                 if (uInfo.version == GameManager.Instance().appVersion)
                 {
-                    UITool.ShowToastMessage(GameManager.Instance(), "µ±Ç°ÒÑÊÇ×îĞÂ°æ±¾", 35);
+                    UITool.ShowToastMessage(GameManager.Instance(), "å½“å‰å·²æ˜¯æœ€æ–°ç‰ˆæœ¬", 35);
                     return false;
                 }
                 else
                 {
                     currentUInfo = uInfo;
-                    //µã¿ª¸üĞÂÄÚÈİÒ³Ãæ
+                    //ç‚¹å¼€æ›´æ–°å†…å®¹é¡µé¢
                     GameManager.Instance().ShowSettingViewUpdatePage(currentUInfo);
                     return true;
                 }
             }
             else
             {
-                UITool.ShowToastMessage(GameManager.Instance(), "ÎŞÍøÂçÁ¬½Ó", 35);
+                UITool.ShowToastMessage(GameManager.Instance(), "æ— ç½‘ç»œè¿æ¥", 35);
             }
         }
 
         return null;
     }
-    //ÀëÏß°üÁ÷³Ì
-    //1.½øapp¸úËæºìµãÁ÷³Ì£¬ÏÈÏÂÔØ£¬ÔÚsettingviewÉèÖÃºìµã
-    //2.µã»÷ÀëÏß°ü°´Å¥£¬ÅĞ¶ÏºìµãÁ÷³ÌÊÇ·ñÏÂÔØÁËÎÄ¼ş£¬Èç¹ûÎ´ÏÂÔØ£¬¾ÍÔÙÏÂÔØÒ»±é
-    //3.ÅĞ¶ÏÈÕÆÚÊÇ·ñ²»Í¬£¬ÈÕÆÚÏàÍ¬µ¯³öÌáÊ¾£¬ÈÕÆÚ²»Í¬¾ÍÄÜµã½øÈ¥£¬ÏÔÊ¾chapterÊıÁ¿²îºÍ°üÌå´óĞ¡
-    //4.µã»÷ÏÂÔØ°´Å¥ÏÂÔØÀëÏß°ü
-    //5.ÏÂÔØºó½âÑ¹Ëõ£¬Ìæ»»Î»ÖÃ£¬É¾³ıÑ¹Ëõ°ü
+    //ç¦»çº¿åŒ…æµç¨‹
+    //1.è¿›appè·Ÿéšçº¢ç‚¹æµç¨‹ï¼Œå…ˆä¸‹è½½ï¼Œåœ¨settingviewè®¾ç½®çº¢ç‚¹
+    //2.ç‚¹å‡»ç¦»çº¿åŒ…æŒ‰é’®ï¼Œåˆ¤æ–­çº¢ç‚¹æµç¨‹æ˜¯å¦ä¸‹è½½äº†æ–‡ä»¶ï¼Œå¦‚æœæœªä¸‹è½½ï¼Œå°±å†ä¸‹è½½ä¸€é
+    //3.åˆ¤æ–­æ—¥æœŸæ˜¯å¦ä¸åŒï¼Œæ—¥æœŸç›¸åŒå¼¹å‡ºæç¤ºï¼Œæ—¥æœŸä¸åŒå°±èƒ½ç‚¹è¿›å»ï¼Œæ˜¾ç¤ºchapteræ•°é‡å·®å’ŒåŒ…ä½“å¤§å°
+    //4.ç‚¹å‡»ä¸‹è½½æŒ‰é’®ä¸‹è½½ç¦»çº¿åŒ…
+    //5.ä¸‹è½½åè§£å‹ç¼©ï¼Œæ›¿æ¢ä½ç½®ï¼Œåˆ é™¤å‹ç¼©åŒ…
     public class OtherInfo
     {
-        public string offlinePackIndexUrl;//ÀëÏß°üindex.Json
-        //public string offlinePackUrl;//ÀëÏß°üURLÇ°×º
-        public OfflinePackInfoJson json;//indexĞÅÏ¢
-        public string privacyUrl;//ÒşË½Õş²ßÍøÕ¾µØÖ·
-        public int privacyVersion;//ÒşË½Õş²ß°æ±¾ºÅ
+        public string offlinePackIndexUrl;//ç¦»çº¿åŒ…index.Json
+        //public string offlinePackUrl;//ç¦»çº¿åŒ…URLå‰ç¼€
+        public OfflinePackInfoJson json;//indexä¿¡æ¯
+        public string privacyUrl;//éšç§æ”¿ç­–ç½‘ç«™åœ°å€
+        public int privacyVersion;//éšç§æ”¿ç­–ç‰ˆæœ¬å·
     }
 
     public void GetOtherInfo()
@@ -286,12 +286,12 @@ public class UpdateManager
                 oInfo.privacyVersion = int.Parse(lines[3]);
                 currentOInfo = oInfo;
                 GetOfflinePackIndex(oInfo.offlinePackIndexUrl);
-                //¼ì²âÒşË½Õş²ß
+                //æ£€æµ‹éšç§æ”¿ç­–
                 GameManager.Instance().CheckPrivacyVersion(oInfo.privacyVersion,oInfo.privacyUrl);
             }
             else
             {
-                UITool.ShowToastMessage(GameManager.Instance(), "ÎŞÍøÂçÁ¬½Ó", 35);
+                UITool.ShowToastMessage(GameManager.Instance(), "æ— ç½‘ç»œè¿æ¥", 35);
             }
         }
 
@@ -311,7 +311,7 @@ public class UpdateManager
     {
         public string filename;
         public List<OfflinePackInfoURLJson> url;
-        public string create_at;//ÒşË½Õş²ßÍøÕ¾µØÖ·
+        public string create_at;//éšç§æ”¿ç­–ç½‘ç«™åœ°å€
         public int chapter;
         public int filesize;//size/1024/1024
         public string min_app_ver;
@@ -319,7 +319,7 @@ public class UpdateManager
     [Serializable]
     public class OfflinePackInfoURLJson
     {
-        public string link;//ÏÂÔØÁ´½Ó
+        public string link;//ä¸‹è½½é“¾æ¥
         public string hostname;
 
     }
@@ -328,7 +328,7 @@ public class UpdateManager
         OfflinePackInfoJson indexJson = new OfflinePackInfoJson();
         DownloadManager dm = new DownloadManager();
         dm.DownLoad(Application.persistentDataPath, url, OnDownLoadIndexJsonOver, "index.json");
-        //ÏÂÔØ°æ±¾ĞÅÏ¢
+        //ä¸‹è½½ç‰ˆæœ¬ä¿¡æ¯
         return indexJson;
     }
     //bool showOfflinwPackVerLog = false;
@@ -341,14 +341,14 @@ public class UpdateManager
             string lines = File.ReadAllText(realSavePath);
             if (!string.IsNullOrEmpty(lines))
             {
-                //È¥µôÊ×Î²´óÀ¨ºÅ
+                //å»æ‰é¦–å°¾å¤§æ‹¬å·
                 lines = lines.Substring(1).Substring(0, lines.Length - 2);
                 OfflinePackInfoJson indexJson = JsonUtility.FromJson<OfflinePackInfoJson>(lines);
                 currentOInfo.json = indexJson;
                 if (indexJson.create_at == SettingManager.Instance().GetDBPackTime())
                 {
                     //if(showOfflinwPackVerLog)
-                    //{ UITool.ShowToastMessage(GameManager.Instance(), "µ±Ç°ÒÑÊÇ×îĞÂ°æ±¾", 35);
+                    //{ UITool.ShowToastMessage(GameManager.Instance(), "å½“å‰å·²æ˜¯æœ€æ–°ç‰ˆæœ¬", 35);
                     //showOfflinwPackVerLog = false;
                     //    }
                     return false;
@@ -361,7 +361,7 @@ public class UpdateManager
             }
             else
             {
-                UITool.ShowToastMessage(GameManager.Instance(), "ÎŞÍøÂçÁ¬½Ó", 35);
+                UITool.ShowToastMessage(GameManager.Instance(), "æ— ç½‘ç»œè¿æ¥", 35);
             }
         }
         return null;
@@ -377,28 +377,28 @@ public class UpdateManager
         return null;
     }
     #endregion
-    #region ¸üĞÂ·şÎñ¶ËÊı¾İ
-    //¸üĞÂChannel
-    //Á÷³Ì
-    //1.±¾µØ´æÒ»¸öÊ±¼äµã£¬ºÍchannel°²×°°ü
-    //2.Ã¿´Î¸üĞÂchannl£¬¸üĞÂÊ±¼äµãµ½ÏÖÔÚµÄËùÓĞÊı¾İ
-    //3.³É¹¦±£´æÊı¾İºó£¬Í¬²½Ê±¼äµãÎªÏÖÔÚÊ±¼ä
-    #region channel²¿·Ö
+    #region æ›´æ–°æœåŠ¡ç«¯æ•°æ®
+    //æ›´æ–°Channel
+    //æµç¨‹
+    //1.æœ¬åœ°å­˜ä¸€ä¸ªæ—¶é—´ç‚¹ï¼Œå’Œchannelå®‰è£…åŒ…
+    //2.æ¯æ¬¡æ›´æ–°channlï¼Œæ›´æ–°æ—¶é—´ç‚¹åˆ°ç°åœ¨çš„æ‰€æœ‰æ•°æ®
+    //3.æˆåŠŸä¿å­˜æ•°æ®åï¼ŒåŒæ­¥æ—¶é—´ç‚¹ä¸ºç°åœ¨æ—¶é—´
+    #region channeléƒ¨åˆ†
 
     #endregion
-    #region ÀëÏßÊı¾İ¿â°ü
-    //Á÷³Ì
-    //1.½øappÊ±ÏÂÔØjson£¬±È¶ÔÊ±¼äºÍchapterÊıÁ¿£¬²»Ò»ÖÂ¾Í±êºìµã
-    //2.µã½øÈ¥±ê×¢°üÌå´óĞ¡ÓëchapterÊıÁ¿±È¶Ô£¬
-    //3.µã»÷ÏÂÔØºó£¬Èç¹ûÓĞ¾ÍÉ¾³ıÉÏ´ÎÑ¹Ëõ°ü£¬ÏÂÔØÑ¹Ëõ°ü
-    //4.½âÑ¹Ñ¹Ëõ°üÌæ»»µ½Êı¾İ¿âÎ»ÖÃ
-    //5.É¾³ıÑ¹Ëõ°ü
+    #region ç¦»çº¿æ•°æ®åº“åŒ…
+    //æµç¨‹
+    //1.è¿›appæ—¶ä¸‹è½½jsonï¼Œæ¯”å¯¹æ—¶é—´å’Œchapteræ•°é‡ï¼Œä¸ä¸€è‡´å°±æ ‡çº¢ç‚¹
+    //2.ç‚¹è¿›å»æ ‡æ³¨åŒ…ä½“å¤§å°ä¸chapteræ•°é‡æ¯”å¯¹ï¼Œ
+    //3.ç‚¹å‡»ä¸‹è½½åï¼Œå¦‚æœæœ‰å°±åˆ é™¤ä¸Šæ¬¡å‹ç¼©åŒ…ï¼Œä¸‹è½½å‹ç¼©åŒ…
+    //4.è§£å‹å‹ç¼©åŒ…æ›¿æ¢åˆ°æ•°æ®åº“ä½ç½®
+    //5.åˆ é™¤å‹ç¼©åŒ…
 
-    //µÚ3&4²½Öè£¬ÏÂÔØÓë½âÑ¹
+    //ç¬¬3&4æ­¥éª¤ï¼Œä¸‹è½½ä¸è§£å‹
     public void UpdateDBPack(string url)
     {
         //GameManager.Instance().StartDownLoadProgress();
-        //ÏÂÔØ
+        //ä¸‹è½½
         DownloadManager dm = new DownloadManager();
         GameManager.Instance().public_dm = dm;
         dm.DownloadPack(GameManager.Instance(), DownLoadDBPackOver, Application.persistentDataPath, url, "Sentence.lzma");
@@ -407,9 +407,9 @@ public class UpdateManager
     {
         GameManager.Instance().DownLoadProgressOver();
         ZipManager.Instance().UnZipDBPack();
-        //½âÑ¹Ñ¹Ëõ°ü
+        //è§£å‹å‹ç¼©åŒ…
         // UpdateManager.Instance().InstallApk(realSavePath);
-        //¸²¸ÇÔ­Ê¼Ñ¹Ëõ°ü
+        //è¦†ç›–åŸå§‹å‹ç¼©åŒ…
         return null;
     }
 

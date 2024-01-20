@@ -120,6 +120,39 @@ public class ArticleContentScrollView : MonoBehaviour
         SettingManager.Instance().SaveOpenLastArticle(book.id, book.paragraph, book.chapter_len, channel);
         //PaliContentText.lin
     }
+    public Book tempBook;
+    public ChapterDBData tempCNode;
+    public void ShowPaliContentTransAgent(Book book, ChapterDBData cNode, bool isTrans)
+    {
+        //有网络的翻译文章全部在线阅读
+        if (NetworkMangaer.Instance().CheckIsHaveNetwork() && isTrans)
+        {
+            BookDBData data = ArticleManager.Instance().GetBookChildrenFromID(book.id, book.paragraph);
+            int chapter_len = 0;
+            if (data != null)
+                 chapter_len = data.chapter_len;
+
+            int paraMin = book.paragraph;
+            int paraMax = book.paragraph + chapter_len;
+            tempBook = book;
+            tempCNode = cNode;
+            C2SArticleGetNewDBInfo.GetSentenceData(book.id, cNode.channel_id, paraMin, paraMax, OnLineArticleCallBack);
+
+        }
+        else
+        {
+            ShowPaliContentTrans(book, cNode, isTrans);
+        }
+
+    }
+    public object OnLineArticleCallBack(List<SentenceDBData> dl)
+    {
+        if (dl != null && dl.Count > 0)
+        {
+            articleView.contentView.ShowPaliContentTransOnline(tempBook, tempCNode, dl, true);
+        }
+        return null;
+    }
     //去掉括号的
     List<string> textBackup = new List<string>();
     //没去掉括号的
@@ -168,7 +201,7 @@ public class ArticleContentScrollView : MonoBehaviour
         nextAndPrevGroupView.SetChapter(book, (isTrans ? channel : ""), isTrans);
         contentViewGO.SetActive(true);
         if (articleView != null)
-        articleView.listViewGO.SetActive(false);
+            articleView.listViewGO.SetActive(false);
         //每50行新建一个text
         List<string> starText;
         List<string> sentence;

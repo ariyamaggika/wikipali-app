@@ -57,6 +57,13 @@ public class StarGroupArticleView : MonoBehaviour
     //}
     public void OnVoiceBtnClick()
     {
+        //判断是否有网
+        if (!NetworkMangaer.Instance().CheckIsHaveNetwork())
+        {
+            UITool.ShowToastMessage(this, "无网络连接", 35);
+            return;
+            // return false;
+        }
         SpeechManager.Instance().ReadArticleSList(ArticleController.Instance().paliSentenceList,
             ArticleController.Instance().transSentenceList, ArticleController.Instance().trans, voiceSource);
     }

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
@@ -8,7 +8,7 @@ public class NetworkMangaer
 {
     private NetworkMangaer() { }
     private static NetworkMangaer manager = null;
-    //¾²Ì¬¹¤³§·½·¨ 
+    //é™æ€å·¥å‚æ–¹æ³• 
     public static NetworkMangaer Instance()
     {
         if (manager == null)
@@ -17,28 +17,28 @@ public class NetworkMangaer
         }
         return manager;
     }
-    //ÅĞ¶Ïµ±Ç°ÊÇ·ñÁªÍø
+    //åˆ¤æ–­å½“å‰æ˜¯å¦è”ç½‘
 
     // Use this for initialization
     public bool NetworkIsWiFi()
     {
-        //µ±ÓÃ»§Ê¹ÓÃWiFiÊ±
+        //å½“ç”¨æˆ·ä½¿ç”¨WiFiæ—¶
         if (Application.internetReachability == UnityEngine.NetworkReachability.ReachableViaLocalAreaNetwork)
         {
             return true;
         }
         return false;
     }
-    //ÅĞ¶Ïµ±Ç°ÊÇ·ñÁªÍø
+    //åˆ¤æ–­å½“å‰æ˜¯å¦è”ç½‘
     public bool CheckIsHaveNetwork()
     {
         if (Application.internetReachability == UnityEngine.NetworkReachability.NotReachable)
         {
-            //     UITool.ShowToastMessage(GameManager.Instance(), "ÎŞÍøÂçÁ¬½Ó", 35);
+            //     UITool.ShowToastMessage(GameManager.Instance(), "æ— ç½‘ç»œè¿æ¥", 35);
 
             return false;
         }
-        // UITool.ShowToastMessage(GameManager.Instance(), "ÓĞÍøÂçÁ¬½Ó", 35);
+        // UITool.ShowToastMessage(GameManager.Instance(), "æœ‰ç½‘ç»œè¿æ¥", 35);
 
         return true;
         //try
@@ -59,7 +59,7 @@ public class NetworkMangaer
         //    return false;
         //}
     }
-    //ÅĞ¶ÏÊÇ·ñÊÇÍâÍø
+    //åˆ¤æ–­æ˜¯å¦æ˜¯å¤–ç½‘
     public bool PingOuterNet()
     {
         if (Application.internetReachability == UnityEngine.NetworkReachability.NotReachable)
@@ -85,8 +85,8 @@ public class NetworkMangaer
         }
     }
 
-    #region ¹¦ÄÜ·½·¨
-    //»ñÈ¡ÉçÇø´Êµä
+    #region åŠŸèƒ½æ–¹æ³•
+    //è·å–ç¤¾åŒºè¯å…¸
     public void GetCommunityDic(string word, Func<string, object> callback)
     {
         if (CheckIsHaveNetwork())

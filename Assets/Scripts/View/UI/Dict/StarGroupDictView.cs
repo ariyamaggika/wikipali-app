@@ -22,6 +22,13 @@ public class StarGroupDictView : MonoBehaviour
     public static string currVoiceWord;
     public void OnVoiceBtnClick()
     {
+        //判断是否有网
+        if (!NetworkMangaer.Instance().CheckIsHaveNetwork())
+        {
+            UITool.ShowToastMessage(this, "无网络连接", 35);
+            return;
+            // return false;
+        }
         string readWord = SpeechGeneration.Instance().ReplaceWord(DictManager.Instance().currWord);
         if (voiceSource.clip != null&& currVoiceWord == readWord)
         {

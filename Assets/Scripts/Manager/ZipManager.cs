@@ -194,6 +194,10 @@ public class ZipManager
         filepath = CommonTool.CopyAndroidPathToPersistent("Sentence.lzma");
         filepath = filepath.Replace("Sentence.lzma","");
         Debug.LogError("复制到" + filepath);
+#elif UNITY_IPHONE
+        filepath = CommonTool.CopyIOSPathToPersistent("Sentence.lzma");
+        filepath = filepath.Replace("Sentence.lzma","");
+        Debug.LogError("复制到IOS" + filepath);
 #endif
         Debug.LogError(filepath + "Sentence.lzma");
         UnzipLZMAFile(filepath + "Sentence.lzma", filepath + "DB/" + "Sentence.db");

@@ -109,7 +109,7 @@ public class ArticleNodeItemView : MonoBehaviour
 #endif
             if (channel != null)    //pali&翻译
             {
-                articleView.contentView.ShowPaliContentTrans(book, channel, true);
+                articleView.contentView.ShowPaliContentTransAgent(book, channel, true);
                 string channelName = "";
                 channelName = channel == null ? "" : (channel.channelData == null ? "" : channel.channelData.name);
                 articleView.SetTitleRootPath(true, channelName);
@@ -117,7 +117,7 @@ public class ArticleNodeItemView : MonoBehaviour
             }
             else                    //pali原文
             {
-                articleView.contentView.ShowPaliContentTrans(book, null, false);
+                articleView.contentView.ShowPaliContentTransAgent(book, null, false);
                 articleView.SetTitleRootPath(false, "");
 
             }
