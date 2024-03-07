@@ -29,11 +29,11 @@ public class CalendarView : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        latText.text = "请您打开手机GPS定位";
-        lngText.text = "请您打开手机GPS定位";
-        sunriseText.text = "请您打开手机GPS定位";
-        solarNoonText.text = "请您打开手机GPS定位";
-        sunsetText.text = "请您打开手机GPS定位";
+        latText.text = "0";
+        lngText.text = "0";
+        sunriseText.text = "请打开GPS定位";
+        solarNoonText.text = "请打开GPS定位";
+        sunsetText.text = "请打开GPS定位";
 
     }
     void Start()

@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         DictManager.Instance().dicStarGroup = dicStarGroup;
         ArticleManager.Instance().articleStarGroup = articleStarGroup;
         ArticleManager.Instance().articleView = articleView;
+        LoadingViewManager.Instance().titleLoadingView = titleLoadingTexView;
     }
     bool isStartUnZipProgress = false;
     bool isDownLoadProgress = false;
@@ -44,6 +45,13 @@ public class GameManager : MonoBehaviour
     {
         initView.gameObject.SetActive(true);
         initView.Init(title);
+        isStartUnZipProgress = true;
+        unZipCallback = callback;
+    }
+    public void StartUnZipWithOutProgress(Func<object> callback)
+    {
+        //initView.gameObject.SetActive(true);
+        //initView.Init(title);
         isStartUnZipProgress = true;
         unZipCallback = callback;
     }
@@ -276,14 +284,4 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region UI
-    public void StartTitleLoading()
-    {
-        titleLoadingTexView.StartLoadingTex();
-    }
-    public void StopTitleLoading()
-    {
-        titleLoadingTexView.StopLoadingTex();
-    }
-    #endregion
 }

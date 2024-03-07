@@ -229,13 +229,22 @@ public class ZipManager
         //删除压缩包
         File.Delete(Application.persistentDataPath + "/Sentence.lzma");
         //更新时间，退出下载界面
-        SettingManager.Instance().SetDBPackTime(UpdateManager.Instance().currentOInfo.json.create_at);
-        SettingManager.Instance().SetDBPackChapterCount(UpdateManager.Instance().currentOInfo.json.chapter);
+        SettingManager.Instance().SetDBPackTime(UpdateManager.Instance().currentOInfo.offlinePackJson.create_at);
+        SettingManager.Instance().SetDBPackChapterCount(UpdateManager.Instance().currentOInfo.offlinePackJson.chapter);
         GameManager.Instance().UpdateSettingViewOfflineDBTimeText();
         GameManager.Instance().HideSettingViewOfflinePackRedPoint();
         GameManager.Instance().HideSettingViewOfflineDBPackPage();
         return null;
     }
+    //解压文件公用方法
+    public void UnZipLZMAFile(string unzipFilePath,string zipedFilePath,Func<object>  unZipOverCallback)
+    {
+        //不弹出初始化面板，后台解压缩
+        GameManager.Instance().StartUnZipWithOutProgress(unZipOverCallback);
+        Debug.LogError(unzipFilePath);
+        UnzipLZMAFile(unzipFilePath, zipedFilePath);
+    }
+
     public int[] lzmafileProgress = new int[1];
     //public ulong[] gzFileProgress = new ulong[1];
     private Thread th = null;

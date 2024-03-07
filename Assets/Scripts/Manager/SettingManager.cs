@@ -395,6 +395,17 @@ public class SettingManager
     {
         PlayerPrefs.SetInt("DBPackChapterCount", count);
     }
+
+
+    //索引包解压时间
+    public string GetIndexPackTime()
+    {
+        return PlayerPrefs.GetString("IndexPackTime");
+    }
+    public void SetIndexPackTime(string time)
+    {
+        PlayerPrefs.SetString("IndexPackTime", time);
+    }
     #endregion
     #endregion
     #region 隐私政策

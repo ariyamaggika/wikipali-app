@@ -157,13 +157,13 @@ public class SettingView : MonoBehaviour
     }
     void OnOfflinePackDownloadBtnClick()
     {
-        if (UpdateManager.Instance().currentOInfo == null || UpdateManager.Instance().currentOInfo.json == null)
+        if (UpdateManager.Instance().currentOInfo == null || UpdateManager.Instance().currentOInfo.offlinePackJson == null)
         {
             UpdateManager.Instance().GetOtherInfo();
         }
-        if (UpdateManager.Instance().currentOInfo == null || UpdateManager.Instance().currentOInfo.json == null)
+        if (UpdateManager.Instance().currentOInfo == null || UpdateManager.Instance().currentOInfo.offlinePackJson == null)
             return;
-        if (UpdateManager.Instance().currentOInfo.json.create_at == SettingManager.Instance().GetDBPackTime())
+        if (UpdateManager.Instance().currentOInfo.offlinePackJson.create_at == SettingManager.Instance().GetDBPackTime())
         {
             UITool.ShowToastMessage(GameManager.Instance(), "当前已是最新版本", 35);
             return;

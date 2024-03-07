@@ -257,9 +257,11 @@ public class UpdateManager
     {
         public string offlinePackIndexUrl;//离线包index.Json
         //public string offlinePackUrl;//离线包URL前缀
-        public OfflinePackInfoJson json;//index信息
+        public OfflinePackInfoJson offlinePackJson;//离线包index信息
+        public OfflinePackInfoJson indexPackJson;//索引包index信息
         public string privacyUrl;//隐私政策网站地址
         public int privacyVersion;//隐私政策版本号
+        public string indexPackIndexUrl;//索引包index.json(channel，章节的数据库lzma压缩包)
     }
 
     public void GetOtherInfo()
@@ -284,10 +286,12 @@ public class UpdateManager
                 //oInfo.offlinePackUrl = lines[1];
                 oInfo.privacyUrl = lines[2];
                 oInfo.privacyVersion = int.Parse(lines[3]);
+                oInfo.indexPackIndexUrl = lines[4];
                 currentOInfo = oInfo;
                 GetOfflinePackIndex(oInfo.offlinePackIndexUrl);
+                GetIndexPackIndex(oInfo.indexPackIndexUrl);
                 //检测隐私政策
-                GameManager.Instance().CheckPrivacyVersion(oInfo.privacyVersion,oInfo.privacyUrl);
+                GameManager.Instance().CheckPrivacyVersion(oInfo.privacyVersion, oInfo.privacyUrl);
             }
             else
             {
@@ -297,6 +301,8 @@ public class UpdateManager
 
         return null;
     }
+
+    #region 离线包
     //[Serializable]
     //public class OfflinePackIndexJson
     //{
@@ -327,12 +333,12 @@ public class UpdateManager
     {
         OfflinePackInfoJson indexJson = new OfflinePackInfoJson();
         DownloadManager dm = new DownloadManager();
-        dm.DownLoad(Application.persistentDataPath, url, OnDownLoadIndexJsonOver, "index.json");
+        dm.DownLoad(Application.persistentDataPath, url, OnDownLoadOfflinePackIndexJsonOver, "index.json");
         //下载版本信息
         return indexJson;
     }
     //bool showOfflinwPackVerLog = false;
-    object OnDownLoadIndexJsonOver(object _realSavePath)
+    object OnDownLoadOfflinePackIndexJsonOver(object _realSavePath)
     {
         string realSavePath = _realSavePath.ToString();
 
@@ -344,7 +350,7 @@ public class UpdateManager
                 //去掉首尾大括号
                 lines = lines.Substring(1).Substring(0, lines.Length - 2);
                 OfflinePackInfoJson indexJson = JsonUtility.FromJson<OfflinePackInfoJson>(lines);
-                currentOInfo.json = indexJson;
+                currentOInfo.offlinePackJson = indexJson;
                 if (indexJson.create_at == SettingManager.Instance().GetDBPackTime())
                 {
                     //if(showOfflinwPackVerLog)
@@ -366,6 +372,86 @@ public class UpdateManager
         }
         return null;
     }
+    #endregion
+    #region 索引包
+    //index json格式和离线包一样
+    public OfflinePackInfoJson GetIndexPackIndex(string url)
+    {
+        //1.检测是不是当天的信息，如果是当天已下载解压过信息不用检测下载json
+        string indexTime = SettingManager.Instance().GetIndexPackTime();
+        if (!string.IsNullOrEmpty(indexTime) && DateTime.Today.ToString() == indexTime)
+            return null;
+        OfflinePackInfoJson indexJson = new OfflinePackInfoJson();
+        DownloadManager dm = new DownloadManager();
+        dm.DownLoad(Application.persistentDataPath, url, OnDownLoadIndexPackIndexJsonOver, "indexPackIndex.json");
+        //下载版本信息
+        return indexJson;
+    }
+    object OnDownLoadIndexPackIndexJsonOver(object _realSavePath)
+    {
+        string realSavePath = _realSavePath.ToString();
+
+        if (File.Exists(realSavePath))
+        {
+            string lines = File.ReadAllText(realSavePath);
+            if (!string.IsNullOrEmpty(lines))
+            {
+                //去掉首尾大括号
+                lines = lines.Substring(1).Substring(0, lines.Length - 2);
+                OfflinePackInfoJson indexJson = JsonUtility.FromJson<OfflinePackInfoJson>(lines);
+                currentOInfo.indexPackJson = indexJson;
+                //1.检测是不是当天的信息，如果是当天的信息不用检测下载json
+                //2.异步下载lzma文件
+                LoadingViewManager.Instance().StartTitleLoadingAnim();
+                DownloadManager dm = new DownloadManager();
+                dm.DownLoad(Application.persistentDataPath, indexJson.url[1].link, OnDownLoadIndexPackLzmaOver, "indexPackDB.lzma");
+                //3.异步解压
+                //4.解压成功后覆盖
+                //5.在线全部使用下载文件，离线全部使用离线包
+                //6.更新保存的时间信息
+
+
+                return true;
+            }
+            else
+            {
+                UITool.ShowToastMessage(GameManager.Instance(), "无网络连接", 35);
+            }
+        }
+        return null;
+    }
+    string indexPackZipPath;
+    object OnDownLoadIndexPackLzmaOver(object _realSavePath)
+    {
+        //LoadingViewManager.Instance().StopTitleLoadingAnim();
+        string realSavePath = _realSavePath.ToString();
+        indexPackZipPath = realSavePath;
+        if (File.Exists(realSavePath))
+        {
+            //3.异步解压
+            //todo 此处解压是否与其他解压流程冲突
+            string zipedFilePath = Application.persistentDataPath + "/DB/" + "SentenceIndex.db";
+            ZipManager.Instance().UnZipLZMAFile(realSavePath, zipedFilePath, UnZipIndexPackLzmaOver);
+            //4.解压成功后覆盖
+            //5.在线全部使用下载文件，离线全部使用离线包
+            //6.更新保存的时间信息
+
+            return true;
+        }
+        return null;
+    }
+    object UnZipIndexPackLzmaOver()
+    {
+        //删除压缩包
+        File.Delete(indexPackZipPath);
+        //6.更新保存的时间信息
+        SettingManager.Instance().SetIndexPackTime(DateTime.Today.ToString());
+        //停止loading动画
+        LoadingViewManager.Instance().StopTitleLoadingAnim();
+        return null;
+    }
+    #endregion
+
     public void UpdateAPK()
     {
         // DownloadManager.Instance().DownLoad("", "", OnDownLoadApkOver, "");
