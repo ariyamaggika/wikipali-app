@@ -155,7 +155,7 @@ public class SettingView : MonoBehaviour
         commonGroupView.InitAboutView();
         commonGroupView.gameObject.SetActive(true);
     }
-    void OnOfflinePackDownloadBtnClick()
+    public void OnOfflinePackDownloadBtnClick()
     {
         if (UpdateManager.Instance().currentOInfo == null || UpdateManager.Instance().currentOInfo.offlinePackJson == null)
         {

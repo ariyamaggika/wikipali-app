@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 using static ArticleManager;
 using static DictManager;
 using static UpdateManager;
@@ -49,18 +50,46 @@ public class CommonGroupView : MonoBehaviour
     //离线包
     public void InitOfflinePackView(OtherInfo currentOInfo)
     {
+        //todo 文件位置单独一个类用const获取，共用
+        string path = Application.persistentDataPath + "/DB/" + "Sentence.db";
         currViewType = PopViewType.OfflinePack;
+        //有离线包显示更新，没有显示新下载 
+        if (currentOInfo != null && File.Exists(path))
+        {
+            UpdateOfflinePackView(currentOInfo);
+        }
+        else
+        {
+            NewOfflinePackView(currentOInfo);
+        }
+    }
+    //更新离线包文字显示
+    void UpdateOfflinePackView(OtherInfo currentOInfo)
+    {
         string uStr = "";
         uStr += "当前离线包更新时间：" + SettingManager.Instance().GetDBPackTime() + "\r\n";
         uStr += "最新离线包更新时间：" + currentOInfo.offlinePackJson.create_at + "\r\n\r\n";
         uStr += "章节数对比：" + SettingManager.Instance().GetDBPackChapterCount() + "-><color=Red>" + currentOInfo.offlinePackJson.chapter + "</color>\r\n\r\n";
-        uStr += "更新请预留出1G存储空间";
+        uStr += "更新请预留出3G存储空间";
         updateText.text = uStr;
         addBtn.gameObject.SetActive(false);
         titleText.text = "离线包更新";
         updatePage.SetActive(true);
         int fileSize = (int)((float)currentOInfo.offlinePackJson.filesize / 1024 / 1024);
         updateBtnText.text = "点击更新(" + fileSize + "M)";
+    }
+    //没下过离线包文字显示
+    void NewOfflinePackView(OtherInfo currentOInfo)
+    {
+        string uStr = "";
+        uStr += "最新离线包更新时间：" + currentOInfo.offlinePackJson.create_at + "\r\n\r\n";
+        uStr += "更新请预留出3G存储空间";
+        updateText.text = uStr;
+        addBtn.gameObject.SetActive(false);
+        titleText.text = "离线包下载";
+        updatePage.SetActive(true);
+        int fileSize = (int)((float)currentOInfo.offlinePackJson.filesize / 1024 / 1024);
+        updateBtnText.text = "点击下载(" + fileSize + "M)";
     }
     //更新说明
     public void InitUpdateView(UpdateInfo currentUInfo)
@@ -121,7 +150,7 @@ public class CommonGroupView : MonoBehaviour
         else if (currViewType == PopViewType.OfflinePack)
         {
             string url = UpdateManager.Instance().currentOInfo.offlinePackJson.url[0].link;
-            if(!CommonTool.CheckGPSIsInChina())
+            if (!CommonTool.CheckGPSIsInChina())
                 url = UpdateManager.Instance().currentOInfo.offlinePackJson.url[1].link;
             //string url = UpdateManager.Instance().currentOInfo.offlinePackUrl + UpdateManager.Instance().currentOInfo.json.filename;
             UpdateManager.Instance().UpdateDBPack(url);

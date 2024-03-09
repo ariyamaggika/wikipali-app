@@ -154,6 +154,11 @@ public class GameManager : MonoBehaviour
     {
         settingView.SetOfflinePackRedPoint(false);
     }
+    public void ShowSettingViewDownloadOfflinePackPage()
+    {
+        mainView.SetSettingOn();
+        settingView.OnOfflinePackDownloadBtnClick();
+    }
     public void StartDownLoadProgress()
     {
         initView.gameObject.SetActive(true);
