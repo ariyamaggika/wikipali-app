@@ -136,8 +136,9 @@ public class ArticleContentScrollView : MonoBehaviour
             int paraMax = book.paragraph + chapter_len;
             tempBook = book;
             tempCNode = cNode;
+            //开始转菊花加载
+            articleView.articleLoadingView.StartLoading();
             C2SArticleGetNewDBInfo.GetSentenceData(book.id, cNode.channel_id, paraMin, paraMax, OnLineArticleCallBack);
-
         }
         else
         {
@@ -147,6 +148,8 @@ public class ArticleContentScrollView : MonoBehaviour
     }
     public object OnLineArticleCallBack(List<SentenceDBData> dl)
     {
+        //停止转菊花加载
+        articleView.articleLoadingView.StopLoading();
         if (dl != null && dl.Count > 0)
         {
             articleView.contentView.ShowPaliContentTransOnline(tempBook, tempCNode, dl, true);

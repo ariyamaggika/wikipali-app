@@ -20,6 +20,10 @@ public class ArticleView : MonoBehaviour
     public GameObject listViewGO;
     //文章内容 pali原文和翻译
     public ArticleContentScrollView contentView;
+    //离线提示页面
+    public ArticleOfflineGuideView offlineGuideView;
+    //加载转菊花页面
+    public ArticleLoadingView articleLoadingView;
     //public GameObject contentViewGO;
     //public InputField paliContentText;
     //public RectTransform paliContentTextRect;
@@ -41,6 +45,15 @@ public class ArticleView : MonoBehaviour
         controller.Init();
         InitNodeItem(controller.articleTreeNodes.info);
     }
+    public void SetOfflineGuideOn()
+    {
+        offlineGuideView.gameObject.SetActive(true);
+    }
+    public void SetOfflineGuideOff()
+    {
+        offlineGuideView.gameObject.SetActive(false);
+    }
+
     List<GameObject> nodeList = new List<GameObject>();
 
     void InitNodeItem(List<ArticleTreeNode> info)

@@ -109,10 +109,20 @@ public class ArticleNodeItemView : MonoBehaviour
 #endif
             if (channel != null)    //pali&翻译
             {
-                articleView.contentView.ShowPaliContentTransAgent(book, channel, true);
-                string channelName = "";
-                channelName = channel == null ? "" : (channel.channelData == null ? "" : channel.channelData.name);
-                articleView.SetTitleRootPath(true, channelName);
+                //判断是否联网，有数据包
+                NetPackLogicEnum netPackEnum = ArticleManager.Instance().CheckIsUseOfflinePack();
+                if (netPackEnum == NetPackLogicEnum.OfflineNoPack)
+                {
+                    articleView.SetOfflineGuideOn();
+                }
+                else
+                {
+                    articleView.contentView.ShowPaliContentTransAgent(book, channel, true);
+                    string channelName = "";
+                    channelName = channel == null ? "" : (channel.channelData == null ? "" : channel.channelData.name);
+                    articleView.SetTitleRootPath(true, channelName);
+                }
+
 
             }
             else                    //pali原文

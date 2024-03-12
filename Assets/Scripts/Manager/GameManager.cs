@@ -257,36 +257,7 @@ public class GameManager : MonoBehaviour
     //}
 
     #region 网络部分
-    public enum NetPackLogicEnum
-    {
-        Online = 1,
-        OfflineWithPack = 2,
-        OfflineNoPack = 3
-    }
-    //检测是否启用离线包逻辑
-    //1.有网络默认在线功能/设置默认使用离线包/判断最新
-    //2.没网络判断是否有离线包数据库，有就使用离线包，没有就log提示无网络下载离线包
-    public NetPackLogicEnum CheckIsUseOfflinePack()
-    {
-
-        if (!NetworkMangaer.Instance().CheckIsHaveNetwork())
-        {
-            string path;
-            path = Application.persistentDataPath + "/DB/Sentence.db";
-
-            //如果查找该文件路径
-            if (File.Exists(path))
-            {
-                return NetPackLogicEnum.OfflineWithPack;
-            }
-            return NetPackLogicEnum.OfflineNoPack;
-        }
-        else
-        {
-            return NetPackLogicEnum.Online;
-        }
-    }
-
+  
     #endregion
 
 }

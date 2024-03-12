@@ -29,6 +29,10 @@ public class ArticleOfflineGuideView : MonoBehaviour
     }
     public void OnRefreshBtnClick()
     {
-
+        if (NetworkMangaer.Instance().CheckIsHaveNetwork())
+        {
+            this.gameObject.SetActive(false);
+        }
     }
+
 }
