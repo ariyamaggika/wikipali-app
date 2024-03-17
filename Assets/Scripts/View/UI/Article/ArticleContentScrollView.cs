@@ -130,14 +130,14 @@ public class ArticleContentScrollView : MonoBehaviour
             BookDBData data = ArticleManager.Instance().GetBookChildrenFromID(book.id, book.paragraph);
             int chapter_len = 0;
             if (data != null)
-                 chapter_len = data.chapter_len;
+                chapter_len = data.chapter_len;
 
             int paraMin = book.paragraph;
             int paraMax = book.paragraph + chapter_len;
             tempBook = book;
             tempCNode = cNode;
             //开始转菊花加载
-            articleView.articleLoadingView.StartLoading();
+            articleView.articleLoadingView.StartLoading(() => { ShowPaliContentTransAgent(book, cNode, isTrans); return null; });
             C2SArticleGetNewDBInfo.GetSentenceData(book.id, cNode.channel_id, paraMin, paraMax, OnLineArticleCallBack);
         }
         else

@@ -113,7 +113,7 @@ public class ArticleNodeItemView : MonoBehaviour
                 NetPackLogicEnum netPackEnum = ArticleManager.Instance().CheckIsUseOfflinePack();
                 if (netPackEnum == NetPackLogicEnum.OfflineNoPack)
                 {
-                    articleView.SetOfflineGuideOn();
+                    articleView.SetOfflineGuideOn(null);
                 }
                 else
                 {

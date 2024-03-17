@@ -1,4 +1,5 @@
 ﻿using Hypertext;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -45,8 +46,9 @@ public class ArticleView : MonoBehaviour
         controller.Init();
         InitNodeItem(controller.articleTreeNodes.info);
     }
-    public void SetOfflineGuideOn()
+    public void SetOfflineGuideOn(Func<object> refreshCallBack)
     {
+        offlineGuideView.Init(refreshCallBack);
         offlineGuideView.gameObject.SetActive(true);
     }
     public void SetOfflineGuideOff()

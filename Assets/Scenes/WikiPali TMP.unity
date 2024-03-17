@@ -15154,7 +15154,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 5.5, y: 0}
-  m_SizeDelta: {x: 1085, y: 921.5259}
+  m_SizeDelta: {x: 1085, y: 919.28577}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &411828227
 MonoBehaviour:
@@ -41893,7 +41893,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1550892672}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.7212926
+  m_Size: 0.72129256
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -48366,7 +48366,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1673626159}
   m_HandleRect: {fileID: 1673626158}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -60297,6 +60297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93922792005b1da49a2b2df5a74a0b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  articleView: {fileID: 2108809201}
   loadingTexView: {fileID: 1303242760}
 --- !u!1 &1920234436
 GameObject:
@@ -68797,6 +68798,11 @@ PrefabInstance:
       propertyPath: dragWordSearchView
       value: 
       objectReference: {fileID: 825133058}
+    - target: {fileID: 4173128084254028700, guid: 43e349d2c3b74634bb228be6c1c9124e,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: b60098d141b0029489854c6f8039dc7a, type: 2}
     - target: {fileID: 4173128084286086546, guid: 43e349d2c3b74634bb228be6c1c9124e,
         type: 3}
       propertyPath: articleView

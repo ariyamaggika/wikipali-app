@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,12 @@ public class ArticleOfflineGuideView : MonoBehaviour
 {
     public Button downLoadOfflinePackBtn;
     public Button refreshButton;
+
+    Func<object> refreshCallBack;
+    public void Init(Func<object> _refreshCallBack)
+    {
+        refreshCallBack = _refreshCallBack;
+    }
     void Awake()
     {
         downLoadOfflinePackBtn.onClick.AddListener(OnDownloadBtnClick);
@@ -33,6 +40,8 @@ public class ArticleOfflineGuideView : MonoBehaviour
         {
             this.gameObject.SetActive(false);
         }
+        if (refreshCallBack != null)
+            refreshCallBack();
     }
 
 }
