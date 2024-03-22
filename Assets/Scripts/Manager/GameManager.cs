@@ -175,6 +175,8 @@ public class GameManager : MonoBehaviour
     //延迟一帧
     public void ShowArticle(int bookID, int bookParagraph, int bookChapterLen, string channelId)
     {
+        //此处判断网络，在线阅读&离线包
+
         StartCoroutine(ShowArticleC(bookID, bookParagraph, bookChapterLen, channelId));
     }
     IEnumerator ShowArticleC(int bookID, int bookParagraph, int bookChapterLen, string channelId)

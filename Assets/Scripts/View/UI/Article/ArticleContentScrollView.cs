@@ -111,7 +111,11 @@ public class ArticleContentScrollView : MonoBehaviour
             inst.SetActive(true);
             contentTextInst.rectTransform.sizeDelta = new Vector2(contentTextInst.rectTransform.sizeDelta.x, textRulerTMP.rectTransform.sizeDelta.y);// new Vector2(PaliContentTextRect.sizeDelta.x, PaliContentText.textComponent.fontSize * (lineCount + 1));
             contentList.Add(inst);
+            if (i != 0)
+                contentTextInst.enabled = false;
         }
+        //下一帧计算位置
+        StartCoroutine(SetTMPEnabledCtrl());
 
         textRulerTMP.gameObject.SetActive(false);
         nextAndPrevGroup.SetAsLastSibling();
@@ -237,8 +241,11 @@ public class ArticleContentScrollView : MonoBehaviour
             inst.SetActive(true);
             contentTextInst.rectTransform.sizeDelta = new Vector2(contentTextInst.rectTransform.sizeDelta.x, textRulerTMP.rectTransform.sizeDelta.y);// new Vector2(PaliContentTextRect.sizeDelta.x, PaliContentText.textComponent.fontSize * (lineCount + 1));
             contentList.Add(inst);
+            if (i != 0)
+                contentTextInst.enabled = false;
         }
-
+        //下一帧计算位置
+        StartCoroutine(SetTMPEnabledCtrl());
         textRulerTMP.gameObject.SetActive(false);
         nextAndPrevGroup.SetAsLastSibling();
         //todo显示root name
@@ -334,7 +341,13 @@ public class ArticleContentScrollView : MonoBehaviour
             inst.SetActive(true);
             contentTextInst.rectTransform.sizeDelta = new Vector2(contentTextInst.rectTransform.sizeDelta.x, textRulerTMP.rectTransform.sizeDelta.y);// new Vector2(PaliContentTextRect.sizeDelta.x, PaliContentText.textComponent.fontSize * (lineCount + 1));
             contentList.Add(inst);
+            if (i != 0)
+                contentTextInst.enabled = false;
+            //TMPScrollEnableSelf tmpEnabledCtrl = contentTextInst.gameObject.AddComponent<TMPScrollEnableSelf>();
+            //tmpEnabledCtrl.OnInit(paliScrollContent,contentTextInst);
         }
+        //下一帧计算位置
+        StartCoroutine(SetTMPEnabledCtrl());
 
         textRulerTMP.gameObject.SetActive(false);
         nextAndPrevGroup.SetAsLastSibling();
@@ -343,5 +356,15 @@ public class ArticleContentScrollView : MonoBehaviour
         SettingManager.Instance().SaveOpenLastArticle(book.id, book.paragraph, book.chapter_len, channel);
         //PaliContentText.lin
     }
-    #endregion
-}
+    IEnumerator SetTMPEnabledCtrl()
+    {
+        yield return null;
+        int c = contentList.Count;
+        for (int i = 0; i < c; i++)
+        {
+            TMPScrollEnableSelf tmpEnabledCtrl = contentList[i].AddComponent<TMPScrollEnableSelf>();
+            tmpEnabledCtrl.OnInit(paliScrollContent, contentList[i].GetComponent<TextMeshProUGUI>());
+        }
+    }
+        #endregion
+    }

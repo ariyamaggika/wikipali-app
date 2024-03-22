@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -240,6 +241,11 @@ public class DicView : MonoBehaviour
             {
                 ddiv.Init(matchedWordArr[i - 1]);
             }
+            //防止字数炸裂，初始化只显示前3个词典，后面交给enabledCtrl
+            //if (i > 3)
+            //{
+            //    ddiv.detailTxt.enabled = false;
+            //}
             //float textHeight = ddiv.GetHeight();
             //inst.GetComponent<RectTransform>().sizeDelta += new Vector2(0, textHeight);
             //height += textHeight;
@@ -252,6 +258,7 @@ public class DicView : MonoBehaviour
         StartCoroutine(SetHeight());
 
     }
+    bool isLateSetHeight = false;
     IEnumerator SetHeight()
     {
         yield return null;
@@ -265,12 +272,36 @@ public class DicView : MonoBehaviour
             float textHeight = ddiv.GetHeight();
             detailDicItemList[i].GetComponent<RectTransform>().sizeDelta += new Vector2(0, textHeight);
             ddiv.itemHeight = detailDicItemList[i].GetComponent<RectTransform>().sizeDelta.y;
+
             //?为啥会缩100？
             //height += ddiv.GetHeight() + 200;
         }
         detailScrollContent.sizeDelta = new Vector2(detailScrollContent.sizeDelta.x, height);
-    }
+        Debug.LogError("-------------------------------------------");
+        //todo://////////////////////
+        //下一帧计算位置
+        if (!isLateSetHeight)
+        {
+            isLateSetHeight = true;
+        }
+        else
+            StartCoroutine(SetTMPEnabledCtrl());
 
+    }
+    IEnumerator SetTMPEnabledCtrl()
+    {
+        yield return null;
+        int length = detailDicItemList.Count;
+        for (int i = 0; i < length; i++)
+        {
+            RegexHypertextScrollEnableSelf textEnabledCtrl = null;
+            bool getTEC = detailDicItemList[i].TryGetComponent<RegexHypertextScrollEnableSelf>(out textEnabledCtrl);
+            if (!getTEC)
+                textEnabledCtrl = detailDicItemList[i].gameObject.AddComponent<RegexHypertextScrollEnableSelf>();
+            DetailDicItemView ddiv = detailDicItemList[i].GetComponent<DetailDicItemView>();
+            textEnabledCtrl.OnInit(detailScrollContent, ddiv.detailTxt);
+        }
+    }
     //销毁词典列表GO
     private void DestroyDetailDicItemList()
     {
