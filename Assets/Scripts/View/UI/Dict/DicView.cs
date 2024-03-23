@@ -231,6 +231,8 @@ public class DicView : MonoBehaviour
                 ddiv.InitCommunityDic(word);
                 NetworkMangaer.Instance().GetCommunityDic(word, (str) =>
                 {
+                    //在线就等社区词典后enabled
+                    isLateSetHeight = true;
                     ddiv.SetCommunityDic(str);
                     //等下一帧UI刷新后获取位置
                     StartCoroutine(SetHeight());
@@ -254,6 +256,11 @@ public class DicView : MonoBehaviour
         }
         //去格位除尾查，最后显示
         otherWordItemView.SetLayerEnd();
+        //离线就直接开enabled
+        if (!NetworkMangaer.Instance().CheckIsHaveNetwork())
+        {
+            isLateSetHeight = true;
+        }
         //等下一帧UI刷新后获取位置
         StartCoroutine(SetHeight());
 
@@ -280,12 +287,11 @@ public class DicView : MonoBehaviour
         Debug.LogError("-------------------------------------------");
         //todo://////////////////////
         //下一帧计算位置
-        if (!isLateSetHeight)
+        if (isLateSetHeight)
         {
-            isLateSetHeight = true;
-        }
-        else
+            isLateSetHeight = false;
             StartCoroutine(SetTMPEnabledCtrl());
+        }
 
     }
     IEnumerator SetTMPEnabledCtrl()

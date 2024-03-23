@@ -45,7 +45,7 @@ public class NewArticleNodeItemView : MonoBehaviour
     {
         if (dl != null && dl.Count > 0)
         {
-            articleView.contentView.ShowPaliContentTransOnline(book, channel, dl, true);
+            articleView.contentView.ShowPaliContentTransCommon(book, channel, dl, true);
         }
         return null;
     }

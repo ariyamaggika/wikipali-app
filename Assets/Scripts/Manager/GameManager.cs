@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Android;
+using static ArticleController;
+using static ArticleManager;
 using static UpdateManager;
 
 public class GameManager : MonoBehaviour
@@ -183,7 +185,29 @@ public class GameManager : MonoBehaviour
     {
         yield return null;
         mainView.SetArticleOn();
-        mainView.articleView.contentView.ShowPaliContentFromStar(bookID, bookParagraph, bookChapterLen, channelId);
+
+        //有网络的翻译文章全部在线阅读
+        if (NetworkMangaer.Instance().CheckIsHaveNetwork() && !string.IsNullOrEmpty(channelId))
+        {
+            //开始转菊花加载
+            articleView.articleLoadingView.StartLoading(() => { ShowArticle(bookID, bookParagraph, bookChapterLen, channelId); return null; });
+            C2SArticleGetNewDBInfo.GetSentenceData(bookID, channelId, bookParagraph, bookParagraph + bookChapterLen, OnLineArticleCallBack);
+        }
+        else
+        {
+            mainView.articleView.contentView.ShowPaliContentFromStar(bookID, bookParagraph, bookChapterLen, channelId);
+        }
+    }
+    int tempBookID; int tempBookParagraph; int tempBookChapterLen; string tempChannelId;
+    public object OnLineArticleCallBack(List<SentenceDBData> dl)
+    {
+        //停止转菊花加载
+        articleView.articleLoadingView.StopLoading();
+        if (dl != null && dl.Count > 0)
+        {
+            articleView.contentView.ShowPaliContentFromStar(tempBookID, tempBookParagraph, tempBookChapterLen, tempChannelId, dl);
+        }
+        return null;
     }
     public void ShowDicWord(string word)
     {
@@ -259,7 +283,7 @@ public class GameManager : MonoBehaviour
     //}
 
     #region 网络部分
-  
+
     #endregion
 
 }

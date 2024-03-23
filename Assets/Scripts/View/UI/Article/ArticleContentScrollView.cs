@@ -39,91 +39,91 @@ public class ArticleContentScrollView : MonoBehaviour
     public string currentChannelId;
     public string currentChannelName;
     public Book currentBook;
-    public void ShowPaliContentTrans(Book book, ChapterDBData cNode, bool isTrans)
-    {
-        //?????????????????????
-        gameObject.SetActive(true);
+    //public void ShowPaliContentTrans(Book book, ChapterDBData cNode, bool isTrans)
+    //{
+    //    //?????????????????????
+    //    gameObject.SetActive(true);
 
-        InitPaliScroll();
-        if (isTrans && cNode == null)
-            Debug.LogError("!!!!");
-        if (isTrans && cNode.channelData == null)
-            Debug.LogError("!!!!");
-        if (isTrans && cNode.channelData != null && cNode.channelData.channel_id == null)
-            Debug.LogError("!!!!");
+    //    InitPaliScroll();
+    //    if (isTrans && cNode == null)
+    //        Debug.LogError("!!!!");
+    //    if (isTrans && cNode.channelData == null)
+    //        Debug.LogError("!!!!");
+    //    if (isTrans && cNode.channelData != null && cNode.channelData.channel_id == null)
+    //        Debug.LogError("!!!!");
 
-        //保存上次预览记录
-        string channel = "";
-        currentChannelName = "pāli原文";
-        if (isTrans)
-        {
-            if (cNode.channelData == null)
-            {
-                channel = cNode.channel_id;
-                currentChannelName = cNode.title;
-            }
-            else
-            {
-                channel = cNode.channelData.channel_id;
-                currentChannelName = cNode.channelData.name;
-            }
-        }
-        //测试数据
+    //    //保存上次预览记录
+    //    string channel = "";
+    //    currentChannelName = "pāli原文";
+    //    if (isTrans)
+    //    {
+    //        if (cNode.channelData == null)
+    //        {
+    //            channel = cNode.channel_id;
+    //            currentChannelName = cNode.title;
+    //        }
+    //        else
+    //        {
+    //            channel = cNode.channelData.channel_id;
+    //            currentChannelName = cNode.channelData.name;
+    //        }
+    //    }
+    //    //测试数据
 
-        currentChannelId = channel;
-        nextAndPrevGroupView.SetChapter(book, (isTrans ? channel : ""), isTrans);
-        contentViewGO.SetActive(true);
-        if (articleView != null)
-            articleView.listViewGO.SetActive(false);
-        else if (newArticleView != null)
-            newArticleView.listViewGO.SetActive(false);
-        //articleView.listViewGO.SetActive(false);
-        //每50行新建一个text
-        List<string> text;
-        List<string> sentence;
-        currentChapterData = cNode;
-        currentBook = book;
-        (text, sentence) = ArticleController.Instance().GetPaliContentTransText(book, (isTrans ? cNode.channelData : null), isTrans);
-        CommonTool.DeepCopyStringList(textBackup, text);
-        CommonTool.DeepCopyStringList(textBackupOrign, text);
-        if (SettingManager.Instance().GetPaliRemoveBracket() == 1)
-            textBackup = MarkdownText.RemoveBracketStringList(textBackup);
-        //textBackup = text;
-        articleContent = sentence;
-        if (text == null)
-        {
-            Debug.LogError("【预警】book id:" + book.id + "  没有文章内容 text = null");
-            return;
-        }
-        textRulerTMP.gameObject.SetActive(true);
-        int l = text.Count;
-        for (int i = 0; i < l; i++)
-        {
-            textRulerTMP.text = text[i];
-            LayoutRebuilder.ForceRebuildLayoutImmediate(textRulerTMP.rectTransform);
-            GameObject inst = Instantiate(contentTextTMP.gameObject, contentTextTMP.transform.parent);
-            inst.name = i.ToString();
-            inst.transform.position = contentTextTMP.transform.position;
-            TextMeshProUGUI contentTextInst = inst.GetComponent<TextMeshProUGUI>();
-            //????????兼容RegexHypertext,文字要超过text框大小，不然匹配的位置是乱的，后面考虑换成，TextMeshPro
-            //text[i] = text[i] + "\r\n \r\n \r\n \r\n \r\n \r\n";
-            contentTextInst.text = MarkdownText.PreprocessText(text[i]);
-            inst.SetActive(true);
-            contentTextInst.rectTransform.sizeDelta = new Vector2(contentTextInst.rectTransform.sizeDelta.x, textRulerTMP.rectTransform.sizeDelta.y);// new Vector2(PaliContentTextRect.sizeDelta.x, PaliContentText.textComponent.fontSize * (lineCount + 1));
-            contentList.Add(inst);
-            if (i != 0)
-                contentTextInst.enabled = false;
-        }
-        //下一帧计算位置
-        StartCoroutine(SetTMPEnabledCtrl());
+    //    currentChannelId = channel;
+    //    nextAndPrevGroupView.SetChapter(book, (isTrans ? channel : ""), isTrans);
+    //    contentViewGO.SetActive(true);
+    //    if (articleView != null)
+    //        articleView.listViewGO.SetActive(false);
+    //    else if (newArticleView != null)
+    //        newArticleView.listViewGO.SetActive(false);
+    //    //articleView.listViewGO.SetActive(false);
+    //    //每50行新建一个text
+    //    List<string> text;
+    //    List<string> sentence;
+    //    currentChapterData = cNode;
+    //    currentBook = book;
+    //    (text, sentence) = ArticleController.Instance().GetPaliContentTransText(book, (isTrans ? cNode.channelData : null), isTrans);
+    //    CommonTool.DeepCopyStringList(textBackup, text);
+    //    CommonTool.DeepCopyStringList(textBackupOrign, text);
+    //    if (SettingManager.Instance().GetPaliRemoveBracket() == 1)
+    //        textBackup = MarkdownText.RemoveBracketStringList(textBackup);
+    //    //textBackup = text;
+    //    articleContent = sentence;
+    //    if (text == null)
+    //    {
+    //        Debug.LogError("【预警】book id:" + book.id + "  没有文章内容 text = null");
+    //        return;
+    //    }
+    //    textRulerTMP.gameObject.SetActive(true);
+    //    int l = text.Count;
+    //    for (int i = 0; i < l; i++)
+    //    {
+    //        textRulerTMP.text = text[i];
+    //        LayoutRebuilder.ForceRebuildLayoutImmediate(textRulerTMP.rectTransform);
+    //        GameObject inst = Instantiate(contentTextTMP.gameObject, contentTextTMP.transform.parent);
+    //        inst.name = i.ToString();
+    //        inst.transform.position = contentTextTMP.transform.position;
+    //        TextMeshProUGUI contentTextInst = inst.GetComponent<TextMeshProUGUI>();
+    //        //????????兼容RegexHypertext,文字要超过text框大小，不然匹配的位置是乱的，后面考虑换成，TextMeshPro
+    //        //text[i] = text[i] + "\r\n \r\n \r\n \r\n \r\n \r\n";
+    //        contentTextInst.text = MarkdownText.PreprocessText(text[i]);
+    //        inst.SetActive(true);
+    //        contentTextInst.rectTransform.sizeDelta = new Vector2(contentTextInst.rectTransform.sizeDelta.x, textRulerTMP.rectTransform.sizeDelta.y);// new Vector2(PaliContentTextRect.sizeDelta.x, PaliContentText.textComponent.fontSize * (lineCount + 1));
+    //        contentList.Add(inst);
+    //        if (i != 0)
+    //            contentTextInst.enabled = false;
+    //    }
+    //    //下一帧计算位置
+    //    StartCoroutine(SetTMPEnabledCtrl());
 
-        textRulerTMP.gameObject.SetActive(false);
-        nextAndPrevGroup.SetAsLastSibling();
+    //    textRulerTMP.gameObject.SetActive(false);
+    //    nextAndPrevGroup.SetAsLastSibling();
 
-        ArticleManager.Instance().SetArticleStar(book.translateName, book.id, book.paragraph, book.chapter_len, channel);
-        SettingManager.Instance().SaveOpenLastArticle(book.id, book.paragraph, book.chapter_len, channel);
-        //PaliContentText.lin
-    }
+    //    ArticleManager.Instance().SetArticleStar(book.translateName, book.id, book.paragraph, book.chapter_len, channel);
+    //    SettingManager.Instance().SaveOpenLastArticle(book.id, book.paragraph, book.chapter_len, channel);
+    //    //PaliContentText.lin
+    //}
     public Book tempBook;
     public ChapterDBData tempCNode;
     public void ShowPaliContentTransAgent(Book book, ChapterDBData cNode, bool isTrans)
@@ -146,7 +146,7 @@ public class ArticleContentScrollView : MonoBehaviour
         }
         else
         {
-            ShowPaliContentTrans(book, cNode, isTrans);
+            ShowPaliContentTransCommon(book, cNode, null, isTrans);
         }
 
     }
@@ -156,7 +156,7 @@ public class ArticleContentScrollView : MonoBehaviour
         articleView.articleLoadingView.StopLoading();
         if (dl != null && dl.Count > 0)
         {
-            articleView.contentView.ShowPaliContentTransOnline(tempBook, tempCNode, dl, true);
+            articleView.contentView.ShowPaliContentTransCommon(tempBook, tempCNode, dl, true);
         }
         return null;
     }
@@ -194,7 +194,7 @@ public class ArticleContentScrollView : MonoBehaviour
     {
         //bookTreeNodeStack
     }
-    public void ShowPaliContentFromStar(int bookID, int bookParagraph, int bookChapterLen, string channelId)
+    public void ShowPaliContentFromStar(int bookID, int bookParagraph, int bookChapterLen, string channelId, List<SentenceDBData> transOnlineData = null)
     {
         //保存上次预览记录
         SettingManager.Instance().SaveOpenLastArticle(bookID, bookParagraph, bookChapterLen, channelId);
@@ -214,7 +214,7 @@ public class ArticleContentScrollView : MonoBehaviour
         List<string> sentence;
         ChannelChapterDBData cdata = new ChannelChapterDBData();
         cdata.channel_id = channel;
-        (starText, sentence) = ArticleController.Instance().GetPaliContentTransText(book, (isTrans ? cdata : null), isTrans);
+        (starText, sentence) = ArticleController.Instance().GetPaliContentTransText(book, (isTrans ? cdata : null), isTrans, transOnlineData);
         CommonTool.DeepCopyStringList(textBackup, starText);
         CommonTool.DeepCopyStringList(textBackupOrign, starText);
         if (SettingManager.Instance().GetPaliRemoveBracket() == 1)
@@ -270,7 +270,95 @@ public class ArticleContentScrollView : MonoBehaviour
     #region 在线阅读
     //离线文章本地获取?
     //翻译内容在线获取
-    public void ShowPaliContentTransOnline(Book book, ChapterDBData cNode, List<SentenceDBData> transOnlineData, bool isTrans)
+    //public void ShowPaliContentTransOnline(Book book, ChapterDBData cNode, List<SentenceDBData> transOnlineData, bool isTrans)
+    //{
+    //    //?????????????????????
+    //    gameObject.SetActive(true);
+
+    //    InitPaliScroll();
+    //    if (isTrans && cNode == null)
+    //        Debug.LogError("!!!!");
+    //    if (isTrans && cNode.channelData == null)
+    //        Debug.LogError("!!!!");
+    //    if (isTrans && cNode.channelData != null && cNode.channelData.channel_id == null)
+    //        Debug.LogError("!!!!");
+
+    //    //保存上次预览记录
+    //    string channel = "";
+    //    currentChannelName = "pāli原文";
+    //    if (isTrans)
+    //    {
+    //        if (cNode.channelData == null)
+    //        {
+    //            channel = cNode.channel_id;
+    //            currentChannelName = cNode.title;
+    //        }
+    //        else
+    //        {
+    //            channel = cNode.channelData.channel_id;
+    //            currentChannelName = cNode.channelData.name;
+    //        }
+    //    }
+    //    //测试数据
+
+    //    currentChannelId = channel;
+    //    nextAndPrevGroupView.SetChapter(book, (isTrans ? channel : ""), isTrans);
+    //    contentViewGO.SetActive(true);
+    //    if (articleView != null)
+    //        articleView.listViewGO.SetActive(false);
+    //    else if (newArticleView != null)
+    //        newArticleView.listViewGO.SetActive(false);
+    //    //每50行新建一个text
+    //    List<string> text;
+    //    List<string> sentence;
+    //    currentChapterData = cNode;
+    //    currentBook = book;
+    //    (text, sentence) = ArticleController.Instance().GetPaliContentTransText(book, (isTrans ? cNode.channelData : null), isTrans, transOnlineData);
+    //    CommonTool.DeepCopyStringList(textBackup, text);
+    //    CommonTool.DeepCopyStringList(textBackupOrign, text);
+    //    if (SettingManager.Instance().GetPaliRemoveBracket() == 1)
+    //        textBackup = MarkdownText.RemoveBracketStringList(textBackup);
+    //    //textBackup = text;
+    //    articleContent = sentence;
+    //    if (text == null)
+    //    {
+    //        Debug.LogError("【预警】book id:" + book.id + "  没有文章内容 text = null");
+    //        return;
+    //    }
+    //    textRulerTMP.gameObject.SetActive(true);
+    //    int l = text.Count;
+    //    for (int i = 0; i < l; i++)
+    //    {
+    //        textRulerTMP.text = text[i];
+    //        LayoutRebuilder.ForceRebuildLayoutImmediate(textRulerTMP.rectTransform);
+    //        GameObject inst = Instantiate(contentTextTMP.gameObject, contentTextTMP.transform.parent);
+    //        inst.name = i.ToString();
+    //        inst.transform.position = contentTextTMP.transform.position;
+    //        TextMeshProUGUI contentTextInst = inst.GetComponent<TextMeshProUGUI>();
+    //        //????????兼容RegexHypertext,文字要超过text框大小，不然匹配的位置是乱的，后面考虑换成，TextMeshPro
+    //        //text[i] = text[i] + "\r\n \r\n \r\n \r\n \r\n \r\n";
+    //        contentTextInst.text = MarkdownText.PreprocessText(text[i]);
+    //        inst.SetActive(true);
+    //        contentTextInst.rectTransform.sizeDelta = new Vector2(contentTextInst.rectTransform.sizeDelta.x, textRulerTMP.rectTransform.sizeDelta.y);// new Vector2(PaliContentTextRect.sizeDelta.x, PaliContentText.textComponent.fontSize * (lineCount + 1));
+    //        contentList.Add(inst);
+    //        if (i != 0)
+    //            contentTextInst.enabled = false;
+    //        //TMPScrollEnableSelf tmpEnabledCtrl = contentTextInst.gameObject.AddComponent<TMPScrollEnableSelf>();
+    //        //tmpEnabledCtrl.OnInit(paliScrollContent,contentTextInst);
+    //    }
+    //    //下一帧计算位置
+    //    StartCoroutine(SetTMPEnabledCtrl());
+
+    //    textRulerTMP.gameObject.SetActive(false);
+    //    nextAndPrevGroup.SetAsLastSibling();
+
+    //    ArticleManager.Instance().SetArticleStar(book.translateName, book.id, book.paragraph, book.chapter_len, channel);
+    //    SettingManager.Instance().SaveOpenLastArticle(book.id, book.paragraph, book.chapter_len, channel);
+    //    //PaliContentText.lin
+    //}
+
+    //在线离线包通用方法
+    public void ShowPaliContentTransCommon(Book book, ChapterDBData cNode, List<SentenceDBData> transOnlineData, bool isTrans)
     {
         //?????????????????????
         gameObject.SetActive(true);
@@ -366,5 +454,5 @@ public class ArticleContentScrollView : MonoBehaviour
             tmpEnabledCtrl.OnInit(paliScrollContent, contentList[i].GetComponent<TextMeshProUGUI>());
         }
     }
-        #endregion
-    }
+    #endregion
+}

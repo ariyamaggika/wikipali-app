@@ -34,7 +34,7 @@ public class RegexHypertextScrollEnableSelf : MonoBehaviour
     void Update()
     {
         //500ÈÝ´í°ë¸öÆÁÄ»³¤¶È
-        if (content.localPosition.y >= startYPos - 2300 && content.localPosition.y <= endYPos + 2300)
+        if (content.localPosition.y >= startYPos - 3000 && content.localPosition.y <= endYPos + 3000)
             thisText.enabled = true;
         else
             thisText.enabled = false;
