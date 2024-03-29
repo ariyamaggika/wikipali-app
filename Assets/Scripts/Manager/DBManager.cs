@@ -22,7 +22,9 @@ public class DBManager
 
     public static string DictDBurl = "DB/Dict";
     public static string SentenceDBurl = "DB/Sentence";
-    public static string SentenceStaticDBurl = "DB/Sentence";//"DB/Sentence_Static";
+    public static string SentenceDBIndexurl = "DB/SentenceIndex";//sentence 索引，channel， chapter
+    public static string SentencePaliDBurl = "DB/SentencePali";//sentence pali原文
+    //public static string SentenceStaticDBurl = "DB/Sentence";//"DB/Sentence_Static";
     public SQLiteHelper dbHelper;
 
     public void Getdb(Action<DbAccess> action,string dburl)

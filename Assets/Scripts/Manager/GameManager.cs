@@ -185,10 +185,21 @@ public class GameManager : MonoBehaviour
     {
         yield return null;
         mainView.SetArticleOn();
-
+        tempBookID = bookID;
+        tempBookParagraph = bookParagraph;
+        tempBookChapterLen = bookChapterLen;
+        tempChannelId = channelId;
         //有网络的翻译文章全部在线阅读
         if (NetworkMangaer.Instance().CheckIsHaveNetwork() && !string.IsNullOrEmpty(channelId))
         {
+            //存储的ChapterLen不准，需要从数据库计算
+            BookDBData data = ArticleManager.Instance().GetBookChildrenFromID(bookID, bookParagraph);
+            int chapter_len = 0;
+            if (data != null)
+                chapter_len = data.chapter_len;
+            bookChapterLen = chapter_len;
+            tempBookChapterLen = bookChapterLen;
+
             //开始转菊花加载
             articleView.articleLoadingView.StartLoading(() => { ShowArticle(bookID, bookParagraph, bookChapterLen, channelId); return null; });
             C2SArticleGetNewDBInfo.GetSentenceData(bookID, channelId, bookParagraph, bookParagraph + bookChapterLen, OnLineArticleCallBack);

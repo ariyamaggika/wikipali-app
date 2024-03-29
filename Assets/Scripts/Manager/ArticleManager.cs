@@ -153,7 +153,7 @@ public class ArticleManager
                 }
             }
 
-        }, DBManager.SentenceStaticDBurl);
+        }, DBManager.SentencePaliDBurl);
         return (bookList, bookIDList);
     }
     /// <summary>
@@ -192,7 +192,7 @@ public class ArticleManager
                 }
             }
 
-        }, DBManager.SentenceStaticDBurl);
+        }, DBManager.SentencePaliDBurl);
         return bookList;
     }
     /// <summary>
@@ -224,7 +224,7 @@ public class ArticleManager
                 res = book;
             }
 
-        }, DBManager.SentenceStaticDBurl);
+        }, DBManager.SentencePaliDBurl);
         return res;
     }
 
@@ -295,7 +295,7 @@ public class ArticleManager
                 }
             }
 
-        }, DBManager.SentenceStaticDBurl);
+        }, DBManager.SentenceDBIndexurl);
         return cList;
     }
     public List<ChapterDBData> GetChaptersFromBookID(int bookID)
@@ -340,7 +340,7 @@ public class ArticleManager
                 }
             }
 
-        }, DBManager.SentenceStaticDBurl);
+        }, DBManager.SentenceDBIndexurl);
         return cList;
     }
     /// <summary>
@@ -406,7 +406,7 @@ public class ArticleManager
                     data.Add(c.channel_id, c);
                 }
             }
-        }, DBManager.SentenceDBurl);
+        }, DBManager.SentenceDBIndexurl);
         return data;
     }
     /// <summary>
@@ -468,7 +468,7 @@ public class ArticleManager
                 data = c;
             }
 
-        }, DBManager.SentenceDBurl);
+        }, DBManager.SentenceDBIndexurl);
         return data;
     }
     #endregion
@@ -522,7 +522,7 @@ public class ArticleManager
                     res.Add(s);
                 }
             }
-        }, DBManager.SentenceDBurl);
+        }, DBManager.SentencePaliDBurl);
         return res;
     }
     public List<SentenceDBData> GetPaliSentenceTranslationByBookParagraph(int bookID, int min, int max, string channel)

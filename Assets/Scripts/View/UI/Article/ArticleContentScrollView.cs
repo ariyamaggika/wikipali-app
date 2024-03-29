@@ -196,6 +196,8 @@ public class ArticleContentScrollView : MonoBehaviour
     }
     public void ShowPaliContentFromStar(int bookID, int bookParagraph, int bookChapterLen, string channelId, List<SentenceDBData> transOnlineData = null)
     {
+        //???ArticleContentScrollView在哪里控制开关？没找到
+        this.gameObject.SetActive(true);
         //保存上次预览记录
         SettingManager.Instance().SaveOpenLastArticle(bookID, bookParagraph, bookChapterLen, channelId);
         bool isTrans = !string.IsNullOrEmpty(channelId);

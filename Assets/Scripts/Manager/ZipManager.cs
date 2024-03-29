@@ -161,8 +161,8 @@ public class ZipManager
     //解压安装包中的7z压缩包
     public void UnZipDB()
     {
-       // GameManager.Instance().StartUnZipProgress(GameManager.Instance().StartUnZipDBSentence, "初始化进度");
-        GameManager.Instance().StartUnZipProgress(UnZipDBSentence, "初始化进度");
+        //离线包不作为初始携带
+        //GameManager.Instance().StartUnZipProgress(UnZipDBSentence, "初始化进度");
         //安卓中需要把StreamingAsset路径下数据库压缩包拷贝到PersistentAsset下面，因为前者文件夹只读不能解压，后者文件夹读写都可以
         Debug.LogError("UnZipDB()");
 #if UNITY_ANDROID && !UNITY_EDITOR
