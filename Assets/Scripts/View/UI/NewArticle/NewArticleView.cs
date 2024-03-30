@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -19,7 +20,10 @@ public class NewArticleView : MonoBehaviour
     //todo 通用阅读部分，通用prefab和代码
     //文章内容 pali原文和翻译
     public ArticleContentScrollView contentView;
-
+    //离线提示页面
+    public ArticleOfflineGuideView offlineGuideView;
+    //加载转菊花页面
+    //public ArticleLoadingView articleLoadingView;
 
     //下拉刷新
     // Start is called before the first frame update
@@ -30,6 +34,11 @@ public class NewArticleView : MonoBehaviour
         thisSrr.endDragUpdateCallback = () => { SendServerRequest(); Debug.LogError("刷新列表"); return null; };
         SendServerRequest();
 
+    }
+    public void SetOfflineGuideOn(Func<object> refreshCallBack)
+    {
+        offlineGuideView.Init(refreshCallBack);
+        offlineGuideView.gameObject.SetActive(true);
     }
     //加载旋转动画
     void StartLoadingAnim()

@@ -29,14 +29,19 @@ public class RegexHypertextScrollEnableSelf : MonoBehaviour
     {
         //OnInit(null,null);
     }
-
+    int tick = 0;
     // Update is called once per frame
     void Update()
     {
-        //500容错半个屏幕长度
-        if (content.localPosition.y >= startYPos - 3000 && content.localPosition.y <= endYPos + 3000)
-            thisText.enabled = true;
-        else
-            thisText.enabled = false;
+        //每9帧检测一次
+        if (tick % 9 == 0)
+        {  //500容错半个屏幕长度
+            if (content.localPosition.y >= startYPos - 3000 && content.localPosition.y <= endYPos + 3000)
+                thisText.enabled = true;
+            else
+                thisText.enabled = false;
+            tick = 0;
+        }
+            ++tick;
     }
 }

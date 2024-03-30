@@ -27,14 +27,19 @@ public class TMPScrollEnableSelf : MonoBehaviour
     {
         //OnInit(null,null);
     }
+    int tick = 0;
 
     // Update is called once per frame
     void Update()
     {
         //500ÈÝ´í°ë¸öÆÁÄ»³¤¶È
-        if (content.localPosition.y >= startYPos-3000 && content.localPosition.y <= endYPos+3000)
-            thisTMP.enabled = true;
-        else
-            thisTMP.enabled = false;
+        if (tick % 9 == 0)
+        {
+            if (content.localPosition.y >= startYPos - 3000 && content.localPosition.y <= endYPos + 3000)
+                thisTMP.enabled = true;
+            else
+                thisTMP.enabled = false;
+        }
+        ++tick;
     }
 }

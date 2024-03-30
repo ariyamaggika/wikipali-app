@@ -25,6 +25,7 @@ public class NewArticleNodeItemView : MonoBehaviour
 
     public Book book;
     public ChapterDBData channel;
+    public ArticleLoadingView loadingView;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,11 +39,16 @@ public class NewArticleNodeItemView : MonoBehaviour
             return;
         int paraMin = data.paragraph;
         int paraMax = data.paragraph + data.chapter_len;
+        //开始转菊花加载
+        if (loadingView != null)
+            loadingView.StartLoading(() => { OnInArticleBtnClick(); return null; });
         C2SArticleGetNewDBInfo.GetSentenceData(book.id, channel.channel_id, paraMin, paraMax, OnLineArticleCallBack);
         articleView.ArticleNodeBtnClick();
     }
     public object OnLineArticleCallBack(List<SentenceDBData> dl)
     {
+        //停止转菊花加载
+        loadingView.StopLoading();
         if (dl != null && dl.Count > 0)
         {
             articleView.contentView.ShowPaliContentTransCommon(book, channel, dl, true);

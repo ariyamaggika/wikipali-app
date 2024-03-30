@@ -6,11 +6,12 @@ using UnityEngine;
 public class ArticleLoadingView : MonoBehaviour
 {
     public ArticleView articleView;
+    public NewArticleView newArticleView;
     public LoadingTexView loadingTexView;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
     Func<object> refreshFunc;
     float timer = 0;
@@ -31,7 +32,10 @@ public class ArticleLoadingView : MonoBehaviour
     {
         startTimer = false;
         timer = 0;
-        articleView.SetOfflineGuideOn(refreshFunc);
+        if (articleView != null)
+            articleView.SetOfflineGuideOn(refreshFunc);
+        if (newArticleView != null)
+            newArticleView.SetOfflineGuideOn(refreshFunc);
     }
     //todo 添加超时刷新功能
     //30s后超时，进入离线界面，需要点击刷新，重新获取文章

@@ -141,7 +141,8 @@ public class ArticleContentScrollView : MonoBehaviour
             tempBook = book;
             tempCNode = cNode;
             //开始转菊花加载
-            articleView.articleLoadingView.StartLoading(() => { ShowPaliContentTransAgent(book, cNode, isTrans); return null; });
+            if (articleView != null)
+                articleView.articleLoadingView.StartLoading(() => { ShowPaliContentTransAgent(book, cNode, isTrans); return null; });
             C2SArticleGetNewDBInfo.GetSentenceData(book.id, cNode.channel_id, paraMin, paraMax, OnLineArticleCallBack);
         }
         else
