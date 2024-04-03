@@ -71,6 +71,16 @@ public class ArticleMarkdownTMPManager
             TermInfoJson json = GetMarkdownInfo<TermInfoJson>(term);
             //Debug.LogError(mArr[i].Index + "," + mArr[i].Value);
             string fillWord = json.meaning;
+            //代码保护
+            if (string.IsNullOrEmpty(json.meaning))
+            {
+                if (string.IsNullOrEmpty(json.meaning2))
+                {
+                    json.meaning = "";
+                }
+                else
+                    json.meaning = json.meaning2;
+            }
             //第一次出现术语，要以这个格式meaing(word,meaning2)显示
             if (!termDic.ContainsKey(json.meaning))
             {

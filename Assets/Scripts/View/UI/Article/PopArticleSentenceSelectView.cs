@@ -14,6 +14,7 @@ public class PopArticleSentenceSelectView : MonoBehaviour
     public Button returnBtn;
     public Button okBtn;
     public ArticleView articleView;
+    public NewArticleView newArticleView;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,11 +27,22 @@ public class PopArticleSentenceSelectView : MonoBehaviour
     Book currentBook;
     public void Init()
     {
-        content = articleView.contentView.articleContent;
-        RefreshGroupList();
-        shareView.gameObject.SetActive(true);
-        currentChapterData = articleView.contentView.currentChapterData;
-        currentBook = articleView.contentView.currentBook;
+        if (articleView.gameObject.activeSelf)
+        {
+            content = articleView.contentView.articleContent;
+            RefreshGroupList();
+            shareView.gameObject.SetActive(true);
+            currentChapterData = articleView.contentView.currentChapterData;
+            currentBook = articleView.contentView.currentBook;
+        }
+        if (newArticleView.gameObject.activeSelf)
+        {
+            content = newArticleView.contentView.articleContent;
+            RefreshGroupList();
+            shareView.gameObject.SetActive(true);
+            currentChapterData = newArticleView.contentView.currentChapterData;
+            currentBook = newArticleView.contentView.currentBook;
+        }
     }
     bool isSelectedAll = false;
     public void OnSelectAllBtnClick()

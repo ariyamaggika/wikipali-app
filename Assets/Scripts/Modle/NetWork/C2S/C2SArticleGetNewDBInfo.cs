@@ -196,7 +196,7 @@ public class C2SArticleGetNewDBInfo
                 //ProgressSlider.value = 100 - r.PercentageComplete;
                 byte[] responseData = r.ReadAsByteArray();
                 string json = Encoding.Default.GetString(responseData);
-                Debug.LogError(json);
+                //Debug.LogError(json);
                 allJson += json;
                 if (json.Contains("\"message\":\"\"}"))
                 {

@@ -19,8 +19,8 @@ public class TMPScrollEnableSelf : MonoBehaviour
         thisRectTrans = this.GetComponent<RectTransform>();
         startYPos = -(thisRectTrans.localPosition.y + thisRectTrans.sizeDelta.y * 0.5f);
         endYPos = startYPos + thisRectTrans.sizeDelta.y;// * 0.5f;
-        Debug.LogError(startYPos);
-        Debug.LogError(endYPos);
+        //Debug.LogError(startYPos);
+        //Debug.LogError(endYPos);
     }
     // Start is called before the first frame update
     void Start()

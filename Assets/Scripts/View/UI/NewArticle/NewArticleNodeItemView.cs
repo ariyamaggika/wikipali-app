@@ -53,12 +53,18 @@ public class NewArticleNodeItemView : MonoBehaviour
         {
             articleView.contentView.ShowPaliContentTransCommon(book, channel, dl, true);
         }
+        //放这里不知是否合适
+        //读取DB此处花费加载时间
+        //在Init()方法里初始化了
+        //if (!string.IsNullOrEmpty(channel.channel_id))
+        //    channel.channelData = ArticleManager.Instance().GetChannelDataByID(channel.channel_id);
+
         return null;
     }
     public void Init(NewArticleData data, NewArticleView _articleView)
     {
         articleView = _articleView;
-        titleText.text = data.title.Replace("\n","");
+        titleText.text = data.title.Replace("\n", "");
         subText.text = data.toc;
         contentText.text = data.summary;
         data.progress = Mathf.Clamp01(data.progress);
@@ -83,10 +89,13 @@ public class NewArticleNodeItemView : MonoBehaviour
             bookID = data.book,
             paragraph = data.para,
             //language = data.la,
-            title = data.channel.name,
+            title = titleText.text,// data.channel.name,
             channel_id = data.channel_id,
             progress = data.progress,
         };
+        channel.channelData = new ChannelChapterDBData();
+        channel.channelData.channel_id = data.channel_id;
+        channel.channelData.name = data.channel.name;
     }
     // Update is called once per frame
     void Update()
