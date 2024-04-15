@@ -165,7 +165,10 @@ namespace TMPro.Examples
                         - titleTrans.GetComponent<RectTransform>().sizeDelta.y - title2Trans.GetComponent<RectTransform>().sizeDelta.y;//半个字体大小
                     float dragViewSize = m_Canvas.GetComponent<RectTransform>().sizeDelta.y;// (float)Screen.height;// dragWordSearchView.GetComponent<RectTransform>().sizeDelta.y;
                     //float y = lastCharInfo.bottomRight.y + contentTrans.localPosition.y + tmp_Trans.localPosition.y * 0.5f + tmpYOffset;
-                    float y = dragViewSize * 0.5f - (textHeight - ((textHeight * 0.5f) + lastCharInfo.bottomRight.y) - contentTrans.localPosition.y) + tmpYOffset;// - dragViewSize*0.5f;
+                    //Debug.LogError(tmp_Trans.localPosition.y);
+                    //Debug.LogError(tmp_Trans.sizeDelta.y * 0.5f);
+                    //Debug.LogError(tmp_Trans.localPosition.y - tmp_Trans.sizeDelta.y * 0.5f);
+                    float y = (tmp_Trans.localPosition.y + tmp_Trans.sizeDelta.y * 0.5f) + dragViewSize * 0.5f - (textHeight - ((textHeight * 0.5f) + lastCharInfo.bottomRight.y) - contentTrans.localPosition.y) + tmpYOffset;// - dragViewSize*0.5f;
                     //float y = lastCharInfo.bottomRight.y  + tmpYOffset;
 
                     dragWordSearchView.DragWord(wInfo.GetWord(), this, new Vector3(btnXPos, y, 0));

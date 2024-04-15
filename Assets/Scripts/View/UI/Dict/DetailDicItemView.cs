@@ -18,13 +18,16 @@ public class DetailDicItemView : MonoBehaviour
     public float itemHeight;
     //是否是折叠状态
     bool isFolded = false;
-    const int TEXT_MAX = 15000;
+    const int TEXT_MAX = 1000;
     List<Text> splitTextList = new List<Text>();
     public void Init(MatchedWordDetail wordDic)
     {
+        isSetHeight = false;
         word = wordDic;
         titleTxt.text = word.dicName;
         string detail = word.meaning;
+        //if (detail.Length > 500)
+        //    detail = detail.Substring(0, 500);
         //部分高亮
         //detail = detail.Replace("【", "<color=blue>【");
         //detail = detail.Replace("】", "】</color>");
@@ -73,17 +76,24 @@ public class DetailDicItemView : MonoBehaviour
         LayoutRebuilder.ForceRebuildLayoutImmediate(dicView.detailScrollContent);
 
     }
-
-    public float GetHeight()
+    bool isSetHeight = false;
+    float preHeight = 0;
+    public float GetHeight(bool isCommunityDic)
     {
+
         float height = titleBtn.GetComponent<RectTransform>().sizeDelta.y;
-        if (detailTxt.gameObject.activeSelf)
+        if (detailTxt.gameObject.activeSelf && splitTextList.Count == 0)
         {
             height += detailTxt.GetComponent<RectTransform>().sizeDelta.y;
         }
         else
         {
-            float splitTextsHeight = 0;
+            //????????????????
+            //社区词典重新计算
+            if (isSetHeight && !isCommunityDic)
+                return preHeight;
+
+            float splitTextsHeight = 0;// height;
             for (int i = 0; i < splitTextList.Count; i++)
             {
                 Text contentTextInst = splitTextList[i];
@@ -93,10 +103,13 @@ public class DetailDicItemView : MonoBehaviour
                 //Debug.LogError(Vector3.up * splitTextsHeight);
                 //Debug.LogError(contentTextInst.rectTransform.localPosition);
                 //Debug.LogError("----------------------");
-                splitTextsHeight += contentTextInst.rectTransform.sizeDelta.y + height;
+                splitTextsHeight += Mathf.Abs(contentTextInst.rectTransform.sizeDelta.y);// + height);
+                //Debug.LogError(contentTextInst.name+"---"+ contentTextInst.rectTransform.sizeDelta.y, contentTextInst);
             }
             height += splitTextsHeight;
         }
+        isSetHeight = true;
+        preHeight = height;
         return height;
     }
     //社区词典

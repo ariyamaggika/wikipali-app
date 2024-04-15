@@ -74,7 +74,7 @@ public class C2SDicGetInfo
         HttpClient client = new HttpClient();
         string communityDicJson = "";
         //client.Get(new System.Uri("https://www.wikipali.cc/api/v2/userdict?view=community&word=dhamma"),
-        client.Get(new System.Uri(string.Format(@"https://www.wikipali.cc/api/v2/userdict?view=community&word={0}", word)),
+        client.Get(new System.Uri(string.Format(@"https://www.wikipali.org/api/v2/userdict?view=community&word={0}", word)),
         // client.Get(new System.Uri(string.Format(@"wikipali.cc/api/v2/userdict?view=community&word={0}", word)),
         HttpCompletionOption.StreamResponseContent, (r) =>
         {

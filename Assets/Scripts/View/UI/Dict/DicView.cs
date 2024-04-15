@@ -276,8 +276,9 @@ public class DicView : MonoBehaviour
             //detailDicItemList[i].transform.position = detailDicItem.transform.position;
             //detailDicItemList[i].GetComponent<RectTransform>().position -= Vector3.up * height;
             DetailDicItemView ddiv = detailDicItemList[i].GetComponent<DetailDicItemView>();
-            float textHeight = ddiv.GetHeight();
-            detailDicItemList[i].GetComponent<RectTransform>().sizeDelta += new Vector2(0, textHeight);
+            float textHeight = ddiv.GetHeight(i == 0);
+           // detailDicItemList[i].GetComponent<RectTransform>().sizeDelta += new Vector2(0, textHeight);
+            detailDicItemList[i].GetComponent<RectTransform>().sizeDelta = new Vector2(detailDicItemList[i].GetComponent<RectTransform>().sizeDelta.x, textHeight);
             ddiv.itemHeight = detailDicItemList[i].GetComponent<RectTransform>().sizeDelta.y;
 
             //?为啥会缩100？
