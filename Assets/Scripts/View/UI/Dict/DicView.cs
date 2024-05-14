@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+//using UnityEngine.UIElements;
+using static ArticleManager;
 using static DictManager;
 /// <summary>
 /// 词典面板
@@ -12,21 +14,29 @@ using static DictManager;
 public class DicView : MonoBehaviour
 {
     public Button searchBtn;
-    public Button delBtn;
+    public Button delBtnDic;
+    public Button delBtnArticle;
     //用户输入的查词
     public InputField userInput;
+    public InputField articleInput;
+    public Button articleSearchBtn;
     public Button itemDicBtn;
+    public Button itemArticleBtn;
     public DetailDicItemView detailDicItem;
     public OtherWordItemView otherWordItemView;
     public RectTransform summaryScrollContent;
     public RectTransform detailScrollContent;
+    public ToggleGroup searchToggleGroup;
+    public Toggle dicToggle;
+    public Toggle articleToggle;
     //单词列表面板
     public RectTransform SummaryScrollView;
     //单词详情面板
     public RectTransform DetailScrollView;
     //todo 单例模式
     public DictManager dicManager = DictManager.Instance();
-    public bool isDelBtnOn = false;
+    public bool isDelDicBtnOn = false;
+    public bool isDelArticleBtnOn = false;
     //是否是补全单词，补全不是用户输入
     public bool isComplement = false;
     public void SetSummaryText(string text)
@@ -34,10 +44,16 @@ public class DicView : MonoBehaviour
         SetSummaryOn();
         userInput.text = text;
     }
-    public void OnDelBtnClick()
+    public void OnDelDicBtnClick()
     {
         SetSummaryOn();
         userInput.text = "";
+    }
+    public void OnDelArticleBtnClick()
+    {
+        SetSummaryOn();
+        articleInput.text = "";
+        DestroyItemArticleList();
     }
     public void OnSearchBtnClick()
     {
@@ -46,20 +62,34 @@ public class DicView : MonoBehaviour
         //SqliteDataReader reader = dbManager.db.SelectOrderASC("bh-paper", "word");
         SearchWord(userInput.text);
     }
-    public void OnSearchValueChanged(string value)
+    public void OnSearchValueChangedDic(string value)
     {
         if (isComplement)
             return;
         //Debug.LogError(value);
         DestroyItemDicList();
         SearchWord(userInput.text);
+
+    }
+    public void OnSearchValueChangedArticle(string value)
+    {
+        if (!string.IsNullOrEmpty(value))
+        {
+            SetDelBtnArticle(true);
+        }
+
+    }
+    public void OnSearchArticleClick()
+    {
+        DestroyItemArticleList();
+        SearchArticle(articleInput.text);
     }
     List<GameObject> itemDicList = new List<GameObject>();
     void SearchWord(string inputStr)
     {
         if (string.IsNullOrEmpty(inputStr))
         {
-            SetDelBtn(false);
+            SetDelBtnDic(false);
             return;
         }
         bool isChinese = CommonTool.CheckStringIsChinese(inputStr);
@@ -78,7 +108,7 @@ public class DicView : MonoBehaviour
         {
             matchedWordArr = dicManager.MatchWord(inputStr);
         }
-        SetDelBtn(true);
+        SetDelBtnDic(true);
         //限制了//由于混入多个词典与英文和pali问查找结果，个数没做限制，在此处做限制
         int length = matchedWordArr.Length;// matchedWordArr.Length > DictManager.LIMIT_COUNT ? LIMIT_COUNT : matchedWordArr.Length;
         float height = itemDicBtn.GetComponent<RectTransform>().sizeDelta.y;
@@ -132,21 +162,53 @@ public class DicView : MonoBehaviour
         itemDicList.Clear();
     }
     //设置删除输入文字按钮开关
-    void SetDelBtn(bool sw)
+    void SetDelBtnDic(bool sw)
     {
-        if (sw != isDelBtnOn)
+        if (sw != isDelDicBtnOn)
         {
-            isDelBtnOn = sw;
-            delBtn.gameObject.SetActive(sw);
+            isDelDicBtnOn = sw;
+            delBtnDic.gameObject.SetActive(sw);
+        }
+    }
+    //设置删除输入文字按钮开关
+    void SetDelBtnArticle(bool sw)
+    {
+        if (sw != isDelArticleBtnOn)
+        {
+            isDelArticleBtnOn = sw;
+            delBtnArticle.gameObject.SetActive(sw);
         }
     }
     // Start is called before the first frame update
     void Start()
     {
         AddInputNameClickEvent();
-        delBtn.onClick.AddListener(OnDelBtnClick);
+        delBtnDic.onClick.AddListener(OnDelDicBtnClick);
+        delBtnArticle.onClick.AddListener(OnDelArticleBtnClick);
         //userInput.OnPointerClick.AddListener(OnSearchInputClick);
-        userInput.onValueChanged.AddListener(OnSearchValueChanged);
+        userInput.onValueChanged.AddListener(OnSearchValueChangedDic);
+        articleInput.onValueChanged.AddListener(OnSearchValueChangedArticle);
+        articleSearchBtn.onClick.AddListener(OnSearchArticleClick);
+        dicToggle.onValueChanged.AddListener(OnToggleValueChanged);
+        articleToggle.onValueChanged.AddListener(OnToggleValueChanged);
+    }
+    void OnToggleValueChanged(bool value)
+    {
+
+        if (dicToggle.isOn)
+        {
+            userInput.gameObject.SetActive(true);
+            articleInput.gameObject.SetActive(false);
+            DestroyItemArticleList();
+        }
+        else if (articleToggle.isOn)
+        {
+            userInput.gameObject.SetActive(false);
+            articleInput.gameObject.SetActive(true);
+            DestroyItemDicList();
+        }
+  ;
+
     }
     private void AddInputNameClickEvent() //可以在Awake中调用
     {
@@ -200,7 +262,7 @@ public class DicView : MonoBehaviour
         DestroyDetailDicItemList();
         if (string.IsNullOrEmpty(word))
         {
-            SetDelBtn(false);
+            SetDelBtnDic(false);
             return;
         }
         //补全查词
@@ -277,7 +339,7 @@ public class DicView : MonoBehaviour
             //detailDicItemList[i].GetComponent<RectTransform>().position -= Vector3.up * height;
             DetailDicItemView ddiv = detailDicItemList[i].GetComponent<DetailDicItemView>();
             float textHeight = ddiv.GetHeight(i == 0);
-           // detailDicItemList[i].GetComponent<RectTransform>().sizeDelta += new Vector2(0, textHeight);
+            // detailDicItemList[i].GetComponent<RectTransform>().sizeDelta += new Vector2(0, textHeight);
             detailDicItemList[i].GetComponent<RectTransform>().sizeDelta = new Vector2(detailDicItemList[i].GetComponent<RectTransform>().sizeDelta.x, textHeight);
             ddiv.itemHeight = detailDicItemList[i].GetComponent<RectTransform>().sizeDelta.y;
 
@@ -324,6 +386,95 @@ public class DicView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //if (Input.GetKeyDown(KeyCode.S))
+        //    IsToggleDict();
     }
+    bool IsToggleDict()
+    {
+        //todo 外部查词例如 圣典划词取义跳转过来的情况
+        Toggle t = searchToggleGroup.GetFirstActiveToggle();
+        //Debug.LogError(t.name);
+        //if (t == dicToggle)
+        //    Debug.LogError(true);
+        //else
+        //    Debug.LogError(false);
+        return t == dicToggle;
+    }
+    #region 查圣典
+    List<GameObject> itemArticleList = new List<GameObject>();
+
+    //销毁下拉列表GO
+    private void DestroyItemArticleList()
+    {
+        int length = itemArticleList.Count;
+        if (length == 0)
+            return;
+        for (int i = 0; i < length; i++)
+        {
+            Destroy(itemArticleList[i]);
+        }
+        itemArticleList.Clear();
+    }
+    void SearchArticle(string inputStr)
+    {
+        if (string.IsNullOrEmpty(inputStr))
+        {
+            SetDelBtnArticle(false);
+            return;
+        }
+        bool isChinese = CommonTool.CheckStringIsChinese(inputStr);
+        bool isMyanmar = CommonTool.CheckStringIsMyanmar(inputStr);
+        List<SentenceDBData> sentenceArr = null;
+        List<ChapterDBData> chapterArr = null;
+        //反向查询，中文
+        //查中文只有有有离线包才行
+        if (isChinese || isMyanmar)
+        {
+            sentenceArr = ArticleManager.Instance().GetSentencesChineseByWord(inputStr);
+        }
+        else//正向查询
+        {
+            sentenceArr = ArticleManager.Instance().GetSentencesAllByWord(inputStr);
+        }
+        chapterArr = ArticleManager.Instance().GetChaptersSearchTitle(inputStr);
+        SetDelBtnArticle(true);
+        //限制了//由于混入多个词典与英文和pali问查找结果，个数没做限制，在此处做限制
+        int sLength = sentenceArr.Count;// matchedWordArr.Length > DictManager.LIMIT_COUNT ? LIMIT_COUNT : matchedWordArr.Length;
+        int cLength = chapterArr.Count;// matchedWordArr.Length > DictManager.LIMIT_COUNT ? LIMIT_COUNT : matchedWordArr.Length;
+                                       //float height = itemArticleBtn.GetComponent<RectTransform>().sizeDelta.y;
+                                       //todo 查重
+        List<string> duplicateCheckStrList = new List<string>();
+        for (int i = 0; i < cLength; i++)
+        {
+            BookDBData bookData = ArticleManager.Instance().GetBookChildrenFromID(chapterArr[i].bookID, chapterArr[i].paragraph);
+            if (bookData == null || chapterArr[i] == null)
+                continue;
+            string temp = bookData.id + "_" + bookData.paragraph;
+            if (duplicateCheckStrList.Contains(temp))
+                continue;
+            duplicateCheckStrList.Add(temp);
+            GameObject inst = Instantiate(itemArticleBtn.gameObject, summaryScrollContent, false);
+            inst.transform.position = itemArticleBtn.transform.position;
+            inst.GetComponent<ItemArticleView>().SetArticle(chapterArr[i], bookData);
+            inst.SetActive(true);
+            itemArticleList.Add(inst);
+        }
+        for (int i = 0; i < sLength; i++)
+        {
+            BookDBData bookData = ArticleManager.Instance().GetBookChildrenFromID(sentenceArr[i].bookID, sentenceArr[i].paragraph);
+            if (bookData == null || sentenceArr[i] == null)
+                continue;
+            bookData = ArticleManager.Instance().GetBookChildrenFromID(sentenceArr[i].bookID, bookData.parent);
+            string temp = bookData.id + "_" + bookData.paragraph;
+            if (duplicateCheckStrList.Contains(temp))
+                continue;
+            duplicateCheckStrList.Add(temp);
+            GameObject inst = Instantiate(itemArticleBtn.gameObject, summaryScrollContent, false);
+            inst.transform.position = itemArticleBtn.transform.position;
+            inst.GetComponent<ItemArticleView>().SetArticle(sentenceArr[i], bookData);
+            inst.SetActive(true);
+            itemArticleList.Add(inst);
+        }
+    }
+    #endregion
 }

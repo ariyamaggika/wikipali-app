@@ -1,4 +1,5 @@
 ﻿using Imdork.SQLite;
+using iTextSharp.text;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -248,6 +249,38 @@ public class ArticleManager
         //public Date
         //public string translateName;
     }
+    public ChapterDBData GetChapter(int bookID, int paragraph, string channel_id)
+    {
+
+        ChapterDBData res = null;
+        dbManager.Getdb(db =>
+        {
+            var readerPali = db.SelectChapter(bookID, paragraph, channel_id);
+            Dictionary<string, object> paliPair = SQLiteTools.GetValue(readerPali);
+            if (paliPair != null)
+            {
+                string title = "";
+                if (paliPair.ContainsKey("title"))
+                    title = paliPair["title"].ToString();
+                string language = "pali";
+                if (paliPair.ContainsKey("language"))
+                    language = paliPair["language"].ToString();
+                ChapterDBData c = new ChapterDBData()
+                {
+                    id = paliPair["id"].ToString(),
+                    bookID = int.Parse(paliPair["book"].ToString()),
+                    paragraph = int.Parse(paliPair["paragraph"].ToString()),
+                    language = language,
+                    title = title,
+                    channel_id = paliPair["channel_id"].ToString(),
+                    progress = float.Parse(paliPair["progress"].ToString()),
+                };
+                res = c;
+            }
+
+        }, DBManager.SentenceDBIndexurl);
+        return res;
+    }
     /// <summary>
     /// 输入bookID List，返回chapter数据
     /// </summary>
@@ -336,6 +369,53 @@ public class ArticleManager
                         channel_id = paliPairs[p]["channel_id"].ToString(),
                         progress = float.Parse(paliPairs[p]["progress"].ToString()),
                     };
+                    cList.Add(c);
+                }
+            }
+
+        }, DBManager.SentenceDBIndexurl);
+        return cList;
+    }
+    public List<ChapterDBData> GetChaptersSearchTitle(string input)
+    {
+        List<ChapterDBData> cList = new List<ChapterDBData>();
+        dbManager.Getdb(db =>
+        {
+
+            var readerPali = db.SearchChapter(input, SEARCH_LIMIT_COUNT);
+            Dictionary<string, object>[] paliPairs = SQLiteTools.GetValues(readerPali);
+            if (paliPairs != null)
+            {
+                int paliLength = paliPairs.Length;
+                for (int p = 0; p < paliLength; p++)
+                {
+
+                    string title = "";
+                    if (paliPairs[p].ContainsKey("title"))
+                        title = paliPairs[p]["title"].ToString();
+
+
+                    //int.Parse(paliPairs[p]["book"].ToString());
+                    //int.Parse(paliPairs[p]["paragraph"].ToString());
+                    string language = "pali";
+                    if (paliPairs[p].ContainsKey("language"))
+                        language = paliPairs[p]["language"].ToString();
+                    //paliPairs[p]["language"].ToString();
+                    //paliPairs[p]["channel_id"].ToString();
+                    //float.Parse(paliPairs[p]["progress"].ToString());
+
+                    ChapterDBData c = new ChapterDBData()
+                    {
+                        id = paliPairs[p]["id"].ToString(),
+                        bookID = int.Parse(paliPairs[p]["book"].ToString()),
+                        paragraph = int.Parse(paliPairs[p]["paragraph"].ToString()),
+                        language = language,
+                        title = title,
+                        channel_id = paliPairs[p]["channel_id"].ToString(),
+                        progress = float.Parse(paliPairs[p]["progress"].ToString()),
+                    };
+                    c.title = c.title.Replace("\n","");
+                    c.title = c.title.Replace(input, CommonTool.COLOR_BLUE_FLAG + input + "</color>");
                     cList.Add(c);
                 }
             }
@@ -481,8 +561,10 @@ public class ArticleManager
         public int word_start;
         public int word_end;
         public string content;
+        //
+        public string channel_id;
         public SentenceDBData()
-        { 
+        {
         }
         public SentenceDBData(int _bookID, int _paragraph, int _word_start, int _word_end, string _content)
         {
@@ -491,6 +573,15 @@ public class ArticleManager
             word_start = _word_start;
             word_end = _word_end;
             content = _content;
+        }
+        public SentenceDBData(int _bookID, int _paragraph, int _word_start, int _word_end, string _content, string _channel_id)
+        {
+            bookID = _bookID;
+            paragraph = _paragraph;
+            word_start = _word_start;
+            word_end = _word_end;
+            content = _content;
+            channel_id = _channel_id;
         }
     }
     public List<SentenceDBData> GetPaliSentenceByBookParagraph(int bookID, int min, int max)
@@ -554,6 +645,113 @@ public class ArticleManager
                 }
             }
         }, DBManager.SentenceDBurl);
+        return res;
+    }
+    #endregion
+    #region 搜索单词匹配句子和标题返回文章信息
+    const int SEARCH_LIMIT_COUNT = 20;
+    public List<SentenceDBData> GetSentencesChineseByWord(string word)
+    {
+        NetPackLogicEnum netPackEnum = ArticleManager.Instance().CheckIsUseOfflinePack();
+        List<SentenceDBData> res = new List<SentenceDBData>();
+        //检测离线包
+        if (netPackEnum == NetPackLogicEnum.OfflineWithPack)
+        {
+            dbManager.Getdb(db =>
+            {
+
+                var readerPali = db.SelectSentencesTranslationByWord(word, SEARCH_LIMIT_COUNT * 3);
+                Dictionary<string, object>[] paliPairs = SQLiteTools.GetValues(readerPali);
+                if (paliPairs != null)
+                {
+                    int paliLength = paliPairs.Length;
+                    for (int p = 0; p < paliLength; p++)
+                    {
+                        string content = "";
+                        if (paliPairs[p].ContainsKey("content"))
+                            content = paliPairs[p]["content"].ToString();
+                        SentenceDBData s = new SentenceDBData()
+                        {
+                            //id = paliPairs[p]["id"].ToString(),
+                            bookID = int.Parse(paliPairs[p]["book"].ToString()),
+                            paragraph = int.Parse(paliPairs[p]["paragraph"].ToString()),
+                            word_start = int.Parse(paliPairs[p]["word_start"].ToString()),
+                            word_end = int.Parse(paliPairs[p]["word_end"].ToString()),
+                            channel_id = paliPairs[p]["channel_id"].ToString(),
+                            content = content,
+                        };
+                        s.content = s.content.Replace(word, CommonTool.COLOR_BLUE_FLAG + word + "</color>");
+                        res.Add(s);
+                    }
+                }
+            }, DBManager.SentenceDBurl);//todo 有离线包才行
+        }
+        return res;
+    }
+    public List<SentenceDBData> GetSentencesAllByWord(string word)
+    {
+        List<SentenceDBData> res = new List<SentenceDBData>();
+        List<SentenceDBData> resTrans = new List<SentenceDBData>();
+        dbManager.Getdb(db =>
+        {
+
+            var readerPali = db.SelectSentencesByWord(word, SEARCH_LIMIT_COUNT);
+            Dictionary<string, object>[] paliPairs = SQLiteTools.GetValues(readerPali);
+            if (paliPairs != null)
+            {
+                int paliLength = paliPairs.Length;
+                for (int p = 0; p < paliLength; p++)
+                {
+                    string content = "";
+                    if (paliPairs[p].ContainsKey("content"))
+                        content = paliPairs[p]["content"].ToString();
+                    SentenceDBData s = new SentenceDBData()
+                    {
+                        ////id = paliPairs[p]["id"].ToString(),
+                        bookID = int.Parse(paliPairs[p]["book"].ToString()),
+                        paragraph = int.Parse(paliPairs[p]["paragraph"].ToString()),
+                        word_start = int.Parse(paliPairs[p]["word_start"].ToString()),
+                        word_end = int.Parse(paliPairs[p]["word_end"].ToString()),
+                        content = content,
+                    };
+                    s.content = s.content.Replace(word, CommonTool.COLOR_BLUE_FLAG + word + "</color>");
+
+                    res.Add(s);
+                }
+            }
+            //if (res.Count < 30)
+            //{
+            //    var readerPaliTrans = db.SelectSentencesTranslationByWord(word, SEARCH_LIMIT_COUNT);
+            //    Dictionary<string, object>[] paliPairsTrans = SQLiteTools.GetValues(readerPaliTrans);
+            //    if (paliPairsTrans != null)
+            //    {
+            //        int paliLength = paliPairsTrans.Length;
+            //        for (int p = 0; p < paliLength; p++)
+            //        {
+            //            string content = "";
+            //            if (paliPairsTrans[p].ContainsKey("content"))
+            //                content = paliPairsTrans[p]["content"].ToString();
+            //            SentenceDBData s = new SentenceDBData()
+            //            {
+            //                //id = paliPairs[p]["id"].ToString(),
+            //                bookID = int.Parse(paliPairsTrans[p]["book"].ToString()),
+            //                paragraph = int.Parse(paliPairsTrans[p]["paragraph"].ToString()),
+            //                word_start = int.Parse(paliPairsTrans[p]["word_start"].ToString()),
+            //                word_end = int.Parse(paliPairsTrans[p]["word_end"].ToString()),
+            //                channel_id = paliPairs[p]["channel_id"].ToString(),
+            //                content = content,
+            //            };
+            //            res.Add(s);
+            //            if (res.Count >= 30)
+            //                break;
+            //            //resTrans.Add(s);
+            //        }
+            //    }
+            //}
+            //todo 排序
+
+
+        }, DBManager.SentencePaliDBurl);
         return res;
     }
     #endregion

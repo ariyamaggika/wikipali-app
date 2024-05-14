@@ -487,6 +487,12 @@ namespace Imdork.SQLite
             string query = "SELECT * FROM pali_text WHERE book = " + bookID + " AND paragraph = " + pargraph;// "' limit " + limit.ToString();
             return ExecuteQuery(query);
         }
+        public SqliteDataReader SearchChapter(string input ,int limit)
+        {
+            string query = "SELECT * FROM 'chapter' WHERE title LIKE " + "'%" + input + "%' limit " + limit.ToString();
+            //string query = "SELECT * FROM chapter WHERE book = 9";// "' limit " + limit.ToString();
+            return ExecuteQuery(query);
+        }
         public SqliteDataReader SelectChapter(int[] bookIDArr)
         {
             string select = string.Join("','", bookIDArr);
@@ -498,6 +504,15 @@ namespace Imdork.SQLite
         public SqliteDataReader SelectChapter(int bookID)
         {
             string query = "SELECT * FROM chapter WHERE book = " + bookID + "  ORDER BY book ASC , paragraph ASC, progress DESC";// "' limit " + limit.ToString();
+            //string query = "SELECT * FROM chapter WHERE book = 9";// "' limit " + limit.ToString();
+            return ExecuteQuery(query);
+        }
+        public SqliteDataReader SelectChapter(int bookID, int paragraph, string channel_id)
+        {
+            string query = "SELECT * FROM chapter WHERE book = " + bookID + " AND paragraph = " + paragraph + " AND channel_id = '" + channel_id + "' ORDER BY book ASC , paragraph ASC, progress DESC";// "' limit " + limit.ToString();
+            //string query = "SELECT * FROM chapter WHERE book = " + 3 + " AND paragraph = " + 3 + " AND channel_id = " + "7b327411-4b36-4000-bc37-9759ae494a48" + " ORDER BY book ASC , paragraph ASC, progress DESC";// "' limit " + limit.ToString();
+            //string query = "SELECT * FROM chapter WHERE book = 3 AND paragraph = 3 AND channel_id = 7b327411-4b36-4000-bc37-9759ae494a48 ORDER BY book ASC , paragraph ASC";// "' limit " + limit.ToString();
+            //string query = "SELECT * FROM chapter WHERE book = " + 3 + " AND paragraph = 3 AND channel_id = '7b327411-4b36-4000-bc37-9759ae494a48' ORDER BY book ASC , paragraph ASC, progress DESC";// "' limit " + limit.ToString();
             //string query = "SELECT * FROM chapter WHERE book = 9";// "' limit " + limit.ToString();
             return ExecuteQuery(query);
         }
@@ -524,6 +539,29 @@ namespace Imdork.SQLite
 
             string query = "SELECT * FROM sentence_translation WHERE book = " + bookID + " AND paragraph > " + min + " AND paragraph < " + max + " AND channel_id = '" + channel + "' ORDER BY paragraph ASC, word_start ASC";//
             return ExecuteQuery(query);
+        }
+        //模糊查询句子
+        public SqliteDataReader SelectSentencesTranslationByWord(string word,int limit)
+        {
+            //inputStr = "成就";
+            //string query = "SELECT * FROM 'sentence_translation' WHERE content LIKE " + "'%" + word + "%' limit " + limit.ToString();
+            //string query = "SELECT `book`,`paragraph`,`word_start`,`word_end`,`content`,`channel_id` FROM 'sentence_translation' WHERE content LIKE '%佛%' limit 30";
+            //string query = "SELECT * FROM 'sentence_translation' WHERE content LIKE '%佛%' limit 30";
+            string query = "SELECT * FROM 'sentence_translation' WHERE content LIKE " + "'%" + word + "%' limit " + limit.ToString();
+            //query = "SELECT `id`,`word`,`note`,`dict_id` FROM 'bh-paper' WHERE note LIKE '%成就%' limit 30";
+
+            return ExecuteQuery(query);
+            //string query = "SELECT * FROM sentence_translation WHERE book = " + bookID + " AND paragraph > " + min + " AND paragraph < " + max + " AND channel_id = '" + channel + "' ORDER BY paragraph ASC, word_start ASC";//
+            //return ExecuteQuery(query);
+        }
+        public SqliteDataReader SelectSentencesByWord(string word, int limit)
+        {
+            //inputStr = "成就";
+            string query = "SELECT * FROM 'sentence' WHERE content LIKE " + "'%" + word + "%' limit " + limit.ToString();
+            //query = "SELECT `id`,`word`,`note`,`dict_id` FROM 'bh-paper' WHERE note LIKE '%成就%' limit 30";
+            return ExecuteQuery(query);
+            //string query = "SELECT * FROM sentence_translation WHERE book = " + bookID + " AND paragraph > " + min + " AND paragraph < " + max + " AND channel_id = '" + channel + "' ORDER BY paragraph ASC, word_start ASC";//
+            //return ExecuteQuery(query);
         }
         /// <summary>
         /// 匹配查询,通用

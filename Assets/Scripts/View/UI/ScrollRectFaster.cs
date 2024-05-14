@@ -4,6 +4,8 @@ using UnityEngine.EventSystems;
 
 namespace UnityEngine.UI
 {
+    //https://forum.unity.com/threads/make-scrolling-move-faster-in-scrollrect.375116/
+    //加速滑动参数，使用2019版 ScrollRect。配合editor类使用ScrollRectFasterEditor.cs
     [AddComponentMenu("UI/Scroll Rect Faster", 37)]
     [SelectionBase]
     [ExecuteInEditMode]
