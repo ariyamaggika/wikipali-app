@@ -11,6 +11,8 @@ public class SettingView : MonoBehaviour
     public Button reportBtn;
     public Button updateBtn;
     public Button offlinePackDownloadBtn;
+    public Button languageBtn;
+    public Text languageText;
     public Button paliVoiceTypeBtn;
     public Text paliVoiceTypeText;
     public Button paliVoiceGenderBtn;
@@ -37,6 +39,7 @@ public class SettingView : MonoBehaviour
         //    SetUpdateRedPoint();
         paliVoiceSpeedText.text = SettingManager.Instance().GetPaliVoiceSpeedName();
         paliVoiceTypeText.text = SettingManager.Instance().GetPaliVoiceTypeName();
+        languageText.text = SettingManager.Instance().GetLanguageTypeStr();
         paliVoiceGenderText.text = SettingManager.Instance().GetPaliVoiceGenderName();
         paliRemoveBracketSliderToggle.value = SettingManager.Instance().GetPaliRemoveBracket();
         paliRemoveBracketSliderToggle.onValueChanged.AddListener(OnPaliRemoveBracketToggleValueChanged);
@@ -53,6 +56,7 @@ public class SettingView : MonoBehaviour
         reportBtn.onClick.AddListener(OnReportBtnClick);
         paliVoiceSpeedBtn.onClick.AddListener(OnPaliVoiceSpeedBtnClick);
         paliVoiceTypeBtn.onClick.AddListener(OnPaliVoiceTypeBtnClick);
+        languageBtn.onClick.AddListener(OnLanguageBtnClick);
         paliVoiceGenderBtn.onClick.AddListener(OnPaliVoiceGenderBtnClick);
         articleClassifyBtn.onClick.AddListener(OnArticleClassifyBtnClick);
         versionText.text = "        v" + Application.version;
@@ -135,6 +139,17 @@ public class SettingView : MonoBehaviour
         {
             SettingManager.Instance().SetPaliVoiceType((PaliSpeakVoiceType)id);
             paliVoiceTypeText.text = SettingManager.Instance().GetPaliVoiceTypeName();
+            return null;
+        });
+        commonGroupView.gameObject.SetActive(true);
+    }
+    void OnLanguageBtnClick()
+    {
+        int sID = (int)SettingManager.Instance().GetLanguageType();
+        commonGroupView.InitSettingOptions("语言", new List<string> { "中文简体", "中文繁体", "English", "日本語"/*, "Burmese"*/ }, sID, (id) =>
+        {
+            SettingManager.Instance().SetLanguageType((LanguageType)id);
+            languageText.text = SettingManager.Instance().GetLanguageTypeStr();
             return null;
         });
         commonGroupView.gameObject.SetActive(true);

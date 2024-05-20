@@ -1,11 +1,14 @@
-﻿using JetBrains.Annotations;
+﻿using I2.Loc;
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.IO;
+using System.Reflection;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingManager
 {
@@ -349,6 +352,53 @@ public class SettingManager
         }
         return "";
     }
+    #endregion
+    #region 语言选项
+    public enum LanguageType
+    {
+        Chinese_Simplified = 0,
+        Chinese_Traditional = 1,
+        English = 2,
+        Japanese = 3,
+        //Burmese = 4,
+    }
+    public string GetLanguageTypeStr()
+    {
+        LanguageType lt = (LanguageType)PlayerPrefs.GetInt("LanguageSetting");
+        string ts = "";
+        switch (lt)
+        {
+            case LanguageType.Chinese_Simplified:
+                ts = "        中文简体";
+                break;
+            case LanguageType.Chinese_Traditional:
+                ts = "        中文繁体";
+                break;
+            case LanguageType.English:
+                ts = "        English";
+                break;
+            case LanguageType.Japanese:
+                ts = "        日本語";
+                break;
+                //case LanguageType.Burmese:
+                //    ts = "        Burmese";
+                //    break;
+        }
+
+        return ts;
+    }
+    public LanguageType GetLanguageType()
+    {
+        return (LanguageType)PlayerPrefs.GetInt("LanguageSetting");
+    }
+    public void SetLanguageType(LanguageType language)
+    {
+        Debug.LogError(Enum.GetName(typeof(LanguageType), language));
+        LocalizationManager.CurrentLanguage = Enum.GetName(typeof(LanguageType), language);
+
+        PlayerPrefs.SetInt("LanguageSetting", (int)language);
+    }
+
     #endregion
     #region 服务器同步部分
     #region channel
