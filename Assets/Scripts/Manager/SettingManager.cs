@@ -276,11 +276,13 @@ public class SettingManager
         PaliSpeakVoiceGender gender = (PaliSpeakVoiceGender)PlayerPrefs.GetInt("PaliSpeakVoiceGender");
         if (gender == PaliSpeakVoiceGender.Male)
         {
-            return "        男声";
+            //return "男声";
+            return LocalizationManager.GetTranslation("setting_PaliVoiceType_Man0");
         }
         else
         {
-            return "        女声";
+            //return "女声";
+            return LocalizationManager.GetTranslation("setting_PaliVoiceType_Woman0");
         }
     }
     public PaliSpeakVoiceType GetPaliVoiceType()
@@ -301,11 +303,13 @@ public class SettingManager
         PaliSpeakVoiceType t = (PaliSpeakVoiceType)PlayerPrefs.GetInt("PaliSpeakVoiceType");
         if (t == PaliSpeakVoiceType.Telugu)
         {
-            return "        印度风格";
+            //return "印度风格";
+            return LocalizationManager.GetTranslation("setting_PaliVoiceStyle_India");
         }
         else if (t == PaliSpeakVoiceType.Myanmar)
         {
-            return "        缅甸风格";
+            //return "缅甸风格";
+            return LocalizationManager.GetTranslation("setting_PaliVoiceStyle_Burma");
         }
         //else if (t == PaliSpeakVoiceType.Sinhala)
         //{
@@ -332,23 +336,23 @@ public class SettingManager
         PaliSpeakVoiceSpeed t = (PaliSpeakVoiceSpeed)PlayerPrefs.GetInt("PaliSpeakVoiceSpeed");
         if (t == PaliSpeakVoiceSpeed._0)
         {
-            return "        0";
+            return "0";
         }
         else if (t == PaliSpeakVoiceSpeed._10)
         {
-            return "        -10%";
+            return "-10%";
         }
         else if (t == PaliSpeakVoiceSpeed._20)
         {
-            return "        -20%";
+            return "-20%";
         }
         else if (t == PaliSpeakVoiceSpeed._30)
         {
-            return "        -30%";
+            return "-30%";
         }
         else if (t == PaliSpeakVoiceSpeed._40)
         {
-            return "        -40%";
+            return "-40%";
         }
         return "";
     }
@@ -360,7 +364,9 @@ public class SettingManager
         Chinese_Traditional = 1,
         English = 2,
         Japanese = 3,
-        //Burmese = 4,
+        Burmese = 4,
+        Sinhala = 5,
+        Thai = 6,
     }
     public string GetLanguageTypeStr()
     {
@@ -369,20 +375,26 @@ public class SettingManager
         switch (lt)
         {
             case LanguageType.Chinese_Simplified:
-                ts = "        中文简体";
+                ts = "中文简体";
                 break;
             case LanguageType.Chinese_Traditional:
-                ts = "        中文繁体";
+                ts = "中文繁体";
                 break;
             case LanguageType.English:
-                ts = "        English";
+                ts = "English";
                 break;
             case LanguageType.Japanese:
-                ts = "        日本語";
+                ts = "日本語";
                 break;
-                //case LanguageType.Burmese:
-                //    ts = "        Burmese";
-                //    break;
+            case LanguageType.Burmese:
+                ts = "Burmese";
+                break;
+            case LanguageType.Sinhala:
+                ts = "Sinhala";
+                break;
+            case LanguageType.Thai:
+                ts = "Thai";
+                break;
         }
 
         return ts;

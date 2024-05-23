@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using I2.Loc;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -59,8 +60,8 @@ public class SettingView : MonoBehaviour
         languageBtn.onClick.AddListener(OnLanguageBtnClick);
         paliVoiceGenderBtn.onClick.AddListener(OnPaliVoiceGenderBtnClick);
         articleClassifyBtn.onClick.AddListener(OnArticleClassifyBtnClick);
-        versionText.text = "        v" + Application.version;
-        offlinePackTimeText.text = "        " + SettingManager.Instance().GetDBPackTime();
+        versionText.text = "v" + Application.version;
+        offlinePackTimeText.text = SettingManager.Instance().GetDBPackTime();
     }
     void OnPaliRemoveBracketToggleValueChanged(float value)
     {
@@ -124,7 +125,10 @@ public class SettingView : MonoBehaviour
     void OnPaliVoiceGenderBtnClick()
     {
         int sID = (int)SettingManager.Instance().GetPaliVoiceGender();
-        commonGroupView.InitSettingOptions("巴利朗读声音", new List<string> { "男声", "女声" }, sID, (id) =>
+        //commonGroupView.InitSettingOptions("巴利朗读声音", new List<string> { "男声", "女声" }, sID, (id) =>
+        commonGroupView.InitSettingOptions(LocalizationManager.GetTranslation("setting_PaliVoiceType"), new List<string> { 
+            LocalizationManager.GetTranslation("setting_PaliVoiceType_Man0"),
+           LocalizationManager.GetTranslation("setting_PaliVoiceType_Woman0") }, sID, (id) =>
         {
             SettingManager.Instance().SetPaliVoiceGender((PaliSpeakVoiceGender)id);
             paliVoiceGenderText.text = SettingManager.Instance().GetPaliVoiceGenderName();
@@ -135,7 +139,10 @@ public class SettingView : MonoBehaviour
     void OnPaliVoiceTypeBtnClick()
     {
         int sID = (int)SettingManager.Instance().GetPaliVoiceType();
-        commonGroupView.InitSettingOptions("巴利朗读风格", new List<string> { "印度风格", "缅甸风格" }, sID, (id) =>
+        //commonGroupView.InitSettingOptions("巴利朗读风格", new List<string> { "印度风格", "缅甸风格" }, sID, (id) =>
+        commonGroupView.InitSettingOptions(LocalizationManager.GetTranslation("setting_PaliVoiceStyle"), new List<string> {
+            LocalizationManager.GetTranslation("setting_PaliVoiceStyle_India")
+            ,LocalizationManager.GetTranslation("setting_PaliVoiceStyle_Burma")}, sID, (id) =>
         {
             SettingManager.Instance().SetPaliVoiceType((PaliSpeakVoiceType)id);
             paliVoiceTypeText.text = SettingManager.Instance().GetPaliVoiceTypeName();
@@ -146,13 +153,23 @@ public class SettingView : MonoBehaviour
     void OnLanguageBtnClick()
     {
         int sID = (int)SettingManager.Instance().GetLanguageType();
-        commonGroupView.InitSettingOptions("语言", new List<string> { "中文简体", "中文繁体", "English", "日本語"/*, "Burmese"*/ }, sID, (id) =>
+        //commonGroupView.InitSettingOptions("语言", new List<string> { "中文简体", "中文繁体", "English", "日本語", "Burmese", "Sinhala", "Thai" }, sID, (id) =>
+        commonGroupView.InitSettingOptions(LocalizationManager.GetTranslation("setting_Language")
+            , new List<string> { "中文简体", "中文繁体", "English", "日本語", "Burmese", "Sinhala", "Thai" }, sID, (id) =>
         {
             SettingManager.Instance().SetLanguageType((LanguageType)id);
+            ChangeAllOptionsTextLanguage();
             languageText.text = SettingManager.Instance().GetLanguageTypeStr();
             return null;
         });
         commonGroupView.gameObject.SetActive(true);
+    }
+    //切换语言时切换所有子选项语言
+    void ChangeAllOptionsTextLanguage()
+    {
+        paliVoiceTypeText.text = SettingManager.Instance().GetPaliVoiceTypeName();
+        paliVoiceGenderText.text = SettingManager.Instance().GetPaliVoiceGenderName();
+
     }
     void OnPaliVoiceSpeedBtnClick()
     {

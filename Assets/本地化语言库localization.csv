@@ -1,0 +1,6 @@
+﻿Key,Type,Desc,Chinese_Simplified [zh-CN],Chinese_Traditional [zh-TW],English,Japanese,Burmese,Sinhala,Thai
+FontTest,Font,,Arial,Arial,Arial,Arial,Fonts/Zawgyi-One,,
+setting_Language,Text,,语言,語言,Language,言語,ဘာသာစကား,,
+setting_OpenPrevBrowse,Text,,打开先前浏览内容,打開先前流覽內容,Open previously viewed content,前のページを開きます,ယခင်က ရှုမြင်ချက်ကို ဖွင့်ပါ,,
+setting_PaliNotReadBracket,Text,,pali不朗读括号内容,pali不朗讀括弧內容,pali doesn't read in parentheses,paliは括弧を読み上げません,PalI က မိဘတွေကို မဖတ်ဖူးဘူး,,
+setting_TransShowPali,Text,,译文显示pali原文,譯文顯示pali原文,Translation shows the original pali,訳文のpaliを示します,ဘာသာပြန်ကျမ်းက မူရင်း ပါလီကို ပြသထား,,
