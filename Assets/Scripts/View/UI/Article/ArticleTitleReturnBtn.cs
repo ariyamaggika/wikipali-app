@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using I2.Loc;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,7 +22,8 @@ public class ArticleTitleReturnBtn : MonoBehaviour
     public void Init()
     {
         img.gameObject.SetActive(false);
-        title.text = "圣典";
+        //title.text = "圣典";
+        title.text = LocalizationManager.GetTranslation("article_Article");
         title.gameObject.SetActive(false);
         StartCoroutine(ShowArticleC());
         //sr.horizontalNormalizedPosition = 1;

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using I2.Loc;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
@@ -85,13 +86,15 @@ public class PopArticleSentenceSelectView : MonoBehaviour
         }
         if (selectCount == 0)
         {
-            UITool.ShowToastMessage(this, "请选择分享的句子", 35);
+            //UITool.ShowToastMessage(this, "请选择分享的句子", 35);
+            UITool.ShowToastMessage(this, LocalizationManager.GetTranslation("showToastMessage_SelectSentence"), 35);
             return false;
         }
         //根据字数判断
         else if (textCount > 3000)
         {
-            UITool.ShowToastMessage(this, "字数不能超过3000字", 35);
+            //UITool.ShowToastMessage(this, "字数不能超过3000字", 35);
+            UITool.ShowToastMessage(this, LocalizationManager.GetTranslation("showToastMessage_NoMoreThan3000Word"), 35);
             return false;
         }
         return true;

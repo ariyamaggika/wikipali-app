@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using I2.Loc;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,17 +26,18 @@ public class StarGroupDictView : MonoBehaviour
         //判断是否有网
         if (!NetworkMangaer.Instance().CheckIsHaveNetwork())
         {
-            UITool.ShowToastMessage(this, "无网络连接", 35);
+            //UITool.ShowToastMessage(this, "无网络连接", 35);
+            UITool.ShowToastMessage(this, LocalizationManager.GetTranslation("showToastMessage_NoNetwork"), 35);
             return;
             // return false;
         }
         string readWord = SpeechGeneration.Instance().ReplaceWord(DictManager.Instance().currWord);
-        if (voiceSource.clip != null&& currVoiceWord == readWord)
+        if (voiceSource.clip != null && currVoiceWord == readWord)
         {
             voiceSource.Play();
             return;
         }
-        AudioClip ac =  SpeechGeneration.Instance().SpeekPali(readWord,-10);
+        AudioClip ac = SpeechGeneration.Instance().SpeekPali(readWord, -10);
         if (ac != null)
         {
             currVoiceWord = readWord;

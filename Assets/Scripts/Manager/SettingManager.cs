@@ -27,12 +27,13 @@ public class SettingManager
     //软件语言
     public enum Language
     {
-        ZH_CN,
-        ZH_TW,
-        EN,
-        JP,
-        MY,
-        SI
+        ZH_CN,      //简体中文
+        ZH_TW,      //繁体中文
+        EN,         //英语
+        JP,         //日语
+        MY,         //缅语
+        SI,         //新哈拉语（兰卡语）
+        TH          //泰语
     }
     public Language language = Language.ZH_CN;
     public void InitGame()
@@ -110,6 +111,8 @@ public class SettingManager
         DictManager.Instance().LoadAllDicGroup();
         //加载文章收藏
         ArticleManager.Instance().LoadAllArticleGroup();
+        //设置语言
+        language = (Language)SettingManager.Instance().GetLanguageType();
         //??????没执行到这里，有报错？？？
         //CalendarManager.Instance().StartLocation();
 
@@ -403,12 +406,12 @@ public class SettingManager
     {
         return (LanguageType)PlayerPrefs.GetInt("LanguageSetting");
     }
-    public void SetLanguageType(LanguageType language)
+    public void SetLanguageType(LanguageType _language)
     {
-        Debug.LogError(Enum.GetName(typeof(LanguageType), language));
-        LocalizationManager.CurrentLanguage = Enum.GetName(typeof(LanguageType), language);
-
-        PlayerPrefs.SetInt("LanguageSetting", (int)language);
+        Debug.LogError(Enum.GetName(typeof(LanguageType), _language));
+        LocalizationManager.CurrentLanguage = Enum.GetName(typeof(LanguageType), _language);
+        language = (Language)_language;
+        PlayerPrefs.SetInt("LanguageSetting", (int)_language);
     }
 
     #endregion

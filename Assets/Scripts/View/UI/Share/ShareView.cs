@@ -1,4 +1,5 @@
 ﻿//using cn.sharesdk.unity3d;
+using I2.Loc;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -159,7 +160,8 @@ public class ShareView : MonoBehaviour
         DateTime NowTime = DateTime.Now.ToLocalTime();
         shot.name = "wpa_" + NowTime.Year + NowTime.Month + NowTime.Day + NowTime.Hour + NowTime.Minute + NowTime.Second;
         imgPath = CommonTool.SaveImages(shot);
-        UITool.ShowToastMessage(this, "图片已保存\r\n" + imgPath, 35);
+        //UITool.ShowToastMessage(this, "图片已保存\r\n" + imgPath, 35);
+        UITool.ShowToastMessage(this, LocalizationManager.GetTranslation("shareView_ImageSaved") + "\r\n" + imgPath, 35);
     }
     /* unity 2018 verson
     void ImgShot()

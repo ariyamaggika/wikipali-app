@@ -1,4 +1,5 @@
-﻿using System;
+﻿using I2.Loc;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -77,7 +78,8 @@ public class UpdateManager
 
         if (!NetworkMangaer.Instance().CheckIsHaveNetwork())
         {
-            UITool.ShowToastMessage(ui, "无网络连接", 35);
+            //UITool.ShowToastMessage(ui, "无网络连接", 35);
+            UITool.ShowToastMessage(ui, LocalizationManager.GetTranslation("showToastMessage_NoNetwork"), 35);
             return;
             // return false;
         }
@@ -228,7 +230,8 @@ public class UpdateManager
                 currentUInfo = uInfo;
                 if (uInfo.version == GameManager.Instance().appVersion)
                 {
-                    UITool.ShowToastMessage(GameManager.Instance(), "当前已是最新版本", 35);
+                    //UITool.ShowToastMessage(GameManager.Instance(), "当前已是最新版本", 35);
+                    UITool.ShowToastMessage(GameManager.Instance(), LocalizationManager.GetTranslation("setting_LastestVersion"), 35);
                     return false;
                 }
                 else
@@ -241,7 +244,8 @@ public class UpdateManager
             }
             else
             {
-                UITool.ShowToastMessage(GameManager.Instance(), "无网络连接", 35);
+                //UITool.ShowToastMessage(GameManager.Instance(), "无网络连接", 35);
+                UITool.ShowToastMessage(GameManager.Instance(), LocalizationManager.GetTranslation("showToastMessage_NoNetwork"), 35);
             }
         }
 
@@ -295,7 +299,8 @@ public class UpdateManager
             }
             else
             {
-                UITool.ShowToastMessage(GameManager.Instance(), "无网络连接", 35);
+                //UITool.ShowToastMessage(GameManager.Instance(), "无网络连接", 35);
+                UITool.ShowToastMessage(GameManager.Instance(), LocalizationManager.GetTranslation("showToastMessage_NoNetwork"), 35);
             }
         }
 
@@ -367,7 +372,8 @@ public class UpdateManager
             }
             else
             {
-                UITool.ShowToastMessage(GameManager.Instance(), "无网络连接", 35);
+                //UITool.ShowToastMessage(GameManager.Instance(), "无网络连接", 35);
+                UITool.ShowToastMessage(GameManager.Instance(), LocalizationManager.GetTranslation("showToastMessage_NoNetwork"), 35);
             }
         }
         return null;
@@ -415,7 +421,8 @@ public class UpdateManager
             }
             else
             {
-                UITool.ShowToastMessage(GameManager.Instance(), "无网络连接", 35);
+                //UITool.ShowToastMessage(GameManager.Instance(), "无网络连接", 35);
+                UITool.ShowToastMessage(GameManager.Instance(), LocalizationManager.GetTranslation("showToastMessage_NoNetwork"), 35);
             }
         }
         return null;

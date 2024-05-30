@@ -11,6 +11,7 @@ using UnityEngine.UI;
 using System.IO;
 using System;
 using System.Threading;
+using I2.Loc;
 
 public class DownloadManager
 {
@@ -31,7 +32,8 @@ public class DownloadManager
         //判断是否有网
         if (!NetworkMangaer.Instance().CheckIsHaveNetwork())
         {
-            UITool.ShowToastMessage(ui, "无网络连接", 35);
+            //UITool.ShowToastMessage(ui, "无网络连接", 35);
+            UITool.ShowToastMessage(ui, LocalizationManager.GetTranslation("showToastMessage_NoNetwork"), 35);
             return;
             // return false;
         }
@@ -59,7 +61,8 @@ public class DownloadManager
         //判断是否有网
         if (!NetworkMangaer.Instance().CheckIsHaveNetwork())
         {
-            UITool.ShowToastMessage(ui, "无网络连接", 35);
+            //UITool.ShowToastMessage(ui, "无网络连接", 35);
+            UITool.ShowToastMessage(ui, LocalizationManager.GetTranslation("showToastMessage_NoNetwork"), 35);
             return;
             // return false;
         }

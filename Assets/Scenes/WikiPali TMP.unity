@@ -3015,9 +3015,9 @@ RectTransform:
   m_Father: {fileID: 354644602}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 579.2, y: -1487.5}
   m_SizeDelta: {x: 1158.4, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &97290559
@@ -3936,9 +3936,9 @@ RectTransform:
   m_Father: {fileID: 354644602}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 579.2, y: -262.5}
   m_SizeDelta: {x: 1158.4, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &151088146
@@ -4034,6 +4034,7 @@ GameObject:
   - component: {fileID: 157116699}
   - component: {fileID: 157116701}
   - component: {fileID: 157116700}
+  - component: {fileID: 157116702}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -4058,8 +4059,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 29, y: 0}
+  m_SizeDelta: {x: -58.00001, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &157116700
 MonoBehaviour:
@@ -4094,7 +4095,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "    \u6211\u7684\u5355\u8BCD\u672C"
+  m_Text: "\u5355\u8BCD\u672C"
 --- !u!222 &157116701
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4103,6 +4104,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157116698}
   m_CullTransparentMesh: 0
+--- !u!114 &157116702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157116698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: user_WordCollection
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &158100671
 GameObject:
   m_ObjectHideFlags: 0
@@ -4642,7 +4682,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -458.2044, y: 200}
+  m_SizeDelta: {x: -457.06415, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &166505263
 MonoBehaviour:
@@ -6636,6 +6676,7 @@ GameObject:
   - component: {fileID: 241637647}
   - component: {fileID: 241637649}
   - component: {fileID: 241637648}
+  - component: {fileID: 241637650}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -6660,8 +6701,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 29, y: 0}
+  m_SizeDelta: {x: -58.00001, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &241637648
 MonoBehaviour:
@@ -6696,7 +6737,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "    \u6211\u6536\u85CF\u7684\u7ECF\u6587"
+  m_Text: "\u6536\u85CF\u7684\u5723\u5178"
 --- !u!222 &241637649
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6705,6 +6746,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241637646}
   m_CullTransparentMesh: 0
+--- !u!114 &241637650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241637646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: user_ArticleCollection
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &242627746
 GameObject:
   m_ObjectHideFlags: 0
@@ -8863,6 +8943,7 @@ GameObject:
   - component: {fileID: 283805673}
   - component: {fileID: 283805675}
   - component: {fileID: 283805674}
+  - component: {fileID: 283805676}
   m_Layer: 5
   m_Name: TitleText
   m_TagString: Untagged
@@ -8932,6 +9013,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283805672}
   m_CullTransparentMesh: 0
+--- !u!114 &283805676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283805672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: shareView_Share
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &284049744
 GameObject:
   m_ObjectHideFlags: 0
@@ -8943,6 +9063,7 @@ GameObject:
   - component: {fileID: 284049745}
   - component: {fileID: 284049747}
   - component: {fileID: 284049746}
+  - component: {fileID: 284049748}
   m_Layer: 5
   m_Name: solarNoonText
   m_TagString: Untagged
@@ -9013,6 +9134,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284049744}
   m_CullTransparentMesh: 0
+--- !u!114 &284049748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284049744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_SolarNoon
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!114 &288261688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12344,9 +12504,9 @@ RectTransform:
   m_Father: {fileID: 354644602}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 579.2, y: -87.5}
   m_SizeDelta: {x: 1158.4, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &298230932
@@ -12627,7 +12787,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1268411965}
   m_HandleRect: {fileID: 1268411964}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -12961,7 +13121,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2076412481}
   m_HandleRect: {fileID: 2076412480}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -13915,9 +14075,9 @@ RectTransform:
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_SizeDelta: {x: 20, y: -17}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &333990759
 MonoBehaviour:
@@ -14264,7 +14424,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.00008319656}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 1925}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &354644603
 MonoBehaviour:
@@ -14317,6 +14477,7 @@ GameObject:
   - component: {fileID: 354834356}
   - component: {fileID: 354834358}
   - component: {fileID: 354834357}
+  - component: {fileID: 354834359}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -14386,6 +14547,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 354834355}
   m_CullTransparentMesh: 0
+--- !u!114 &354834359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354834355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: dic_Search
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &362593610
 GameObject:
   m_ObjectHideFlags: 0
@@ -15451,7 +15651,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 5.5, y: 0}
-  m_SizeDelta: {x: 1085, y: 919.28577}
+  m_SizeDelta: {x: 1085, y: 899.27563}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &411828227
 MonoBehaviour:
@@ -15985,7 +16185,7 @@ RectTransform:
   m_Father: {fileID: 185763186}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.24659806}
+  m_AnchorMin: {x: 0, y: 0.2461518}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -16140,9 +16340,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: -17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &433206855
 MonoBehaviour:
@@ -17442,6 +17642,7 @@ GameObject:
   - component: {fileID: 473235002}
   - component: {fileID: 473235004}
   - component: {fileID: 473235003}
+  - component: {fileID: 473235005}
   m_Layer: 5
   m_Name: westEraText
   m_TagString: Untagged
@@ -17512,6 +17713,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473235001}
   m_CullTransparentMesh: 0
+--- !u!114 &473235005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473235001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_WestCalendar
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &477709826
 GameObject:
   m_ObjectHideFlags: 0
@@ -20090,6 +20330,7 @@ GameObject:
   - component: {fileID: 540087226}
   - component: {fileID: 540087228}
   - component: {fileID: 540087227}
+  - component: {fileID: 540087229}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -20159,6 +20400,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540087225}
   m_CullTransparentMesh: 0
+--- !u!114 &540087229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540087225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_StarCalendar
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &541000520
 GameObject:
   m_ObjectHideFlags: 0
@@ -21319,7 +21599,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -3.8499985, y: -0.0099983215}
   m_SizeDelta: {x: 53.12, y: -32.34}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -22952,9 +23232,9 @@ RectTransform:
   m_Father: {fileID: 354644602}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 579.2, y: -787.5}
   m_SizeDelta: {x: 1158.4, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &631252481
@@ -23509,6 +23789,7 @@ GameObject:
   - component: {fileID: 639776395}
   - component: {fileID: 639776397}
   - component: {fileID: 639776396}
+  - component: {fileID: 639776398}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -23578,6 +23859,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639776394}
   m_CullTransparentMesh: 0
+--- !u!114 &639776398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639776394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: popView_Down
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &642653691
 GameObject:
   m_ObjectHideFlags: 0
@@ -23669,6 +23989,7 @@ GameObject:
   - component: {fileID: 644586835}
   - component: {fileID: 644586837}
   - component: {fileID: 644586836}
+  - component: {fileID: 644586838}
   m_Layer: 5
   m_Name: Text (7)
   m_TagString: Untagged
@@ -23729,7 +24050,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56FE\u7247\u6A21\u677F8"
+  m_Text: "\u56FE\u7247\u6A21\u677F"
 --- !u!222 &644586837
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23738,6 +24059,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644586834}
   m_CullTransparentMesh: 0
+--- !u!114 &644586838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644586834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: shareView_ImgTemplate
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &652617905
 GameObject:
   m_ObjectHideFlags: 0
@@ -27365,7 +27725,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 428935564}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.75340194
+  m_Size: 0.7538482
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -28103,6 +28463,7 @@ GameObject:
   - component: {fileID: 791665661}
   - component: {fileID: 791665663}
   - component: {fileID: 791665662}
+  - component: {fileID: 791665664}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -28172,6 +28533,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791665660}
   m_CullTransparentMesh: 0
+--- !u!114 &791665664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791665660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_ChineseCalendar
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &795007905
 GameObject:
   m_ObjectHideFlags: 0
@@ -28361,6 +28761,7 @@ GameObject:
   - component: {fileID: 798992430}
   - component: {fileID: 798992432}
   - component: {fileID: 798992431}
+  - component: {fileID: 798992433}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -28430,6 +28831,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798992429}
   m_CullTransparentMesh: 0
+--- !u!114 &798992433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798992429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: shareView_SaveImg
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &799853969
 GameObject:
   m_ObjectHideFlags: 0
@@ -28711,6 +29151,7 @@ GameObject:
   - component: {fileID: 805550155}
   - component: {fileID: 805550157}
   - component: {fileID: 805550156}
+  - component: {fileID: 805550158}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -28780,6 +29221,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 805550154}
   m_CullTransparentMesh: 0
+--- !u!114 &805550158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805550154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: dic_Article
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &807035497
 GameObject:
   m_ObjectHideFlags: 0
@@ -28912,9 +29392,9 @@ RectTransform:
   m_Father: {fileID: 354644602}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 579.2, y: -1662.5}
   m_SizeDelta: {x: 1158.4, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &807228619
@@ -29771,7 +30251,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 43233965}
   m_HandleRect: {fileID: 43233964}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -32333,7 +32813,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 4.760002, y: 0}
   m_SizeDelta: {x: 19.53, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -32409,7 +32889,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -3.8499985, y: -0.0099983215}
   m_SizeDelta: {x: 53.12, y: -32.34}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -33601,6 +34081,7 @@ GameObject:
   - component: {fileID: 961177537}
   - component: {fileID: 961177539}
   - component: {fileID: 961177538}
+  - component: {fileID: 961177540}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -33670,6 +34151,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961177536}
   m_CullTransparentMesh: 0
+--- !u!114 &961177540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961177536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: PopSentenceSelectView_SelectAll
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &969314633 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4173128082716242874, guid: 43e349d2c3b74634bb228be6c1c9124e,
@@ -34146,6 +34666,7 @@ GameObject:
   - component: {fileID: 1010792949}
   - component: {fileID: 1010792951}
   - component: {fileID: 1010792950}
+  - component: {fileID: 1010792952}
   m_Layer: 5
   m_Name: Text (2)
   m_TagString: Untagged
@@ -34206,7 +34727,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56FE\u7247\u6A21\u677F3"
+  m_Text: "\u56FE\u7247\u6A21\u677F"
 --- !u!222 &1010792951
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34215,6 +34736,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010792948}
   m_CullTransparentMesh: 0
+--- !u!114 &1010792952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010792948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: shareView_ImgTemplate
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1013925736
 GameObject:
   m_ObjectHideFlags: 0
@@ -36329,6 +36889,7 @@ GameObject:
   - component: {fileID: 1091925433}
   - component: {fileID: 1091925435}
   - component: {fileID: 1091925434}
+  - component: {fileID: 1091925436}
   m_Layer: 5
   m_Name: TitleText
   m_TagString: Untagged
@@ -36398,6 +36959,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091925432}
   m_CullTransparentMesh: 0
+--- !u!114 &1091925436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091925432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: dicGroupView_GroupManagement
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1096323009
 GameObject:
   m_ObjectHideFlags: 0
@@ -36554,6 +37154,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101222459}
   m_CullTransparentMesh: 0
+--- !u!114 &1103296794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332e36893e7cf4a49b3c1f72f76cd5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTarget: {fileID: 114000012754972714}
 --- !u!114 &1103994807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36876,6 +37489,7 @@ GameObject:
   - component: {fileID: 1113321595}
   - component: {fileID: 1113321597}
   - component: {fileID: 1113321596}
+  - component: {fileID: 1113321598}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -36945,6 +37559,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113321594}
   m_CullTransparentMesh: 0
+--- !u!114 &1113321598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113321594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: PopSentenceSelectView_Done
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1113886338
 GameObject:
   m_ObjectHideFlags: 0
@@ -37530,6 +38183,7 @@ GameObject:
   - component: {fileID: 1126184439}
   - component: {fileID: 1126184441}
   - component: {fileID: 1126184440}
+  - component: {fileID: 1126184442}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -37599,6 +38253,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126184438}
   m_CullTransparentMesh: 0
+--- !u!114 &1126184442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126184438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_BurmeseCalendar
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1130667024
 GameObject:
   m_ObjectHideFlags: 0
@@ -38566,6 +39259,7 @@ GameObject:
   - component: {fileID: 1156262155}
   - component: {fileID: 1156262157}
   - component: {fileID: 1156262156}
+  - component: {fileID: 1156262158}
   m_Layer: 5
   m_Name: LogoTextDesc
   m_TagString: Untagged
@@ -38635,6 +39329,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156262154}
   m_CullTransparentMesh: 0
+--- !u!114 &1156262158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156262154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: shareView_LogoText
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1157413666
 GameObject:
   m_ObjectHideFlags: 0
@@ -39534,6 +40267,7 @@ GameObject:
   - component: {fileID: 1186806374}
   - component: {fileID: 1186806376}
   - component: {fileID: 1186806375}
+  - component: {fileID: 1186806377}
   m_Layer: 5
   m_Name: TitleText
   m_TagString: Untagged
@@ -39594,7 +40328,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u52A0\u5165\u6536\u85CF\n"
+  m_Text: "\u52A0\u5165\u6536\u85CF"
 --- !u!222 &1186806376
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39603,6 +40337,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1186806373}
   m_CullTransparentMesh: 0
+--- !u!114 &1186806377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186806373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: popView_AddToFavorites
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1188029752
 GameObject:
   m_ObjectHideFlags: 0
@@ -40019,6 +40792,604 @@ MonoBehaviour:
       - Arial
       Flags: 00000000000000
       Languages_Touch: []
+    - Term: PopSentenceSelectView_Done
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5B8C\u6210"
+      - "\u5B8C\u6210"
+      - Done
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: PopSentenceSelectView_SelectAll
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5168\u90E8\u9009\u62E9"
+      - "\u5168\u90E8\u9078\u64C7"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: PopSentenceSelectView_ShareSentence
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u9010\u53E5\u5206\u4EAB"
+      - "\u9010\u53E5\u5206\u4EAB"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: article_Article
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5723\u5178"
+      - "\u8056\u5178"
+      - Scripture
+      - "\u8056\u5178"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_BuddhistCalendar
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u4F5B\u5386\uFF1A"
+      - "\u4F5B\u66C6\uFF1A"
+      - "Buddhist Calendar\uFF1A"
+      - "\u4ECF\u66A6\uFF1A"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_BurmeseCalendar
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u7F05\u5386"
+      - "\u7DEC\u66C6"
+      - Burmese calendar
+      - "\u30D3\u30EB\u30DE\u66A6"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_ChineseCalendar
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u519C\u5386"
+      - "\u8FB2\u66C6"
+      - Chinese calendar
+      - "\u65E7\u66A6"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_Latitude
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u7EAC\u5EA6"
+      - "\u7DEF\u5EA6"
+      - Lat
+      - "\u7DEF\u5EA6"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_Longitude
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u7ECF\u5EA6"
+      - "\u7D93\u5EA6"
+      - Lng
+      - "\u7D4C\u5EA6"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_Month
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u6708"
+      - "\u6708"
+      - Month
+      - "\u3052\u3064"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_SolarNoon
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u65E5\u4E2D\uFF1A"
+      - "\u65E5\u4E2D\uFF1A"
+      - "SolarNoon\uFF1A"
+      - "\u65E5\u4E2D\uFF1A"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_StarCalendar
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u661F\u5BBF\u5386"
+      - "\u661F\u5BBF\u66C6"
+      - Almanac
+      - "\u661F\u66C6"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_Sunrise
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u660E\u76F8\uFF1A"
+      - "\u660E\u76F8\uFF1A"
+      - "Sunrise\uFF1A"
+      - "\u65E5\u306E\u51FA\uFF1A"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_Sunset
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u65E5\u843D\uFF1A"
+      - "\u65E5\u843D\uFF1A"
+      - "Sunset\uFF1A"
+      - "\u65E5\u306E\u5165\u308A\uFF1A"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_WestCalendar
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u897F\u5386\uFF1A"
+      - "\u897F\u66C6\uFF1A"
+      - "Calendar\uFF1A"
+      - "\u897F\u66C6\uFF1A"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_Year
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5E74"
+      - "\u5E74"
+      - Year
+      - "\u306D\u3093"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_week1
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u4E00"
+      - "\u4E00"
+      - Mon
+      - "\u6708"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_week2
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u4E8C"
+      - "\u4E8C"
+      - Tue
+      - "\u706B"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_week3
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u4E09"
+      - "\u4E09"
+      - Wed
+      - "\u6C34"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_week4
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u56DB"
+      - "\u56DB"
+      - Thu
+      - "\u6728"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_week5
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u4E94"
+      - "\u4E94"
+      - Fri
+      - "\u91D1"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_week6
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u516D"
+      - "\u516D"
+      - Sat
+      - "\u571F"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: calendar_week7
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u65E5"
+      - "\u65E5"
+      - Sun
+      - "\u65E5"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: commonGroupView_About_AboutWikipali
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5173\u4E8Ewikip\u0101li"
+      - "\u95DC\u65BCwikip\u0101li"
+      - "About wikip\u0101li"
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: commonGroupView_UpdateOfflineP_ChapterCount
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u7AE0\u8282\u6570\u5BF9\u6BD4\uFF1A"
+      - "\u7AE0\u7BC0\u6578\u5C0D\u6BD4\uFF1A"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: commonGroupView_UpdateOfflineP_ClickUpdate
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u70B9\u51FB\u4E0B\u8F7D"
+      - "\u9EDE\u64CA\u4E0B\u8F09"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: commonGroupView_UpdateOfflineP_CurrTime
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5F53\u524D\u79BB\u7EBF\u5305\u66F4\u65B0\u65F6\u95F4\uFF1A"
+      - "\u7576\u524D\u96E2\u7DDA\u5305\u66F4\u65B0\u6642\u9593\uFF1A"
+      - "Current offline package update time\uFF1A"
+      - "\u73FE\u5728\u306E\u30AA\u30D5\u30E9\u30A4\u30F3\u30D1\u30B1\u30C3\u30C8\u66F4\u65B0\u6642\u9593\uFF1A"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: commonGroupView_UpdateOfflineP_NewTime
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u6700\u65B0\u79BB\u7EBF\u5305\u66F4\u65B0\u65F6\u95F4\uFF1A"
+      - "\u6700\u65B0\u96E2\u7DDA\u5305\u66F4\u65B0\u6642\u9593\uFF1A"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: commonGroupView_UpdateOfflineP_Reserve space
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u66F4\u65B0\u8BF7\u9884\u7559\u51FA3G\u5B58\u50A8\u7A7A\u95F4"
+      - "\u66F4\u65B0\u8ACB\u9810\u7559\u51FA3G\u5B58\u5132\u7A7A\u9593"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: commonGroupView_UpdateOfflineP_Update
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u79BB\u7EBF\u5305\u4E0B\u8F7D"
+      - "\u96E2\u7DDA\u5305\u4E0B\u8F09"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: commonGroupView_UpdateVersion_ClickUpdateVersion
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u70B9\u51FB\u66F4\u65B0"
+      - "\u9EDE\u64CA\u66F4\u65B0"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: commonGroupView_UpdateVersion_CurrVersion
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5F53\u524D\u7248\u672C\uFF1A"
+      - "\u7576\u524D\u7248\u672C\uFF1A"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: commonGroupView_UpdateVersion_NewVersion
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u6700\u65B0\u7248\u672C\uFF1A"
+      - "\u6700\u65B0\u7248\u672C\uFF1A"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: commonGroupView_UpdateVersion_UpdateVersion
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u7248\u672C\u66F4\u65B0"
+      - "\u7248\u672C\u66F4\u65B0"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: dicGroupView_GroupManagement
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5206\u7EC4\u7BA1\u7406"
+      - "\u5206\u7D44\u7BA1\u7406"
+      - Group management
+      - "\u30B0\u30EB\u30FC\u30D4\u30F3\u30B0\u7BA1\u7406"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: dic_Article
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5723\u5178"
+      - "\u8056\u5178"
+      - Scripture
+      - "\u8056\u5178"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: dic_Dict
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5355\u8BCD"
+      - "\u55AE\u8A5E"
+      - Word
+      - "\u5358\u8A9E"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: dic_Search
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u641C\u7D22..."
+      - "\u641C\u7D22..."
+      - Search...
+      - "\u691C\u7D22..."
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: initView_InitProgress
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u521D\u59CB\u5316\u8FDB\u5EA6"
+      - "\u521D\u59CB\u5316\u9032\u5EA6"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: newArticle_NewArticle
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u6700\u65B0"
+      - "\u6700\u65B0"
+      - Latest
+      - "\u65B0\u3057\u3044"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: popDragWord_DelimitWords
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5212\u8BCD\u53D6\u4E49"
+      - "\u5283\u8A5E\u53D6\u7FA9"
+      - Delimit words and take meanings
+      - "\u8A5E\u3092\u753B\u3044\u3066\u610F\u5473\u3092\u3068\u308B"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: popView_AddToFavorites
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u52A0\u5165\u6536\u85CF"
+      - "\u52A0\u5165\u6536\u85CF"
+      - Add to favorites
+      - "\u30B3\u30EC\u30AF\u30B7\u30E7\u30F3\u306B\u52A0\u3048\u307E\u3059"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: popView_Down
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5B8C\u6210"
+      - "\u5B8C\u6210"
+      - Complete
+      - "\u5B8C\u6210"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: popView_EditGroup
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u7F16\u8F91\u5206\u7EC4"
+      - "\u7DE8\u8F2F\u5206\u7D44"
+      - Edit grouping
+      - "\u30B0\u30EB\u30FC\u30D7\u3092\u7DE8\u96C6"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: setting_AboutWikipali
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5173\u4E8Ewikipali"
+      - "\u95DC\u65BCwikipali"
+      - About wikipali
+      - "wikipali\u306B\u3064\u3044\u3066"
+      - "\u101E\u1000\u103A\u1006\u102D\u102F\u1004\u103A\u1019\u103E\u102F wikipali"
+      - "\u0D9C\u0DD0\u0DB1 wikipali"
+      - "\u0E40\u0E01\u0E35\u0E48\u0E22\u0E27\u0E01\u0E31\u0E1A wikipali"
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: setting_Feedback
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u610F\u89C1\u53CD\u9988"
+      - "\u610F\u898B\u56DE\u994B"
+      - Feedback
+      - "\u30D5\u30A3\u30FC\u30C9\u30D0\u30C3\u30AF"
+      - "\u1010\u102F\u1036\u1037\u1015\u103C\u1014\u103A\u1019\u103E\u102F"
+      - "\u0DB4\u0DCA\u0DBB\u0DAD\u0DD2\u0DB4\u0DDD\u0DC2\u0DAB"
+      - "\u0E04\u0E27\u0E32\u0E21\u0E04\u0E34\u0E14\u0E40\u0E2B\u0E47\u0E19"
+      Flags: 00000000000000
+      Languages_Touch: []
     - Term: setting_Language
       TermType: 0
       Description: 
@@ -40030,6 +41401,33 @@ MonoBehaviour:
       - "\u1018\u102C\u101E\u102C\u1005\u1000\u102C\u1038"
       - 
       - "\u0E20\u0E32\u0E29\u0E32"
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: setting_LastestVersion
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5F53\u524D\u5DF2\u662F\u6700\u65B0\u7248\u672C"
+      - "\u7576\u524D\u5DF2\u662F\u6700\u65B0\u7248\u672C"
+      - This is the latest version
+      - "App\u306F\u6700\u65B0\u7248\u3067\u3059"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: setting_OfflinePackageDownload
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u79BB\u7EBF\u5305\u4E0B\u8F7D"
+      - "\u96E2\u7DDA\u5305\u4E0B\u8F09"
+      - Offline package download
+      - "\u30AA\u30D5\u30E9\u30A4\u30F3\u30D1\u30C3\u30B1\u30FC\u30B8\u306E\u30C0\u30A6\u30F3\u30ED\u30FC\u30C9"
+      - "\u1021\u1031\u102C\u1037\u1016\u103A\u101C\u102D\u102F\u1004\u103A\u1038
+        \u1015\u1000\u103A\u1000\u1031\u1037\u1001\u103B\u103A"
+      - "\u0DB1\u0DDC\u0DB6\u0DD0\u0DB3\u0DD2 \u0DB4\u0DD0\u0D9A\u0DDA\u0DA2 \u0DB6\u0DCF\u0D9C\u0DD0\u0DB1\u0DD3\u0DB8"
+      - "\u0E14\u0E32\u0E27\u0E19\u0E4C\u0E42\u0E2B\u0E25\u0E14\u0E41\u0E1E\u0E01\u0E40\u0E01\u0E08\u0E41\u0E1A\u0E1A\u0E2D\u0E2D\u0E1F\u0E44\u0E25\u0E19\u0E4C"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: setting_OpenPrevBrowse
@@ -40059,21 +41457,6 @@ MonoBehaviour:
       - 
       Flags: 00000000000000
       Languages_Touch: []
-    - Term: setting_TransShowPali
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u8BD1\u6587\u663E\u793Apali\u539F\u6587"
-      - "\u8B6F\u6587\u986F\u793Apali\u539F\u6587"
-      - Translation shows the original pali
-      - "\u8A33\u6587\u306Epali\u3092\u793A\u3057\u307E\u3059"
-      - "\u1018\u102C\u101E\u102C\u1015\u103C\u1014\u103A\u1000\u103B\u1019\u103A\u1038\u1000
-        \u1019\u1030\u101B\u1004\u103A\u1038 \u1015\u102B\u101C\u102E\u1000\u102D\u102F
-        \u1015\u103C\u101E\u1011\u102C\u1038"
-      - 
-      - 
-      Flags: 00000000000000
-      Languages_Touch: []
     - Term: setting_PaliVoiceStyle
       TermType: 0
       Description: 
@@ -40087,19 +41470,6 @@ MonoBehaviour:
       - "\u0E23\u0E39\u0E1B\u0E41\u0E1A\u0E1A\u0E01\u0E32\u0E23\u0E2D\u0E48\u0E32\u0E19"
       Flags: 00000000000000
       Languages_Touch: []
-    - Term: setting_PaliVoiceStyle_India
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u5370\u5EA6\u98CE\u683C"
-      - "\u5370\u5EA6\u98A8\u683C"
-      - Indian style
-      - 
-      - 
-      - 
-      - 
-      Flags: 00000000000000
-      Languages_Touch: []
     - Term: setting_PaliVoiceStyle_Burma
       TermType: 0
       Description: 
@@ -40107,6 +41477,19 @@ MonoBehaviour:
       - "\u7F05\u7538\u98CE\u683C"
       - "\u7DEC\u7538\u98A8\u683C"
       - Burmese style
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: setting_PaliVoiceStyle_India
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5370\u5EA6\u98CE\u683C"
+      - "\u5370\u5EA6\u98A8\u683C"
+      - Indian style
       - 
       - 
       - 
@@ -40165,44 +41548,19 @@ MonoBehaviour:
       - "\u0E2D\u0E48\u0E32\u0E19\u0E04\u0E27\u0E32\u0E21\u0E40\u0E23\u0E47\u0E27"
       Flags: 00000000000000
       Languages_Touch: []
-    - Term: setting_OfflinePackageDownload
+    - Term: setting_TransShowPali
       TermType: 0
       Description: 
       Languages:
-      - "\u79BB\u7EBF\u5305\u4E0B\u8F7D"
-      - "\u96E2\u7DDA\u5305\u4E0B\u8F09"
-      - Offline package download
-      - "\u30AA\u30D5\u30E9\u30A4\u30F3\u30D1\u30C3\u30B1\u30FC\u30B8\u306E\u30C0\u30A6\u30F3\u30ED\u30FC\u30C9"
-      - "\u1021\u1031\u102C\u1037\u1016\u103A\u101C\u102D\u102F\u1004\u103A\u1038
-        \u1015\u1000\u103A\u1000\u1031\u1037\u1001\u103B\u103A"
-      - "\u0DB1\u0DDC\u0DB6\u0DD0\u0DB3\u0DD2 \u0DB4\u0DD0\u0D9A\u0DDA\u0DA2 \u0DB6\u0DCF\u0D9C\u0DD0\u0DB1\u0DD3\u0DB8"
-      - "\u0E14\u0E32\u0E27\u0E19\u0E4C\u0E42\u0E2B\u0E25\u0E14\u0E41\u0E1E\u0E01\u0E40\u0E01\u0E08\u0E41\u0E1A\u0E1A\u0E2D\u0E2D\u0E1F\u0E44\u0E25\u0E19\u0E4C"
-      Flags: 00000000000000
-      Languages_Touch: []
-    - Term: setting_AboutWikipali
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u5173\u4E8Ewikipali"
-      - "\u95DC\u65BCwikipali"
-      - About wikipali
-      - "wikipali\u306B\u3064\u3044\u3066"
-      - "\u101E\u1000\u103A\u1006\u102D\u102F\u1004\u103A\u1019\u103E\u102F wikipali"
-      - "\u0D9C\u0DD0\u0DB1 wikipali"
-      - "\u0E40\u0E01\u0E35\u0E48\u0E22\u0E27\u0E01\u0E31\u0E1A wikipali"
-      Flags: 00000000000000
-      Languages_Touch: []
-    - Term: setting_Feedback
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u610F\u89C1\u53CD\u9988"
-      - "\u610F\u898B\u56DE\u994B"
-      - Feedback
-      - "\u30D5\u30A3\u30FC\u30C9\u30D0\u30C3\u30AF"
-      - "\u1010\u102F\u1036\u1037\u1015\u103C\u1014\u103A\u1019\u103E\u102F"
-      - "\u0DB4\u0DCA\u0DBB\u0DAD\u0DD2\u0DB4\u0DDD\u0DC2\u0DAB"
-      - "\u0E04\u0E27\u0E32\u0E21\u0E04\u0E34\u0E14\u0E40\u0E2B\u0E47\u0E19"
+      - "\u8BD1\u6587\u663E\u793Apali\u539F\u6587"
+      - "\u8B6F\u6587\u986F\u793Apali\u539F\u6587"
+      - Translation shows the original pali
+      - "\u8A33\u6587\u306Epali\u3092\u793A\u3057\u307E\u3059"
+      - "\u1018\u102C\u101E\u102C\u1015\u103C\u1014\u103A\u1000\u103B\u1019\u103A\u1038\u1000
+        \u1019\u1030\u101B\u1004\u103A\u1038 \u1015\u102B\u101C\u102E\u1000\u102D\u102F
+        \u1015\u103C\u101E\u1011\u102C\u1038"
+      - 
+      - 
       Flags: 00000000000000
       Languages_Touch: []
     - Term: setting_Version
@@ -40218,6 +41576,149 @@ MonoBehaviour:
       - "\u0DB1\u0DC0 \u0D85\u0DB1\u0DD4\u0DC0\u0DCF\u0DAF\u0DBA \u0DC3\u0DB3\u0DC4\u0DCF
         \u0DB4\u0DBB\u0DD3\u0D9A\u0DCA\u0DC2\u0DCF \u0D9A\u0DBB\u0DB1\u0DCA\u0DB1"
       - "\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E23\u0E38\u0E48\u0E19\u0E43\u0E2B\u0E21\u0E48"
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: shareView_ImageSaved
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u56FE\u7247\u5DF2\u4FDD\u5B58"
+      - "\u5716\u7247\u5DF2\u4FDD\u5B58"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: shareView_ImgTemplate
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u56FE\u7247\u6A21\u677F"
+      - "\u5716\u7247\u7BC4\u672C"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: shareView_LogoText
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u638C\u4E0A\u5DF4\u5229\u5B66\u4E60\u8F6F\u4EF6"
+      - "\u638C\u4E0A\u5DF4\u5229\u5B78\u7FD2\u8EDF\u9AD4"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: shareView_SaveImg
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u4FDD\u5B58\u56FE\u7247"
+      - "\u4FDD\u5B58\u5716\u7247"
+      - Save Img
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: shareView_Share
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5206\u4EAB"
+      - "\u5206\u4EAB"
+      - Share
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: shareView_ShareWord
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5206\u4EAB\u5355\u8BCD"
+      - "\u5206\u4EAB\u55AE\u8A5E"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: showToastMessage_NoMoreThan3000Word
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5B57\u6570\u4E0D\u80FD\u8D85\u8FC73000\u5B57"
+      - "\u5B57\u6578\u4E0D\u80FD\u8D85\u904E3000\u5B57"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: showToastMessage_NoNetwork
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u65E0\u7F51\u7EDC\u8FDE\u63A5"
+      - "\u7121\u7DB2\u8DEF\u9023\u63A5"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: showToastMessage_SelectSentence
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u8BF7\u9009\u62E9\u5206\u4EAB\u7684\u53E5\u5B50"
+      - "\u8ACB\u9078\u64C7\u5206\u4EAB\u7684\u53E5\u5B50"
+      - 
+      - 
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: user_ArticleCollection
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u6536\u85CF\u7684\u5723\u5178"
+      - "\u6536\u85CF\u7684\u8056\u5178"
+      - The collection of sacred texts
+      - "\u8056\u5178\u30B3\u30EC\u30AF\u30B7\u30E7\u30F3"
+      - 
+      - 
+      - 
+      Flags: 00000000000000
+      Languages_Touch: []
+    - Term: user_WordCollection
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5355\u8BCD\u672C"
+      - "\u55AE\u8A5E\u672C"
+      - Words Collection
+      - "\u5358\u8A9E\u30B3\u30EC\u30AF\u30B7\u30E7\u30F3"
+      - 
+      - 
+      - 
       Flags: 00000000000000
       Languages_Touch: []
     CaseInsensitiveTerms: 0
@@ -40581,7 +42082,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -229, y: 29}
+  m_AnchoredPosition: {x: -522, y: 29}
   m_SizeDelta: {x: 82.6, y: 82.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1215355263
@@ -42011,6 +43512,7 @@ GameObject:
   - component: {fileID: 1267528236}
   - component: {fileID: 1267528238}
   - component: {fileID: 1267528237}
+  - component: {fileID: 1267528239}
   m_Layer: 5
   m_Name: Text (3)
   m_TagString: Untagged
@@ -42071,7 +43573,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56FE\u7247\u6A21\u677F4"
+  m_Text: "\u56FE\u7247\u6A21\u677F"
 --- !u!222 &1267528238
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -42080,6 +43582,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267528235}
   m_CullTransparentMesh: 0
+--- !u!114 &1267528239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267528235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: shareView_ImgTemplate
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1268240200
 GameObject:
   m_ObjectHideFlags: 0
@@ -42827,9 +44368,9 @@ RectTransform:
   m_Father: {fileID: 354644602}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 579.2, y: -437.5}
   m_SizeDelta: {x: 1158.4, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1278454336
@@ -44410,6 +45951,7 @@ GameObject:
   - component: {fileID: 1334239869}
   - component: {fileID: 1334239871}
   - component: {fileID: 1334239870}
+  - component: {fileID: 1334239872}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -44479,6 +46021,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334239868}
   m_CullTransparentMesh: 1
+--- !u!114 &1334239872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334239868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: popDragWord_DelimitWords
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1337183276
 GameObject:
   m_ObjectHideFlags: 0
@@ -45526,7 +47107,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 4.760002, y: 0}
   m_SizeDelta: {x: 19.53, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -46343,9 +47924,9 @@ RectTransform:
   m_Father: {fileID: 354644602}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 579.2, y: -1837.5}
   m_SizeDelta: {x: 1158.4, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1390015733
@@ -47234,6 +48815,7 @@ GameObject:
   - component: {fileID: 1408790049}
   - component: {fileID: 1408790051}
   - component: {fileID: 1408790050}
+  - component: {fileID: 1408790052}
   m_Layer: 5
   m_Name: buddhistEraText
   m_TagString: Untagged
@@ -47304,6 +48886,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1408790048}
   m_CullTransparentMesh: 0
+--- !u!114 &1408790052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408790048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_BuddhistCalendar
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1411967137
 GameObject:
   m_ObjectHideFlags: 0
@@ -47724,6 +49345,7 @@ GameObject:
   - component: {fileID: 1424947942}
   - component: {fileID: 1424947944}
   - component: {fileID: 1424947943}
+  - component: {fileID: 1424947945}
   m_Layer: 5
   m_Name: lngText
   m_TagString: Untagged
@@ -47785,7 +49407,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7EAC\u5EA6\uFF1A"
+  m_Text: "\u7ECF\u5EA6"
 --- !u!222 &1424947944
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -47794,6 +49416,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424947941}
   m_CullTransparentMesh: 0
+--- !u!114 &1424947945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424947941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_Longitude
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1443557651
 GameObject:
   m_ObjectHideFlags: 0
@@ -48181,8 +49842,8 @@ RectTransform:
   m_Father: {fileID: 510704626}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.07814503}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -48734,6 +50395,7 @@ GameObject:
   - component: {fileID: 1475387386}
   - component: {fileID: 1475387388}
   - component: {fileID: 1475387387}
+  - component: {fileID: 1475387389}
   m_Layer: 5
   m_Name: sunriseText
   m_TagString: Untagged
@@ -48804,6 +50466,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475387385}
   m_CullTransparentMesh: 0
+--- !u!114 &1475387389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475387385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_Sunrise
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1475937939
 GameObject:
   m_ObjectHideFlags: 0
@@ -50339,9 +52040,9 @@ RectTransform:
   m_Father: {fileID: 354644602}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 579.2, y: -962.5}
   m_SizeDelta: {x: 1158.4, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1518195161
@@ -50817,9 +52518,9 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20}
+  m_SizeDelta: {x: -17, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1529223437
 MonoBehaviour:
@@ -52050,7 +53751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1577083215
 RectTransform:
   m_ObjectHideFlags: 0
@@ -52592,9 +54293,9 @@ RectTransform:
   m_Father: {fileID: 354644602}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 579.2, y: -612.5}
   m_SizeDelta: {x: 1158.4, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1585196119
@@ -52762,8 +54463,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2058016934}
   m_HandleRect: {fileID: 2058016933}
   m_Direction: 0
-  m_Value: 0.00000008192091
-  m_Size: 0.4251823
+  m_Value: 0.000000081920895
+  m_Size: 0.42518228
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -52897,6 +54598,7 @@ GameObject:
   - component: {fileID: 1599814661}
   - component: {fileID: 1599814663}
   - component: {fileID: 1599814662}
+  - component: {fileID: 1599814664}
   m_Layer: 5
   m_Name: LogoTextDesc
   m_TagString: Untagged
@@ -52966,6 +54668,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599814660}
   m_CullTransparentMesh: 0
+--- !u!114 &1599814664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599814660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: shareView_LogoText
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1599914920
 GameObject:
   m_ObjectHideFlags: 0
@@ -54310,6 +56051,7 @@ GameObject:
   - component: {fileID: 1655457268}
   - component: {fileID: 1655457270}
   - component: {fileID: 1655457269}
+  - component: {fileID: 1655457271}
   m_Layer: 5
   m_Name: TitleText
   m_TagString: Untagged
@@ -54379,6 +56121,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655457267}
   m_CullTransparentMesh: 0
+--- !u!114 &1655457271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655457267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: newArticle_NewArticle
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1657497552
 GameObject:
   m_ObjectHideFlags: 0
@@ -54827,7 +56608,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 4.760002, y: 0}
   m_SizeDelta: {x: 19.53, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -55086,6 +56867,7 @@ GameObject:
   - component: {fileID: 1667095609}
   - component: {fileID: 1667095611}
   - component: {fileID: 1667095610}
+  - component: {fileID: 1667095612}
   m_Layer: 5
   m_Name: TitleText
   m_TagString: Untagged
@@ -55155,6 +56937,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667095608}
   m_CullTransparentMesh: 0
+--- !u!114 &1667095612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667095608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: PopSentenceSelectView_ShareSentence
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1673018713
 GameObject:
   m_ObjectHideFlags: 0
@@ -55413,6 +57234,7 @@ GameObject:
   - component: {fileID: 1678001826}
   - component: {fileID: 1678001825}
   - component: {fileID: 1678001827}
+  - component: {fileID: 1678001828}
   m_Layer: 5
   m_Name: GroupButton
   m_TagString: Untagged
@@ -55527,6 +57349,45 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1678001828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678001823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: popView_EditGroup
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1687268474
 GameObject:
   m_ObjectHideFlags: 0
@@ -56125,8 +57986,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 280.74777, y: -66.11}
-  m_SizeDelta: {x: 561.49554, y: 132.22}
+  m_AnchoredPosition: {x: 281.3179, y: -66.11}
+  m_SizeDelta: {x: 562.6358, y: 132.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1700163089
 MonoBehaviour:
@@ -56681,6 +58542,7 @@ GameObject:
   - component: {fileID: 1733744746}
   - component: {fileID: 1733744748}
   - component: {fileID: 1733744747}
+  - component: {fileID: 1733744749}
   m_Layer: 5
   m_Name: latText
   m_TagString: Untagged
@@ -56742,7 +58604,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7ECF\u5EA6\uFF1A"
+  m_Text: "\u7EAC\u5EA6"
 --- !u!222 &1733744748
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -56751,6 +58613,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733744745}
   m_CullTransparentMesh: 0
+--- !u!114 &1733744749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733744745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_Latitude
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1740064556
 GameObject:
   m_ObjectHideFlags: 0
@@ -57232,8 +59133,8 @@ RectTransform:
   m_Father: {fileID: 1069350542}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -3.8499985, y: -0.0099983215}
   m_SizeDelta: {x: 53.12, y: -32.34}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -57616,7 +59517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332e36893e7cf4a49b3c1f72f76cd5e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTarget: {fileID: 768500789}
+  mTarget: {fileID: 1832973101}
 --- !u!1 &1772245962
 GameObject:
   m_ObjectHideFlags: 0
@@ -58740,6 +60641,7 @@ GameObject:
   - component: {fileID: 1809824247}
   - component: {fileID: 1809824249}
   - component: {fileID: 1809824248}
+  - component: {fileID: 1809824250}
   m_Layer: 5
   m_Name: TitleText
   m_TagString: Untagged
@@ -58809,6 +60711,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1809824246}
   m_CullTransparentMesh: 0
+--- !u!114 &1809824250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809824246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: shareView_ShareWord
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1813292166
 GameObject:
   m_ObjectHideFlags: 0
@@ -59011,7 +60952,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 513.5, y: -239}
-  m_SizeDelta: {x: 1028, y: 611}
+  m_SizeDelta: {x: 1028, y: 602.65594}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1813693009
 MonoBehaviour:
@@ -59086,6 +61027,7 @@ GameObject:
   - component: {fileID: 1815346711}
   - component: {fileID: 1815346713}
   - component: {fileID: 1815346712}
+  - component: {fileID: 1815346714}
   m_Layer: 5
   m_Name: Text (6)
   m_TagString: Untagged
@@ -59146,7 +61088,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56FE\u7247\u6A21\u677F7"
+  m_Text: "\u56FE\u7247\u6A21\u677F"
 --- !u!222 &1815346713
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -59155,6 +61097,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815346710}
   m_CullTransparentMesh: 0
+--- !u!114 &1815346714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815346710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: shareView_ImgTemplate
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1816125827
 GameObject:
   m_ObjectHideFlags: 0
@@ -59189,7 +61170,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -59568,6 +61549,7 @@ GameObject:
   - component: {fileID: 1832572639}
   - component: {fileID: 1832572641}
   - component: {fileID: 1832572640}
+  - component: {fileID: 1832572642}
   m_Layer: 5
   m_Name: Text (4)
   m_TagString: Untagged
@@ -59628,7 +61610,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56FE\u7247\u6A21\u677F5"
+  m_Text: "\u56FE\u7247\u6A21\u677F"
 --- !u!222 &1832572641
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -59637,6 +61619,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832572638}
   m_CullTransparentMesh: 0
+--- !u!114 &1832572642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832572638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: shareView_ImgTemplate
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1832973099
 GameObject:
   m_ObjectHideFlags: 0
@@ -59794,9 +61815,9 @@ RectTransform:
   m_Father: {fileID: 354644602}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 579.2, y: -1137.5}
   m_SizeDelta: {x: 1158.4, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1834425139
@@ -61394,9 +63415,9 @@ RectTransform:
   m_Father: {fileID: 354644602}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 579.2, y: -1312.5}
   m_SizeDelta: {x: 1158.4, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1891619837
@@ -61929,6 +63950,7 @@ GameObject:
   - component: {fileID: 1909534502}
   - component: {fileID: 1909534504}
   - component: {fileID: 1909534503}
+  - component: {fileID: 1909534505}
   m_Layer: 5
   m_Name: TitleText
   m_TagString: Untagged
@@ -61998,6 +64020,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909534501}
   m_CullTransparentMesh: 0
+--- !u!114 &1909534505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909534501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: initView_InitProgress
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1912952791
 GameObject:
   m_ObjectHideFlags: 0
@@ -63086,6 +65147,7 @@ GameObject:
   - component: {fileID: 1941636020}
   - component: {fileID: 1941636022}
   - component: {fileID: 1941636021}
+  - component: {fileID: 1941636023}
   m_Layer: 5
   m_Name: Text (5)
   m_TagString: Untagged
@@ -63146,7 +65208,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56FE\u7247\u6A21\u677F6"
+  m_Text: "\u56FE\u7247\u6A21\u677F"
 --- !u!222 &1941636022
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -63155,6 +65217,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941636019}
   m_CullTransparentMesh: 0
+--- !u!114 &1941636023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941636019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: shareView_ImgTemplate
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &1942533463
 GameObject:
   m_ObjectHideFlags: 0
@@ -63717,6 +65818,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966720382}
   m_CullTransparentMesh: 0
+--- !u!114 &1967296253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332e36893e7cf4a49b3c1f72f76cd5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTarget: {fileID: 2121859429}
 --- !u!1 &1971604887
 GameObject:
   m_ObjectHideFlags: 0
@@ -64437,7 +66551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -229, y: 29}
+  m_AnchoredPosition: {x: -522, y: 29}
   m_SizeDelta: {x: 82.6, y: 82.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1999484491
@@ -64857,6 +66971,7 @@ GameObject:
   - component: {fileID: 2010776700}
   - component: {fileID: 2010776702}
   - component: {fileID: 2010776701}
+  - component: {fileID: 2010776703}
   m_Layer: 5
   m_Name: sunsetText
   m_TagString: Untagged
@@ -64927,6 +67042,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010776699}
   m_CullTransparentMesh: 0
+--- !u!114 &2010776703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010776699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_Sunset
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &2012878829
 GameObject:
   m_ObjectHideFlags: 0
@@ -67377,6 +69531,7 @@ GameObject:
   - component: {fileID: 2087257559}
   - component: {fileID: 2087257561}
   - component: {fileID: 2087257560}
+  - component: {fileID: 2087257562}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -67446,6 +69601,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087257558}
   m_CullTransparentMesh: 0
+--- !u!114 &2087257562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087257558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: dic_Dict
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &2090699752
 GameObject:
   m_ObjectHideFlags: 0
@@ -68523,6 +70717,7 @@ GameObject:
   - component: {fileID: 2121859428}
   - component: {fileID: 2121859430}
   - component: {fileID: 2121859429}
+  - component: {fileID: 2121859431}
   m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
@@ -68583,7 +70778,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56FE\u7247\u6A21\u677F2"
+  m_Text: "\u56FE\u7247\u6A21\u677F"
 --- !u!222 &2121859430
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -68592,6 +70787,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2121859427}
   m_CullTransparentMesh: 0
+--- !u!114 &2121859431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121859427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: shareView_ImgTemplate
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1967296253}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!1 &2131329435
 GameObject:
   m_ObjectHideFlags: 0
@@ -69014,6 +71248,7 @@ GameObject:
   - component: {fileID: 224000013362123468}
   - component: {fileID: 222000012439341388}
   - component: {fileID: 114000012754972714}
+  - component: {fileID: 224000013362123469}
   m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
@@ -69032,6 +71267,7 @@ GameObject:
   - component: {fileID: 224000012249825494}
   - component: {fileID: 222000009318400542}
   - component: {fileID: 114000011680927106}
+  - component: {fileID: 224000012249825495}
   m_Layer: 5
   m_Name: Text (3)
   m_TagString: Untagged
@@ -69122,6 +71358,7 @@ GameObject:
   - component: {fileID: 224000011774672182}
   - component: {fileID: 222000013255419308}
   - component: {fileID: 114000011963863816}
+  - component: {fileID: 224000011774672183}
   m_Layer: 5
   m_Name: Text (7)
   m_TagString: Untagged
@@ -69159,6 +71396,7 @@ GameObject:
   - component: {fileID: 224000010227901548}
   - component: {fileID: 222000013280404120}
   - component: {fileID: 114000010240884476}
+  - component: {fileID: 224000010227901549}
   m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
@@ -69232,6 +71470,7 @@ GameObject:
   - component: {fileID: 224000010418799744}
   - component: {fileID: 222000011955633710}
   - component: {fileID: 114000011277532668}
+  - component: {fileID: 224000010418799745}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -69250,6 +71489,7 @@ GameObject:
   - component: {fileID: 224000010457441282}
   - component: {fileID: 222000011573600884}
   - component: {fileID: 114000011330678028}
+  - component: {fileID: 224000010457441283}
   m_Layer: 5
   m_Name: Text (6)
   m_TagString: Untagged
@@ -69268,6 +71508,7 @@ GameObject:
   - component: {fileID: 224000010356769906}
   - component: {fileID: 222000012312164814}
   - component: {fileID: 114000009270169132}
+  - component: {fileID: 224000010356769907}
   m_Layer: 5
   m_Name: Text (4)
   m_TagString: Untagged
@@ -69286,6 +71527,7 @@ GameObject:
   - component: {fileID: 224000012557697920}
   - component: {fileID: 222000012431278836}
   - component: {fileID: 114000013232342628}
+  - component: {fileID: 224000012557697921}
   m_Layer: 5
   m_Name: Text (2)
   m_TagString: Untagged
@@ -69340,6 +71582,7 @@ GameObject:
   - component: {fileID: 224000013198363878}
   - component: {fileID: 222000012445250490}
   - component: {fileID: 114000012378495220}
+  - component: {fileID: 224000013198363879}
   m_Layer: 5
   m_Name: Text (5)
   m_TagString: Untagged
@@ -70651,6 +72894,45 @@ RectTransform:
   m_AnchoredPosition: {x: 265.4, y: 90.6}
   m_SizeDelta: {x: 120, y: 106.1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &224000010227901549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000012169474966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_Month
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!224 &224000010296358918
 RectTransform:
   m_ObjectHideFlags: 0
@@ -70691,6 +72973,45 @@ RectTransform:
   m_AnchoredPosition: {x: 144, y: 75}
   m_SizeDelta: {x: 152.5, y: 202.9}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &224000010356769907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013416075240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_week4
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!224 &224000010418799744
 RectTransform:
   m_ObjectHideFlags: 0
@@ -70711,6 +73032,45 @@ RectTransform:
   m_AnchoredPosition: {x: 12.95, y: 90.6}
   m_SizeDelta: {x: 125.9, y: 106.1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &224000010418799745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013191944784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_Year
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!224 &224000010448877390
 RectTransform:
   m_ObjectHideFlags: 0
@@ -70752,6 +73112,45 @@ RectTransform:
   m_AnchoredPosition: {x: 456, y: 75}
   m_SizeDelta: {x: 161.7, y: 202.9}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &224000010457441283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013213681686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_week6
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!224 &224000010500277748
 RectTransform:
   m_ObjectHideFlags: 0
@@ -70834,6 +73233,45 @@ RectTransform:
   m_AnchoredPosition: {x: -472, y: 75}
   m_SizeDelta: {x: 152.5, y: 202.9}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &224000011774672183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011575466746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_week7
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!224 &224000012059952314
 RectTransform:
   m_ObjectHideFlags: 0
@@ -70921,6 +73359,45 @@ RectTransform:
   m_AnchoredPosition: {x: -6, y: 75}
   m_SizeDelta: {x: 152.5, y: 202.9}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &224000012249825495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011088007430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_week3
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!224 &224000012318142780
 RectTransform:
   m_ObjectHideFlags: 0
@@ -70984,6 +73461,45 @@ RectTransform:
   m_AnchoredPosition: {x: -162.8, y: 75}
   m_SizeDelta: {x: 152.5, y: 202.9}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &224000012557697921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013681203430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_week2
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!224 &224000012589065374
 RectTransform:
   m_ObjectHideFlags: 0
@@ -71065,6 +73581,45 @@ RectTransform:
   m_AnchoredPosition: {x: 300, y: 75}
   m_SizeDelta: {x: 152.5, y: 202.9}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &224000013198363879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000014199782662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_week5
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!224 &224000013362123468
 RectTransform:
   m_ObjectHideFlags: 0
@@ -71085,6 +73640,45 @@ RectTransform:
   m_AnchoredPosition: {x: -313, y: 75}
   m_SizeDelta: {x: 152.5, y: 202.9}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &224000013362123469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011028387432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: calendar_week1
+  mTermSecondary: FontTest
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  AllowParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1103296794}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityUI_Text
 --- !u!224 &224000013864126114
 RectTransform:
   m_ObjectHideFlags: 0

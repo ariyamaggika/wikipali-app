@@ -465,6 +465,7 @@ public class DictManager
         {Language.JP,dicIDArr_JP  },
         {Language.MY,dicIDArr_MY  },
         {Language.SI,dicIDArr_EN  },
+        {Language.TH,dicIDArr_EN  },
     };
     List<string[]> AllDictList = new List<string[]> { dicIDArr_ZH, dicIDArr_EN, dicIDArr_JP, dicIDArr_MY, dicIDArr_VI };
     //TODO:改为dicID 在数据库查

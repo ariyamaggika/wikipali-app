@@ -1,4 +1,5 @@
-﻿using System;
+﻿using I2.Loc;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -67,50 +68,65 @@ public class CommonGroupView : MonoBehaviour
     void UpdateOfflinePackView(OtherInfo currentOInfo)
     {
         string uStr = "";
-        uStr += "当前离线包更新时间：" + SettingManager.Instance().GetDBPackTime() + "\r\n";
-        uStr += "最新离线包更新时间：" + currentOInfo.offlinePackJson.create_at + "\r\n\r\n";
-        uStr += "章节数对比：" + SettingManager.Instance().GetDBPackChapterCount() + "-><color=Red>" + currentOInfo.offlinePackJson.chapter + "</color>\r\n\r\n";
-        uStr += "更新请预留出3G存储空间";
+        //uStr += "当前离线包更新时间：" + SettingManager.Instance().GetDBPackTime() + "\r\n";
+        uStr += LocalizationManager.GetTranslation("commonGroupView_UpdateOfflineP_CurrTime") + SettingManager.Instance().GetDBPackTime() + "\r\n";
+        //uStr += "最新离线包更新时间：" + currentOInfo.offlinePackJson.create_at + "\r\n\r\n";
+        uStr += LocalizationManager.GetTranslation("commonGroupView_UpdateOfflineP_NewTime") + currentOInfo.offlinePackJson.create_at + "\r\n\r\n";
+        //uStr += "章节数对比：" + SettingManager.Instance().GetDBPackChapterCount() + "-><color=Red>" + currentOInfo.offlinePackJson.chapter + "</color>\r\n\r\n";
+        uStr += LocalizationManager.GetTranslation("commonGroupView_UpdateOfflineP_ChapterCount") + SettingManager.Instance().GetDBPackChapterCount() + "-><color=Red>" + currentOInfo.offlinePackJson.chapter + "</color>\r\n\r\n";
+        //uStr += "更新请预留出3G存储空间";
+        uStr += LocalizationManager.GetTranslation("commonGroupView_UpdateOfflineP_Reserve space");
         updateText.text = uStr;
         addBtn.gameObject.SetActive(false);
-        titleText.text = "离线包更新";
+        //titleText.text = "离线包更新";
+        titleText.text = LocalizationManager.GetTranslation("commonGroupView_UpdateOfflineP_Update");
         updatePage.SetActive(true);
         int fileSize = (int)((float)currentOInfo.offlinePackJson.filesize / 1024 / 1024);
-        updateBtnText.text = "点击更新(" + fileSize + "M)";
+        //updateBtnText.text = "点击更新(" + fileSize + "M)";
+        updateBtnText.text = LocalizationManager.GetTranslation("commonGroupView_UpdateOfflineP_ClickUpdate") + "(" + fileSize + "M)";
     }
     //没下过离线包文字显示
     void NewOfflinePackView(OtherInfo currentOInfo)
     {
         string uStr = "";
-        uStr += "最新离线包更新时间：" + currentOInfo.offlinePackJson.create_at + "\r\n\r\n";
-        uStr += "更新请预留出3G存储空间";
+        //uStr += "最新离线包更新时间：" + currentOInfo.offlinePackJson.create_at + "\r\n\r\n";
+        uStr += LocalizationManager.GetTranslation("commonGroupView_UpdateOfflineP_NewTime") + currentOInfo.offlinePackJson.create_at + "\r\n\r\n";
+        //uStr += "更新请预留出3G存储空间";
+        uStr += LocalizationManager.GetTranslation("commonGroupView_UpdateOfflineP_Reserve space");
         updateText.text = uStr;
         addBtn.gameObject.SetActive(false);
-        titleText.text = "离线包下载";
+        //titleText.text = "离线包下载";
+        titleText.text = LocalizationManager.GetTranslation("commonGroupView_UpdateOfflineP_Update");
         updatePage.SetActive(true);
         int fileSize = (int)((float)currentOInfo.offlinePackJson.filesize / 1024 / 1024);
-        updateBtnText.text = "点击下载(" + fileSize + "M)";
+        //updateBtnText.text = "点击下载(" + fileSize + "M)";
+        updateBtnText.text = LocalizationManager.GetTranslation("commonGroupView_UpdateOfflineP_ClickUpdate") + "(" + fileSize + "M)";
     }
     //更新说明
     public void InitUpdateView(UpdateInfo currentUInfo)
     {
         currViewType = PopViewType.Update;
         string uStr = "";
-        uStr += "当前版本：" + Application.version + "\r\n";
-        uStr += "最新版本：" + currentUInfo.version + "\r\n";
+        //uStr += "当前版本：" + Application.version + "\r\n";
+        uStr += LocalizationManager.GetTranslation("commonGroupView_UpdateVersion_CurrVersion") + Application.version + "\r\n";
+        //uStr += "最新版本：" + currentUInfo.version + "\r\n";
+        uStr += LocalizationManager.GetTranslation("commonGroupView_UpdateVersion_NewVersion") + currentUInfo.version + "\r\n";
         uStr += currentUInfo.updateContent;
         updateText.text = uStr;
         addBtn.gameObject.SetActive(false);
-        titleText.text = "版本更新";
+        //titleText.text = "版本更新";
+        titleText.text = LocalizationManager.GetTranslation("commonGroupView_UpdateVersion_UpdateVersion");
         updatePage.SetActive(true);
-        updateBtnText.text = "点击更新(" + currentUInfo.apkSize + ")";
+        //updateBtnText.text = "点击更新(" + currentUInfo.apkSize + ")";
+        updateBtnText.text = LocalizationManager.GetTranslation("commonGroupView_UpdateVersion_ClickUpdateVersion") + "(" + currentUInfo.apkSize + ")";
     }
     //关于界面
     public void InitAboutView()
     {
         currViewType = PopViewType.About;
         addBtn.gameObject.SetActive(false);
-        titleText.text = "关于wikipāli";
+        //titleText.text = "关于wikipāli";
+        titleText.text = LocalizationManager.GetTranslation("commonGroupView_About_AboutWikipali");
         aboutPage.SetActive(true);
     }
     //设置选项

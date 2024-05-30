@@ -174,7 +174,9 @@ public class SettingView : MonoBehaviour
     void OnPaliVoiceSpeedBtnClick()
     {
         int sID = SettingManager.PaliSpeakVoiceSpeedList.IndexOf((int)SettingManager.Instance().GetPaliVoiceSpeed());
-        commonGroupView.InitSettingOptions("巴利朗读语速", new List<string> { "0", "-10%", "-20%", "-30%", "-40%" }, sID, (id) =>
+        //commonGroupView.InitSettingOptions("巴利朗读语速", new List<string> { "0", "-10%", "-20%", "-30%", "-40%" }, sID, (id) =>
+        commonGroupView.InitSettingOptions(LocalizationManager.GetTranslation("setting_ReadSpeed"),
+            new List<string> { "0", "-10%", "-20%", "-30%", "-40%" }, sID, (id) =>
         {
             SettingManager.Instance().SetPaliVoiceSpeed((PaliSpeakVoiceSpeed)SettingManager.PaliSpeakVoiceSpeedList[(int)id]);
             paliVoiceSpeedText.text = SettingManager.Instance().GetPaliVoiceSpeedName();
@@ -197,7 +199,8 @@ public class SettingView : MonoBehaviour
             return;
         if (UpdateManager.Instance().currentOInfo.offlinePackJson.create_at == SettingManager.Instance().GetDBPackTime())
         {
-            UITool.ShowToastMessage(GameManager.Instance(), "当前已是最新版本", 35);
+            //UITool.ShowToastMessage(GameManager.Instance(), "当前已是最新版本", 35);
+            UITool.ShowToastMessage(GameManager.Instance(), LocalizationManager.GetTranslation("setting_LastestVersion"), 35);
             return;
         }
         //打开详情页

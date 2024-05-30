@@ -57,6 +57,7 @@ public class ArticleManager
         { Language.JP,"en"},
         { Language.MY,"my"},
         { Language.SI,"si"},
+        { Language.TH,"th"},
     };
 
     public string ReadCurrLanguageBookJson()
@@ -466,6 +467,9 @@ public class ArticleManager
                             case "si":
                                 l = Language.MY;
                                 break;
+                            case "th":
+                                l = Language.TH;
+                                break;
                         }
                     }
 
@@ -527,6 +531,9 @@ public class ArticleManager
                             break;
                         case "si":
                             l = Language.MY;
+                            break;
+                        case "th":
+                            l = Language.TH;
                             break;
                     }
                 }

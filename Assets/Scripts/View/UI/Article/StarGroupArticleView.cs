@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using I2.Loc;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -60,7 +61,8 @@ public class StarGroupArticleView : MonoBehaviour
         //判断是否有网
         if (!NetworkMangaer.Instance().CheckIsHaveNetwork())
         {
-            UITool.ShowToastMessage(this, "无网络连接", 35);
+            //UITool.ShowToastMessage(this, "无网络连接", 35);
+            UITool.ShowToastMessage(this, LocalizationManager.GetTranslation("showToastMessage_NoNetwork"), 35);
             return;
             // return false;
         }
