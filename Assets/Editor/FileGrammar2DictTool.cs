@@ -131,7 +131,30 @@ public class FileGrammar2DictTool
             }
             //File.WriteAllLines("Assets/Editor/grammer_CN.txt", resText.ToArray());
             //File.WriteAllLines("Assets/Editor/grammer_EN.txt", resText.ToArray());
-            File.WriteAllText(string.Format("Assets/Editor/{0}.txt", fileNameWithoutExtension+"Small"), sb.ToString());
+            File.WriteAllText(string.Format("Assets/Editor/{0}.txt", fileNameWithoutExtension + "Small"), sb.ToString());
         }
+    }
+    [MenuItem("Assets/Tools/ProcessTerm-Vocabulary")]
+    public static void ProcessTermVocabularyJson()
+    {
+
+        string assetPath = AssetDatabase.GUIDToAssetPath(Selection.assetGUIDs[0]);//通过GUID获取路径
+                                                                                  //TextAsset textAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(assetPath);
+
+        string[] textTxt = File.ReadAllLines(assetPath);
+        List<string> resText = new List<string>();
+        for (int i = 0; i < textTxt.Length; i++)
+        {
+            if (textTxt[i].Contains("guid") || textTxt[i].Contains("tag"))
+            {
+                continue;
+            }
+            resText.Add(textTxt[i]);
+        }
+
+
+        //File.WriteAllLines("Assets/Editor/grammer_CN.txt", resText.ToArray());
+        //File.WriteAllLines("Assets/Editor/grammer_EN.txt", resText.ToArray());
+        File.WriteAllLines("Assets/Editor/term-vocabulary_zh.json", resText.ToArray());
     }
 }

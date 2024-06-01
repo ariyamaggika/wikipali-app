@@ -190,11 +190,48 @@ public class DetailDicItemView : MonoBehaviour
     {
         string value = UserGrammar.grm_abbr[content];
         //string[] test = UserGrammar.grammar_cn["grammar_nt"];
-        string grammar_cn_key = "grammar_" + value;
-        if (!UserGrammar.grammar_cn.ContainsKey(grammar_cn_key))
+        string grammar_key = "grammar_" + value;
+        if (!UserGrammar.grammar_cn.ContainsKey(grammar_key))
             return;
-
-        string[] test = UserGrammar.grammar_cn[grammar_cn_key];
+        string[] test = UserGrammar.grammar_cn[grammar_key];
+        switch (SettingManager.Instance().language)
+        {
+            case SettingManager.Language.ZH_CN:
+                if (!UserGrammar.grammar_cn.ContainsKey(grammar_key))
+                    return;
+                test = UserGrammar.grammar_cn[grammar_key];
+                break;
+            case SettingManager.Language.ZH_TW:
+                if (!UserGrammar.grammar_tw.ContainsKey(grammar_key))
+                    return;
+                test = UserGrammar.grammar_tw[grammar_key];
+                break;
+            case SettingManager.Language.EN:
+                if (!UserGrammar.grammar_en.ContainsKey(grammar_key))
+                    return;
+                test = UserGrammar.grammar_en[grammar_key];
+                break;
+            case SettingManager.Language.JP:
+                if (!UserGrammar.grammar_en.ContainsKey(grammar_key))
+                    return;
+                test = UserGrammar.grammar_en[grammar_key];
+                break;
+            case SettingManager.Language.MY:
+                if (!UserGrammar.grammar_en.ContainsKey(grammar_key))
+                    return;
+                test = UserGrammar.grammar_en[grammar_key];
+                break;
+            case SettingManager.Language.SI:
+                if (!UserGrammar.grammar_en.ContainsKey(grammar_key))
+                    return;
+                test = UserGrammar.grammar_en[grammar_key];
+                break;
+            case SettingManager.Language.TH:
+                if (!UserGrammar.grammar_en.ContainsKey(grammar_key))
+                    return;
+                test = UserGrammar.grammar_en[grammar_key];
+                break;
+        }
         StringBuilder sb = new StringBuilder();
         int l = test.Length;
         for (int i = 0; i < l; i++)

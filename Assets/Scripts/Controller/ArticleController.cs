@@ -60,7 +60,9 @@ public class ArticleController
         for (int i = 0; i < c; i++)
         {
             //articleCatalogueDic.Add(articleCatalogueNodes.info[i].word, articleCatalogueNodes.info[i].meaning);
-            tsDic.Add(articleCatalogueNodes.info[i].word, articleCatalogueNodes.info[i].meaning);
+            if (articleCatalogueNodes.info[i] != null && !string.IsNullOrEmpty(articleCatalogueNodes.info[i].word))
+                if (!tsDic.ContainsKey(articleCatalogueNodes.info[i].word))
+                    tsDic.Add(articleCatalogueNodes.info[i].word, articleCatalogueNodes.info[i].meaning);
         }
     }
     #endregion

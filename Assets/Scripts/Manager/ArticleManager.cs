@@ -73,7 +73,7 @@ public class ArticleManager
 
     public string ReadArticleCatalogueJson()
     {
-        return ReadJsonFromStreamingAssetsPath("Json/ArticleCatalogue/term-vocabulary");
+        return ReadJsonFromStreamingAssetsPath("Json/ArticleCatalogue/term-vocabulary_zh");
     }
 
     #endregion
