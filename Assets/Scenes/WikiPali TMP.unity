@@ -1214,7 +1214,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
@@ -1226,7 +1226,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8BD1\u6587\u663E\u793Apali\u539F\u6587"
+  m_Text: "\u1018\u102C\u101E\u102C\u1015\u103C\u1014\u103A\u1000\u103B\u1019\u103A\u1038\u1000
+    \u1019\u1030\u101B\u1004\u103A\u1038 \u1015\u102B\u101C\u102E\u1000\u102D\u102F
+    \u1015\u103C\u101E\u1011\u102C\u1038"
 --- !u!222 &28661133
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4083,7 +4085,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
@@ -4095,7 +4097,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5355\u8BCD\u672C"
+  m_Text: "\u1005\u1000\u102C\u1038\u101C\u102F\u1036\u1038\u1005\u102C\u1021\u102F\u1015\u103A"
 --- !u!222 &157116701
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6725,7 +6727,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
@@ -6737,7 +6739,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6536\u85CF\u7684\u5723\u5178"
+  m_Text: "\u1005\u102F\u1006\u1031\u102C\u1004\u103A\u1038\u1011\u102C\u1038\u101E\u1031\u102C
+    \u101E\u1014\u1037\u103A\u101B\u103E\u1004\u103A\u1038\u101E\u1031\u102C\u1000\u103B\u1019\u103A\u1038\u1001\u103B\u1000\u103A\u1019\u103B\u102C\u1038\u1000\u102D\u102F
+    \u1005\u102F\u1006\u1031\u102C\u1004\u103A\u1038"
 --- !u!222 &241637649
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8992,7 +8996,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -9004,7 +9008,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5206\u4EAB"
+  m_Text: "\u101B\u103E\u101A\u103A\u101A\u102C"
 --- !u!222 &283805675
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9113,7 +9117,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -9125,7 +9129,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u65E5\u4E2D\uFF1A"
+  m_Text: "\u1002\u103B\u1015\u1014\u103A:"
 --- !u!222 &284049747
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14526,7 +14530,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 70
     m_FontStyle: 2
     m_BestFit: 0
@@ -14538,7 +14542,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u641C\u7D22..."
+  m_Text: "\u101B\u103E\u102C\u1016\u103D\u1031\u1015\u102B..."
 --- !u!222 &354834358
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17692,7 +17696,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -17704,7 +17708,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u897F\u5386\uFF1A"
+  m_Text: "\u1021\u1014\u1031\u102C\u1000\u103A\u1015\u103C\u1000\u1039\u1001\u1012\u102D\u1014\u103A-"
 --- !u!222 &473235004
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20379,7 +20383,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -20391,7 +20395,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u661F\u5BBF\u5386"
+  m_Text: "\u1014\u1000\u1039\u1001\u101B\u103E\u102C\u1011\u101B\u102C\u1015\u103C\u1000\u1039\u1001\u1012\u102D\u1014\u103A"
 --- !u!222 &540087228
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23838,7 +23842,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 63
     m_FontStyle: 0
     m_BestFit: 0
@@ -23850,7 +23854,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5B8C\u6210"
+  m_Text: "\u1021\u1006\u102F\u1036\u1038\u101E\u1010\u103A"
 --- !u!222 &639776397
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24038,7 +24042,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
@@ -24050,7 +24054,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56FE\u7247\u6A21\u677F"
+  m_Text: "\u101B\u102F\u1015\u103A\u1015\u102F\u1036 \u1015\u1014\u103A\u1038\u1001\u103B\u102E\u1000\u102C\u1038\u1019\u103B\u102C\u1038"
 --- !u!222 &644586837
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26441,7 +26445,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
@@ -26453,7 +26457,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8BED\u8A00"
+  m_Text: "\u1018\u102C\u101E\u102C\u1005\u1000\u102C\u1038"
 --- !u!222 &733839003
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27332,7 +27336,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
@@ -27344,7 +27348,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5173\u4E8Ewikipali"
+  m_Text: "\u101D\u102E\u1000\u102E\u1015\u102B\u101C\u102E\u1021\u1000\u103C\u1031\u102C\u1004\u103A\u1038"
 --- !u!222 &768500790
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28512,7 +28516,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -28524,7 +28528,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u519C\u5386"
+  m_Text: "\u101C"
 --- !u!222 &791665663
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28810,7 +28814,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
@@ -28822,7 +28826,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4FDD\u5B58\u56FE\u7247"
+  m_Text: "\u101B\u102F\u1015\u103A\u1015\u102F\u1036\u1000\u102D\u102F \u101E\u102D\u1019\u103A\u1038\u1006\u100A\u103A\u1038\u1015\u102B"
 --- !u!222 &798992432
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29176,8 +29180,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 131, y: 18.29}
-  m_SizeDelta: {x: -28, y: -5.13}
+  m_AnchoredPosition: {x: 131, y: 7.8626}
+  m_SizeDelta: {x: -28, y: 15.725}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &805550156
 MonoBehaviour:
@@ -29200,7 +29204,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -29212,7 +29216,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5723\u5178"
+  m_Text: "\u1019\u103C\u1004\u1037\u103A\u1019\u103C\u1010\u103A\u101E\u1031\u102C\u1000\u103B\u1019\u103A\u1038\u1005\u102C"
 --- !u!222 &805550157
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34130,7 +34134,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 54
     m_FontStyle: 0
     m_BestFit: 0
@@ -34142,7 +34146,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u5168\u90E8\u9009\u62E9"
+  m_Text: "\u1021\u102C\u1038\u101C\u102F\u1036\u1038\u101B\u103D\u1031\u1038\u1001\u103B\u101A\u103A\u1015\u102B"
 --- !u!222 &961177539
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34715,7 +34719,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
@@ -34727,7 +34731,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56FE\u7247\u6A21\u677F"
+  m_Text: "\u101B\u102F\u1015\u103A\u1015\u102F\u1036 \u1015\u1014\u103A\u1038\u1001\u103B\u102E\u1000\u102C\u1038\u1019\u103B\u102C\u1038"
 --- !u!222 &1010792951
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35910,7 +35914,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
@@ -35922,7 +35926,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u79BB\u7EBF\u5305\u4E0B\u8F7D"
+  m_Text: "\u1021\u1031\u102C\u1037\u1016\u103A\u101C\u102D\u102F\u1004\u103A\u1038
+    \u1015\u1000\u103A\u1000\u1031\u1037\u1001\u103B\u103A"
 --- !u!222 &1045057153
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -36938,7 +36943,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 59
     m_FontStyle: 0
     m_BestFit: 0
@@ -36950,7 +36955,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5206\u7EC4\u7BA1\u7406"
+  m_Text: "\u1021\u102F\u1015\u103A\u1005\u102F \u1005\u102E\u1019\u1036\u1001\u1014\u1037\u103A\u1001\u103D\u1032\u1019\u103E\u102F"
 --- !u!222 &1091925435
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37166,7 +37171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332e36893e7cf4a49b3c1f72f76cd5e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTarget: {fileID: 114000012754972714}
+  mTarget: {fileID: 805550156}
 --- !u!114 &1103994807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37538,7 +37543,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 63
     m_FontStyle: 0
     m_BestFit: 0
@@ -37550,7 +37555,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5B8C\u6210"
+  m_Text: "\u1021\u1006\u102F\u1036\u1038\u101E\u1010\u103A"
 --- !u!222 &1113321597
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37861,7 +37866,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
@@ -37873,7 +37878,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "pali \u4E0D\u6717\u8BFB\u62EC\u53F7\u5185\u5BB9"
+  m_Text: "\u1015\u102B\u101C\u102E\u101E\u100A\u103A \u1019\u102D\u1018\u1005\u1000\u102C\u1038\u1014\u103E\u1004\u1037\u103A\u1006\u102D\u102F\u1004\u103A\u101E\u1031\u102C
+    \u1021\u1000\u103C\u1031\u102C\u1004\u103A\u1038\u1021\u101B\u102C\u1019\u103B\u102C\u1038\u1000\u102D\u102F
+    \u1019\u1016\u1010\u103A\u101B"
 --- !u!222 &1119384675
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -38232,7 +38239,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -38244,7 +38251,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7F05\u5386"
+  m_Text: "\u1019\u103C\u1014\u103A\u1019\u102C\u1015\u103C\u1000\u1039\u1001\u1012\u102D\u1014\u103A"
 --- !u!222 &1126184441
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -38484,7 +38491,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
@@ -38496,7 +38503,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Pali \u6717\u8BFB\u98CE\u683C"
+  m_Text: "\u1015\u102B\u101C\u102E \u1021\u101E\u1036\u1000\u103B\u101A\u103A\u1010\u1032\u1037
+    \u1015\u102F\u1036\u1005\u1036"
 --- !u!222 &1130898695
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39308,7 +39316,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
@@ -39320,7 +39328,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u638C\u4E0A\u5DF4\u5229\u5B66\u4E60\u8F6F\u4EF6"
+  m_Text: "\u101C\u1000\u103A\u1016\u101D\u102B\u1038\u1010\u103D\u1004\u103A \u1015\u102B\u101C\u102E\u101E\u1004\u103A\u101A\u1030\u1006\u1031\u102C\u1037\u1016\u103A\u101D\u1032"
 --- !u!222 &1156262157
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -40316,7 +40324,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 59
     m_FontStyle: 0
     m_BestFit: 0
@@ -40328,7 +40336,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u52A0\u5165\u6536\u85CF"
+  m_Text: "\u1000\u103C\u102D\u102F\u1000\u103A\u1014\u103E\u1005\u103A\u101E\u1000\u103A\u101E\u1030\u1019\u103B\u102C\u1038\u1000\u102D\u102F
+    \u1015\u1031\u102B\u1004\u103A\u1038\u1011\u100A\u1037\u103A\u1015\u102B"
 --- !u!222 &1186806376
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -40799,10 +40808,10 @@ MonoBehaviour:
       - "\u5B8C\u6210"
       - "\u5B8C\u6210"
       - Done
-      - 
-      - 
-      - 
-      - 
+      - "\u5B8C\u4E86"
+      - "\u1021\u1006\u102F\u1036\u1038\u101E\u1010\u103A"
+      - "\u0D85\u0DC0\u0DC3\u0DB1\u0DCA \u0D9A\u0DBB\u0DB1\u0DCA\u0DB1"
+      - "\u0E40\u0E2A\u0E23\u0E47\u0E08\u0E2A\u0E34\u0E49\u0E19"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: PopSentenceSelectView_SelectAll
@@ -40811,11 +40820,11 @@ MonoBehaviour:
       Languages:
       - "\u5168\u90E8\u9009\u62E9"
       - "\u5168\u90E8\u9078\u64C7"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Select all
+      - "\u3059\u3079\u3066\u9078\u629E"
+      - "\u1021\u102C\u1038\u101C\u102F\u1036\u1038\u101B\u103D\u1031\u1038\u1001\u103B\u101A\u103A\u1015\u102B"
+      - "\u0DC3\u0DD2\u0DBA\u0DBD\u0DD4\u0DB8 \u0DAD\u0DDA\u0DBB\u0DD3\u0DB8"
+      - "\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: PopSentenceSelectView_ShareSentence
@@ -40824,11 +40833,13 @@ MonoBehaviour:
       Languages:
       - "\u9010\u53E5\u5206\u4EAB"
       - "\u9010\u53E5\u5206\u4EAB"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Share by sentence
+      - "\u4E00\u8A00\u305A\u3064\u5206\u304B\u3061\u5408\u3046"
+      - "\u1015\u103C\u1005\u103A\u1012\u100F\u103A\u1016\u103C\u1004\u1037\u103A
+        \u101D\u1031\u1019\u103B\u103E\u1015\u102B"
+      - "\u0DC0\u0DCF\u0D9A\u0DCA\u200D\u0DBA\u0DBA\u0DD9\u0DB1\u0DCA \u0DC0\u0DCF\u0D9A\u0DCA\u200D\u0DBA
+        \u0DB6\u0DD9\u0DAF\u0DCF\u0D9C\u0DB1\u0DCA\u0DB1"
+      - "\u0E41\u0E1A\u0E48\u0E07\u0E1B\u0E31\u0E19 \u0E41\u0E15\u0E48\u0E25\u0E30\u0E1A\u0E23\u0E23\u0E17\u0E31\u0E14"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: article_Article
@@ -40837,11 +40848,11 @@ MonoBehaviour:
       Languages:
       - "\u5723\u5178"
       - "\u8056\u5178"
-      - Scripture
+      - "P\u0101li"
       - "\u8056\u5178"
-      - 
-      - 
-      - 
+      - "\u1019\u103C\u1004\u1037\u103A\u1019\u103C\u1010\u103A\u101E\u1031\u102C\u1000\u103B\u1019\u103A\u1038\u1005\u102C"
+      - "\u0DC1\u0DD4\u0DAF\u0DCA\u0DB0 \u0DB4\u0DDC\u0DAD"
+      - "\u0E1E\u0E23\u0E30\u0E04\u0E31\u0E21\u0E20\u0E35\u0E23\u0E4C"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_BuddhistCalendar
@@ -40852,9 +40863,9 @@ MonoBehaviour:
       - "\u4F5B\u66C6\uFF1A"
       - "Buddhist Calendar\uFF1A"
       - "\u4ECF\u66A6\uFF1A"
-      - 
-      - 
-      - 
+      - "\u1017\u102F\u1012\u1039\u1013\u101D\u102B\u1012\u102E\u1015\u103C\u1000\u1039\u1001\u1012\u102D\u1014\u103A-"
+      - "\u0DB6\u0DDE\u0DAF\u0DCA\u0DB0 \u0DAF\u0DD2\u0DB1 \u0DAF\u0DBB\u0DCA\u0DC1\u0DB1\u0DBA:"
+      - "\u0E1B\u0E0F\u0E34\u0E17\u0E34\u0E19\u0E17\u0E32\u0E07\u0E1E\u0E38\u0E17\u0E18\u0E28\u0E32\u0E2A\u0E19\u0E32:"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_BurmeseCalendar
@@ -40865,9 +40876,9 @@ MonoBehaviour:
       - "\u7DEC\u66C6"
       - Burmese calendar
       - "\u30D3\u30EB\u30DE\u66A6"
-      - 
-      - 
-      - 
+      - "\u1019\u103C\u1014\u103A\u1019\u102C\u1015\u103C\u1000\u1039\u1001\u1012\u102D\u1014\u103A"
+      - "\u0DB6\u0DD4\u0DBB\u0DD4\u0DB8 \u0DAF\u0DD2\u0DB1 \u0DAF\u0DBB\u0DCA\u0DC1\u0DB1\u0DBA"
+      - "\u0E40\u0E21\u0E19\u0E39 Name"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_ChineseCalendar
@@ -40878,9 +40889,9 @@ MonoBehaviour:
       - "\u8FB2\u66C6"
       - Chinese calendar
       - "\u65E7\u66A6"
-      - 
-      - 
-      - 
+      - "\u101C"
+      - "\u0DA0\u0DB1\u0DCA\u0DAF\u0DCA\u0DBB \u0DAF\u0DD2\u0DB1\u0DAF\u0DBB\u0DCA\u0DC1\u0DB1\u0DBA"
+      - "\u0E08\u0E31\u0E19\u0E17\u0E23\u0E04\u0E15\u0E34"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_Latitude
@@ -40891,9 +40902,9 @@ MonoBehaviour:
       - "\u7DEF\u5EA6"
       - Lat
       - "\u7DEF\u5EA6"
-      - 
-      - 
-      - 
+      - "\u101C\u1010\u103A\u101C\u1010\u103A\u1006\u1010\u103A\u1006\u1010\u103A"
+      - "\u0D85\u0D9A\u0DCA\u0DC2\u0DCF\u0D82\u0DC1"
+      - "\u0E25\u0E30\u0E15\u0E34\u0E08\u0E39\u0E14"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_Longitude
@@ -40904,9 +40915,9 @@ MonoBehaviour:
       - "\u7D93\u5EA6"
       - Lng
       - "\u7D4C\u5EA6"
-      - 
-      - 
-      - 
+      - "\u101B\u103E\u100A\u103A\u101C\u103B\u102C\u1038\u1019\u103E\u102F"
+      - "\u0DAF\u0DDA\u0DC1\u0DCF\u0D82\u0DC1"
+      - "\u0E25\u0E2D\u0E07\u0E15\u0E34\u0E08\u0E39\u0E14"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_Month
@@ -40917,9 +40928,9 @@ MonoBehaviour:
       - "\u6708"
       - Month
       - "\u3052\u3064"
-      - 
-      - 
-      - 
+      - "\u101C"
+      - "\u0DC3\u0DB3"
+      - "\u0E40\u0E14\u0E37\u0E2D\u0E19"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_SolarNoon
@@ -40930,9 +40941,9 @@ MonoBehaviour:
       - "\u65E5\u4E2D\uFF1A"
       - "SolarNoon\uFF1A"
       - "\u65E5\u4E2D\uFF1A"
-      - 
-      - 
-      - 
+      - "\u1002\u103B\u1015\u1014\u103A:"
+      - "\u0DA2\u0DB4\u0DCF\u0DB1\u0DBA \u0DC3\u0DC4 \u0DA0\u0DD3\u0DB1\u0DBA:"
+      - "\u0E01\u0E25\u0E32\u0E07\u0E27\u0E31\u0E19:"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_StarCalendar
@@ -40943,9 +40954,10 @@ MonoBehaviour:
       - "\u661F\u5BBF\u66C6"
       - Almanac
       - "\u661F\u66C6"
-      - 
-      - 
-      - 
+      - "\u1014\u1000\u1039\u1001\u101B\u103E\u102C\u1011\u101B\u102C\u1015\u103C\u1000\u1039\u1001\u1012\u102D\u1014\u103A"
+      - "\u0DA2\u0DCA\u0DBA\u0DDD\u0DAD\u0DD2\u0D83 \u0DC1\u0DCF\u0DC3\u0DCA\u0DAD\u0DCA\u0DBB\u0DD3\u0DBA
+        \u0DAF\u0DD2\u0DB1 \u0DAF\u0DBB\u0DCA\u0DC1\u0DB1\u0DBA"
+      - "\u0E1B\u0E0F\u0E34\u0E17\u0E34\u0E19\u0E08\u0E31\u0E19\u0E17\u0E23\u0E04\u0E15\u0E34"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_Sunrise
@@ -40954,11 +40966,12 @@ MonoBehaviour:
       Languages:
       - "\u660E\u76F8\uFF1A"
       - "\u660E\u76F8\uFF1A"
-      - "Sunrise\uFF1A"
+      - "Dawn\uFF1A"
       - "\u65E5\u306E\u51FA\uFF1A"
-      - 
-      - 
-      - 
+      - "\u1010\u1031\u102C\u1000\u103A\u1015\u1010\u1032\u1037 \u1021\u1006\u1004\u1037\u103A
+        -"
+      - "\u0DC4\u0DD2\u0DBB\u0DD4 \u0D8B\u0DAF\u0DCF\u0DC0:"
+      - "\u0E2D\u0E32\u0E01\u0E34\u0E23\u0E30:"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_Sunset
@@ -40969,9 +40982,9 @@ MonoBehaviour:
       - "\u65E5\u843D\uFF1A"
       - "Sunset\uFF1A"
       - "\u65E5\u306E\u5165\u308A\uFF1A"
-      - 
-      - 
-      - 
+      - "\u1014\u1031\u101D\u1004\u103A - \u1014\u1031\u101D\u1004\u103A -"
+      - "\u0DC4\u0DD2\u0DBB\u0DD4 \u0DB6\u0DD0\u0DC3 \u0DBA\u0DD1\u0DB8:"
+      - "\u0E1E\u0E23\u0E30\u0E2D\u0E32\u0E17\u0E34\u0E15\u0E22\u0E4C\u0E15\u0E01"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_WestCalendar
@@ -40982,9 +40995,9 @@ MonoBehaviour:
       - "\u897F\u66C6\uFF1A"
       - "Calendar\uFF1A"
       - "\u897F\u66C6\uFF1A"
-      - 
-      - 
-      - 
+      - "\u1021\u1014\u1031\u102C\u1000\u103A\u1015\u103C\u1000\u1039\u1001\u1012\u102D\u1014\u103A-"
+      - "\u0DB6\u0DA7\u0DC4\u0DD2\u0DBB \u0DAF\u0DD2\u0DB1 \u0DAF\u0DBB\u0DCA\u0DC1\u0DB1\u0DBA:"
+      - "\u0E1B\u0E0F\u0E34\u0E17\u0E34\u0E19:"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_Year
@@ -40995,9 +41008,9 @@ MonoBehaviour:
       - "\u5E74"
       - Year
       - "\u306D\u3093"
-      - 
-      - 
-      - 
+      - "\u1014\u103E\u1005\u103A"
+      - "\u0D85\u0DC0\u0DD4\u0DBB\u0DD4\u0DAF\u0DD4"
+      - "\u0E1B\u0E35"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_week1
@@ -41008,9 +41021,9 @@ MonoBehaviour:
       - "\u4E00"
       - Mon
       - "\u6708"
-      - 
-      - 
-      - 
+      - "\u1010\u1005\u103A"
+      - "\u0D91\u0D9A"
+      - "\u0E2B\u0E19\u0E36\u0E48\u0E07."
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_week2
@@ -41021,9 +41034,9 @@ MonoBehaviour:
       - "\u4E8C"
       - Tue
       - "\u706B"
-      - 
-      - 
-      - 
+      - "\u1014\u103E\u1005\u103A"
+      - "\u0DAF\u0DD9\u0D9A"
+      - "\u0E2A\u0E2D\u0E07"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_week3
@@ -41034,9 +41047,9 @@ MonoBehaviour:
       - "\u4E09"
       - Wed
       - "\u6C34"
-      - 
-      - 
-      - 
+      - "\u101E\u102F\u1036\u1038"
+      - "\u0DAD\u0DD4\u0DB1\u0DCA"
+      - "\u0E2A\u0E32\u0E21"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_week4
@@ -41047,9 +41060,9 @@ MonoBehaviour:
       - "\u56DB"
       - Thu
       - "\u6728"
-      - 
-      - 
-      - 
+      - "\u101C\u1031\u1038"
+      - "\u0DC3\u0DD2\u0DC0\u0DCA"
+      - "\u0E2A\u0E35\u0E48"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_week5
@@ -41060,9 +41073,9 @@ MonoBehaviour:
       - "\u4E94"
       - Fri
       - "\u91D1"
-      - 
-      - 
-      - 
+      - "\u1004\u102B\u1038"
+      - "\u0DB4\u0DC4"
+      - "\u0E2B\u0E49\u0E32"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_week6
@@ -41073,9 +41086,9 @@ MonoBehaviour:
       - "\u516D"
       - Sat
       - "\u571F"
-      - 
-      - 
-      - 
+      - "\u1001\u103C\u1031\u102C\u1000\u103A"
+      - "\u0DC4\u0DBA"
+      - "\u0E2B\u0E01"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: calendar_week7
@@ -41086,9 +41099,9 @@ MonoBehaviour:
       - "\u65E5"
       - Sun
       - "\u65E5"
-      - 
-      - 
-      - 
+      - "\u101B\u1000\u103A\u1014\u1031\u1037"
+      - "\u0DAF\u0DC0\u0DC3"
+      - "\u0E27\u0E31\u0E19"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: commonGroupView_About_AboutWikipali
@@ -41098,10 +41111,10 @@ MonoBehaviour:
       - "\u5173\u4E8Ewikip\u0101li"
       - "\u95DC\u65BCwikip\u0101li"
       - "About wikip\u0101li"
-      - 
-      - 
-      - 
-      - 
+      - "wikip\u0101li\u306B\u3064\u3044\u3066"
+      - "\u101E\u1000\u103A\u1006\u102D\u102F\u1004\u103A\u1019\u103E\u102Fwikip\u0101li"
+      - "\u0DC0\u0DD2\u0D9A\u0DD2\u0DB4\u0DCF\u0DBD\u0DD2 \u0D9C\u0DD0\u0DB1"
+      - "\u0E40\u0E01\u0E35\u0E48\u0E22\u0E27\u0E01\u0E31\u0E1A\u0E27\u0E34\u0E04\u0E34\u0E27\u0E25\u0E34"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: commonGroupView_UpdateOfflineP_ChapterCount
@@ -41110,11 +41123,13 @@ MonoBehaviour:
       Languages:
       - "\u7AE0\u8282\u6570\u5BF9\u6BD4\uFF1A"
       - "\u7AE0\u7BC0\u6578\u5C0D\u6BD4\uFF1A"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Chapter number comparison
+      - "\u7AE0\u6570\u306E\u6BD4\u8F03\uFF1A"
+      - "\u1021\u1001\u1014\u103A\u1038\u1000\u103C\u102E\u1038\u1021\u101B\u1031\u1021\u1010\u103D\u1000\u103A\u1000\u102D\u102F
+        \u1014\u103E\u102D\u102F\u1004\u103A\u1038\u101A\u103E\u1009\u103A\u1000\u103C\u100A\u1037\u103A\u1015\u102B
+        \u2013"
+      - "\u0DB4\u0DBB\u0DD2\u0DA0\u0DCA\u0DA1\u0DDA\u0DAF \u0D85\u0D82\u0D9A \u0DC3\u0D82\u0DC3\u0DB1\u0DCA\u0DAF\u0DB1\u0DBA:"
+      - "\u0E04\u0E27\u0E32\u0E21\u0E40\u0E1B\u0E23\u0E35\u0E22\u0E1A\u0E15\u0E48\u0E32\u0E07\u0E02\u0E2D\u0E07\u0E08\u0E33\u0E19\u0E27\u0E19\u0E1A\u0E17:"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: commonGroupView_UpdateOfflineP_ClickUpdate
@@ -41123,11 +41138,12 @@ MonoBehaviour:
       Languages:
       - "\u70B9\u51FB\u4E0B\u8F7D"
       - "\u9EDE\u64CA\u4E0B\u8F09"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Click to download
+      - "\u30C0\u30A6\u30F3\u30ED\u30FC\u30C9"
+      - "\u1012\u1031\u102B\u1004\u103A\u1038\u101C\u102F\u1010\u103A\u1000\u102D\u102F\u1014\u103E\u102D\u1015\u103A\u1015\u102B"
+      - "\u0DB6\u0DCF\u0D9C\u0DAD \u0D9A\u0DD2\u0DBB\u0DD3\u0DB8\u0DA7 \u0D9A\u0DCA\u0DBD\u0DD2\u0D9A\u0DCA
+        \u0D9A\u0DBB\u0DB1\u0DCA\u0DB1"
+      - "\u0E04\u0E25\u0E34\u0E01\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E14\u0E32\u0E27\u0E19\u0E4C\u0E42\u0E2B\u0E25\u0E14"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: commonGroupView_UpdateOfflineP_CurrTime
@@ -41136,11 +41152,15 @@ MonoBehaviour:
       Languages:
       - "\u5F53\u524D\u79BB\u7EBF\u5305\u66F4\u65B0\u65F6\u95F4\uFF1A"
       - "\u7576\u524D\u96E2\u7DDA\u5305\u66F4\u65B0\u6642\u9593\uFF1A"
-      - "Current offline package update time\uFF1A"
+      - "Current offline data package update time\uFF1A"
       - "\u73FE\u5728\u306E\u30AA\u30D5\u30E9\u30A4\u30F3\u30D1\u30B1\u30C3\u30C8\u66F4\u65B0\u6642\u9593\uFF1A"
-      - 
-      - 
-      - 
+      - "\u101C\u1000\u103A\u101B\u103E\u102D \u1021\u1031\u102C\u1037\u1016\u103A\u101C\u102D\u102F\u1004\u103A\u1038
+        \u1015\u1000\u103A\u1000\u1031\u1037\u1001\u103A\u103B \u1021\u101E\u1005\u103A\u1001\u103B\u102D\u1014\u103A
+        \u1021\u1001\u103B\u102D\u1014\u103A"
+      - "\u0DC0\u0DAD\u0DCA\u0DB8\u0DB1\u0DCA \u0DB1\u0DDC\u0DB6\u0DD0\u0DB3\u0DD2
+        \u0DB4\u0DD0\u0D9A\u0DDA\u0DA2 \u0DBA\u0DCF\u0DC0\u0DAD\u0DCA\u0D9A\u0DCF\u0DBD\u0DD3\u0DB1
+        \u0D9A\u0DCF\u0DBD\u0DBA:"
+      - "\u0E40\u0E27\u0E25\u0E32 \u0E17\u0E35\u0E48\u0E1B\u0E23\u0E31\u0E1A\u0E1B\u0E23\u0E38\u0E07\u0E41\u0E1E\u0E01\u0E40\u0E01\u0E08\u0E41\u0E1A\u0E1A\u0E2D\u0E2D\u0E1F\u0E44\u0E25\u0E19\u0E4C\u0E1B\u0E31\u0E08\u0E08\u0E38\u0E1A\u0E31\u0E19:"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: commonGroupView_UpdateOfflineP_NewTime
@@ -41149,11 +41169,13 @@ MonoBehaviour:
       Languages:
       - "\u6700\u65B0\u79BB\u7EBF\u5305\u66F4\u65B0\u65F6\u95F4\uFF1A"
       - "\u6700\u65B0\u96E2\u7DDA\u5305\u66F4\u65B0\u6642\u9593\uFF1A"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - "Latest offline data package update time\uFF1A"
+      - "\u6700\u65B0\u306E\u30AA\u30D5\u30E9\u30A4\u30F3\u30D1\u30B1\u30C3\u30C8\u66F4\u65B0\u6642\u9593\uFF1A"
+      - "\u1014\u1031\u102C\u1000\u103A\u1006\u102F\u1036\u1038 \u1021\u1031\u102C\u1037\u1016\u103A\u101C\u102D\u102F\u1004\u103A\u1038
+        \u1015\u1000\u103A\u1000\u1031\u1037\u1001\u103A\u103B \u1021\u101E\u1005\u103A\u1015\u103C\u1004\u103A\u1001\u103B\u102D\u1014\u103A"
+      - "\u0DB1\u0DC0\u0DAD\u0DB8 \u0DB1\u0DDC\u0DB6\u0DD0\u0DB3\u0DD2 \u0DB4\u0DD0\u0D9A\u0DDA\u0DA2
+        \u0DBA\u0DCF\u0DC0\u0DAD\u0DCA\u0D9A\u0DCF\u0DBD\u0DD3\u0DB1 \u0D9A\u0DCF\u0DBD\u0DBA:"
+      - "\u0E40\u0E27\u0E25\u0E32\u0E1B\u0E23\u0E31\u0E1A\u0E1B\u0E23\u0E38\u0E07\u0E41\u0E1E\u0E01\u0E40\u0E01\u0E08\u0E2D\u0E2D\u0E1F\u0E44\u0E25\u0E19\u0E4C\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14:"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: commonGroupView_UpdateOfflineP_Reserve space
@@ -41162,11 +41184,16 @@ MonoBehaviour:
       Languages:
       - "\u66F4\u65B0\u8BF7\u9884\u7559\u51FA3G\u5B58\u50A8\u7A7A\u95F4"
       - "\u66F4\u65B0\u8ACB\u9810\u7559\u51FA3G\u5B58\u5132\u7A7A\u9593"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - At least 3GiB memory space
+      - "\u66F4\u65B0\u306F3 G\u30E1\u30E2\u30EA\u3092\u6B8B\u3057\u3066\u304A\u3044\u3066\u304F\u3060\u3055\u3044"
+      - "\u1021\u101E\u1005\u103A\u1015\u103C\u1004\u103A\u1006\u1004\u103A\u1019\u103E\u102F\u1010\u103D\u1031\u1021\u1010\u103D\u1000\u103A
+        3G \u101E\u102D\u102F\u101C\u103E\u1031\u102C\u1004\u103A\u1001\u1014\u103A\u1038\u1014\u1031\u101B\u102C\u1000\u102D\u102F
+        \u101E\u102D\u1019\u103A\u1038\u1011\u102C\u1038\u1015\u102B"
+      - "\u0DBA\u0DCF\u0DC0\u0DAD\u0DCA\u0D9A\u0DCF\u0DBD\u0DD3\u0DB1 \u0DC3\u0DB3\u0DC4\u0DCF
+        \u0D9A\u0DBB\u0DD4\u0DAB\u0DCF\u0D9A\u0DBB 3G \u0D9C\u0DB6\u0DA9\u0DCF \u0D89\u0DA9
+        \u0DC0\u0DD9\u0DB1\u0DCA \u0D9A\u0DBB\u0DB1\u0DCA\u0DB1"
+      - "\u0E2D\u0E31\u0E1B\u0E40\u0E14\u0E15\u0E01\u0E23\u0E38\u0E13\u0E32\u0E08\u0E31\u0E14\u0E40\u0E01\u0E47\u0E1A
+        3 \u0E01\u0E34\u0E4A\u0E01"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: commonGroupView_UpdateOfflineP_Update
@@ -41175,11 +41202,12 @@ MonoBehaviour:
       Languages:
       - "\u79BB\u7EBF\u5305\u4E0B\u8F7D"
       - "\u96E2\u7DDA\u5305\u4E0B\u8F09"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Download offline data package
+      - "\u30AA\u30D5\u30E9\u30A4\u30F3\u30D1\u30C3\u30B1\u30FC\u30B8\u306E\u30C0\u30A6\u30F3\u30ED\u30FC\u30C9"
+      - "\u1021\u1031\u102C\u1037\u1016\u103A\u101C\u102D\u102F\u1004\u103A\u1038
+        \u1015\u1000\u103A\u1000\u1031\u1037\u1001\u103B\u103A"
+      - "\u0DB1\u0DDC\u0DB6\u0DD0\u0DB3\u0DD2 \u0DB4\u0DD0\u0D9A\u0DDA\u0DA2 \u0DB6\u0DCF\u0D9C\u0DD0\u0DB1\u0DD3\u0DB8"
+      - "\u0E14\u0E32\u0E27\u0E19\u0E4C\u0E42\u0E2B\u0E25\u0E14\u0E41\u0E1E\u0E01\u0E40\u0E01\u0E08\u0E41\u0E1A\u0E1A\u0E2D\u0E2D\u0E1F\u0E44\u0E25\u0E19\u0E4C"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: commonGroupView_UpdateVersion_ClickUpdateVersion
@@ -41188,11 +41216,12 @@ MonoBehaviour:
       Languages:
       - "\u70B9\u51FB\u66F4\u65B0"
       - "\u9EDE\u64CA\u66F4\u65B0"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Click to update
+      - "\u30AF\u30EA\u30C3\u30AF\u3057\u3066\u66F4\u65B0"
+      - "\u1000\u101C\u1005\u103A\u1014\u103E\u102D\u1015\u103A\u1015\u102B"
+      - "\u0DBA\u0DCF\u0DC0\u0DAD\u0DCA\u0D9A\u0DCF\u0DBD\u0DD3\u0DB1 \u0D9A\u0DD2\u0DBB\u0DD3\u0DB8\u0DA7
+        \u0D9A\u0DCA\u0DBD\u0DD2\u0D9A\u0DCA \u0D9A\u0DBB\u0DB1\u0DCA\u0DB1"
+      - "\u0E04\u0E25\u0E34\u0E01\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E2D\u0E31\u0E1B\u0E40\u0E14\u0E15"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: commonGroupView_UpdateVersion_CurrVersion
@@ -41201,11 +41230,12 @@ MonoBehaviour:
       Languages:
       - "\u5F53\u524D\u7248\u672C\uFF1A"
       - "\u7576\u524D\u7248\u672C\uFF1A"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Current version
+      - "\u73FE\u5728\u306E\u30D0\u30FC\u30B8\u30E7\u30F3\uFF1A"
+      - "\u101C\u1000\u103A\u101B\u103E\u102D\u1018\u102C\u101E\u102C\u1015\u103C\u1014\u103A\u1000\u103B\u1019\u103A\u1038
+        -"
+      - "\u0DC0\u0DAD\u0DCA\u0DB8\u0DB1\u0DCA \u0D85\u0DB1\u0DD4\u0DC0\u0DCF\u0DAF\u0DBA:"
+      - "\u0E23\u0E38\u0E48\u0E19\u0E1B\u0E31\u0E08\u0E08\u0E38\u0E1A\u0E31\u0E19:"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: commonGroupView_UpdateVersion_NewVersion
@@ -41214,11 +41244,12 @@ MonoBehaviour:
       Languages:
       - "\u6700\u65B0\u7248\u672C\uFF1A"
       - "\u6700\u65B0\u7248\u672C\uFF1A"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Latest version
+      - "\u6700\u65B0\u30D0\u30FC\u30B8\u30E7\u30F3\uFF1A"
+      - "\u1014\u1031\u102C\u1000\u103A\u1006\u102F\u1036\u1038 \u1017\u102C\u1038\u101B\u103E\u1004\u103A\u1038
+        -"
+      - "\u0DB8\u0DD9\u0DC4\u0DD2 \u0DB1\u0DC0\u0DAD\u0DB8 \u0D85\u0DB1\u0DD4\u0DC0\u0DCF\u0DAF\u0DBA:"
+      - "\u0E23\u0E38\u0E48\u0E19\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14:"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: commonGroupView_UpdateVersion_UpdateVersion
@@ -41227,11 +41258,12 @@ MonoBehaviour:
       Languages:
       - "\u7248\u672C\u66F4\u65B0"
       - "\u7248\u672C\u66F4\u65B0"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Version updating
+      - "\u30D0\u30FC\u30B8\u30E7\u30F3\u306E\u66F4\u65B0"
+      - "\u1017\u102C\u1038\u101B\u103E\u1004\u103A\u1038 \u1021\u101E\u1005\u103A\u1015\u103C\u1004\u103A\u1006\u1004\u103A\u1019\u103E\u102F\u1019\u103B\u102C\u1038"
+      - "\u0DB1\u0DC0 \u0D85\u0DB1\u0DD4\u0DC0\u0DCF\u0DAF\u0DBA \u0DBA\u0DCF\u0DC0\u0DAD\u0DCA\u0D9A\u0DCF\u0DBD\u0DD3\u0DB1
+        \u0D9A\u0DD2\u0DBB\u0DD3\u0DB8"
+      - "\u0E1B\u0E23\u0E31\u0E1A\u0E1B\u0E23\u0E38\u0E07\u0E23\u0E38\u0E48\u0E19"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: dicGroupView_GroupManagement
@@ -41242,9 +41274,9 @@ MonoBehaviour:
       - "\u5206\u7D44\u7BA1\u7406"
       - Group management
       - "\u30B0\u30EB\u30FC\u30D4\u30F3\u30B0\u7BA1\u7406"
-      - 
-      - 
-      - 
+      - "\u1021\u102F\u1015\u103A\u1005\u102F \u1005\u102E\u1019\u1036\u1001\u1014\u1037\u103A\u1001\u103D\u1032\u1019\u103E\u102F"
+      - "\u0D9A\u0DAB\u0DCA\u0DA9\u0DCF\u0DBA\u0DB8\u0DCA \u0D9A\u0DC5\u0DB8\u0DB1\u0DCF\u0D9A\u0DBB\u0DAB\u0DBA"
+      - "\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E01\u0E25\u0E38\u0E48\u0E21"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: dic_Article
@@ -41253,11 +41285,11 @@ MonoBehaviour:
       Languages:
       - "\u5723\u5178"
       - "\u8056\u5178"
-      - Scripture
+      - "P\u0101li"
       - "\u8056\u5178"
-      - 
-      - 
-      - 
+      - "\u1019\u103C\u1004\u1037\u103A\u1019\u103C\u1010\u103A\u101E\u1031\u102C\u1000\u103B\u1019\u103A\u1038\u1005\u102C"
+      - "\u0DC1\u0DD4\u0DAF\u0DCA\u0DB0 \u0DB4\u0DDC\u0DAD"
+      - "\u0E1E\u0E23\u0E30\u0E04\u0E31\u0E21\u0E20\u0E35\u0E23\u0E4C"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: dic_Dict
@@ -41268,9 +41300,9 @@ MonoBehaviour:
       - "\u55AE\u8A5E"
       - Word
       - "\u5358\u8A9E"
-      - 
-      - 
-      - 
+      - "\u1005\u1000\u102C\u1038\u101C\u102F\u1036\u1038\u1019\u103B\u102C\u1038"
+      - "\u0DC0\u0DA0\u0DB1\u0DBA"
+      - "\u0E04\u0E33"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: dic_Search
@@ -41281,9 +41313,9 @@ MonoBehaviour:
       - "\u641C\u7D22..."
       - Search...
       - "\u691C\u7D22..."
-      - 
-      - 
-      - 
+      - "\u101B\u103E\u102C\u1016\u103D\u1031\u1015\u102B..."
+      - "\u0DC3\u0DD9\u0DC0\u0DD3\u0DB8..."
+      - "\u0E04\u0E49\u0E19\u0E2B\u0E32..."
       Flags: 00000000000000
       Languages_Touch: []
     - Term: initView_InitProgress
@@ -41292,11 +41324,12 @@ MonoBehaviour:
       Languages:
       - "\u521D\u59CB\u5316\u8FDB\u5EA6"
       - "\u521D\u59CB\u5316\u9032\u5EA6"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - "Initializing\u2026\u2026"
+      - "\u521D\u671F\u5316\u2026"
+      - "\u1021\u1005\u1015\u102D\u102F\u1004\u103A\u1038\u1010\u103D\u1004\u103A
+        \u1010\u102D\u102F\u1038\u1010\u1000\u103A\u1019\u103E\u102F\u1019\u103B\u102C\u1038"
+      - "\u0D86\u0DBB\u0DB8\u0DCA\u0DB7\u0D9A \u0DB4\u0DCA\u0DBB\u0D9C\u0DAD\u0DD2\u0DBA"
+      - "\u0E01\u0E33\u0E25\u0E31\u0E07\u0E40\u0E23\u0E34\u0E48\u0E21\u0E01\u0E32\u0E23\u0E17\u0E33\u0E07\u0E32\u0E19"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: newArticle_NewArticle
@@ -41307,9 +41340,9 @@ MonoBehaviour:
       - "\u6700\u65B0"
       - Latest
       - "\u65B0\u3057\u3044"
-      - 
-      - 
-      - 
+      - "\u1014\u1031\u102C\u1000\u103A\u1006\u102F\u1036\u1038"
+      - "\u0DBA\u0DCF\u0DC0\u0DAD\u0DCA\u0D9A\u0DCF\u0DBD\u0DD3\u0DB1\u0DC0"
+      - "\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: popDragWord_DelimitWords
@@ -41318,11 +41351,13 @@ MonoBehaviour:
       Languages:
       - "\u5212\u8BCD\u53D6\u4E49"
       - "\u5283\u8A5E\u53D6\u7FA9"
-      - Delimit words and take meanings
+      - Translate
       - "\u8A5E\u3092\u753B\u3044\u3066\u610F\u5473\u3092\u3068\u308B"
-      - 
-      - 
-      - 
+      - "\u1005\u1000\u102C\u1038\u101C\u102F\u1036\u1038\u1019\u103B\u102C\u1038\u1000\u102D\u102F
+        \u1021\u1013\u102D\u1015\u1039\u1015\u102B\u101A\u103A\u1019\u103E \u101B\u101A\u1030\u1011\u102C\u1038"
+      - "\u0DC0\u0DA0\u0DB1 \u0DC0\u0DD2\u0DC3\u0DCA\u0DAD\u0DBB \u0D9A\u0DBB \u0D85\u0DBB\u0DCA\u0DAE\u0DBA
+        \u0DBD\u0DB6\u0DCF \u0D9C\u0DB1\u0DCA\u0DB1"
+      - "\u0E04\u0E27\u0E32\u0E21\u0E22\u0E38\u0E15\u0E34\u0E18\u0E23\u0E23\u0E21"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: popView_AddToFavorites
@@ -41333,9 +41368,11 @@ MonoBehaviour:
       - "\u52A0\u5165\u6536\u85CF"
       - Add to favorites
       - "\u30B3\u30EC\u30AF\u30B7\u30E7\u30F3\u306B\u52A0\u3048\u307E\u3059"
-      - 
-      - 
-      - 
+      - "\u1000\u103C\u102D\u102F\u1000\u103A\u1014\u103E\u1005\u103A\u101E\u1000\u103A\u101E\u1030\u1019\u103B\u102C\u1038\u1000\u102D\u102F
+        \u1015\u1031\u102B\u1004\u103A\u1038\u1011\u100A\u1037\u103A\u1015\u102B"
+      - "\u0DB4\u0DCA\u200D\u0DBB\u0DD2\u0DBA\u0DAD\u0DB8\u0DBA\u0DB1\u0DCA \u0DC0\u0DD9\u0DAD
+        \u0D91\u0D9A\u0DCA \u0D9A\u0DBB\u0DB1\u0DCA\u0DB1"
+      - "\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E04\u0E25\u0E31\u0E07\u0E20\u0E32\u0E1E"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: popView_Down
@@ -41346,9 +41383,9 @@ MonoBehaviour:
       - "\u5B8C\u6210"
       - Complete
       - "\u5B8C\u6210"
-      - 
-      - 
-      - 
+      - "\u1021\u1006\u102F\u1036\u1038\u101E\u1010\u103A"
+      - "\u0D85\u0DC0\u0DC3\u0DB1\u0DCA \u0D9A\u0DBB\u0DB1\u0DCA\u0DB1"
+      - "\u0E40\u0E2A\u0E23\u0E47\u0E08\u0E2A\u0E34\u0E49\u0E19"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: popView_EditGroup
@@ -41359,9 +41396,10 @@ MonoBehaviour:
       - "\u7DE8\u8F2F\u5206\u7D44"
       - Edit grouping
       - "\u30B0\u30EB\u30FC\u30D7\u3092\u7DE8\u96C6"
-      - 
-      - 
-      - 
+      - "\u1021\u102F\u1015\u103A\u1005\u102F\u1000\u102D\u102F \u1011\u102F\u1010\u103A\u101D\u1031\u1015\u102B"
+      - "\u0D9A\u0DAB\u0DCA\u0DA9\u0DCF\u0DBA\u0DB8 \u0DC3\u0D82\u0DC3\u0DCA\u0D9A\u0DBB\u0DAB\u0DBA
+        \u0D9A\u0DBB\u0DB1\u0DCA\u0DB1"
+      - "\u0E41\u0E01\u0E49\u0E44\u0E02\u0E01\u0E25\u0E38\u0E48\u0E21"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: setting_AboutWikipali
@@ -41372,9 +41410,9 @@ MonoBehaviour:
       - "\u95DC\u65BCwikipali"
       - About wikipali
       - "wikipali\u306B\u3064\u3044\u3066"
-      - "\u101E\u1000\u103A\u1006\u102D\u102F\u1004\u103A\u1019\u103E\u102F wikipali"
-      - "\u0D9C\u0DD0\u0DB1 wikipali"
-      - "\u0E40\u0E01\u0E35\u0E48\u0E22\u0E27\u0E01\u0E31\u0E1A wikipali"
+      - "\u101D\u102E\u1000\u102E\u1015\u102B\u101C\u102E\u1021\u1000\u103C\u1031\u102C\u1004\u103A\u1038"
+      - "\u0DC0\u0DD2\u0D9A\u0DD2\u0DB4\u0DCF\u0DBD\u0DD2 \u0D9C\u0DD0\u0DB1"
+      - "\u0E40\u0E01\u0E35\u0E48\u0E22\u0E27\u0E01\u0E31\u0E1A\u0E27\u0E34\u0E01\u0E34\u0E1E\u0E32\u0E25\u0E35"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: setting_Feedback
@@ -41399,7 +41437,7 @@ MonoBehaviour:
       - Language
       - "\u8A00\u8A9E"
       - "\u1018\u102C\u101E\u102C\u1005\u1000\u102C\u1038"
-      - 
+      - "\u0DB7\u0DCF\u0DC2\u0DCF\u0DC0"
       - "\u0E20\u0E32\u0E29\u0E32"
       Flags: 00000000000000
       Languages_Touch: []
@@ -41411,9 +41449,11 @@ MonoBehaviour:
       - "\u7576\u524D\u5DF2\u662F\u6700\u65B0\u7248\u672C"
       - This is the latest version
       - "App\u306F\u6700\u65B0\u7248\u3067\u3059"
-      - 
-      - 
-      - 
+      - "\u101C\u1031\u102C\u101C\u1031\u102C\u1006\u101A\u103A\u1019\u103E\u102C\u1010\u1031\u102C\u1037
+        \u1014\u1031\u102C\u1000\u103A\u1006\u102F\u1036\u1038\u1015\u1031\u102B\u103A
+        \u1017\u102C\u1038\u101B\u103E\u1004\u103A\u1038\u1015\u102B\u104B"
+      - "\u0DAF\u0DD0\u0DB1\u0DA7 \u0DB1\u0DC0\u0DAD\u0DB8 \u0D85\u0DB1\u0DD4\u0DC0\u0DCF\u0DAF\u0DBA"
+      - "\u0E15\u0E2D\u0E19\u0E19\u0E35\u0E49 \u0E40\u0E1B\u0E47\u0E19\u0E40\u0E27\u0E2D\u0E23\u0E4C\u0E0A\u0E31\u0E48\u0E19\u0E25\u0E48\u0E32\u0E2A\u0E38\u0E14\u0E41\u0E25\u0E49\u0E27"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: setting_OfflinePackageDownload
@@ -41440,8 +41480,9 @@ MonoBehaviour:
       - "\u524D\u306E\u30DA\u30FC\u30B8\u3092\u958B\u304D\u307E\u3059"
       - "\u101A\u1001\u1004\u103A\u1000 \u101B\u103E\u102F\u1019\u103C\u1004\u103A\u1001\u103B\u1000\u103A\u1000\u102D\u102F
         \u1016\u103D\u1004\u1037\u103A\u1015\u102B"
-      - 
-      - 
+      - "\u0D9A\u0DBD\u0DD2\u0DB1\u0DCA \u0DB6\u0DD0\u0DBD\u0DD6 \u0D85\u0DB1\u0DCA\u0DAD\u0DBB\u0DCA\u0D9C\u0DAD\u0DBA
+        \u0DC0\u0DD2\u0DC0\u0DD8\u0DAD \u0D9A\u0DBB\u0DB1\u0DCA\u0DB1"
+      - "\u0E40\u0E1B\u0E34\u0E14\u0E40\u0E19\u0E37\u0E49\u0E2D\u0E2B\u0E32\u0E01\u0E48\u0E2D\u0E19\u0E2B\u0E19\u0E49\u0E32\u0E19\u0E35\u0E49"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: setting_PaliNotReadBracket
@@ -41450,11 +41491,15 @@ MonoBehaviour:
       Languages:
       - "pali \u4E0D\u6717\u8BFB\u62EC\u53F7\u5185\u5BB9"
       - "pali \u4E0D\u6717\u8B80\u62EC\u5F27\u5167\u5BB9"
-      - pali doesn't read in parentheses
+      - Pali doesn't read in parentheses
       - "pali\u306F\u62EC\u5F27\u3092\u8AAD\u307F\u4E0A\u3052\u307E\u305B\u3093"
-      - "PalI \u1000 \u1019\u102D\u1018\u1010\u103D\u1031\u1000\u102D\u102F \u1019\u1016\u1010\u103A\u1016\u1030\u1038\u1018\u1030\u1038"
-      - 
-      - 
+      - "\u1015\u102B\u101C\u102E\u101E\u100A\u103A \u1019\u102D\u1018\u1005\u1000\u102C\u1038\u1014\u103E\u1004\u1037\u103A\u1006\u102D\u102F\u1004\u103A\u101E\u1031\u102C
+        \u1021\u1000\u103C\u1031\u102C\u1004\u103A\u1038\u1021\u101B\u102C\u1019\u103B\u102C\u1038\u1000\u102D\u102F
+        \u1019\u1016\u1010\u103A\u101B"
+      - "pali \u0DC0\u0DBB\u0DC4\u0DB1\u0DCA \u0DC0\u0DBD \u0D85\u0DB1\u0DCA\u0DAD\u0DBB\u0DCA\u0D9C\u0DAD\u0DBA
+        \u0DC1\u0DB6\u0DCA\u0DAF \u0DB1\u0D9F\u0DCF \u0D9A\u0DD2\u0DBA\u0DC0\u0DB1\u0DCA\u0DB1\u0DDA
+        \u0DB1\u0DD0\u0DAD"
+      - "pali \u0E44\u0E21\u0E48\u0E15\u0E49\u0E2D\u0E07\u0E2D\u0E48\u0E32\u0E19\u0E27\u0E07\u0E40\u0E25\u0E47\u0E1A"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: setting_PaliVoiceStyle
@@ -41463,9 +41508,10 @@ MonoBehaviour:
       Languages:
       - "Pali \u6717\u8BFB\u98CE\u683C"
       - "Pali \u6717\u8B80\u98A8\u683C"
-      - Pali Voice Style
+      - Pali Voice Accent
       - "Pali\u6717\u8AAD\u30B9\u30BF\u30A4\u30EB"
-      - "Pali\u101B\u1032\u1037 \u1005\u102C\u1016\u1010\u103A\u1014\u100A\u103A\u1038"
+      - "\u1015\u102B\u101C\u102E \u1021\u101E\u1036\u1000\u103B\u101A\u103A\u1010\u1032\u1037
+        \u1015\u102F\u1036\u1005\u1036"
       - "\u0DB4\u0DCF\u0DBD\u0DD2 \u0D9A\u0DD2\u0DBA\u0DC0\u0DD3\u0DB8\u0DDA \u0DC0\u0DD2\u0DBD\u0DCF\u0DC3\u0DBA"
       - "\u0E23\u0E39\u0E1B\u0E41\u0E1A\u0E1A\u0E01\u0E32\u0E23\u0E2D\u0E48\u0E32\u0E19"
       Flags: 00000000000000
@@ -41476,11 +41522,11 @@ MonoBehaviour:
       Languages:
       - "\u7F05\u7538\u98CE\u683C"
       - "\u7DEC\u7538\u98A8\u683C"
-      - Burmese style
-      - 
-      - 
-      - 
-      - 
+      - Burmese Accent
+      - "\u30DF\u30E3\u30F3\u30DE\u30FC\u98A8"
+      - "Burmese \u1015\u102F\u1036\u1005\u1036"
+      - "\u0DB6\u0DD4\u0DBB\u0DD4\u0DB8 \u0DC0\u0DD2\u0DBD\u0DCF\u0DC3\u0DD2\u0DAD\u0DCF\u0DC0"
+      - "\u0E23\u0E39\u0E1B\u0E41\u0E1A\u0E1A\u0E02\u0E2D\u0E07\u0E1E\u0E21\u0E48\u0E32"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: setting_PaliVoiceStyle_India
@@ -41489,11 +41535,11 @@ MonoBehaviour:
       Languages:
       - "\u5370\u5EA6\u98CE\u683C"
       - "\u5370\u5EA6\u98A8\u683C"
-      - Indian style
-      - 
-      - 
-      - 
-      - 
+      - Indian Accent
+      - "\u30A4\u30F3\u30C9\u98A8"
+      - "\u1021\u102D\u1014\u1039\u1012\u102D\u101A\u1015\u102F\u1036\u1005\u1036"
+      - "\u0D89\u0DB1\u0DCA\u0DAF\u0DD2\u0DBA\u0DCF\u0DB1\u0DD4 \u0DC1\u0DDB\u0DBD\u0DD2\u0DBA"
+      - "\u0E2A\u0E44\u0E15\u0E25\u0E4C\u0E2D\u0E34\u0E19\u0E40\u0E14\u0E35\u0E22"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: setting_PaliVoiceType
@@ -41504,9 +41550,10 @@ MonoBehaviour:
       - "Pali \u6717\u8B80\u8072\u97F3"
       - Pali Voice Type
       - "Pali \u6717\u8AAD\u30BF\u30A4\u30D7"
-      - 
-      - 
-      - 
+      - "\u1015\u102B\u101C\u102E\u1000 \u1021\u101E\u1036\u1000\u103B\u101A\u103A\u1000\u103B\u101A\u103A\u1014\u1032\u1037
+        \u1016\u1010\u103A\u1010\u101A\u103A"
+      - "\u0DB4\u0DCF\u0DBD\u0DD2 \u0D9A\u0DD2\u0DBA\u0DC0\u0DD3\u0DB8\u0DDA \u0DC4\u0DAC"
+      - "Pali \u0E2D\u0E48\u0E32\u0E19\u0E40\u0E2A\u0E35\u0E22\u0E07"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: setting_PaliVoiceType_Man0
@@ -41559,8 +41606,11 @@ MonoBehaviour:
       - "\u1018\u102C\u101E\u102C\u1015\u103C\u1014\u103A\u1000\u103B\u1019\u103A\u1038\u1000
         \u1019\u1030\u101B\u1004\u103A\u1038 \u1015\u102B\u101C\u102E\u1000\u102D\u102F
         \u1015\u103C\u101E\u1011\u102C\u1038"
-      - 
-      - 
+      - "\u0DB4\u0DBB\u0DD2\u0DC0\u0DBB\u0DCA\u0DAD\u0DB1\u0DBA \u0DB4\u0DCF\u0DBD\u0DD2
+        \u0DB7\u0DCF\u0DC2\u0DCF\u0DC0\u0DDA \u0DB8\u0DD4\u0DBD\u0DCA \u0DB4\u0DD2\u0DA7\u0DB4\u0DAD
+        \u0DB4\u0DD9\u0DB1\u0DCA\u0DC0\u0DBA\u0DD2"
+      - "\u0E02\u0E49\u0E2D\u0E04\u0E27\u0E32\u0E21\u0E41\u0E2A\u0E14\u0E07\u0E15\u0E49\u0E19\u0E09\u0E1A\u0E31\u0E1A\u0E02\u0E2D\u0E07
+        Pali"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: setting_Version
@@ -41584,11 +41634,11 @@ MonoBehaviour:
       Languages:
       - "\u56FE\u7247\u5DF2\u4FDD\u5B58"
       - "\u5716\u7247\u5DF2\u4FDD\u5B58"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Picture saved
+      - "\u753B\u50CF\u304C\u4FDD\u5B58\u3055\u308C\u307E\u3057\u305F"
+      - "\u1013\u102C\u1010\u103A\u1015\u102F\u1036\u1000\u102D\u102F \u101E\u102D\u1019\u103A\u1038\u1006\u100A\u103A\u1038\u1011\u102C\u1038\u1015\u102B\u1010\u101A\u103A"
+      - "\u0DBB\u0DD6\u0DB4\u0DBA \u0DC3\u0DD4\u0DBB\u0DD0\u0D9A\u0DD2\u0DAB\u0DD2"
+      - "\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u0E23\u0E39\u0E1B\u0E20\u0E32\u0E1E\u0E41\u0E25\u0E49\u0E27"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: shareView_ImgTemplate
@@ -41597,11 +41647,11 @@ MonoBehaviour:
       Languages:
       - "\u56FE\u7247\u6A21\u677F"
       - "\u5716\u7247\u7BC4\u672C"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Picture template
+      - "\u753B\u50CF\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
+      - "\u101B\u102F\u1015\u103A\u1015\u102F\u1036 \u1015\u1014\u103A\u1038\u1001\u103B\u102E\u1000\u102C\u1038\u1019\u103B\u102C\u1038"
+      - "\u0DB4\u0DD2\u0DB1\u0DCA\u0DAD\u0DD6\u0DBB \u0DC3\u0DD0\u0D9A\u0DD2\u0DBD\u0DCA\u0DBD"
+      - "\u0E15\u0E49\u0E19\u0E41\u0E1A\u0E1A\u0E23\u0E39\u0E1B\u0E20\u0E32\u0E1E"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: shareView_LogoText
@@ -41610,11 +41660,11 @@ MonoBehaviour:
       Languages:
       - "\u638C\u4E0A\u5DF4\u5229\u5B66\u4E60\u8F6F\u4EF6"
       - "\u638C\u4E0A\u5DF4\u5229\u5B78\u7FD2\u8EDF\u9AD4"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Handheld pali learning software
+      - "\u30CF\u30F3\u30C9\u30D8\u30EB\u30C9\u30D0\u30EA\u5B66\u7FD2\u30BD\u30D5\u30C8"
+      - "\u101C\u1000\u103A\u1016\u101D\u102B\u1038\u1010\u103D\u1004\u103A \u1015\u102B\u101C\u102E\u101E\u1004\u103A\u101A\u1030\u1006\u1031\u102C\u1037\u1016\u103A\u101D\u1032"
+      - Handheld pali learning software
+      - "\u0E0B\u0E2D\u0E1F\u0E15\u0E4C\u0E41\u0E27\u0E23\u0E4C\u0E01\u0E32\u0E23\u0E40\u0E23\u0E35\u0E22\u0E19\u0E23\u0E39\u0E49\u0E1B\u0E32\u0E25\u0E4C\u0E21\u0E02\u0E49\u0E32\u0E27\u0E1A\u0E32\u0E23\u0E4C\u0E40\u0E25\u0E22\u0E4C"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: shareView_SaveImg
@@ -41624,10 +41674,10 @@ MonoBehaviour:
       - "\u4FDD\u5B58\u56FE\u7247"
       - "\u4FDD\u5B58\u5716\u7247"
       - Save Img
-      - 
-      - 
-      - 
-      - 
+      - "\u753B\u50CF\u3092\u4FDD\u5B58"
+      - "\u101B\u102F\u1015\u103A\u1015\u102F\u1036\u1000\u102D\u102F \u101E\u102D\u1019\u103A\u1038\u1006\u100A\u103A\u1038\u1015\u102B"
+      - "\u0DB4\u0DD2\u0DB1\u0DCA\u0DAD\u0DD6\u0DBB\u0DBA \u0DC3\u0DD4\u0DBB\u0D9A\u0DD2\u0DB1\u0DCA\u0DB1"
+      - "\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u0E23\u0E39\u0E1B\u0E20\u0E32\u0E1E"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: shareView_Share
@@ -41637,10 +41687,10 @@ MonoBehaviour:
       - "\u5206\u4EAB"
       - "\u5206\u4EAB"
       - Share
-      - 
-      - 
-      - 
-      - 
+      - "\u5206\u304B\u3061\u5408\u3046"
+      - "\u101B\u103E\u101A\u103A\u101A\u102C"
+      - "\u0DB6\u0DD9\u0DAF\u0DCF\u0D9C\u0DB1\u0DCA\u0DB1"
+      - "\u0E41\u0E1A\u0E48\u0E07\u0E1B\u0E31\u0E19"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: shareView_ShareWord
@@ -41649,11 +41699,12 @@ MonoBehaviour:
       Languages:
       - "\u5206\u4EAB\u5355\u8BCD"
       - "\u5206\u4EAB\u55AE\u8A5E"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Share words
+      - "\u5358\u8A9E\u306E\u5171\u6709"
+      - "\u1005\u1000\u102C\u1038\u101C\u102F\u1036\u1038\u1019\u103B\u102C\u1038
+        \u101D\u1031\u1019\u103B\u103E\u1015\u102B"
+      - "\u0DC0\u0DA0\u0DB1 \u0DB6\u0DD9\u0DAF\u0DCF\u0D9C\u0DB1\u0DCA\u0DB1"
+      - "\u0E41\u0E1A\u0E48\u0E07\u0E1B\u0E31\u0E19\u0E04\u0E33"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: showToastMessage_NoMoreThan3000Word
@@ -41662,11 +41713,15 @@ MonoBehaviour:
       Languages:
       - "\u5B57\u6570\u4E0D\u80FD\u8D85\u8FC73000\u5B57"
       - "\u5B57\u6578\u4E0D\u80FD\u8D85\u904E3000\u5B57"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Word number up to 3000
+      - "\u6587\u5B57\u6570\u306F3000\u6587\u5B57\u3092\u8D85\u3048\u3066\u306F\u3044\u3051\u307E\u305B\u3093"
+      - "\u1005\u1000\u102C\u1038\u101C\u102F\u1036\u1038\u1021\u101B\u1031\u1021\u1010\u103D\u1000\u103A\u101E\u100A\u103A
+        \u1005\u1000\u102C\u1038\u101C\u102F\u1036\u1038 \u1043\u1040\u1040\u1040
+        \u1000\u103B\u1031\u102C\u103A\u1019\u101B\u1014\u102D\u102F\u1004\u103A"
+      - "\u0DC0\u0DA0\u0DB1 \u0D9C\u0DAB\u0DB1 \u0DC0\u0DA0\u0DB1 3000 \u0D89\u0D9A\u0DCA\u0DB8\u0DC0\u0DD2\u0DBA
+        \u0DB1\u0DDC\u0DC4\u0DD0\u0D9A"
+      - "\u0E44\u0E21\u0E48\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E19\u0E31\u0E1A\u0E44\u0E14\u0E49\u0E40\u0E01\u0E34\u0E19
+        3,000 \u0E04\u0E33"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: showToastMessage_NoNetwork
@@ -41675,11 +41730,13 @@ MonoBehaviour:
       Languages:
       - "\u65E0\u7F51\u7EDC\u8FDE\u63A5"
       - "\u7121\u7DB2\u8DEF\u9023\u63A5"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - NO INTERNET
+      - "\u30CD\u30C3\u30C8\u30EF\u30FC\u30AF\u63A5\u7D9A\u306A\u3057"
+      - "\u1000\u103D\u1014\u103A\u101A\u1000\u103A\u1006\u1000\u103A\u101E\u103D\u101A\u103A\u1019\u103E\u102F
+        \u1019\u101B\u103E\u102D\u1015\u102B"
+      - "\u0DA2\u0DCF\u0DBD \u0DC3\u0DB8\u0DCA\u0DB6\u0DB1\u0DCA\u0DB0\u0DAD\u0DCF\u0DC0\u0DBA\u0D9A\u0DCA
+        \u0DB1\u0DDC\u0DB8\u0DD0\u0DAD"
+      - "\u0E44\u0E21\u0E48\u0E21\u0E35\u0E01\u0E32\u0E23\u0E40\u0E0A\u0E37\u0E48\u0E2D\u0E21\u0E15\u0E48\u0E2D\u0E40\u0E04\u0E23\u0E37\u0E2D\u0E02\u0E48\u0E32\u0E22"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: showToastMessage_SelectSentence
@@ -41688,11 +41745,15 @@ MonoBehaviour:
       Languages:
       - "\u8BF7\u9009\u62E9\u5206\u4EAB\u7684\u53E5\u5B50"
       - "\u8ACB\u9078\u64C7\u5206\u4EAB\u7684\u53E5\u5B50"
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Please choose sentence to share
+      - "\u5206\u304B\u3061\u5408\u3046\u6587\u3092\u9078\u3093\u3067\u304F\u3060\u3055\u3044"
+      - "\u1000\u103B\u1031\u1038\u1007\u1030\u1038\u1015\u103C\u102F\u104D \u101D\u1031\u1019\u103B\u103E\u101B\u1014\u103A
+        \u101D\u102B\u1000\u103B\u1010\u1005\u103A\u1000\u103C\u1031\u102C\u1004\u103A\u1038\u1000\u102D\u102F
+        \u101B\u103D\u1031\u1038\u1015\u102B"
+      - "\u0D9A\u0DBB\u0DD4\u0DAB\u0DCF\u0D9A\u0DBB \u0DB6\u0DD9\u0DAF\u0DCF \u0D9C\u0DD0\u0DB1\u0DD3\u0DB8\u0DA7
+        \u0DC0\u0DCF\u0D9A\u0DCA\u200D\u0DBA\u0DBA\u0D9A\u0DCA \u0DAD\u0DDD\u0DBB\u0DB1\u0DCA\u0DB1"
+      - "\u0E42\u0E1B\u0E23\u0E14\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E1B\u0E23\u0E30\u0E42\u0E22\u0E04
+        \u0E17\u0E35\u0E48\u0E43\u0E0A\u0E49\u0E23\u0E48\u0E27\u0E21\u0E01\u0E31\u0E19"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: user_ArticleCollection
@@ -41701,11 +41762,14 @@ MonoBehaviour:
       Languages:
       - "\u6536\u85CF\u7684\u5723\u5178"
       - "\u6536\u85CF\u7684\u8056\u5178"
-      - The collection of sacred texts
+      - The collection of canon
       - "\u8056\u5178\u30B3\u30EC\u30AF\u30B7\u30E7\u30F3"
-      - 
-      - 
-      - 
+      - "\u1005\u102F\u1006\u1031\u102C\u1004\u103A\u1038\u1011\u102C\u1038\u101E\u1031\u102C
+        \u101E\u1014\u1037\u103A\u101B\u103E\u1004\u103A\u1038\u101E\u1031\u102C\u1000\u103B\u1019\u103A\u1038\u1001\u103B\u1000\u103A\u1019\u103B\u102C\u1038\u1000\u102D\u102F
+        \u1005\u102F\u1006\u1031\u102C\u1004\u103A\u1038"
+      - "\u0D91\u0D9A\u0DAD\u0DD4 \u0D9A\u0DBB\u0DB1 \u0DBD\u0DAF \u0DC1\u0DD4\u0DAF\u0DCA\u0DB0
+        \u0DBD\u0DD2\u0DBA\u0DC0\u0DD2\u0DBD\u0DD2"
+      - "\u0E02\u0E2D\u0E07\u0E2A\u0E30\u0E2A\u0E21"
       Flags: 00000000000000
       Languages_Touch: []
     - Term: user_WordCollection
@@ -41714,11 +41778,11 @@ MonoBehaviour:
       Languages:
       - "\u5355\u8BCD\u672C"
       - "\u55AE\u8A5E\u672C"
-      - Words Collection
+      - Vocabulary book
       - "\u5358\u8A9E\u30B3\u30EC\u30AF\u30B7\u30E7\u30F3"
-      - 
-      - 
-      - 
+      - "\u1005\u1000\u102C\u1038\u101C\u102F\u1036\u1038\u1005\u102C\u1021\u102F\u1015\u103A"
+      - "\u0DC0\u0DCF\u0D9C\u0DCA\u0DB8\u0DCF\u0DBD\u0DCF \u0DB4\u0DDC\u0DAD"
+      - "\u0E04\u0E33\u0E27\u0E48\u0E32 \u0E40\u0E1A\u0E19"
       Flags: 00000000000000
       Languages_Touch: []
     CaseInsensitiveTerms: 0
@@ -42319,7 +42383,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
@@ -42331,7 +42395,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6717\u8BFB\u8BED\u901F"
+  m_Text: "\u1021\u101E\u1036\u1000\u103B\u101A\u103A\u1000\u103B\u101A\u103A\u1015\u103C\u1031\u102C\u1015\u102B"
 --- !u!222 &1218150739
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -43561,7 +43625,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
@@ -43573,7 +43637,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56FE\u7247\u6A21\u677F"
+  m_Text: "\u101B\u102F\u1015\u103A\u1015\u102F\u1036 \u1015\u1014\u103A\u1038\u1001\u103B\u102E\u1000\u102C\u1038\u1019\u103B\u102C\u1038"
 --- !u!222 &1267528238
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -46000,7 +46064,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 61
     m_FontStyle: 0
     m_BestFit: 0
@@ -46012,7 +46076,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5212\u8BCD\u53D6\u4E49"
+  m_Text: "\u1005\u1000\u102C\u1038\u101C\u102F\u1036\u1038\u1019\u103B\u102C\u1038\u1000\u102D\u102F
+    \u1021\u1013\u102D\u1015\u1039\u1015\u102B\u101A\u103A\u1019\u103E \u101B\u101A\u1030\u1011\u102C\u1038"
 --- !u!222 &1334239871
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -48865,7 +48930,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -48877,7 +48942,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4F5B\u5386\uFF1A"
+  m_Text: "\u1017\u102F\u1012\u1039\u1013\u101D\u102B\u1012\u102E\u1015\u103C\u1000\u1039\u1001\u1012\u102D\u1014\u103A-"
 --- !u!222 &1408790051
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -49395,7 +49460,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -49407,7 +49472,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7ECF\u5EA6"
+  m_Text: "\u101B\u103E\u100A\u103A\u101C\u103B\u102C\u1038\u1019\u103E\u102F"
 --- !u!222 &1424947944
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -50445,7 +50510,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -50457,7 +50522,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u660E\u76F8\uFF1A"
+  m_Text: "\u1010\u1031\u102C\u1000\u103A\u1015\u1010\u1032\u1037 \u1021\u1006\u1004\u1037\u103A
+    -"
 --- !u!222 &1475387388
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -54647,7 +54713,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
@@ -54659,7 +54725,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u638C\u4E0A\u5DF4\u5229\u5B66\u4E60\u8F6F\u4EF6"
+  m_Text: "\u101C\u1000\u103A\u1016\u101D\u102B\u1038\u1010\u103D\u1004\u103A \u1015\u102B\u101C\u102E\u101E\u1004\u103A\u101A\u1030\u1006\u1031\u102C\u1037\u1016\u103A\u101D\u1032"
 --- !u!222 &1599814663
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -55943,7 +56009,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
@@ -55955,7 +56021,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6253\u5F00\u5148\u524D\u6D4F\u89C8\u5185\u5BB9"
+  m_Text: "\u101A\u1001\u1004\u103A\u1000 \u101B\u103E\u102F\u1019\u103C\u1004\u103A\u1001\u103B\u1000\u103A\u1000\u102D\u102F
+    \u1016\u103D\u1004\u1037\u103A\u1015\u102B"
 --- !u!222 &1640582849
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -56100,7 +56167,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
@@ -56112,7 +56179,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6700\u65B0"
+  m_Text: "\u1014\u1031\u102C\u1000\u103A\u1006\u102F\u1036\u1038"
 --- !u!222 &1655457270
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -56916,7 +56983,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 59
     m_FontStyle: 0
     m_BestFit: 0
@@ -56928,7 +56995,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u9010\u53E5\u5206\u4EAB"
+  m_Text: "\u1015\u103C\u1005\u103A\u1012\u100F\u103A\u1016\u103C\u1004\u1037\u103A
+    \u101D\u1031\u1019\u103B\u103E\u1015\u102B"
 --- !u!222 &1667095611
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -57284,7 +57352,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 46
     m_FontStyle: 0
     m_BestFit: 0
@@ -57296,7 +57364,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7F16\u8F91\u5206\u7EC4"
+  m_Text: "\u1021\u102F\u1015\u103A\u1005\u102F\u1000\u102D\u102F \u1011\u102F\u1010\u103A\u101D\u1031\u1015\u102B"
 --- !u!222 &1678001826
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -57448,7 +57516,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
@@ -57460,7 +57528,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Pali \u6717\u8BFB\u58F0\u97F3"
+  m_Text: "\u1015\u102B\u101C\u102E\u1000 \u1021\u101E\u1036\u1000\u103B\u101A\u103A\u1000\u103B\u101A\u103A\u1014\u1032\u1037
+    \u1016\u1010\u103A\u1010\u101A\u103A"
 --- !u!222 &1687268477
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -58592,7 +58661,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -58604,7 +58673,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7EAC\u5EA6"
+  m_Text: "\u101C\u1010\u103A\u101C\u1010\u103A\u1006\u1010\u103A\u1006\u1010\u103A"
 --- !u!222 &1733744748
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -60690,7 +60759,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 59
     m_FontStyle: 0
     m_BestFit: 0
@@ -60702,7 +60771,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5206\u4EAB\u5355\u8BCD"
+  m_Text: "\u1005\u1000\u102C\u1038\u101C\u102F\u1036\u1038\u1019\u103B\u102C\u1038
+    \u101D\u1031\u1019\u103B\u103E\u1015\u102B"
 --- !u!222 &1809824249
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -61076,7 +61146,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
@@ -61088,7 +61158,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56FE\u7247\u6A21\u677F"
+  m_Text: "\u101B\u102F\u1015\u103A\u1015\u102F\u1036 \u1015\u1014\u103A\u1038\u1001\u103B\u102E\u1000\u102C\u1038\u1019\u103B\u102C\u1038"
 --- !u!222 &1815346713
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -61598,7 +61668,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
@@ -61610,7 +61680,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56FE\u7247\u6A21\u677F"
+  m_Text: "\u101B\u102F\u1015\u103A\u1015\u102F\u1036 \u1015\u1014\u103A\u1038\u1001\u103B\u102E\u1000\u102C\u1038\u1019\u103B\u102C\u1038"
 --- !u!222 &1832572641
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -61718,7 +61788,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
@@ -61730,7 +61800,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u610F\u89C1\u53CD\u9988"
+  m_Text: "\u1010\u102F\u1036\u1037\u1015\u103C\u1014\u103A\u1019\u103E\u102F"
 --- !u!222 &1832973102
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -63999,7 +64069,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 76
     m_FontStyle: 0
     m_BestFit: 0
@@ -64011,7 +64081,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u521D\u59CB\u5316\u8FDB\u5EA6"
+  m_Text: "\u1021\u1005\u1015\u102D\u102F\u1004\u103A\u1038\u1010\u103D\u1004\u103A
+    \u1010\u102D\u102F\u1038\u1010\u1000\u103A\u1019\u103E\u102F\u1019\u103B\u102C\u1038"
 --- !u!222 &1909534504
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -65196,7 +65267,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
@@ -65208,7 +65279,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56FE\u7247\u6A21\u677F"
+  m_Text: "\u101B\u102F\u1015\u103A\u1015\u102F\u1036 \u1015\u1014\u103A\u1038\u1001\u103B\u102E\u1000\u102C\u1038\u1019\u103B\u102C\u1038"
 --- !u!222 &1941636022
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -67021,7 +67092,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -67033,7 +67104,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u65E5\u843D\uFF1A"
+  m_Text: "\u1014\u1031\u101D\u1004\u103A - \u1014\u1031\u101D\u1004\u103A -"
 --- !u!222 &2010776702
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -69556,8 +69627,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 131, y: 18.29}
-  m_SizeDelta: {x: -28, y: -5.13}
+  m_AnchoredPosition: {x: 131, y: 7.8626}
+  m_SizeDelta: {x: -28, y: 15.725}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2087257560
 MonoBehaviour:
@@ -69580,7 +69651,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -69592,7 +69663,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5355\u8BCD"
+  m_Text: "\u1005\u1000\u102C\u1038\u101C\u102F\u1036\u1038\u1019\u103B\u102C\u1038"
 --- !u!222 &2087257561
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -70167,7 +70238,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
@@ -70179,7 +70250,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u68C0\u67E5\u65B0\u7248\u672C"
+  m_Text: "\u1018\u102C\u101E\u102C\u1015\u103C\u1014\u103A\u1000\u103B\u1019\u103A\u1038\u1021\u101E\u1005\u103A\u1019\u103B\u102C\u1038\u1000\u102D\u102F
+    \u1005\u1005\u103A\u1006\u1031\u1038\u1015\u102B"
 --- !u!222 &2102330532
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -70766,7 +70838,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
@@ -70778,7 +70850,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56FE\u7247\u6A21\u677F"
+  m_Text: "\u101B\u102F\u1015\u103A\u1015\u102F\u1036 \u1015\u1014\u103A\u1038\u1001\u103B\u102E\u1000\u102C\u1038\u1019\u103B\u102C\u1038"
 --- !u!222 &2121859430
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -71611,7 +71683,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0
@@ -71623,7 +71695,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56DB"
+  m_Text: "\u101C\u1031\u1038"
 --- !u!114 &114000009280976152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71675,7 +71747,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 66
     m_FontStyle: 0
     m_BestFit: 0
@@ -71687,7 +71759,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6708"
+  m_Text: "\u101C"
 --- !u!114 &114000010303250918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71915,7 +71987,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 66
     m_FontStyle: 0
     m_BestFit: 0
@@ -71927,7 +71999,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5E74"
+  m_Text: "\u1014\u103E\u1005\u103A"
 --- !u!114 &114000011330678028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71949,7 +72021,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0
@@ -71961,7 +72033,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u516D"
+  m_Text: "\u1001\u103C\u1031\u102C\u1000\u103A"
 --- !u!114 &114000011680927106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71983,7 +72055,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0
@@ -71995,7 +72067,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4E09"
+  m_Text: "\u101E\u102F\u1036\u1038"
 --- !u!114 &114000011872208336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72051,7 +72123,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0
@@ -72063,7 +72135,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u65E5"
+  m_Text: "\u101B\u1000\u103A\u1014\u1031\u1037"
 --- !u!114 &114000012039824988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72197,7 +72269,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0
@@ -72209,7 +72281,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4E94"
+  m_Text: "\u1004\u102B\u1038"
 --- !u!114 &114000012626258840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72351,7 +72423,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0
@@ -72363,7 +72435,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4E00"
+  m_Text: "\u1010\u1005\u103A"
 --- !u!114 &114000013232342628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72385,7 +72457,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9758b7df39d174c4b9580b26c5da2772, type: 3}
     m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0
@@ -72397,7 +72469,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4E8C"
+  m_Text: "\u1014\u103E\u1005\u103A"
 --- !u!114 &114000013333067826
 MonoBehaviour:
   m_ObjectHideFlags: 0

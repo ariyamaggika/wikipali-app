@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 //using UnityEngine.UIElements;
 using static ArticleManager;
+using static C2SArticleGetNewDBInfo;
 using static DictManager;
 /// <summary>
 /// 词典面板
@@ -428,13 +429,22 @@ public class DicView : MonoBehaviour
         List<ChapterDBData> chapterArr = null;
         //反向查询，中文
         //查中文只有有有离线包才行
-        if (isChinese || isMyanmar)
+        NetPackLogicEnum netPackEnum = ArticleManager.Instance().CheckIsUseOfflinePack();
+        if (netPackEnum == NetPackLogicEnum.OfflineWithPack)
         {
-            sentenceArr = ArticleManager.Instance().GetSentencesChineseByWord(inputStr);
+            if (isChinese || isMyanmar)
+            {
+                sentenceArr = ArticleManager.Instance().GetSentencesChineseByWord(inputStr);
+            }
+            else//正向查询
+            {
+                sentenceArr = ArticleManager.Instance().GetSentencesAllByWord(inputStr);
+            }
         }
-        else//正向查询
+        else if (netPackEnum == NetPackLogicEnum.Online)
         {
-            sentenceArr = ArticleManager.Instance().GetSentencesAllByWord(inputStr);
+            //使用在线API
+            C2SArticleGetNewDBInfo.GetSentencesAllByWord("无常", OnLineArticleCallBack);
         }
         chapterArr = ArticleManager.Instance().GetChaptersSearchTitle(inputStr);
         SetDelBtnArticle(true);
@@ -475,6 +485,11 @@ public class DicView : MonoBehaviour
             inst.SetActive(true);
             itemArticleList.Add(inst);
         }
+    }
+    public object OnLineArticleCallBack(List<SentenceByWordDataJson> dl)
+    {
+        Debug.LogError(dl[0]);
+        return null;
     }
     #endregion
 }

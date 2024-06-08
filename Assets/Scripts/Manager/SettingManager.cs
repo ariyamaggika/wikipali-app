@@ -111,8 +111,38 @@ public class SettingManager
         DictManager.Instance().LoadAllDicGroup();
         //加载文章收藏
         ArticleManager.Instance().LoadAllArticleGroup();
-        //设置语言
-        language = (Language)SettingManager.Instance().GetLanguageType();
+        //初始化为系统语言
+        if (!PlayerPrefs.HasKey("LanguageSetting"))
+        {
+            switch (Application.systemLanguage)
+            {
+                case SystemLanguage.ChineseSimplified:
+                    SetLanguageType(LanguageType.Chinese_Simplified);
+                    break;
+                case SystemLanguage.ChineseTraditional:
+                    SetLanguageType(LanguageType.Chinese_Traditional);
+                    break;
+                case SystemLanguage.English:
+                    SetLanguageType(LanguageType.English);
+                    break;
+                case SystemLanguage.Japanese:
+                    SetLanguageType(LanguageType.Japanese);
+                    break;
+                case SystemLanguage.Thai:
+                    SetLanguageType(LanguageType.Thai);
+                    break;
+                default:
+                    SetLanguageType(LanguageType.English);
+                    break;
+            }
+            //Application.systemLanguage = SystemLanguage.Chinese;
+        }
+        else
+        {
+            //设置语言
+            language = (Language)SettingManager.Instance().GetLanguageType();
+        }
+
         //??????没执行到这里，有报错？？？
         //CalendarManager.Instance().StartLocation();
 

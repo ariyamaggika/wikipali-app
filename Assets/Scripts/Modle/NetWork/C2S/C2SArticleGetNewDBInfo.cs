@@ -279,6 +279,71 @@ public class C2SArticleGetNewDBInfo
 
 
     #endregion
+    #region 获取模糊查询含有关键字的句子s
+    [Serializable]
+    public class SentenceByWordDataListJson
+    {
+        public bool ok;
+        public SentencesByWordDataJson data;
+        public string message;
+    }
+    [Serializable]
+    public class SentencesByWordDataJson
+    {
+        public int count;
+        public List<SentenceByWordDataJson> rows;
+    }
+    [Serializable]
+    public class SentenceByWordDataJson
+    {
+        public int id;
+        public string uid;
+        public int book_id;
+        public int paragraph;
+        public int word_start;
+        public int word_end;
+        public string content;
+        public string content_type;
+        public string channel_uid;
+        public string editor_uid;
+        public string fork_at;
+        public string acceptor_uid;
+        public string pr_edit_at;
+        public string updated_at;
+    }
+    public static void GetSentencesAllByWord(string inputStr, Func<List<SentenceByWordDataJson>, object> callback)
+    {
+        HttpClient client = new HttpClient();
+        string allJson = "";
 
+        client.Get(new System.Uri(string.Format(@"https://staging.wikipali.org/api/v2/sentence?view=public&key={0}&limit=20&offset=0", inputStr)),
+            HttpCompletionOption.StreamResponseContent, (r) =>
+            {
+                //RightText.text = "Download: " + r.PercentageComplete.ToString() + "%";
+                //ProgressSlider.value = 100 - r.PercentageComplete;
+                byte[] responseData = r.ReadAsByteArray();
+                string json = Encoding.Default.GetString(responseData);
+                //Debug.LogError(json);
+                allJson += json;
+                if (json.Contains("\"message\":\"\"}"))
+                {
+                    SentenceByWordDataListJson dataList = JsonUtility.FromJson<SentenceByWordDataListJson>(allJson);
+                    List<SentenceByWordDataJson> sentenceByWord = new List<SentenceByWordDataJson>();
+                    if (dataList.data != null && dataList.data.rows != null)
+                    {
+                        int c = dataList.data.rows.Count;
+                        for (int i = 0; i < c; i++)
+                        {
+                            SentenceByWordDataJson ad = dataList.data.rows[i];
+                            //SentenceByWordDataJson data = new SentenceByWordDataJson(ad.book,
+                            //  ad.paragraph, ad.word_start, ad.word_end, ad.html);
+                            sentenceByWord.Add(ad);
+                        }
+                    }
+                    callback(sentenceByWord);
+                }
+            });
+    }
+    #endregion
 
 }
