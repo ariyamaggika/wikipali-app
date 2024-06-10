@@ -311,7 +311,7 @@ public class C2SArticleGetNewDBInfo
         public string pr_edit_at;
         public string updated_at;
     }
-    public static void GetSentencesAllByWord(string inputStr, Func<List<SentenceByWordDataJson>, object> callback)
+    public static void GetSentencesAllByWord(string inputStr, Func<List<SentenceByWordDataJson>,string, object> callback)
     {
         HttpClient client = new HttpClient();
         string allJson = "";
@@ -340,7 +340,7 @@ public class C2SArticleGetNewDBInfo
                             sentenceByWord.Add(ad);
                         }
                     }
-                    callback(sentenceByWord);
+                    callback(sentenceByWord, inputStr);
                 }
             });
     }

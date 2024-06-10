@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 //using UnityEngine.UIElements;
+//using UnityEngine.UIElements;
 using static ArticleManager;
 using static C2SArticleGetNewDBInfo;
 using static DictManager;
@@ -416,6 +417,7 @@ public class DicView : MonoBehaviour
         }
         itemArticleList.Clear();
     }
+    List<string> duplicateCheckStrList = new List<string>();
     void SearchArticle(string inputStr)
     {
         if (string.IsNullOrEmpty(inputStr))
@@ -425,7 +427,7 @@ public class DicView : MonoBehaviour
         }
         bool isChinese = CommonTool.CheckStringIsChinese(inputStr);
         bool isMyanmar = CommonTool.CheckStringIsMyanmar(inputStr);
-        List<SentenceDBData> sentenceArr = null;
+        List<SentenceDBData> sentenceArr = new List<SentenceDBData>();
         List<ChapterDBData> chapterArr = null;
         //反向查询，中文
         //查中文只有有有离线包才行
@@ -444,7 +446,7 @@ public class DicView : MonoBehaviour
         else if (netPackEnum == NetPackLogicEnum.Online)
         {
             //使用在线API
-            C2SArticleGetNewDBInfo.GetSentencesAllByWord("无常", OnLineArticleCallBack);
+            C2SArticleGetNewDBInfo.GetSentencesAllByWord(inputStr, OnLineArticleCallBack);
         }
         chapterArr = ArticleManager.Instance().GetChaptersSearchTitle(inputStr);
         SetDelBtnArticle(true);
@@ -453,7 +455,7 @@ public class DicView : MonoBehaviour
         int cLength = chapterArr.Count;// matchedWordArr.Length > DictManager.LIMIT_COUNT ? LIMIT_COUNT : matchedWordArr.Length;
                                        //float height = itemArticleBtn.GetComponent<RectTransform>().sizeDelta.y;
                                        //todo 查重
-        List<string> duplicateCheckStrList = new List<string>();
+        duplicateCheckStrList.Clear();
         for (int i = 0; i < cLength; i++)
         {
             BookDBData bookData = ArticleManager.Instance().GetBookChildrenFromID(chapterArr[i].bookID, chapterArr[i].paragraph);
@@ -486,9 +488,30 @@ public class DicView : MonoBehaviour
             itemArticleList.Add(inst);
         }
     }
-    public object OnLineArticleCallBack(List<SentenceByWordDataJson> dl)
+    public object OnLineArticleCallBack(List<SentenceByWordDataJson> dl, string inputStr)
     {
-        Debug.LogError(dl[0]);
+        if (dl == null)
+            return null;
+        for (int i = 0; i < dl.Count; i++)
+        {
+            BookDBData bookData = ArticleManager.Instance().GetBookChildrenFromID(dl[i].book_id, dl[i].paragraph);
+            if (bookData == null)
+                continue;
+            bookData = ArticleManager.Instance().GetBookChildrenFromID(dl[i].book_id, bookData.parent);
+            string temp = bookData.id + "_" + bookData.paragraph;
+            if (duplicateCheckStrList.Contains(temp))
+                continue;
+            duplicateCheckStrList.Add(temp);
+            GameObject inst = Instantiate(itemArticleBtn.gameObject, summaryScrollContent, false);
+            inst.transform.position = itemArticleBtn.transform.position;
+            dl[i].content = dl[i].content.Replace(inputStr, CommonTool.COLOR_BLUE_FLAG + inputStr + "</color>");
+            SentenceDBData sdb = new SentenceDBData(dl[i].book_id, dl[i].paragraph, dl[i].word_start,
+                dl[i].word_end, dl[i].content, dl[i].channel_uid);
+            inst.GetComponent<ItemArticleView>().SetArticle(sdb, bookData);
+
+            inst.SetActive(true);
+            itemArticleList.Add(inst);
+        }
         return null;
     }
     #endregion
