@@ -31,6 +31,8 @@ public class DicView : MonoBehaviour
     public ToggleGroup searchToggleGroup;
     public Toggle dicToggle;
     public Toggle articleToggle;
+    //搜索圣典load转菊花
+    public ItemArticleLoadView articleLoadView;
     //单词列表面板
     public RectTransform SummaryScrollView;
     //单词详情面板
@@ -446,7 +448,11 @@ public class DicView : MonoBehaviour
         else if (netPackEnum == NetPackLogicEnum.Online)
         {
             //使用在线API
-            C2SArticleGetNewDBInfo.GetSentencesAllByWord(inputStr, OnLineArticleCallBack);
+            GetServerSentencesData(inputStr);
+            //C2SArticleGetNewDBInfo.GetSentencesAllByWord(inputStr, OnLineArticleCallBack);
+            articleLoadView.OnInit(inputStr, GetServerSentencesData);
+            articleLoadView.gameObject.SetActive(true);
+            articleLoadView.SetLoad();
         }
         chapterArr = ArticleManager.Instance().GetChaptersSearchTitle(inputStr);
         SetDelBtnArticle(true);
@@ -487,9 +493,18 @@ public class DicView : MonoBehaviour
             inst.SetActive(true);
             itemArticleList.Add(inst);
         }
+        articleLoadView.GetComponent<RectTransform>().SetAsLastSibling();
     }
+    public object GetServerSentencesData(string inputStr)
+    {
+        C2SArticleGetNewDBInfo.GetSentencesAllByWord(inputStr, OnLineArticleCallBack);
+        return null;
+    }
+    //todo: 加一个转菊花loading
     public object OnLineArticleCallBack(List<SentenceByWordDataJson> dl, string inputStr)
     {
+        articleLoadView.SetOff();
+        articleLoadView.gameObject.SetActive(false);
         if (dl == null)
             return null;
         for (int i = 0; i < dl.Count; i++)
