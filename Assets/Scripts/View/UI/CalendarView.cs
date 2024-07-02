@@ -48,8 +48,9 @@ public class CalendarView : MonoBehaviour
         //latText.text = lat.ToString();
         //lngText.text = lng.ToString();
 
-        // CalendarManager.Instance().StopLocation();
-
+        //CalendarManager.Instance().StopLocation();
+        //temp
+        //CalendarManager.Instance().StartLocation();
         //放awake里会出现两个toggle都是on的bug
         int isMMCal = SettingManager.Instance().GetCalType();
         if (isMMCal == 1)
@@ -121,28 +122,39 @@ public class CalendarView : MonoBehaviour
         //var date = new DateTime(2013, 3, 5, 0, 0, 0, DateTimeKind.Utc);
         //lat:是Latitude的简写,表示纬度。lng:是Longtitude的简写,表示经度
         //wikipali办公室当前经纬度
+
         float lat = 24;
         float lng = 103;
         (lat, lng) = CalendarManager.Instance().GetLocation();
 
         var height = 0;// 2000;
+        //时区时差，本地时间与UTC时间的时差
         TimeSpan ts = TimeZoneInfo.Local.GetUtcOffset(time);
         //Act
-        var sunPhases = SunCalc.GetSunPhases(time, lat, lng, height, ts.Hours).ToList();
+        var sunPhases = SunCalc.GetSunPhases(time, lat, lng, height, 0).ToList();// ts.Hours).ToList();
 
-
+        //TimeZoneInfo targetTimeZone1 = TimeZoneInfo.FindSystemTimeZoneById("UTC");
+        //TimeZoneInfo targetTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Sri Lanka Standard Time");
+        TimeSpan BaseUtcOffset = new TimeSpan(ts.Hours, ts.Minutes,ts.Seconds);
+        //TimeSpan BaseUtcOffsetSriLanka = new TimeSpan(5,30,0);
+        //TimeSpan BaseUtcOffsetChina = new TimeSpan(8,0,0);
+        //DateTime targetTime = TimeZoneInfo.ConvertTime(currentTime, targetTimeZone);
+        TimeSpan sp = TimeZoneInfo.Local.GetUtcOffset(time);
+        sp = -BaseUtcOffset;// ts;// sp -  BaseUtcOffsetSriLanka;// targetTimeZone.GetUtcOffset(time);
         var sunPhaseValueSolarNoon = sunPhases.First(x => x.Name.Value == solarNoon.Name.Value);
         var sunPhaseValueSunrise = sunPhases.First(x => x.Name.Value == sunrise.Name.Value);
         var sunPhaseValueDawn = sunPhases.First(x => x.Name.Value == dawn.Name.Value);
         var sunPhaseValueNauticalDawn = sunPhases.First(x => x.Name.Value == nauticalDawn.Name.Value);
-        var sunPhaseValueSunSet= sunPhases.First(x => x.Name.Value == sunset.Name.Value);
+        var sunPhaseValueSunSet = sunPhases.First(x => x.Name.Value == sunset.Name.Value);
         //航海曙光+日出-曙光升起
         TimeSpan tsd = new TimeSpan(sunPhaseValueSunrise.PhaseTime.Ticks - sunPhaseValueDawn.PhaseTime.Ticks);
         DateTime lightTime = sunPhaseValueNauticalDawn.PhaseTime + tsd;// sunPhaseValueSunrise.PhaseTime - sunPhaseValueDawn.PhaseTime;
-        //var sunPhaseTime = sunPhaseValue.PhaseTime.ToString("yyyy-MM-dd hh:mm:ss");
-        string sunPhaseTimeSolarNoon = sunPhaseValueSolarNoon.PhaseTime.ToString("HH:mm:ss");
-        string sunPhaseTimeSunrise = lightTime.ToString("HH:mm:ss");
-        string sunPhaseTimeSunSet = sunPhaseValueSunSet.PhaseTime.ToString("HH:mm:ss");
+
+        //string sunPhaseTimeSolarNoon = sunPhaseValueSolarNoon.PhaseTime.ToString("HH:mm:ss");
+        //string sunPhaseTimeSolarNoon = TimeZoneInfo.ConvertTime(sunPhaseValueSolarNoon.PhaseTime, targetTimeZone1).ToString("HH:mm:ss");
+        string sunPhaseTimeSolarNoon = (sunPhaseValueSolarNoon.PhaseTime-sp).ToString("HH:mm:ss");
+        string sunPhaseTimeSunrise = (lightTime - sp).ToString("HH:mm:ss");
+        string sunPhaseTimeSunSet = (sunPhaseValueSunSet.PhaseTime - sp).ToString("HH:mm:ss");
         sunriseText.text = sunPhaseTimeSunrise;
         solarNoonText.text = sunPhaseTimeSolarNoon;
         sunsetText.text = sunPhaseTimeSunSet;

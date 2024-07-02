@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class CalendarManager
 {
@@ -17,6 +18,7 @@ public class CalendarManager
         {
             manager = new CalendarManager();
         }
+        //Input.location.Start();
         return manager;
     }
     LocationService location = Input.location;
@@ -31,8 +33,10 @@ public class CalendarManager
     public (float, float) GetLocation()
     {
         location = Input.location;
+        //return (7.2f,80.1f );
 #if UNITY_EDITOR
         return (24, 103);
+        //return (7.2f, 80.1f);
 #endif
         return (location.lastData.latitude, location.lastData.longitude);
     }
@@ -50,11 +54,15 @@ public class CalendarManager
 
         var height = 0;// 2000;
         //Act
-        var sunPhases = SunCalc.GetSunPhases(newDate, lat, lng, height, ts.Hours).ToList();
+        var sunPhases = SunCalc.GetSunPhases(newDate, lat, lng, height, 0).ToList();
+        TimeSpan sp = TimeZoneInfo.Local.GetUtcOffset(time);
+        TimeSpan BaseUtcOffset = new TimeSpan(ts.Hours, ts.Minutes,ts.Seconds);
+        sp = -BaseUtcOffset;// ts;// sp -  BaseUtcOffsetSriLanka;// targetTimeZone.GetUtcOffset(time);
+
 
         var sunPhaseValueSolarNoon = sunPhases.First(x => x.Name.Value == solarNoon.Name.Value);
         //string sunPhaseTimeSolarNoon = sunPhaseValueSolarNoon.PhaseTime.ToString("HH:mm:ss");
-        string sunPhaseTimeSolarNoon = sunPhaseValueSolarNoon.PhaseTime.ToString("HH:mm");
+        string sunPhaseTimeSolarNoon = (sunPhaseValueSolarNoon.PhaseTime - sp).ToString("HH:mm");
         return sunPhaseTimeSolarNoon;
     }
 
