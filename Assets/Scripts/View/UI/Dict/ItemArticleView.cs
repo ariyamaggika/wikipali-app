@@ -16,6 +16,7 @@ public class ItemArticleView : MonoBehaviour
     public Text nameTxt;
     public Text detailTxt;
     public DicView dicView;
+    public ArticleView articleView;
     SentenceDBData sentenceInfo;
     BookDBData bookData;
     ChapterDBData chapterInfo;
@@ -89,6 +90,13 @@ public class ItemArticleView : MonoBehaviour
     public void OnBtnClick()
     {
         GameManager.Instance().ShowArticle(bookData.id, bookData.paragraph, bookData.chapter_len, sentenceInfo == null ? chapterInfo.channel_id : sentenceInfo.channel_id);
+        //todo 临时设置标题
+        //string titleName = chapterInfo.title;
+        //if (string.IsNullOrEmpty(titleName))
+        //{
+        //    titleName = bookData.toc;
+        //}
+        //articleView.SetTitleRootPath(titleName);
     }
     //void SetSummaryOff()
     //{

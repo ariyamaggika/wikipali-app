@@ -1,0 +1,74 @@
+﻿Key,Type,Desc,Chinese_Simplified [zh-CN],Chinese_Traditional [zh-TW],English,Japanese,Burmese,Sinhala,Thai
+FontTest,Font,,Arial,Arial,Arial,Arial,Fonts/Zawgyi-One,Arial,Arial
+PopSentenceSelectView_Done,Text,,完成,完成,Done,完了,အဆုံးသတ်,අවසන් කරන්න,เสร็จสิ้น
+PopSentenceSelectView_SelectAll,Text,,全部选择,全部選擇,Select all,すべて選択,အားလုံးရွေးချယ်ပါ,සියලුම තේරීම,เลือกทั้งหมด
+PopSentenceSelectView_ShareSentence,Text,,逐句分享,逐句分享,Share by sentence,一言ずつ分かち合う,ပြစ်ဒဏ်ဖြင့် ဝေမျှပါ,වාක්‍යයෙන් වාක්‍ය බෙදාගන්න,แบ่งปัน แต่ละบรรทัด
+article_Article,Text,,圣典,聖典,Pāli,聖典,မြင့်မြတ်သောကျမ်းစာ,ශුද්ධ පොත,พระคัมภีร์
+calendar_BuddhistCalendar,Text,,佛历：,佛曆：,Buddhist Calendar：,仏暦：,ဗုဒ္ဓဝါဒီပြက္ခဒိန်-,බෞද්ධ දින දර්ශනය:,ปฏิทินทางพุทธศาสนา:
+calendar_BurmeseCalendar,Text,,缅历,緬曆,Burmese calendar,ビルマ暦,မြန်မာပြက္ခဒိန်,බුරුම දින දර්ශනය,เมนู Name
+calendar_ChineseCalendar,Text,,农历,農曆,Chinese calendar,旧暦,လ,චන්ද්ර දිනදර්ශනය,จันทรคติ
+calendar_Latitude,Text,,纬度,緯度,Lat,緯度,လတ်လတ်ဆတ်ဆတ်,අක්ෂාංශ,ละติจูด
+calendar_Longitude,Text,,经度,經度,Lng,経度,ရှည်လျားမှု,දේශාංශ,ลองติจูด
+calendar_Month,Text,,月,月,Month,げつ,လ,සඳ,เดือน
+calendar_SolarNoon,Text,,日中：,日中：,SolarNoon：,日中：,ဂျပန်:,ජපානය සහ චීනය:,กลางวัน:
+calendar_StarCalendar,Text,,星宿历,星宿曆,Almanac,星曆,နက္ခရှာထရာပြက္ခဒိန်,ජ්යෝතිඃ ශාස්ත්රීය දින දර්ශනය,ปฏิทินจันทรคติ
+calendar_Sunrise,Text,,明相：,明相：,Dawn：,日の出：,တောက်ပတဲ့ အဆင့် -,හිරු උදාව:,อากิระ:
+calendar_Sunset,Text,,日落：,日落：,Sunset：,日の入り：,နေဝင် - နေဝင် -,හිරු බැස යෑම:,พระอาทิตย์ตก
+calendar_ViewToday,Text,,查看今天,查看今天,Today,今日,ယနေ့,අද,วันนี้
+calendar_WestCalendar,Text,,西历：,西曆：,Calendar：,西曆：,အနောက်ပြက္ခဒိန်-,බටහිර දින දර්ශනය:,ปฏิทิน:
+calendar_Year,Text,,年,年,Year,ねん,နှစ်,අවුරුදු,ปี
+calendar_week1,Text,,一,一,Mon,月,တစ်,එක,หนึ่ง.
+calendar_week2,Text,,二,二,Tue,火,နှစ်,දෙක,สอง
+calendar_week3,Text,,三,三,Wed,水,သုံး,තුන්,สาม
+calendar_week4,Text,,四,四,Thu,木,လေး,සිව්,สี่
+calendar_week5,Text,,五,五,Fri,金,ငါး,පහ,ห้า
+calendar_week6,Text,,六,六,Sat,土,ခြောက်,හය,หก
+calendar_week7,Text,,日,日,Sun,日,ရက်နေ့,දවස,วัน
+commonGroupView_About_AboutWikipali,Text,,关于wikipāli,關於wikipāli,About wikipāli,wikipāliについて,သက်ဆိုင်မှုwikipāli,විකිපාලි ගැන,เกี่ยวกับวิคิวลิ
+commonGroupView_UpdateOfflineP_ChapterCount,Text,,章节数对比：,章節數對比：,Chapter number comparison,章数の比較：,အခန်းကြီးအရေအတွက်ကို နှိုင်းယှဉ်ကြည့်ပါ –,පරිච්ඡේද අංක සංසන්දනය:,ความเปรียบต่างของจำนวนบท:
+commonGroupView_UpdateOfflineP_ClickUpdate,Text,,点击下载,點擊下載,Click to download,ダウンロード,ဒေါင်းလုတ်ကိုနှိပ်ပါ,බාගත කිරීමට ක්ලික් කරන්න,คลิกเพื่อดาวน์โหลด
+commonGroupView_UpdateOfflineP_CurrTime,Text,,当前离线包更新时间：,當前離線包更新時間：,Current offline data package update time：,現在のオフラインパケット更新時間：,လက်ရှိ အော့ဖ်လိုင်း ပက်ကေ့ခ်ျ အသစ်ချိန် အချိန်,වත්මන් නොබැඳි පැකේජ යාවත්කාලීන කාලය:,เวลา ที่ปรับปรุงแพกเกจแบบออฟไลน์ปัจจุบัน:
+commonGroupView_UpdateOfflineP_NewTime,Text,,最新离线包更新时间：,最新離線包更新時間：,Latest offline data package update time：,最新のオフラインパケット更新時間：,နောက်ဆုံး အော့ဖ်လိုင်း ပက်ကေ့ခ်ျ အသစ်ပြင်ချိန်,නවතම නොබැඳි පැකේජ යාවත්කාලීන කාලය:,เวลาปรับปรุงแพกเกจออฟไลน์ล่าสุด:
+commonGroupView_UpdateOfflineP_Reserve space,Text,,更新请预留出3G存储空间,更新請預留出3G存儲空間,At least 3GiB memory space,更新は3 Gメモリを残しておいてください,အသစ်ပြင်ဆင်မှုတွေအတွက် 3G သိုလှောင်ခန်းနေရာကို သိမ်းထားပါ,යාවත්කාලීන සඳහා කරුණාකර 3G ගබඩා ඉඩ වෙන් කරන්න,อัปเดตกรุณาจัดเก็บ 3 กิ๊ก
+commonGroupView_UpdateOfflineP_Update,Text,,离线包下载,離線包下載,Download offline data package,オフラインパッケージのダウンロード,အော့ဖ်လိုင်း ပက်ကေ့ချ်,නොබැඳි පැකේජ බාගැනීම,ดาวน์โหลดแพกเกจแบบออฟไลน์
+commonGroupView_UpdateVersion_ClickUpdateVersion,Text,,点击更新,點擊更新,Click to update,クリックして更新,ကလစ်နှိပ်ပါ,යාවත්කාලීන කිරීමට ක්ලික් කරන්න,คลิกเพื่ออัปเดต
+commonGroupView_UpdateVersion_CurrVersion,Text,,当前版本：,當前版本：,Current version,現在のバージョン：,လက်ရှိဘာသာပြန်ကျမ်း -,වත්මන් අනුවාදය:,รุ่นปัจจุบัน:
+commonGroupView_UpdateVersion_NewVersion,Text,,最新版本：,最新版本：,Latest version,最新バージョン：,နောက်ဆုံး ဗားရှင်း -,මෙහි නවතම අනුවාදය:,รุ่นล่าสุด:
+commonGroupView_UpdateVersion_UpdateVersion,Text,,版本更新,版本更新,Version updating,バージョンの更新,ဗားရှင်း အသစ်ပြင်ဆင်မှုများ,නව අනුවාදය යාවත්කාලීන කිරීම,ปรับปรุงรุ่น
+dicGroupView_GroupManagement,Text,,分组管理,分組管理,Group management,グルーピング管理,အုပ်စု စီမံခန့်ခွဲမှု,කණ්ඩායම් කළමනාකරණය,จัดการกลุ่ม
+dic_Article,Text,,圣典,聖典,Pāli,聖典,မြင့်မြတ်သောကျမ်းစာ,ශුද්ධ පොත,พระคัมภีร์
+dic_Dict,Text,,单词,單詞,Word,単語,စကားလုံးများ,වචනය,คำ
+dic_Search,Text,,搜索...,搜索...,Search...,検索...,ရှာဖွေပါ...,සෙවීම...,ค้นหา...
+initView_InitProgress,Text,,初始化进度,初始化進度,Initializing……,初期化…,အစပိုင်းတွင် တိုးတက်မှုများ,ආරම්භක ප්රගතිය,กำลังเริ่มการทำงาน
+newArticle_NewArticle,Text,,最新,最新,Latest,新しい,နောက်ဆုံး,යාවත්කාලීනව,ล่าสุด
+popDragWord_DelimitWords,Text,,划词取义,劃詞取義,Translate,詞を画いて意味をとる,စကားလုံးများကို အဓိပ္ပါယ်မှ ရယူထား,වචන විස්තර කර අර්ථය ලබා ගන්න,ความยุติธรรม
+popView_AddToFavorites,Text,,加入收藏,加入收藏,Add to favorites,コレクションに加えます,ကြိုက်နှစ်သက်သူများကို ပေါင်းထည့်ပါ,ප්‍රියතමයන් වෙත එක් කරන්න,เพิ่มคลังภาพ
+popView_Down,Text,,完成,完成,Complete,完成,အဆုံးသတ်,අවසන් කරන්න,เสร็จสิ้น
+popView_EditGroup,Text,,编辑分组,編輯分組,Edit grouping,グループを編集,အုပ်စုကို ထုတ်ဝေပါ,කණ්ඩායම සංස්කරණය කරන්න,แก้ไขกลุ่ม
+setting_AboutWikipali,Text,,关于wikipali,關於wikipali,About wikipali,wikipaliについて,ဝီကီပါလီအကြောင်း,විකිපාලි ගැන,เกี่ยวกับวิกิพาลี
+setting_Feedback,Text,,意见反馈,意見回饋,Feedback,フィードバック,တုံ့ပြန်မှု,ප්රතිපෝෂණ,ความคิดเห็น
+setting_Language,Text,,语言,語言,Language,言語,ဘာသာစကား,භාෂාව,ภาษา
+setting_LastestVersion,Text,,当前已是最新版本,當前已是最新版本,This is the latest version,Appは最新版です,လောလောဆယ်မှာတော့ နောက်ဆုံးပေါ် ဗားရှင်းပါ။,දැනට නවතම අනුවාදය,ตอนนี้ เป็นเวอร์ชั่นล่าสุดแล้ว
+setting_OfflinePackageDownload,Text,,离线包下载,離線包下載,Offline package download,オフラインパッケージのダウンロード,အော့ဖ်လိုင်း ပက်ကေ့ချ်,නොබැඳි පැකේජ බාගැනීම,ดาวน์โหลดแพกเกจแบบออฟไลน์
+setting_OpenPrevBrowse,Text,,打开先前浏览内容,打開先前流覽內容,Open previously viewed content,前のページを開きます,ယခင်က ရှုမြင်ချက်ကို ဖွင့်ပါ,කලින් බැලූ අන්තර්ගතය විවෘත කරන්න,เปิดเนื้อหาก่อนหน้านี้
+setting_PaliNotReadBracket,Text,,pali 不朗读括号内容,pali 不朗讀括弧內容,Pali doesn't read in parentheses,paliは括弧を読み上げません,ပါလီသည် မိဘစကားနှင့်ဆိုင်သော အကြောင်းအရာများကို မဖတ်ရ,pali වරහන් වල අන්තර්ගතය ශබ්ද නඟා කියවන්නේ නැත,pali ไม่ต้องอ่านวงเล็บ
+setting_PaliVoiceStyle,Text,,Pali 朗读风格,Pali 朗讀風格,Pali Voice Accent,Pali朗読スタイル,ပါလီ အသံကျယ်တဲ့ ပုံစံ,පාලි කියවීමේ විලාසය,รูปแบบการอ่าน
+setting_PaliVoiceStyle_Burma,Text,,缅甸风格,緬甸風格,Burmese Accent,ミャンマー風,Burmese ပုံစံ,බුරුම විලාසිතාව,รูปแบบของพม่า
+setting_PaliVoiceStyle_India,Text,,印度风格,印度風格,Indian Accent,インド風,အိန္ဒိယပုံစံ,ඉන්දියානු ශෛලිය,สไตล์อินเดีย
+setting_PaliVoiceType,Text,,Pali 朗读声音,Pali 朗讀聲音,Pali Voice Type,Pali 朗読タイプ,ပါလီက အသံကျယ်ကျယ်နဲ့ ဖတ်တယ်,පාලි කියවීමේ හඬ,Pali อ่านเสียง
+setting_PaliVoiceType_Man0,Text,,男声,男聲,Male voice,男性の声,အထီး,පිරිමි කටහඬ,เสียงผู้ชาย
+setting_PaliVoiceType_Woman0,Text,,女声,女聲,Female voice,女性の声,မိန်းကလေး,කාන්තා කටහඬ,เสียงผู้หญิง
+setting_ReadSpeed,Text,,朗读语速,朗讀語速,Reading speed,朗読スピード,အသံကျယ်ကျယ်ပြောပါ,කියවීමේ වේගය,อ่านความเร็ว
+setting_TransShowPali,Text,,译文显示pali原文,譯文顯示pali原文,Translation shows the original pali,訳文のpaliを示します,ဘာသာပြန်ကျမ်းက မူရင်း ပါလီကို ပြသထား,පරිවර්තනය පාලි භාෂාවේ මුල් පිටපත පෙන්වයි,ข้อความแสดงต้นฉบับของ Pali
+setting_Version,Text,,检查新版本,檢查新版本,Check new version,新しいバージョン,ဘာသာပြန်ကျမ်းအသစ်များကို စစ်ဆေးပါ,නව අනුවාදය සඳහා පරීක්ෂා කරන්න,ตรวจสอบรุ่นใหม่
+shareView_ImageSaved,Text,,图片已保存,圖片已保存,Picture saved,画像が保存されました,ဓာတ်ပုံကို သိမ်းဆည်းထားပါတယ်,රූපය සුරැකිණි,บันทึกรูปภาพแล้ว
+shareView_ImgTemplate,Text,,图片模板,圖片範本,Picture template,画像テンプレート,ရုပ်ပုံ ပန်းချီကားများ,පින්තූර සැකිල්ල,ต้นแบบรูปภาพ
+shareView_LogoText,Text,,掌上巴利学习软件,掌上巴利學習軟體,Handheld pali learning software,ハンドヘルドバリ学習ソフト,လက်ဖဝါးတွင် ပါလီသင်ယူဆော့ဖ်ဝဲ,Handheld pali learning software,ซอฟต์แวร์การเรียนรู้ปาล์มข้าวบาร์เลย์
+shareView_SaveImg,Text,,保存图片,保存圖片,Save Img,画像を保存,ရုပ်ပုံကို သိမ်းဆည်းပါ,පින්තූරය සුරකින්න,บันทึกรูปภาพ
+shareView_Share,Text,,分享,分享,Share,分かち合う,ရှယ်ယာ,බෙදාගන්න,แบ่งปัน
+shareView_ShareWord,Text,,分享单词,分享單詞,Share words,単語の共有,စကားလုံးများ ဝေမျှပါ,වචන බෙදාගන්න,แบ่งปันคำ
+showToastMessage_NoMoreThan3000Word,Text,,字数不能超过3000字,字數不能超過3000字,Word number up to 3000,文字数は3000文字を超えてはいけません,စကားလုံးအရေအတွက်သည် စကားလုံး ၃၀၀၀ ကျော်မရနိုင်,වචන ගණන වචන 3000 ඉක්මවිය නොහැක,"ไม่สามารถนับได้เกิน 3,000 คำ"
+showToastMessage_NoNetwork,Text,,无网络连接,無網路連接,NO INTERNET,ネットワーク接続なし,ကွန်ယက်ဆက်သွယ်မှု မရှိပါ,ජාල සම්බන්ධතාවයක් නොමැත,ไม่มีการเชื่อมต่อเครือข่าย
+showToastMessage_SelectSentence,Text,,请选择分享的句子,請選擇分享的句子,Please choose sentence to share,分かち合う文を選んでください,ကျေးဇူးပြု၍ ဝေမျှရန် ဝါကျတစ်ကြောင်းကို ရွေးပါ,කරුණාකර බෙදා ගැනීමට වාක්‍යයක් තෝරන්න,โปรดเลือกประโยค ที่ใช้ร่วมกัน
+user_ArticleCollection,Text,,收藏的圣典,收藏的聖典,The collection of canon,聖典コレクション,စုဆောင်းထားသော သန့်ရှင်းသောကျမ်းချက်များကို စုဆောင်း,එකතු කරන ලද ශුද්ධ ලියවිලි,ของสะสม
+user_WordCollection,Text,,单词本,單詞本,Vocabulary book,単語コレクション,စကားလုံးစာအုပ်,වාග්මාලා පොත,คำว่า เบน

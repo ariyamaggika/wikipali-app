@@ -251,10 +251,19 @@ public class ArticleContentScrollView : MonoBehaviour
         StartCoroutine(SetTMPEnabledCtrl());
         textRulerTMP.gameObject.SetActive(false);
         nextAndPrevGroup.SetAsLastSibling();
-        //todo显示root name
-        if (articleView != null)
-            articleView.SetTitleRootPath("");
-        //PaliContentText.lin
+        //显示root name
+        //if (articleView != null)
+        //    //articleView.SetTitleRootPath("");
+        //    articleView.SetTitleRootPath(book.translateName);
+        BookDBData bdd = ArticleManager.Instance().GetBookChildrenFromID(bookID, bookParagraph);
+        //todo 翻译名字从标题传入
+        if (isTrans)
+        {
+            ChapterDBData chapter = ArticleManager.Instance().GetChapter(bookID, bookParagraph, channel);
+            cdata.name = chapter.title;
+        }
+        if (bdd != null && articleView != null)
+            articleView.SetArticleBookTreeNodeStack(bookID, bookParagraph, bdd.level, isTrans, cdata.name);
     }
 
     //销毁Text列表GO

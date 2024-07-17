@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -307,5 +308,28 @@ public class ArticleView : MonoBehaviour
             InitNodeItem(controller.articleTreeNodes.info);
         }
     }
-
+    //还原文章节点
+    public void SetArticleBookTreeNodeStack(int bookID, int paragraph, int level, bool isTransTitle, string channlName)
+    {
+        bookTreeNodeStack.Clear();
+        List<BookDBData> bdL = ArticleManager.Instance().GetBookParentsFromID(bookID, paragraph, level);
+        if (bdL == null || bdL.Count == 0)
+            return;
+        for (int i = 0; i < bdL.Count; i++)
+        {
+            Book book = new Book()
+            {
+                id = bdL[i].id,
+                toc = bdL[i].toc,
+                level = bdL[i].level,
+                paragraph = bdL[i].paragraph,
+                parentP = bdL[i].parent,
+                translateName = bdL[i].toc,
+            };
+            if (bookTreeNodeStack.Count > 0)
+                book.parent = bookTreeNodeStack.Peek();
+            bookTreeNodeStack.Push(book);
+        }
+        SetTitleRootPath(isTransTitle, channlName);
+    }
 }

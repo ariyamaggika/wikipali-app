@@ -159,6 +159,45 @@ public class ArticleManager
         return (bookList, bookIDList);
     }
     /// <summary>
+    /// 输入BookID，返回指定pargraph上级的所有level>2&&<100的book数据
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    public List<BookDBData> GetBookParentsFromID(int bookID, int maxPargraph,int level)
+    {
+
+        List<BookDBData> bookList = new List<BookDBData>();
+
+        dbManager.Getdb(db =>
+        {
+            var readerPali = db.SelectArticleParents(bookID.ToString(), maxPargraph.ToString(), level.ToString());
+            Dictionary<string, object>[] paliPairs = SQLiteTools.GetValues(readerPali);
+            if (paliPairs != null)
+            {
+                int paliLength = paliPairs.Length;
+                for (int p = 0; p < paliLength; p++)
+                {
+                    string toc = "";
+                    if (paliPairs[p].ContainsKey("toc"))
+                        toc = paliPairs[p]["toc"].ToString();
+
+                    BookDBData book = new BookDBData()
+                    {
+                        id = int.Parse(paliPairs[p]["book"].ToString()),
+                        paragraph = int.Parse(paliPairs[p]["paragraph"].ToString()),
+                        level = int.Parse(paliPairs[p]["level"].ToString()),
+                        toc = toc,
+                        chapter_len = int.Parse(paliPairs[p]["chapter_len"].ToString()),
+                        parent = int.Parse(paliPairs[p]["parent"].ToString()),
+                    };
+                    bookList.Add(book);
+                }
+            }
+
+        }, DBManager.SentencePaliDBurl);
+        return bookList;
+    }
+    /// <summary>
     /// 输入BookID，返回指定pargraph范围内的level>2&&<100的book数据
     /// </summary>
     /// <param name="input"></param>

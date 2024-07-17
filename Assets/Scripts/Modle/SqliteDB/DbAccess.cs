@@ -482,6 +482,13 @@ namespace Imdork.SQLite
             //string query = "SELECT * FROM pali_text WHERE paragraph > " + min + " AND paragraph < " + max;// + " AND level > 2 AND level < 100 ORDER BY paragraph ASC ";// "' limit " + limit.ToString();
             return ExecuteQuery(query);
         }
+        public SqliteDataReader SelectArticleParents(string bookID, string paragraphMax,string level)
+        {
+            string query = "SELECT * FROM pali_text WHERE book = " + bookID +" AND paragraph < " + paragraphMax + " AND level < " + level + " ORDER BY level ASC ";// "' limit " + limit.ToString();
+            //string query = "SELECT * FROM pali_text WHERE id = " + bookID + " AND paragraph > " + min + " AND paragraph < " + max;// + " AND level > 2 AND level < 100 ORDER BY paragraph ASC ";// "' limit " + limit.ToString();
+            //string query = "SELECT * FROM pali_text WHERE paragraph > " + min + " AND paragraph < " + max;// + " AND level > 2 AND level < 100 ORDER BY paragraph ASC ";// "' limit " + limit.ToString();
+            return ExecuteQuery(query);
+        }
         public SqliteDataReader SelectArticle(int bookID, int pargraph)
         {
             string query = "SELECT * FROM pali_text WHERE book = " + bookID + " AND paragraph = " + pargraph;// "' limit " + limit.ToString();
