@@ -263,7 +263,7 @@ public class ArticleContentScrollView : MonoBehaviour
             cdata.name = chapter.title;
         }
         if (bdd != null && articleView != null)
-            articleView.SetArticleBookTreeNodeStack(bookID, bookParagraph, bdd.level, isTrans, cdata.name);
+            articleView.SetArticleBookTreeNodeStack(bookID, bookParagraph,bdd.chapter_len, bdd.level, isTrans, cdata.name);
     }
 
     //œ˙ªŸText¡–±ÌGO

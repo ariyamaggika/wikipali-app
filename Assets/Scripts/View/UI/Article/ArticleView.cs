@@ -281,6 +281,12 @@ public class ArticleView : MonoBehaviour
             }
             else
             {
+                if (articleTreeNodeStack.Count == 0)
+                {
+                    returnBtn.Init();
+                    InitNodeItem(controller.articleTreeNodes.info);
+                    return;
+                }
                 //returnBtn.Init();
                 //设置标题路径
                 string aPath = "";
@@ -296,7 +302,10 @@ public class ArticleView : MonoBehaviour
             return;
         }
         if (articleTreeNodeStack.Count == 0)
+        {
             return;
+        }
+//            return;
         articleTreeNodeStack.Pop();
         if (articleTreeNodeStack.Count > 0)
         {
@@ -309,12 +318,16 @@ public class ArticleView : MonoBehaviour
         }
     }
     //还原文章节点
-    public void SetArticleBookTreeNodeStack(int bookID, int paragraph, int level, bool isTransTitle, string channlName)
+    public void SetArticleBookTreeNodeStack(int bookID, int paragraph, int chapterLen, int level, bool isTransTitle, string channlName)
     {
         bookTreeNodeStack.Clear();
         List<BookDBData> bdL = ArticleManager.Instance().GetBookParentsFromID(bookID, paragraph, level);
         if (bdL == null || bdL.Count == 0)
             return;
+        List<BookDBData> bdLChildren = ArticleManager.Instance().GetBookChildrenAllFromID(bookID, 1, 10000);// paragraph, paragraph+chapterLen);
+        List<ChapterDBData> cList = ArticleManager.Instance().GetChaptersFromBookID(bookID);
+        Dictionary<int, Dictionary<int, Book>> bookKVP = new Dictionary<int, Dictionary<int, Book>>();
+        Dictionary<int, Book> nodeList = new Dictionary<int, Book>();
         for (int i = 0; i < bdL.Count; i++)
         {
             Book book = new Book()
@@ -326,9 +339,57 @@ public class ArticleView : MonoBehaviour
                 parentP = bdL[i].parent,
                 translateName = bdL[i].toc,
             };
+            nodeList.Add(book.paragraph, book);
+            List<ChapterDBData> cDataList = ArticleController.Instance().GetChapterListByBookData(book.id, book.paragraph, cList);
+            ArticleController.Instance().SetChapterListByBookData(book, cDataList);
+            if (!bookKVP.ContainsKey(book.id))
+            {
+                bookKVP.Add(book.id, new Dictionary<int, Book>());
+            }
+            bookKVP[book.id].Add(book.paragraph, book);
             if (bookTreeNodeStack.Count > 0)
                 book.parent = bookTreeNodeStack.Peek();
             bookTreeNodeStack.Push(book);
+        }
+        Book bookThis = new Book()
+        {
+            id = bookID,
+            //toc = bdL[i].toc,
+            level = level,
+            paragraph = paragraph,
+            //parentP = bdL[i].parent,
+            //translateName = bdL[i].toc,
+        };
+        bookKVP[bookThis.id].Add(bookThis.paragraph, bookThis);
+        if (bookTreeNodeStack.Count > 0)
+            bookThis.parent = bookTreeNodeStack.Peek();
+        bookTreeNodeStack.Push(bookThis);
+
+        for (int i = 0; i < bdLChildren.Count; i++)
+        {
+            if (bookKVP[bdLChildren[i].id].ContainsKey(bdLChildren[i].parent))
+            {
+                Book bookP = bookKVP[bdLChildren[i].id][bdLChildren[i].parent];
+                if (bookP.children == null)
+                    bookP.children = new List<Book>();
+                Book book = new Book()
+                {
+                    id = bdLChildren[i].id,
+                    toc = bdLChildren[i].toc,
+                    level = bdLChildren[i].level,
+                    paragraph = bdLChildren[i].paragraph,
+                    parentP = bdLChildren[i].parent,
+                    chapter_len = bdLChildren[i].chapter_len,
+                    translateName = bdLChildren[i].toc,
+                };
+                //if (nodeList.ContainsKey(bookP.paragraph))
+                //{
+                //    nodeList[bookP.paragraph].children.Add(book);
+                //}
+                bookP.children.Add(book);
+                book.parent = bookP;
+            }
+
         }
         SetTitleRootPath(isTransTitle, channlName);
     }

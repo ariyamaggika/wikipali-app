@@ -257,7 +257,7 @@ public class ArticleController
 
         return null;
     }
-    Book SetChapterListByBookData(Book book, List<ChapterDBData> cDataList)
+    public Book SetChapterListByBookData(Book book, List<ChapterDBData> cDataList)
     {
         if (cDataList == null || cDataList.Count == 0)
         {
@@ -279,7 +279,7 @@ public class ArticleController
         }
         return book;
     }
-    List<ChapterDBData> GetChapterListByBookData(int bookID, int paragraph, List<ChapterDBData> cDataList)
+    public List<ChapterDBData> GetChapterListByBookData(int bookID, int paragraph, List<ChapterDBData> cDataList)
     {
         List<ChapterDBData> res = new List<ChapterDBData>();
         int length = cDataList.Count;
