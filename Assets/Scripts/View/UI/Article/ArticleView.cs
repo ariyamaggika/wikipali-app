@@ -305,7 +305,7 @@ public class ArticleView : MonoBehaviour
         {
             return;
         }
-//            return;
+        //            return;
         articleTreeNodeStack.Pop();
         if (articleTreeNodeStack.Count > 0)
         {
@@ -349,7 +349,8 @@ public class ArticleView : MonoBehaviour
             bookKVP[book.id].Add(book.paragraph, book);
             if (bookTreeNodeStack.Count > 0)
                 book.parent = bookTreeNodeStack.Peek();
-            bookTreeNodeStack.Push(book);
+            //todo:
+         //   bookTreeNodeStack.Push(book);
         }
         Book bookThis = new Book()
         {
