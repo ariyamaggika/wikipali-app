@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using I2.Loc;
 //using CoordinateSharp;
 
 [CLSCompliant(false)]
@@ -80,6 +81,11 @@ public class CalendarView : MonoBehaviour
     void OnClickToday()
     {
         controllerView.ClickToday();
+        //test
+        //string temp = CommonTool.GetClipboard();
+        //Debug.LogError("+" + temp);
+        //UITool.ShowToastMessage(this, temp, 35);
+
     }
     int toggleFlag = 0;
     void OnToggleValueChanged(bool value)
@@ -135,7 +141,7 @@ public class CalendarView : MonoBehaviour
 
         //TimeZoneInfo targetTimeZone1 = TimeZoneInfo.FindSystemTimeZoneById("UTC");
         //TimeZoneInfo targetTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Sri Lanka Standard Time");
-        TimeSpan BaseUtcOffset = new TimeSpan(ts.Hours, ts.Minutes,ts.Seconds);
+        TimeSpan BaseUtcOffset = new TimeSpan(ts.Hours, ts.Minutes, ts.Seconds);
         //TimeSpan BaseUtcOffsetSriLanka = new TimeSpan(5,30,0);
         //TimeSpan BaseUtcOffsetChina = new TimeSpan(8,0,0);
         //DateTime targetTime = TimeZoneInfo.ConvertTime(currentTime, targetTimeZone);
@@ -152,7 +158,7 @@ public class CalendarView : MonoBehaviour
 
         //string sunPhaseTimeSolarNoon = sunPhaseValueSolarNoon.PhaseTime.ToString("HH:mm:ss");
         //string sunPhaseTimeSolarNoon = TimeZoneInfo.ConvertTime(sunPhaseValueSolarNoon.PhaseTime, targetTimeZone1).ToString("HH:mm:ss");
-        string sunPhaseTimeSolarNoon = (sunPhaseValueSolarNoon.PhaseTime-sp).ToString("HH:mm:ss");
+        string sunPhaseTimeSolarNoon = (sunPhaseValueSolarNoon.PhaseTime - sp).ToString("HH:mm:ss");
         string sunPhaseTimeSunrise = (lightTime - sp).ToString("HH:mm:ss");
         string sunPhaseTimeSunSet = (sunPhaseValueSunSet.PhaseTime - sp).ToString("HH:mm:ss");
         sunriseText.text = sunPhaseTimeSunrise;

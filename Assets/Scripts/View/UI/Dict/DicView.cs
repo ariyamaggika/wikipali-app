@@ -87,6 +87,8 @@ public class DicView : MonoBehaviour
     {
         DestroyItemArticleList();
         SearchArticle(articleInput.text);
+        //test
+        //CommonTool.WriteToClipboard(articleInput.text);
     }
     List<GameObject> itemDicList = new List<GameObject>();
     void SearchWord(string inputStr)
@@ -204,12 +206,15 @@ public class DicView : MonoBehaviour
             userInput.gameObject.SetActive(true);
             articleInput.gameObject.SetActive(false);
             DestroyItemArticleList();
+            articleLoadView.SetOff();
+            articleLoadView.gameObject.SetActive(false);
         }
         else if (articleToggle.isOn)
         {
             userInput.gameObject.SetActive(false);
             articleInput.gameObject.SetActive(true);
             DestroyItemDicList();
+            OnDelDicBtnClick();
         }
   ;
 

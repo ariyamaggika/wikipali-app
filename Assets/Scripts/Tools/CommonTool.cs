@@ -292,7 +292,7 @@ public class CommonTool
         return str;
     }
 
-    #region 加密解密
+    #region 加密解密 序列化文件
     /// <summary>
     /// 把对象序列化到文件(AES加密)
     /// </summary>
@@ -545,6 +545,126 @@ public class CommonTool
             }
         }
         return sb.ToString() + "前";
+    }
+    #endregion
+
+    #region AES加密 string 复制口令使用
+    //打开文章编码格式:bookID_bookParagraph_bookChapterLen_channelId)
+    //int bookID, int bookParagraph, int bookChapterLen, string channelId)
+    //口令格式:复制整句话[sdhfuw8rekdkhfhoiedf24]后打开wikipaliApp跳转到文章【文章标题。。。。】
+    public const string AES_STRING_KEY = "wpa_copy_command";
+    //字符串转字节数组
+    private static byte[] StringToBytes(string str, int length)
+    {
+        byte[] bytes = Encoding.UTF8.GetBytes(str);
+        Array.Resize(ref bytes, length);
+        return bytes;
+    }
+
+    //字节数组转字符串
+    private static string BytesToString(byte[] bytes)
+    {
+        string str = Encoding.UTF8.GetString(bytes);
+        return str;
+    }
+
+    //加密-String转String
+    public static string Encrypt(string str, string key, string iv)
+    {
+        return Convert.ToBase64String(Encrypt(StringToBytes(str, str.Length + 4), key, iv));//注意长度+4
+    }
+
+    //加密-Bytes转Bytes
+    public static byte[] Encrypt(byte[] bytes, string key, string iv)
+    {
+        using (Aes aes = Aes.Create())
+        {
+            aes.Key = StringToBytes(key, 32);
+            aes.IV = StringToBytes(iv, 16);
+
+            ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
+            byte[] encryptedBytes;
+
+            using (MemoryStream msEncrypt = new MemoryStream())
+            {
+                using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                {
+                    csEncrypt.Write(bytes, 0, bytes.Length);
+                }
+                encryptedBytes = msEncrypt.ToArray();
+            }
+            return encryptedBytes;
+        }
+    }
+
+    //解密-String转String
+    public static string Decrypt(string str, string key, string iv)
+    {
+        return BytesToString(Decrypt(Convert.FromBase64String(str), key, iv));
+    }
+
+    //解密-Bytes转Bytes
+    public static byte[] Decrypt(byte[] bytes, string key, string iv)
+    {
+        using (Aes aes = Aes.Create())
+        {
+            aes.Key = StringToBytes(key, 32);
+            aes.IV = StringToBytes(iv, 16);
+
+            ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
+
+            using (MemoryStream msDecrypt = new MemoryStream(bytes))
+            {
+                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                {
+                    using (MemoryStream msOutput = new MemoryStream())
+                    {
+                        csDecrypt.CopyTo(msOutput);
+                        return msOutput.ToArray();
+                    }
+                }
+            }
+        }
+    }
+
+    #endregion
+    #region 剪切板操作
+    /// <summary>
+    /// 写入剪切板
+    /// </summary>
+    public static void WriteToClipboard(string str)
+    {
+#if UNITY_ANDROID && !UNITY_EDITOR
+        AndroidJavaObject androidObject = new AndroidJavaObject("com.wikipali.apkupdatelibrary.ClipboardTools");
+        AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+        if (activity == null)
+        {
+            Debug.LogError("activity == null");
+            return ;
+        }
+        // 复制到剪贴板
+        //androidObject.Call("copyTextToClipboard", activity, str);
+        androidObject.CallStatic("copyTextToClipboard", activity, str);
+#endif
+
+    }
+    //安装APK
+    public static string GetClipboard()
+    {
+#if UNITY_ANDROID && !UNITY_EDITOR
+        AndroidJavaObject androidObject = new AndroidJavaObject("com.wikipali.apkupdatelibrary.ClipboardTools");
+        AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+        if (activity == null)
+        {
+            Debug.LogError("activity == null");
+            return "";
+        }
+        // 从剪贴板中获取文本
+        // string text = androidObject.Call<string>("getTextFromClipboard");
+        string text = androidObject.CallStatic<string>("getTextFromClipboard");
+        return text;
+#endif
+        return "";
     }
     #endregion
 }
