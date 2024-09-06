@@ -3,21 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static ArticleController;
 
 public class StarGroupArticleView : MonoBehaviour
 {
     public Toggle starToggle;
     public Button shareBtn;
+    public Button shareCommandBtn;
     public Button voiceBtn;
     public AudioSource voiceSource;
     public PopArticleSentenceSelectView popSentenceSelectView;
     public PopView popView;
+    public ArticleView articleView;
+    public NewArticleView newArticleView;
     //public ShareView shareView;
     // Start is called before the first frame update
     void Awake()
     {
         starToggle.onValueChanged.AddListener(OnToggleValueChanged);
         shareBtn.onClick.AddListener(OnShareBtnClick);
+        shareCommandBtn.onClick.AddListener(OnShareCommandBtnClick);
         voiceBtn.onClick.AddListener(OnVoiceBtnClick);
 
     }
@@ -92,6 +97,32 @@ public class StarGroupArticleView : MonoBehaviour
 
         //shareView.gameObject.SetActive(true);
         //shareView.Init();
+    }
+    public void OnShareCommandBtnClick()
+    {
+        Book currentBook = null;
+        string channelID = "";
+        if (articleView.gameObject.activeSelf)
+        {
+            currentBook = articleView.contentView.currentBook;
+            channelID = articleView.contentView.currentChannelId;
+        }
+        if (newArticleView.gameObject.activeSelf)
+        {
+            currentBook = newArticleView.contentView.currentBook;
+            channelID = newArticleView.contentView.currentChannelId;
+        }
+        if (currentBook == null)
+        {
+            UITool.ShowToastMessage(this, "currentBook == null", 35);
+            return;
+        }
+        string cmd = CommonTool.GetArticleCommandByValue(currentBook.id, currentBook.paragraph,
+            currentBook.chapter_len, channelID, currentBook.toc);
+        CommonTool.WriteToClipboard(cmd);
+        //string temp = CommonTool.GetClipboard();
+        //Debug.LogError("+" + temp);
+        UITool.ShowToastMessage(this, LocalizationManager.GetTranslation("star_Copy2Clipboard"), 35);
     }
     bool isSet = false;
     public void SetToggleValue(bool isOn)

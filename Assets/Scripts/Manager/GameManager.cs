@@ -1,7 +1,10 @@
-﻿using System;
+﻿using I2.Loc;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Android;
 using static ArticleController;
@@ -28,6 +31,7 @@ public class GameManager : MonoBehaviour
     public ArticleView articleView;
     public PreView preView;
     public LoadingTexView titleLoadingTexView;
+    public PopCommandView popCommandView;
 
     public string appVersion;//= Application.version;
     //public bool canUpdate = false;
@@ -296,5 +300,57 @@ public class GameManager : MonoBehaviour
     #region 网络部分
 
     #endregion
+    #region 回到进程
+    //上次复制的文章口令
+    public string lastCopyText;
+    static Regex reg = new Regex(@"\【(.+?)\】");
+    void OnApplicationFocus(bool focus)
+    {
 
+        if (focus)
+        {
+            //切换到前台时执行，游戏启动时执行一次
+            //Debug.LogError("回来");
+            //UITool.ShowToastMessage(this, "回来", 35);
+            //获取剪切板，比较上次的口令
+            string cmd = CommonTool.GetClipboard().Replace(" ", "");
+            if (cmd.Contains("后打开wikipaliApp跳转到"))
+            {
+                if (lastCopyText == cmd)
+                    return;
+                string value = CommonTool.GetValueByCommand(cmd);
+                if (cmd.Contains("跳转到文章【"))
+                {
+                    string[] valArr = value.Split('_');
+                    if (valArr == null || valArr.Length < 3)
+                        return;
+                    string title = "";
+                    MatchCollection mcs = reg.Matches(cmd);
+                    Match[] mArr = mcs.ToArray();
+                    if (mArr == null || mArr.Length == 0)
+                        title = "";
+                    else
+                        title = mArr[mArr.Length - 1].Value;
+                    popCommandView.Init(int.Parse(valArr[0]), int.Parse(valArr[1]), int.Parse(valArr[2]), valArr.Length < 4 ? "" : valArr[3], title);
+                    //popCommandView.gameObject.SetActive(true);
+
+                }
+                else if (cmd.Contains("跳转到词典【"))
+                {
+                    popCommandView.Init(value);
+                    //popCommandView.gameObject.SetActive(true);
+                }
+                popCommandView.gameObject.SetActive(true);
+
+                lastCopyText = cmd;
+            }
+            //打开确认UI
+
+        }
+        else
+        {
+            //切换到后台时执行
+        }
+    }
+    #endregion
 }

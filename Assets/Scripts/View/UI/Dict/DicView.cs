@@ -89,6 +89,10 @@ public class DicView : MonoBehaviour
         SearchArticle(articleInput.text);
         //test
         //CommonTool.WriteToClipboard(articleInput.text);
+        //string val = CommonTool.GetArticleCommandByValue(123, 4567, 89, "22e0bbd2-53f4-4850-8f4f-82f7447f48bd", "ret-re-t");
+        //Debug.LogError(val);
+        //val = CommonTool.GetValueByCommand(val);
+        //Debug.LogError(val);
     }
     List<GameObject> itemDicList = new List<GameObject>();
     void SearchWord(string inputStr)

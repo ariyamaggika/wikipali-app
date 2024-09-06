@@ -3,9 +3,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
 using static ArticleController;
@@ -552,7 +554,9 @@ public class CommonTool
     //打开文章编码格式:bookID_bookParagraph_bookChapterLen_channelId)
     //int bookID, int bookParagraph, int bookChapterLen, string channelId)
     //口令格式:复制整句话[sdhfuw8rekdkhfhoiedf24]后打开wikipaliApp跳转到文章【文章标题。。。。】
+    //口令格式:复制整句话[sdhfuw8rekdkhfhoiedf24]后打开wikipaliApp跳转到词典【单词名。。。。】
     public const string AES_STRING_KEY = "wpa_copy_command";
+    public const string AES_STRING_IV = "wpa_copy_command";
     //字符串转字节数组
     private static byte[] StringToBytes(string str, int length)
     {
@@ -569,13 +573,13 @@ public class CommonTool
     }
 
     //加密-String转String
-    public static string Encrypt(string str, string key, string iv)
+    private static string Encrypt(string str, string key, string iv)
     {
         return Convert.ToBase64String(Encrypt(StringToBytes(str, str.Length + 4), key, iv));//注意长度+4
     }
 
     //加密-Bytes转Bytes
-    public static byte[] Encrypt(byte[] bytes, string key, string iv)
+    private static byte[] Encrypt(byte[] bytes, string key, string iv)
     {
         using (Aes aes = Aes.Create())
         {
@@ -598,13 +602,13 @@ public class CommonTool
     }
 
     //解密-String转String
-    public static string Decrypt(string str, string key, string iv)
+    private static string Decrypt(string str, string key, string iv)
     {
         return BytesToString(Decrypt(Convert.FromBase64String(str), key, iv));
     }
 
     //解密-Bytes转Bytes
-    public static byte[] Decrypt(byte[] bytes, string key, string iv)
+    private static byte[] Decrypt(byte[] bytes, string key, string iv)
     {
         using (Aes aes = Aes.Create())
         {
@@ -627,6 +631,41 @@ public class CommonTool
         }
     }
 
+    //外部接口
+    public static string Value2Token(string value)
+    {
+        return Encrypt(value, AES_STRING_KEY, AES_STRING_IV);
+    }
+    public static string Token2Value(string token)
+    {
+        return Decrypt(token, AES_STRING_KEY, AES_STRING_IV);
+    }
+    static Regex reg = new Regex(@"\[(.+?)\]");
+
+    public static string GetArticleCommandByValue(int bookID, int bookParagraph, int bookChapterLen, string channelId, string title)
+    {
+        string temp = bookID + "_" + bookParagraph + "_" + bookChapterLen + "_" + channelId;
+        string token = Value2Token(temp);
+        string res = string.Format("复制整句话[{0}]后打开wikipaliApp跳转到文章【{1}】", token, title);
+        return res;
+    }
+    public static string GetDicCommandByValue(string word)
+    {
+        string token = Value2Token(word);
+        string res = string.Format("复制整句话[{0}]后打开wikipaliApp跳转到词典【{1}】", token, word);
+        return res;
+    }
+    public static string GetValueByCommand(string command)
+    {
+        MatchCollection mcs = reg.Matches(command);
+        Match[] mArr = mcs.ToArray();
+        if (mArr == null || mArr.Length == 0)
+            return "";
+
+        string value = mArr[0].Value.Replace("[","");
+        value = value.Replace("]", "");
+        return Token2Value(value);
+    }
     #endregion
     #region 剪切板操作
     /// <summary>
@@ -645,10 +684,11 @@ public class CommonTool
         // 复制到剪贴板
         //androidObject.Call("copyTextToClipboard", activity, str);
         androidObject.CallStatic("copyTextToClipboard", activity, str);
+#elif UNITY_EDITOR
+
 #endif
 
     }
-    //安装APK
     public static string GetClipboard()
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
@@ -663,8 +703,11 @@ public class CommonTool
         // string text = androidObject.Call<string>("getTextFromClipboard");
         string text = androidObject.CallStatic<string>("getTextFromClipboard");
         return text;
+#elif UNITY_EDITOR
+
 #endif
         return "";
     }
+
     #endregion
 }
