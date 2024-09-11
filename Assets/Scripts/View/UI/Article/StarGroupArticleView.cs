@@ -11,6 +11,8 @@ public class StarGroupArticleView : MonoBehaviour
     public Button shareBtn;
     public Button shareCommandBtn;
     public Button voiceBtn;
+    public Button foldBtn;
+    public Button expandBtn;
     public AudioSource voiceSource;
     public PopArticleSentenceSelectView popSentenceSelectView;
     public PopView popView;
@@ -24,6 +26,8 @@ public class StarGroupArticleView : MonoBehaviour
         shareBtn.onClick.AddListener(OnShareBtnClick);
         shareCommandBtn.onClick.AddListener(OnShareCommandBtnClick);
         voiceBtn.onClick.AddListener(OnVoiceBtnClick);
+        foldBtn.onClick.AddListener(OnFoldBtnClick);
+        expandBtn.onClick.AddListener(OnExpandBtnClick);
 
     }
     public static string currVoiceArticle;
@@ -74,6 +78,14 @@ public class StarGroupArticleView : MonoBehaviour
         SpeechManager.Instance().ReadArticleSList(ArticleController.Instance().paliSentenceList,
             ArticleController.Instance().transSentenceList, ArticleController.Instance().trans, voiceSource);
     }
+    public void OnFoldBtnClick()
+    {
+        //iTween.MoveTo
+    }
+    public void OnExpandBtnClick()
+    {
+
+    }
     //public void OnVoiceBtnClick()
     //{
     //    string readArticle = ArticleController.Instance().testCN;
@@ -102,12 +114,12 @@ public class StarGroupArticleView : MonoBehaviour
     {
         Book currentBook = null;
         string channelID = "";
-        if (articleView.gameObject.activeSelf)
+        if (articleView != null && articleView.gameObject.activeSelf)
         {
             currentBook = articleView.contentView.currentBook;
             channelID = articleView.contentView.currentChannelId;
         }
-        if (newArticleView.gameObject.activeSelf)
+        if (newArticleView != null && newArticleView.gameObject.activeSelf)
         {
             currentBook = newArticleView.contentView.currentBook;
             channelID = newArticleView.contentView.currentChannelId;
@@ -118,8 +130,11 @@ public class StarGroupArticleView : MonoBehaviour
             return;
         }
         string cmd = CommonTool.GetArticleCommandByValue(currentBook.id, currentBook.paragraph,
-            currentBook.chapter_len, channelID, currentBook.toc);
+            currentBook.chapter_len, channelID,
+            string.IsNullOrEmpty(currentBook.translateName) ? currentBook.toc : currentBook.translateName);
         CommonTool.WriteToClipboard(cmd);
+        //防止重复打开自己分享的内容
+        GameManager.Instance().lastCopyText = cmd;
         //string temp = CommonTool.GetClipboard();
         //Debug.LogError("+" + temp);
         UITool.ShowToastMessage(this, LocalizationManager.GetTranslation("star_Copy2Clipboard"), 35);

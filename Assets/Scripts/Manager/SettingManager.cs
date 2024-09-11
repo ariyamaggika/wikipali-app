@@ -145,7 +145,8 @@ public class SettingManager
 
         //??????没执行到这里，有报错？？？
         //CalendarManager.Instance().StartLocation();
-
+        //必须写入一次剪切板，才能读到剪切板数据
+        CommonTool.WriteToClipboard(" ");
     }
     public void UnzipDB()
     {

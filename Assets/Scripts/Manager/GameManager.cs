@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Android;
@@ -302,12 +303,19 @@ public class GameManager : MonoBehaviour
     #endregion
     #region 回到进程
     //上次复制的文章口令
-    public string lastCopyText;
+    public string lastCopyText = "-";
     static Regex reg = new Regex(@"\【(.+?)\】");
-    void OnApplicationFocus(bool focus)
+    //todo 可能需要屏蔽第一次进app时刚进app的调用，会和初始化冲突。解决方法，初始化后接入剪切板激活
+    //OnApplicationFocus 手机端无法使用，只能OnApplicationPause
+    //https://discussions.unity.com/t/can-somebody-explain-the-onapplicationpause-focus-scenarios/76324/4
+    //OnApplicationPause is what gets called when you soft close on an iOS device.OnApplicationFocus does the same thing but for windows.
+    void OnApplicationPause(bool pause)
     {
-
-        if (focus)
+        if (pause)
+        {
+            //切换到后台时执行
+        }
+        else
         {
             //切换到前台时执行，游戏启动时执行一次
             //Debug.LogError("回来");
@@ -343,14 +351,12 @@ public class GameManager : MonoBehaviour
                 popCommandView.gameObject.SetActive(true);
 
                 lastCopyText = cmd;
-            }
-            //打开确认UI
 
-        }
-        else
-        {
-            //切换到后台时执行
+                //打开确认UI
+            }
         }
     }
+
+
     #endregion
 }

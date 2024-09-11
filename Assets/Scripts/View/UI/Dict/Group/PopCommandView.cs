@@ -37,6 +37,7 @@ public class PopCommandView : MonoBehaviour
         artChannelId = channelId;
         artTitle = title;
         isDic = false;
+        contentText.text = title;
     }
     public void Init(string word)
     {

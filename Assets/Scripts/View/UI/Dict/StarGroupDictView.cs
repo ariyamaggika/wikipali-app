@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static ArticleController;
 
 public class StarGroupDictView : MonoBehaviour
 {
     public Toggle starToggle;
     public Button shareBtn;
+    public Button shareCommandBtn;
     public Button voiceBtn;
     public AudioSource voiceSource;
     public PopView popView;
@@ -17,6 +19,7 @@ public class StarGroupDictView : MonoBehaviour
     {
         starToggle.onValueChanged.AddListener(OnToggleValueChanged);
         shareBtn.onClick.AddListener(OnShareBtnClick);
+        shareCommandBtn.onClick.AddListener(OnShareCommandBtnClick);
         voiceBtn.onClick.AddListener(OnVoiceBtnClick);
 
     }
@@ -65,6 +68,17 @@ public class StarGroupDictView : MonoBehaviour
     {
         shareView.gameObject.SetActive(true);
         shareView.Init();
+    }
+    public void OnShareCommandBtnClick()
+    {
+
+        string cmd = CommonTool.GetDicCommandByValue(DictManager.Instance().currWord);
+        CommonTool.WriteToClipboard(cmd);
+        //防止重复打开自己分享的内容
+        GameManager.Instance().lastCopyText = cmd;
+        //string temp = CommonTool.GetClipboard();
+        //Debug.LogError("+" + temp);
+        UITool.ShowToastMessage(this, LocalizationManager.GetTranslation("star_Copy2Clipboard"), 35);
     }
     bool isSet = false;
     public void SetToggleValue(bool isOn)
