@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static ArticleController;
+using static iTween;
 
 public class StarGroupArticleView : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class StarGroupArticleView : MonoBehaviour
     public PopView popView;
     public ArticleView articleView;
     public NewArticleView newArticleView;
+    public RectTransform foldPos;
+    public RectTransform expandPos;
     //public ShareView shareView;
     // Start is called before the first frame update
     void Awake()
@@ -80,11 +83,24 @@ public class StarGroupArticleView : MonoBehaviour
     }
     public void OnFoldBtnClick()
     {
+        foldBtn.gameObject.SetActive(false);
+        expandBtn.gameObject.SetActive(true);
         //iTween.MoveTo
+        Hashtable args = new Hashtable();
+        args["position"] = foldPos.transform.position;
+        args["time"] = 1;
+        args.Add("easetype", EaseType.easeOutQuart);
+        iTween.MoveTo(this.gameObject, args);
     }
     public void OnExpandBtnClick()
     {
-
+        expandBtn.gameObject.SetActive(false);
+        foldBtn.gameObject.SetActive(true);
+        Hashtable args = new Hashtable();
+        args["position"] = expandPos.transform.position;
+        args["time"] = 1;
+        args.Add("easetype", EaseType.easeOutQuart);
+        iTween.MoveTo(this.gameObject, args);
     }
     //public void OnVoiceBtnClick()
     //{

@@ -553,8 +553,8 @@ public class CommonTool
     #region AES加密 string 复制口令使用
     //打开文章编码格式:bookID_bookParagraph_bookChapterLen_channelId)
     //int bookID, int bookParagraph, int bookChapterLen, string channelId)
-    //口令格式:复制整句话[sdhfuw8rekdkhfhoiedf24]后打开wikipaliApp跳转到文章【文章标题。。。。】
-    //口令格式:复制整句话[sdhfuw8rekdkhfhoiedf24]后打开wikipaliApp跳转到词典【单词名。。。。】
+    //口令格式:复制整句话[sdhfuw8rekdkhfhoiedf24]后打开wikipaliApp跳转到文章【文章标题。。。。】+网页版网址
+    //口令格式:复制整句话[sdhfuw8rekdkhfhoiedf24]后打开wikipaliApp跳转到词典【单词名。。。。】+网页版网址
     public const string AES_STRING_KEY = "wpa_copy_command";
     public const string AES_STRING_IV = "wpa_copy_command";
     //字符串转字节数组

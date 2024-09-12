@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static ArticleController;
+using static iTween;
 
 public class StarGroupDictView : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class StarGroupDictView : MonoBehaviour
     public AudioSource voiceSource;
     public PopView popView;
     public ShareView shareView;
+    public Button foldBtn;
+    public Button expandBtn;
+    public RectTransform foldPos;
+    public RectTransform expandPos;
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,7 +26,8 @@ public class StarGroupDictView : MonoBehaviour
         shareBtn.onClick.AddListener(OnShareBtnClick);
         shareCommandBtn.onClick.AddListener(OnShareCommandBtnClick);
         voiceBtn.onClick.AddListener(OnVoiceBtnClick);
-
+        foldBtn.onClick.AddListener(OnFoldBtnClick);
+        expandBtn.onClick.AddListener(OnExpandBtnClick);
     }
     public static string currVoiceWord;
     public void OnVoiceBtnClick()
@@ -101,6 +107,27 @@ public class StarGroupDictView : MonoBehaviour
         popView.Init(PopViewType.SaveDic);
         popView.RefreshGroupList();
         popView.gameObject.SetActive(true);
+    }
+    public void OnFoldBtnClick()
+    {
+        foldBtn.gameObject.SetActive(false);
+        expandBtn.gameObject.SetActive(true);
+        //iTween.MoveTo
+        Hashtable args = new Hashtable();
+        args["position"] = foldPos.transform.position;
+        args["time"] = 1;
+        args.Add("easetype", EaseType.easeOutQuart);
+        iTween.MoveTo(this.gameObject, args);
+    }
+    public void OnExpandBtnClick()
+    {
+        expandBtn.gameObject.SetActive(false);
+        foldBtn.gameObject.SetActive(true);
+        Hashtable args = new Hashtable();
+        args["position"] = expandPos.transform.position;
+        args["time"] = 1;
+        args.Add("easetype", EaseType.easeOutQuart);
+        iTween.MoveTo(this.gameObject, args);
     }
     // Update is called once per frame
     void Update()
