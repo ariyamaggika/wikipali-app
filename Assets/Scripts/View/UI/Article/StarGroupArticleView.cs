@@ -89,6 +89,7 @@ public class StarGroupArticleView : MonoBehaviour
         Hashtable args = new Hashtable();
         args["position"] = foldPos.transform.position;
         args["time"] = 1;
+        //iTween 缓动函数 https://easings.net/zh-cn
         args.Add("easetype", EaseType.easeOutQuart);
         iTween.MoveTo(this.gameObject, args);
     }

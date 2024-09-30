@@ -54,6 +54,7 @@ public class LoadingTexView : MonoBehaviour
     public void StopLoadingTex()
     {
         isRotating = false;
+        //todo ±¨´í
         this.gameObject.SetActive(false);
         FadeOut();
     }
@@ -66,6 +67,9 @@ public class LoadingTexView : MonoBehaviour
         fadeOut = false;
         fadeIn = true;
         //img.color = new Color(img.color.r, img.color.g, img.color.b, 0);
+        //todo: ugly code
+        if (img == null)
+            img = this.GetComponent<Image>();
         img.CrossFadeAlpha(0, 0, true);
         img.CrossFadeAlpha(1, maxFadeTime, false);
 
@@ -76,6 +80,9 @@ public class LoadingTexView : MonoBehaviour
         fadeIn = false;
         fadeOut = true;
         //img.color = new Color(img.color.r, img.color.g, img.color.b, 1);
+        //todo: ugly code
+        if (img == null)
+            img = this.GetComponent<Image>();
         img.CrossFadeAlpha(1, 0, true);
         img.CrossFadeAlpha(0, maxFadeTime, false);
     }

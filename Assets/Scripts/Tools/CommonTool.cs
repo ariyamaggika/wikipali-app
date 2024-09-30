@@ -662,9 +662,14 @@ public class CommonTool
         if (mArr == null || mArr.Length == 0)
             return "";
 
-        string value = mArr[0].Value.Replace("[","");
+        string value = mArr[0].Value.Replace("[", "");
         value = value.Replace("]", "");
-        return Token2Value(value);
+
+        value = Token2Value(value);
+        //去除解码后的NUL值
+        value = value.Replace("\0", "");
+
+        return value;
     }
     #endregion
     #region 剪切板操作

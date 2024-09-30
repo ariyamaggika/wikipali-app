@@ -36,6 +36,8 @@ public class CalendarManager
         //return (7.2f,80.1f );
 #if UNITY_EDITOR
         return (24, 103);
+        //return (43.9f, -79.2f);//美国
+        //return (-79.2f, 43.9f);//美国
         //return (7.2f, 80.1f);
 #endif
         return (location.lastData.latitude, location.lastData.longitude);
@@ -43,8 +45,8 @@ public class CalendarManager
     //日中时间
     public string GetSunSolarNoonTime(DateTime time)//, float lat, float lng, float height = 0)
     {
-
-        DateTime newDate = new DateTime(time.Year, time.Month, time.Day, 0, 1, 0);
+        //?为什么0h1m1s显示为前一天？，一定要1h1m1s才行
+        DateTime newDate = new DateTime(time.Year, time.Month, time.Day, 1, 1, 0);
         SunPhase solarNoon = new SunPhase(SunPhaseName.SolarNoon, newDate);
 
         TimeSpan ts = TimeZoneInfo.Local.GetUtcOffset(newDate);
@@ -56,7 +58,7 @@ public class CalendarManager
         //Act
         var sunPhases = SunCalc.GetSunPhases(newDate, lat, lng, height, 0).ToList();
         TimeSpan sp = TimeZoneInfo.Local.GetUtcOffset(time);
-        TimeSpan BaseUtcOffset = new TimeSpan(ts.Hours, ts.Minutes,ts.Seconds);
+        TimeSpan BaseUtcOffset = new TimeSpan(ts.Hours, ts.Minutes, ts.Seconds);
         sp = -BaseUtcOffset;// ts;// sp -  BaseUtcOffsetSriLanka;// targetTimeZone.GetUtcOffset(time);
 
 

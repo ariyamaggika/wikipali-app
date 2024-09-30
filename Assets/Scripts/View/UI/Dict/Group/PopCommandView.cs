@@ -43,6 +43,7 @@ public class PopCommandView : MonoBehaviour
     {
         dicWord = word;
         isDic = true;
+        contentText.text = dicWord;
     }
     public void OnCloseBackBtnClick()
     {

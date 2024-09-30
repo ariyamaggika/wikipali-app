@@ -1,6 +1,8 @@
 ﻿using I2.Loc;
+using SRF.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using static ArticleController;
@@ -79,6 +81,19 @@ public class StarGroupDictView : MonoBehaviour
     {
 
         string cmd = CommonTool.GetDicCommandByValue(DictManager.Instance().currWord);
+        //测试代码
+        //Debug.LogError(CommonTool.GetValueByCommand(cmd));
+        //Debug.LogError("gā");
+        //if ("gā" != CommonTool.GetValueByCommand(cmd))
+        //    Debug.LogError("!=");
+        //if ("gā" == CommonTool.GetValueByCommand(cmd))
+        //    Debug.LogError("==");
+        //List<string> resText = new List<string>();
+        //resText.Add(CommonTool.GetValueByCommand(cmd));
+        //resText.Add("gā");
+        //File.WriteAllLines("Assets/Editor/testSaveDic.txt", resText.ToArray());
+        //GameManager.Instance().ShowDicWord(CommonTool.GetValueByCommand(cmd));
+
         CommonTool.WriteToClipboard(cmd);
         //防止重复打开自己分享的内容
         GameManager.Instance().lastCopyText = cmd;
