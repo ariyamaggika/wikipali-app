@@ -81,7 +81,8 @@ public class C2SDicGetInfo
             //RightText.text = "Download: " + r.PercentageComplete.ToString() + "%";
             //ProgressSlider.value = 100 - r.PercentageComplete;
             byte[] responseData = r.ReadAsByteArray();
-            string json = Encoding.Default.GetString(responseData);
+            //!!!以前是Encoding.Default.GetString(responseData);在MAC/IOS苹果机器上中文会出现乱码，所以改成UTF8格式
+            string json = Encoding.UTF8.GetString(responseData);
             communityDicJson += json;
             //Debug.LogError(json);
             //如果消息长，会返回多次消息，已json结尾作为判断是否返回的是最后一条消息

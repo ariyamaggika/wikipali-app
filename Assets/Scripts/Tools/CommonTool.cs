@@ -349,6 +349,8 @@ public class CommonTool
 
     public static void DeepCopyStringList(List<string> origin, List<string> copy)
     {
+        if (origin == null || copy == null)
+            return;
         origin.Clear();
         int c = copy.Count;
         for (int i = 0; i < c; i++)
@@ -712,6 +714,40 @@ public class CommonTool
 
 #endif
         return "";
+    }
+
+    #endregion
+    #region string转码
+    //转为UTF-8
+    public static string ToUTF8(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return "";
+        byte[] bytes = Encoding.Default.GetBytes(input);
+        string output = Encoding.UTF8.GetString(bytes);
+        return output;
+    }
+    #endregion
+    #region 计算时区相关
+    /* 根据经度获取时区；例如121：+8;-121：-8;返回值为字符串（返回正数时候带+符号）
+    *https://download.csdn.net/blog/column/11112744/124842449
+    * @param currentLon
+    * @return
+    */
+    public static int CaculateTimeZone(float currentLon)
+    {
+        int timeZone;
+        int shangValue = (int)(currentLon / 15);
+        float yushuValue = Math.Abs(currentLon % 15);
+        if (yushuValue <= 7.5)
+        {
+            timeZone = shangValue;
+        }
+        else
+        {
+            timeZone = shangValue + (currentLon > 0 ? 1 : -1);
+        }
+        return timeZone >= 0 ? Math.Abs(timeZone) : -Math.Abs(timeZone);
     }
 
     #endregion

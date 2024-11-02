@@ -28,7 +28,8 @@ public class C2SArticleGetNewDBInfo
             //RightText.text = "Download: " + r.PercentageComplete.ToString() + "%";
             //ProgressSlider.value = 100 - r.PercentageComplete;
             byte[] responseData = r.ReadAsByteArray();
-            string json = Encoding.Default.GetString(responseData);
+            //!!!以前是Encoding.Default.GetString(responseData);在MAC/IOS苹果机器上中文会出现乱码，所以改成UTF8格式
+            string json = Encoding.UTF8.GetString(responseData);
             Debug.LogError(json);
         });
     }
@@ -57,7 +58,8 @@ public class C2SArticleGetNewDBInfo
                 //RightText.text = "Download: " + r.PercentageComplete.ToString() + "%";
                 //ProgressSlider.value = 100 - r.PercentageComplete;
                 byte[] responseData = r.ReadAsByteArray();
-                string json = Encoding.Default.GetString(responseData);
+                //!!!以前是Encoding.Default.GetString(responseData);在MAC/IOS苹果机器上中文会出现乱码，所以改成UTF8格式
+                string json = Encoding.UTF8.GetString(responseData);
                 Debug.LogError(json);
             });
     }
@@ -195,7 +197,8 @@ public class C2SArticleGetNewDBInfo
                 //RightText.text = "Download: " + r.PercentageComplete.ToString() + "%";
                 //ProgressSlider.value = 100 - r.PercentageComplete;
                 byte[] responseData = r.ReadAsByteArray();
-                string json = Encoding.Default.GetString(responseData);
+                //!!!以前是Encoding.Default.GetString(responseData);在MAC/IOS苹果机器上中文会出现乱码，所以改成UTF8格式
+                string json = Encoding.UTF8.GetString(responseData);
                 //Debug.LogError(json);
                 allJson += json;
                 if (json.Contains("\"message\":\"\"}"))
@@ -265,7 +268,8 @@ public class C2SArticleGetNewDBInfo
                 //RightText.text = "Download: " + r.PercentageComplete.ToString() + "%";
                 //ProgressSlider.value = 100 - r.PercentageComplete;
                 byte[] responseData = r.ReadAsByteArray();
-                string json = Encoding.Default.GetString(responseData);
+                //!!!以前是Encoding.Default.GetString(responseData);在MAC/IOS苹果机器上中文会出现乱码，所以改成UTF8格式
+                string json = Encoding.UTF8.GetString(responseData);
                 allJson += json;
                 //Debug.LogError(json);
                 if (json.Contains("\"message\":\"\"}"))
@@ -322,7 +326,8 @@ public class C2SArticleGetNewDBInfo
                 //RightText.text = "Download: " + r.PercentageComplete.ToString() + "%";
                 //ProgressSlider.value = 100 - r.PercentageComplete;
                 byte[] responseData = r.ReadAsByteArray();
-                string json = Encoding.Default.GetString(responseData);
+                //!!!以前是Encoding.Default.GetString(responseData);在MAC/IOS苹果机器上中文会出现乱码，所以改成UTF8格式
+                string json = Encoding.UTF8.GetString(responseData);
                 //Debug.LogError(json);
                 allJson += json;
                 if (json.Contains("\"message\":\"\"}"))

@@ -4,17 +4,24 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 using ZXing.Common;
 
 public class TestHttp : MonoBehaviour
 {
+    public Button button;
+    public InputField inputField;
     // Start is called before the first frame update
     void Start()
     {
-        GetChannel();
+        //GetChannel();
         //PostChannel();
+        button.onClick.AddListener(OnBtnClick);
     }
-
+    void OnBtnClick()
+    {
+        Debug.LogError(CommonTool.CaculateTimeZone(float.Parse(inputField.text)));
+    }
     // Update is called once per frame
     void Update()
     {
@@ -31,7 +38,8 @@ public class TestHttp : MonoBehaviour
             //RightText.text = "Download: " + r.PercentageComplete.ToString() + "%";
             //ProgressSlider.value = 100 - r.PercentageComplete;
             byte[] responseData = r.ReadAsByteArray();
-            string json = Encoding.Default.GetString(responseData);
+            //!!!以前是Encoding.Default.GetString(responseData);在MAC/IOS苹果机器上中文会出现乱码，所以改成UTF8格式
+            string json = Encoding.UTF8.GetString(responseData);
             // string json = CommonTool.ByteToJsonUtil.ByteToJson(responseData);
             Debug.LogError(json);
             //תΪjson

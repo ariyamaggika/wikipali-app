@@ -48,7 +48,7 @@ public class CalendarManager
         //?为什么0h1m1s显示为前一天？，一定要1h1m1s才行
         DateTime newDate = new DateTime(time.Year, time.Month, time.Day, 1, 1, 0);
         SunPhase solarNoon = new SunPhase(SunPhaseName.SolarNoon, newDate);
-
+        //时区时差
         TimeSpan ts = TimeZoneInfo.Local.GetUtcOffset(newDate);
         float lat = 24;
         float lng = 103;

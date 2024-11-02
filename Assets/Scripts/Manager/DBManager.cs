@@ -20,6 +20,7 @@ public class DBManager
         return manager;
     }
 
+    public static string CityDBurl = "DB/Cities";
     public static string DictDBurl = "DB/Dict";
     public static string SentenceDBurl = "DB/Sentence";
     public static string SentenceDBIndexurl = "DB/SentenceIndex";//sentence 索引，channel， chapter

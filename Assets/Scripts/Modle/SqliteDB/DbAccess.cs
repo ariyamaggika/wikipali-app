@@ -482,9 +482,9 @@ namespace Imdork.SQLite
             //string query = "SELECT * FROM pali_text WHERE paragraph > " + min + " AND paragraph < " + max;// + " AND level > 2 AND level < 100 ORDER BY paragraph ASC ";// "' limit " + limit.ToString();
             return ExecuteQuery(query);
         }
-        public SqliteDataReader SelectArticleParents(string bookID, string paragraphMax,string level)
+        public SqliteDataReader SelectArticleParents(string bookID, string paragraphMax, string level)
         {
-            string query = "SELECT * FROM pali_text WHERE book = " + bookID +" AND paragraph < " + paragraphMax + " AND level < " + level + " ORDER BY level ASC ";// "' limit " + limit.ToString();
+            string query = "SELECT * FROM pali_text WHERE book = " + bookID + " AND paragraph < " + paragraphMax + " AND level < " + level + " ORDER BY level ASC ";// "' limit " + limit.ToString();
             //string query = "SELECT * FROM pali_text WHERE id = " + bookID + " AND paragraph > " + min + " AND paragraph < " + max;// + " AND level > 2 AND level < 100 ORDER BY paragraph ASC ";// "' limit " + limit.ToString();
             //string query = "SELECT * FROM pali_text WHERE paragraph > " + min + " AND paragraph < " + max;// + " AND level > 2 AND level < 100 ORDER BY paragraph ASC ";// "' limit " + limit.ToString();
             return ExecuteQuery(query);
@@ -501,7 +501,7 @@ namespace Imdork.SQLite
             string query = "SELECT * FROM pali_text WHERE book = " + bookID + " AND paragraph = " + pargraph;// "' limit " + limit.ToString();
             return ExecuteQuery(query);
         }
-        public SqliteDataReader SearchChapter(string input ,int limit)
+        public SqliteDataReader SearchChapter(string input, int limit)
         {
             string query = "SELECT * FROM 'chapter' WHERE title LIKE " + "'%" + input + "%' limit " + limit.ToString();
             //string query = "SELECT * FROM chapter WHERE book = 9";// "' limit " + limit.ToString();
@@ -555,7 +555,7 @@ namespace Imdork.SQLite
             return ExecuteQuery(query);
         }
         //模糊查询句子
-        public SqliteDataReader SelectSentencesTranslationByWord(string word,int limit)
+        public SqliteDataReader SelectSentencesTranslationByWord(string word, int limit)
         {
             //inputStr = "成就";
             //string query = "SELECT * FROM 'sentence_translation' WHERE content LIKE " + "'%" + word + "%' limit " + limit.ToString();
@@ -624,6 +624,38 @@ namespace Imdork.SQLite
             string query = "SELECT * FROM word_count WHERE " + select;
             return ExecuteQuery(query);
         }
+        #region 查找城市
+        //countries_cities表
+        //查找所有国内一级城市信息
+        public SqliteDataReader SelectAllDomesticFirstCity()
+        {
+
+            string query = "SELECT * FROM area_code WHERE level = province ORDER BY code ASC";
+            return ExecuteQuery(query);
+        }
+        //根据国内一级城市查找所有下属二级三级城市信息
+        public SqliteDataReader SelectAllDomesticSecondThirdCity(int codeMin, int codeMax)
+        {
+
+            string query = "SELECT * FROM area_code WHERE book = city OR book = district AND code > " + codeMin + " AND code < " + codeMax + " ORDER BY code ASC";//
+            return ExecuteQuery(query);
+        }
+        //查找国外所有主城市
+        public SqliteDataReader SelectAllInternationalFirstCity()
+        {
+
+            string query = "SELECT * FROM countries";
+            return ExecuteQuery(query);
+        }
+        //查找国外所有子城市
+        public SqliteDataReader SelectAllInternationalSecondCity(int countryID)
+        {
+
+            string query = "SELECT * FROM cities WHERE country_id = " + countryID /*+ " ORDER BY code ASC"*/;
+            return ExecuteQuery(query);
+        }
+
+        #endregion
         #endregion
         #endregion
 
