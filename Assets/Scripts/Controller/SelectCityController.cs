@@ -1,6 +1,10 @@
+ï»¿using Imdork.SQLite;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using static ArticleController;
 using static ArticleManager;
@@ -10,10 +14,10 @@ using static SettingManager;
 
 public class SelectCityController
 {
-    //ÀÁººÊ½µ¥ÀıÀà.ÔÚµÚÒ»´Îµ÷ÓÃµÄÊ±ºòÊµÀı»¯×Ô¼º 
+    //æ‡’æ±‰å¼å•ä¾‹ç±».åœ¨ç¬¬ä¸€æ¬¡è°ƒç”¨çš„æ—¶å€™å®ä¾‹åŒ–è‡ªå·± 
     private SelectCityController() { }
     private static SelectCityController controller = null;
-    //¾²Ì¬¹¤³§·½·¨ 
+    //é™æ€å·¥å‚æ–¹æ³• 
     public static SelectCityController Instance()
     {
         if (controller == null)
@@ -23,8 +27,8 @@ public class SelectCityController
         return controller;
     }
     public DBManager dbManager = DBManager.Instance();
-    //²ßÂÔ£¬FirstÈ«²¿¶ÁÈ¡´¢´æ£¬second£¬third¶öººÊ½£¬ µãµ½FirstÊ±Ò»Æğ¶ÁÈ¡¡£
-    //¶ÁÈ¡ºó´¢´æÔÚÄÚ´æ£¬ÏÂ´ÎµãÑ¡Ê±ÏÈÅĞ¶ÏÓĞÎŞ¶ÁÈ¡¹ı
+    //ç­–ç•¥ï¼ŒFirstå…¨éƒ¨è¯»å–å‚¨å­˜ï¼Œsecondï¼Œthirdé¥¿æ±‰å¼ï¼Œ ç‚¹åˆ°Firstæ—¶ä¸€èµ·è¯»å–ã€‚
+    //è¯»å–åå‚¨å­˜åœ¨å†…å­˜ï¼Œä¸‹æ¬¡ç‚¹é€‰æ—¶å…ˆåˆ¤æ–­æœ‰æ— è¯»å–è¿‡
     public class FirstCityInfo
     {
         public List<SecondCityInfo> secondCityInfoList = new List<SecondCityInfo>();
@@ -42,20 +46,25 @@ public class SelectCityController
     }
     public struct CityInfo
     {
+        public int id;
         public string name;
         public string level;
         public string pName;
         public string fullName;
         public float lng;
         public float lat;
-        public TimeZoneInfo timeZone;   //Ê±Çø
-        public Dictionary<Language, string> transName;  //·­ÒëºóµÄÃû×Ö
+        public TimeSpan timeZoneOffset;   //æ—¶åŒº
+        public Dictionary<Language, string> transName;  //ç¿»è¯‘åçš„åå­—
+        //city->state->country
+        public int countryID;           //å›½å¤–äºŒçº§åŸå¸‚çš„çˆ¶åŸå¸‚ID
+        public int statesID;           //å›½å¤–ä¸‰çº§åŸå¸‚çš„çˆ¶åŸå¸‚ID
     }
-    List<FirstCityInfo> firstCityInfos = new List<FirstCityInfo>();
-    //»ñÈ¡ËùÓĞ¹úÄÚÒ»¼¶³ÇÊĞĞÅÏ¢
+    List<FirstCityInfo> domesticFirstCityInfos = new List<FirstCityInfo>();
+    List<FirstCityInfo> internationalFirstCityInfos = new List<FirstCityInfo>();
+    //è·å–æ‰€æœ‰å›½å†…ä¸€çº§åŸå¸‚ä¿¡æ¯
     public void GetAllDomesticFirstCity()
     {
-        firstCityInfos.Clear();
+        //firstCityInfos.Clear();
 #if DEBUG_PERFORMANCE || UNITY_EDITOR
         System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
         sw.Start();
@@ -68,7 +77,7 @@ public class SelectCityController
         //    GetDictLikeByLanguage(matchedWordList, SettingManager.Instance().language, db, matchedWordDic, inputStr);
         //    if (matchedWordList.Count < LIMIT_COUNT)
         //    {
-        //        //²éÍê×Ô¼ºÓïÑÔµÄ´Êµä£¬ÕÒ²»µ½¾ÍÕÒÓ¢ÎÄ£¬ÔÙÕÒ²»µ½¾ÍÕÒÃåÎÄ
+        //        //æŸ¥å®Œè‡ªå·±è¯­è¨€çš„è¯å…¸ï¼Œæ‰¾ä¸åˆ°å°±æ‰¾è‹±æ–‡ï¼Œå†æ‰¾ä¸åˆ°å°±æ‰¾ç¼…æ–‡
         //        if (SettingManager.Instance().language == Language.EN)
         //        {
         //            GetDictLikeByLanguage(matchedWordList, Language.MY, db, matchedWordDic, inputStr);
@@ -86,45 +95,76 @@ public class SelectCityController
 
 #if DEBUG_PERFORMANCE || UNITY_EDITOR
         sw.Stop();
-        Debug.LogError("¡¾ĞÔÄÜ¡¿²éÑ¯¹úÄÚÒ»¼¶³ÇÊĞºÄÊ±£º" + sw.ElapsedMilliseconds);
+        Debug.LogError("ã€æ€§èƒ½ã€‘æŸ¥è¯¢å›½å†…ä¸€çº§åŸå¸‚è€—æ—¶ï¼š" + sw.ElapsedMilliseconds);
 #endif
     }
-
-    //»ñÈ¡ËùÓĞ¹úÍâÒ»¼¶³ÇÊĞĞÅÏ¢
+    Regex r_timezoneRegex = new Regex(@"""gmtOffset"":(.+?),");
+    Regex r_jaRegex = new Regex(@"""ja"":(.+?),");
+    Regex r_cnRegex = new Regex(@"""cn"":(.+?),");
+    //è·å–æ‰€æœ‰å›½å¤–ä¸€çº§åŸå¸‚ä¿¡æ¯
     public void GetAllInternationalFirstCity()
     {
-        firstCityInfos.Clear();
+        internationalFirstCityInfos.Clear();
 #if DEBUG_PERFORMANCE || UNITY_EDITOR
         System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
         sw.Start();
 #endif
 
-        //dbManager.Getdb(db =>
-        //{
-        //    //key: word,value: MatchedWord
-        //    Dictionary<string, MatchedWord> matchedWordDic = new Dictionary<string, MatchedWord>();
-        //    GetDictLikeByLanguage(matchedWordList, SettingManager.Instance().language, db, matchedWordDic, inputStr);
-        //    if (matchedWordList.Count < LIMIT_COUNT)
-        //    {
-        //        //²éÍê×Ô¼ºÓïÑÔµÄ´Êµä£¬ÕÒ²»µ½¾ÍÕÒÓ¢ÎÄ£¬ÔÙÕÒ²»µ½¾ÍÕÒÃåÎÄ
-        //        if (SettingManager.Instance().language == Language.EN)
-        //        {
-        //            GetDictLikeByLanguage(matchedWordList, Language.MY, db, matchedWordDic, inputStr);
-
-        //        }
-        //        else if (SettingManager.Instance().language != Language.MY)
-        //        {
-        //            GetDictLikeByLanguage(matchedWordList, Language.EN, db, matchedWordDic, inputStr);
-        //            if (matchedWordList.Count < LIMIT_COUNT)
-        //                GetDictLikeByLanguage(matchedWordList, Language.MY, db, matchedWordDic, inputStr);
-        //        }
-        //    }
-        //    //matchedWordList = SelectDictLike(db, matchedWordDic,"", inputStr);
-        //}, DBManager.CityDBurl);
+        dbManager.Getdb(db =>
+        {
+            var reader2 = db.SelectAllInternationalFirstCity();
+            //è°ƒç”¨SQLiteå·¥å…·  è§£æå¯¹åº”æ•°æ®
+            Dictionary<string, object>[] pairs2 = SQLiteTools.GetValues(reader2);
+            if (pairs2 != null)
+            {
+                int length = pairs2.Length;
+                for (int i = 0; i < length; i++)
+                {
+                    FirstCityInfo cInfo = new FirstCityInfo();
+                    cInfo.cityInfo = new CityInfo();
+                    cInfo.cityInfo.id = int.Parse(pairs2[i]["id"].ToString());
+                    cInfo.cityInfo.name = pairs2[i]["name"].ToString();
+                    cInfo.cityInfo.lng = float.Parse(pairs2[i]["longitude"].ToString());
+                    cInfo.cityInfo.lat = float.Parse(pairs2[i]["latitude"].ToString());
+                    //[{"zoneName":"Indian/Kerguelen","gmtOffset":18000,"gmtOffsetName":"UTC+05:00","abbreviation":"TFT","tzName":"French Southern and Antarctic Time"}]
+                    string timezones = pairs2[i]["timezones"].ToString();
+                    Match mc = r_timezoneRegex.Match(timezones);
+                    string gmtoffsetStr = mc.Value.Substring("\"gmtOffset\":".Length);
+                    gmtoffsetStr = gmtoffsetStr.Substring(0, gmtoffsetStr.Length - 1);
+                    int gmtoffset = int.Parse(gmtoffsetStr);
+                    TimeSpan offset = TimeSpan.FromSeconds(gmtoffset);
+                    cInfo.cityInfo.timeZoneOffset = offset;
+                    //{"ja":"å—æ¥µå¤§é™¸","cn":"å—ææ´²"}
+                    string transName = pairs2[i]["translations"].ToString();
+                    Match jaMc = r_jaRegex.Match(timezones);
+                    string jaTransNameStr = jaMc.Value.Substring("\"ja\":".Length);
+                    jaTransNameStr = jaTransNameStr.Substring(0, jaTransNameStr.Length - 1);
+                    Match cnMc = r_cnRegex.Match(timezones);
+                    string cnTransNameStr = cnMc.Value.Substring("\"cn\":".Length);
+                    cnTransNameStr = cnTransNameStr.Substring(0, cnTransNameStr.Length - 1);
+                    cInfo.cityInfo.transName = new Dictionary<Language, string>();
+                    //            ZH_CN,      //ç®€ä½“ä¸­æ–‡
+                    //ZH_TW,      //ç¹ä½“ä¸­æ–‡
+                    //EN,         //è‹±è¯­
+                    //JP,         //æ—¥è¯­
+                    //MY,         //ç¼…è¯­
+                    //SI,         //æ–°å“ˆæ‹‰è¯­ï¼ˆå…°å¡è¯­ï¼‰
+                    //TH          //æ³°è¯­
+                    cInfo.cityInfo.transName.Add(Language.ZH_CN, cnTransNameStr);
+                    cInfo.cityInfo.transName.Add(Language.ZH_TW, cnTransNameStr);
+                    cInfo.cityInfo.transName.Add(Language.EN, cInfo.cityInfo.name);
+                    cInfo.cityInfo.transName.Add(Language.JP, jaTransNameStr);
+                    cInfo.cityInfo.transName.Add(Language.MY, cInfo.cityInfo.name);
+                    cInfo.cityInfo.transName.Add(Language.SI, cInfo.cityInfo.name);
+                    cInfo.cityInfo.transName.Add(Language.TH, cInfo.cityInfo.name);
+                }
+            }
+            //matchedWordList = SelectDictLike(db, matchedWordDic,"", inputStr);
+        }, DBManager.CityDBurl);
 
 #if DEBUG_PERFORMANCE || UNITY_EDITOR
         sw.Stop();
-        Debug.LogError("¡¾ĞÔÄÜ¡¿²éÑ¯¹úÄÚÒ»¼¶³ÇÊĞºÄÊ±£º" + sw.ElapsedMilliseconds);
+        Debug.LogError("ã€æ€§èƒ½ã€‘æŸ¥è¯¢å›½å†…ä¸€çº§åŸå¸‚è€—æ—¶ï¼š" + sw.ElapsedMilliseconds);
 #endif
     }
 

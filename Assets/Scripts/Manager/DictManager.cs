@@ -23,11 +23,11 @@ public class DictManager
 
     public DBManager dbManager = DBManager.Instance();
     //词典查词总览限制显示数量
-    //安卓一次查30个，iPhone容易闪退只查7个
+    //安卓一次查10个，iPhone容易闪退只查3个
 #if UNITY_ANDROID || UNITY_EDITOR
-    public const int LIMIT_COUNT = 30;
+    public const int LIMIT_COUNT = 10;
 #else
-    public const int LIMIT_COUNT = 7;
+    public const int LIMIT_COUNT = 3;
 #endif
     //class DicIDInfo
     //{

@@ -640,21 +640,34 @@ namespace Imdork.SQLite
             string query = "SELECT * FROM area_code WHERE book = city OR book = district AND code > " + codeMin + " AND code < " + codeMax + " ORDER BY code ASC";//
             return ExecuteQuery(query);
         }
-        //查找国外所有主城市
+        //查找国外所有一级城市信息
         public SqliteDataReader SelectAllInternationalFirstCity()
         {
 
             string query = "SELECT * FROM countries";
             return ExecuteQuery(query);
         }
-        //查找国外所有子城市
+        //查找国外一级城市查找所有下属二级城市信息
         public SqliteDataReader SelectAllInternationalSecondCity(int countryID)
+        {
+
+            string query = "SELECT * FROM states WHERE country_id = " + countryID /*+ " ORDER BY code ASC"*/;
+            return ExecuteQuery(query);
+        }
+        //根据国外二级城市查找所有下属三级城市信息
+        public SqliteDataReader SelectAllInternationalSecondThirdCity(int statesID)
+        {
+
+            string query = "SELECT * FROM cities WHERE states = " + statesID /*+ " ORDER BY code ASC"*/;
+            return ExecuteQuery(query);
+        }
+        //根据国外一级城市查找所有下属三级城市信息
+        public SqliteDataReader SelectAllInternationalFirstThirdCity(int countryID)
         {
 
             string query = "SELECT * FROM cities WHERE country_id = " + countryID /*+ " ORDER BY code ASC"*/;
             return ExecuteQuery(query);
         }
-
         #endregion
         #endregion
         #endregion
