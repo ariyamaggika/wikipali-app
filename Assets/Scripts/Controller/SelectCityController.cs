@@ -64,8 +64,16 @@ public class SelectCityController
     Dictionary<int, FirstCityInfo> internationalFirstCityInfos = new Dictionary<int, FirstCityInfo>();//国外<id，信息>
                                                                                                       //List<CityInfo> allCityInfos = new List<CityInfo>();//所有城市信息？
     #region 查询国内城市信息
+    public Dictionary<int, FirstCityInfo> GetAllDomesticFirstCityInfos()
+    {
+        if (domesticFirstCityInfos.Count == 0)
+        {
+            GetAllDomesticFirstCity();
+        }
+        return domesticFirstCityInfos;
+    }
     //获取所有国内一级城市信息
-    public void GetAllDomesticFirstCity()
+    void GetAllDomesticFirstCity()
     {
         domesticFirstCityInfos.Clear();
 #if DEBUG_PERFORMANCE || UNITY_EDITOR
@@ -89,7 +97,7 @@ public class SelectCityController
                     cInfo.name = pairs2[i]["name"].ToString();
                     cInfo.level = pairs2[i]["level"].ToString();
                     cInfo.pName = pairs2[i]["pname"].ToString();
-                    cInfo.pCode = int.Parse(pairs2[i]["pcode"].ToString());
+                    //cInfo.pCode = int.Parse(pairs2[i]["pcode"].ToString());
                     cInfo.fullName = pairs2[i]["fullname"].ToString();
                     cInfo.lng = float.Parse(pairs2[i]["longitude"].ToString());
                     cInfo.lat = float.Parse(pairs2[i]["latitude"].ToString());
@@ -231,6 +239,14 @@ public class SelectCityController
     }
     #endregion
     #region 查询国外城市信息
+    public Dictionary<int, FirstCityInfo> GetAllInternationalFirstCityInfos()
+    {
+        if (internationalFirstCityInfos.Count == 0)
+        {
+            GetAllInternationalFirstCity();
+        }
+        return internationalFirstCityInfos;
+    }
     Regex r_timezoneRegex = new Regex(@"""gmtOffset"":(.+?),");
     Regex r_jaRegex = new Regex(@"""ja"":(.+?),");
     Regex r_cnRegex = new Regex(@"""cn"":(.+?),");
@@ -269,10 +285,10 @@ public class SelectCityController
                     cInfo.timeZoneOffset = offset;
                     //{"ja":"南極大陸","cn":"南极洲"}
                     string transName = pairs2[i]["translations"].ToString();
-                    Match jaMc = r_jaRegex.Match(timezones);
+                    Match jaMc = r_jaRegex.Match(transName);
                     string jaTransNameStr = jaMc.Value.Substring("\"ja\":".Length);
                     jaTransNameStr = jaTransNameStr.Substring(0, jaTransNameStr.Length - 1);
-                    Match cnMc = r_cnRegex.Match(timezones);
+                    Match cnMc = r_cnRegex.Match(transName);
                     string cnTransNameStr = cnMc.Value.Substring("\"cn\":".Length);
                     cnTransNameStr = cnTransNameStr.Substring(0, cnTransNameStr.Length - 1);
                     cInfo.transName = new Dictionary<Language, string>();

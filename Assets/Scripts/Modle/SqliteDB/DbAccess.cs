@@ -630,28 +630,28 @@ namespace Imdork.SQLite
         public SqliteDataReader SelectAllDomesticFirstCity()
         {
 
-            string query = "SELECT * FROM area_code WHERE level = province ORDER BY code ASC";
+            string query = "SELECT * FROM area_code WHERE level = 'province'";// ORDER BY code ASC";
             return ExecuteQuery(query);
         }
         //根据国内一级城市查找所有下属二级城市信息
         public SqliteDataReader SelectAllDomesticSecondCity(int codeMin, int codeMax)
         {
 
-            string query = "SELECT * FROM area_code WHERE level = city AND code > " + codeMin + " AND code < " + codeMax + " ORDER BY code ASC";//
+            string query = "SELECT * FROM area_code WHERE level = 'city' AND code > " + codeMin + " AND code < " + codeMax + " ORDER BY code ASC";//
             return ExecuteQuery(query);
         }
         //根据国内一级城市查找所有下属三级城市信息
         public SqliteDataReader SelectAllDomesticThirdCity(int codeMin, int codeMax)
         {
 
-            string query = "SELECT * FROM area_code WHERE level = district AND code > " + codeMin + " AND code < " + codeMax + " ORDER BY code ASC";//
+            string query = "SELECT * FROM area_code WHERE level = 'district' AND code > " + codeMin + " AND code < " + codeMax + " ORDER BY code ASC";//
             return ExecuteQuery(query);
         }
         //根据国内一级城市查找所有下属二级三级城市信息
         public SqliteDataReader SelectAllDomesticSecondThirdCity(int codeMin, int codeMax)
         {
 
-            string query = "SELECT * FROM area_code WHERE level = city OR level = district AND code > " + codeMin + " AND code < " + codeMax + " ORDER BY code ASC";//
+            string query = "SELECT * FROM area_code WHERE level = 'city' OR level = district AND code > " + codeMin + " AND code < " + codeMax + " ORDER BY code ASC";//
             return ExecuteQuery(query);
         }
         //模糊查找所有国内下属三级城市信息
