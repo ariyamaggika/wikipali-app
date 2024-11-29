@@ -27,11 +27,13 @@ public class Level3ChildToggleView : MonoBehaviour, IPointerClickHandler
         if (level == 1)
         {
             //获取全部2级3级城市信息显示
+            popSelectCityView.SetDomesticLevel2List(cityInfo);
 
         }
         else if (level == 2)
         {
             //获取全部3级城市信息显示
+            popSelectCityView.SetDomesticLevel3List((SecondCityInfo)cityInfo);
 
         }
         else if (level == 3)

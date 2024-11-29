@@ -47,6 +47,7 @@ public class PopSelectCityView : MonoBehaviour
 
         //controller.GetAllDomesticFirstCity();
         //controller.GetAllInternationalFirstCity();
+        //DestroyAllToggleList();
         SetDomesticLevel1List();
     }
     void OnToggleValueChanged(bool value)
@@ -105,6 +106,7 @@ public class PopSelectCityView : MonoBehaviour
     }
     void SetDomesticLevel1List()
     {
+        DestroyAllToggleList();
         Dictionary<int, FirstCityInfo> fCitys = controller.GetAllDomesticFirstCityInfos();
         foreach (var city in fCitys)
         {
@@ -120,22 +122,40 @@ public class PopSelectCityView : MonoBehaviour
 
 
     }
-    void SetDomesticLevel2List(CityInfo pCity)
+    public void SetDomesticLevel2List(CityInfo pCity)
+    {
+        DestroyToggleLv2List();
+        DestroyToggleLv3List();
+
+        Dictionary<int, SecondCityInfo> fCitys = controller.GetDomesticSecondCity(pCity.id);
+        foreach (var city in fCitys)
+        {
+            GameObject inst = Instantiate(level2Toggle.gameObject, lv2Content, false);
+            inst.GetComponent<Level3ChildToggleView>().OnInit(city.Value);
+            inst.SetActive(true);
+            toggleLv2List.Add(inst);
+        }
+
+    }
+    public void SetInternationalLevel2List(CityInfo pCity)
     {
 
 
     }
-    void SetInternationalLevel2List(CityInfo pCity)
+    public void SetDomesticLevel3List(SecondCityInfo pCity)
     {
-
+        DestroyToggleLv3List();
+        Dictionary<int, ThirdCityInfo> fCitys = controller.GetDomesticThirdCity(pCity);
+        foreach (var city in fCitys)
+        {
+            GameObject inst = Instantiate(level3Toggle.gameObject, lv3Content, false);
+            inst.GetComponent<Level3ChildToggleView>().OnInit(city.Value);
+            inst.SetActive(true);
+            toggleLv3List.Add(inst);
+        }
 
     }
-    void SetDomesticLevel3List(CityInfo pCity)
-    {
-
-
-    }
-    void SetInternationalLevel3List(CityInfo pCity)
+    public void SetInternationalLevel3List(CityInfo pCity)
     {
 
 

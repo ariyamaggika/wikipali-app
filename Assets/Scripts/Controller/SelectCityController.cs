@@ -118,8 +118,18 @@ public class SelectCityController
         Debug.LogError("【性能】查询国内一级城市耗时：" + sw.ElapsedMilliseconds);
 #endif
     }
+    public Dictionary<int, SecondCityInfo> GetDomesticSecondCity(int countryID)
+    {
+        GetAllDomesticSecondAndThirdCity(countryID);
+        return domesticFirstCityInfos[countryID].secondCityInfoList;
+    }
+    public Dictionary<int, ThirdCityInfo> GetDomesticThirdCity(SecondCityInfo city)
+    {
+        GetAllDomesticSecondAndThirdCity(city.pCode);
+        return city.thirdCityInfoList;
+    }
     //获取所有国内所有城市信息
-    public void GetAllDomesticSecondAndThirdCity(int countryID)
+    void GetAllDomesticSecondAndThirdCity(int countryID)
     {
         if (domesticFirstCityInfos[countryID].secondCityInfoList.Count > 0)
             return;
@@ -158,6 +168,27 @@ public class SelectCityController
                     domesticFirstCityInfos[countryID].secondCityInfoList.Add(cInfo.id, cInfo);
                 }
             }
+            else
+            {
+                //没有二级城市的沿用一级
+                SecondCityInfo cInfo = new SecondCityInfo();
+                cInfo = new SecondCityInfo();
+                cInfo.id = domesticFirstCityInfos[countryID].id;
+                cInfo.name = domesticFirstCityInfos[countryID].name;
+                //cInfo.level = pairs2[i]["level"].ToString();
+                //cInfo.pName = pairs2[i]["pname"].ToString();
+                cInfo.pCode = cInfo.id;
+                cInfo.fullName = domesticFirstCityInfos[countryID].fullName;
+                cInfo.lng = domesticFirstCityInfos[countryID].lng;
+                cInfo.lat = domesticFirstCityInfos[countryID].lat;
+
+                TimeSpan offset = TimeSpan.FromHours(8);
+                cInfo.timeZoneOffset = offset;
+
+                cInfo.transName = new Dictionary<Language, string>();
+
+                domesticFirstCityInfos[countryID].secondCityInfoList.Add(cInfo.id, cInfo);
+            }
             //所有三级
             var reader3 = db.SelectAllDomesticThirdCity(countryID, countryID + 9999);
             //调用SQLite工具  解析对应数据
@@ -169,20 +200,45 @@ public class SelectCityController
                 {
                     ThirdCityInfo cInfo = new ThirdCityInfo();
                     cInfo = new ThirdCityInfo();
-                    cInfo.id = int.Parse(pairs2[i]["code"].ToString());
-                    cInfo.name = pairs2[i]["name"].ToString();
-                    cInfo.level = pairs2[i]["level"].ToString();
-                    cInfo.pName = pairs2[i]["pname"].ToString();
-                    cInfo.pCode = int.Parse(pairs2[i]["pcode"].ToString());
-                    cInfo.fullName = pairs2[i]["fullname"].ToString();
-                    cInfo.lng = float.Parse(pairs2[i]["longitude"].ToString());
-                    cInfo.lat = float.Parse(pairs2[i]["latitude"].ToString());
+                    cInfo.id = int.Parse(pairs3[i]["code"].ToString());
+                    cInfo.name = pairs3[i]["name"].ToString();
+                    cInfo.level = pairs3[i]["level"].ToString();
+                    cInfo.pName = pairs3[i]["pname"].ToString();
+                    cInfo.pCode = int.Parse(pairs3[i]["pcode"].ToString());
+                    cInfo.fullName = pairs3[i]["fullname"].ToString();
+                    cInfo.lng = float.Parse(pairs3[i]["longitude"].ToString());
+                    cInfo.lat = float.Parse(pairs3[i]["latitude"].ToString());
 
                     TimeSpan offset = TimeSpan.FromHours(8);
                     cInfo.timeZoneOffset = offset;
 
                     cInfo.transName = new Dictionary<Language, string>();
                     domesticFirstCityInfos[countryID].secondCityInfoList[cInfo.pCode].thirdCityInfoList.Add(cInfo.id, cInfo);
+                }
+            }
+            else
+            {
+                //没有三级城市的沿用二级
+                //for (int i = 0; i < domesticFirstCityInfos[countryID].secondCityInfoList.Count; i++)
+                foreach (var city in domesticFirstCityInfos[countryID].secondCityInfoList)
+                {
+
+                    ThirdCityInfo cInfo = new ThirdCityInfo();
+                    cInfo = new ThirdCityInfo();
+                    cInfo.id = city.Value.id;
+                    cInfo.name = city.Value.name;
+                    //cInfo.level = pairs3[i]["level"].ToString();
+                    cInfo.pName = city.Value.pName;
+                    cInfo.pCode = city.Value.pCode;
+                    cInfo.fullName = city.Value.fullName;
+                    cInfo.lng = city.Value.lng;
+                    cInfo.lat = city.Value.lat;
+
+                    TimeSpan offset = TimeSpan.FromHours(8);
+                    cInfo.timeZoneOffset = offset;
+
+                    cInfo.transName = new Dictionary<Language, string>();
+                    city.Value.thirdCityInfoList.Add(cInfo.id, cInfo);
                 }
             }
             //matchedWordList = SelectDictLike(db, matchedWordDic,"", inputStr);
