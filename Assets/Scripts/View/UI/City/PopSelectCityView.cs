@@ -24,6 +24,9 @@ public class PopSelectCityView : MonoBehaviour
     public Level3ChildToggleView level2Toggle;
     public Level3ChildToggleView level3Toggle;
     SelectCityController controller = SelectCityController.Instance();
+    //public ToggleGroup lv1TG;
+    //public ToggleGroup lv2TG;
+    //public ToggleGroup lv3TG;
 
     public void SetThisOff()
     {
@@ -49,6 +52,11 @@ public class PopSelectCityView : MonoBehaviour
         //controller.GetAllInternationalFirstCity();
         //DestroyAllToggleList();
         SetDomesticLevel1List();
+    }
+    public void OnInit()
+    {
+        SetDomesticLevel1List();
+
     }
     void OnToggleValueChanged(bool value)
     {
@@ -104,6 +112,30 @@ public class PopSelectCityView : MonoBehaviour
         }
         toggleLv3List.Clear();
     }
+    void SelectLv1FirstToggle()
+    {
+        if (toggleLv1List.Count > 0)
+        {
+            toggleLv1List[0].GetComponent<Toggle>().isOn = true;
+            toggleLv1List[0].GetComponent<Level3ChildToggleView>().OnPointerClick(null);
+        }
+    }
+    void SelectLv2FirstToggle()
+    {
+        if (toggleLv2List.Count > 0)
+        {
+            toggleLv2List[0].GetComponent<Toggle>().isOn = true;
+            toggleLv2List[0].GetComponent<Level3ChildToggleView>().OnPointerClick(null);
+        }
+    }
+    void SelectLv3FirstToggle()
+    {
+        if (toggleLv3List.Count > 0)
+        {
+            toggleLv3List[0].GetComponent<Toggle>().isOn = true;
+            toggleLv3List[0].GetComponent<Level3ChildToggleView>().OnPointerClick(null);
+        }
+    }
     void SetDomesticLevel1List()
     {
         DestroyAllToggleList();
@@ -111,15 +143,26 @@ public class PopSelectCityView : MonoBehaviour
         foreach (var city in fCitys)
         {
             GameObject inst = Instantiate(level1Toggle.gameObject, lv1Content, false);
-            inst.GetComponent<Level3ChildToggleView>().OnInit(city.Value);
+            inst.GetComponent<Level3ChildToggleView>().OnInit(city.Value, true);
             inst.SetActive(true);
             toggleLv1List.Add(inst);
         }
-
+        lv1Content.localPosition = Vector3.zero;
+        SelectLv1FirstToggle();
     }
     void SetInternationalLevel1List()
     {
-
+        DestroyAllToggleList();
+        Dictionary<int, FirstCityInfo> fCitys = controller.GetAllInternationalFirstCityInfos();
+        foreach (var city in fCitys)
+        {
+            GameObject inst = Instantiate(level1Toggle.gameObject, lv1Content, false);
+            inst.GetComponent<Level3ChildToggleView>().OnInit(city.Value, false);
+            inst.SetActive(true);
+            toggleLv1List.Add(inst);
+        }
+        lv1Content.localPosition = Vector3.zero;
+        SelectLv1FirstToggle();
 
     }
     public void SetDomesticLevel2List(CityInfo pCity)
@@ -131,15 +174,28 @@ public class PopSelectCityView : MonoBehaviour
         foreach (var city in fCitys)
         {
             GameObject inst = Instantiate(level2Toggle.gameObject, lv2Content, false);
-            inst.GetComponent<Level3ChildToggleView>().OnInit(city.Value);
+            inst.GetComponent<Level3ChildToggleView>().OnInit(city.Value, true);
             inst.SetActive(true);
             toggleLv2List.Add(inst);
         }
-
+        lv2Content.localPosition = Vector3.zero;
+        SelectLv2FirstToggle();
     }
     public void SetInternationalLevel2List(CityInfo pCity)
     {
+        DestroyToggleLv2List();
+        DestroyToggleLv3List();
 
+        Dictionary<int, SecondCityInfo> fCitys = controller.GetInternationalSecondCity(pCity.id);
+        foreach (var city in fCitys)
+        {
+            GameObject inst = Instantiate(level2Toggle.gameObject, lv2Content, false);
+            inst.GetComponent<Level3ChildToggleView>().OnInit(city.Value, false);
+            inst.SetActive(true);
+            toggleLv2List.Add(inst);
+        }
+        lv2Content.localPosition = Vector3.zero;
+        SelectLv2FirstToggle();
 
     }
     public void SetDomesticLevel3List(SecondCityInfo pCity)
@@ -149,16 +205,27 @@ public class PopSelectCityView : MonoBehaviour
         foreach (var city in fCitys)
         {
             GameObject inst = Instantiate(level3Toggle.gameObject, lv3Content, false);
-            inst.GetComponent<Level3ChildToggleView>().OnInit(city.Value);
+            inst.GetComponent<Level3ChildToggleView>().OnInit(city.Value, true);
             inst.SetActive(true);
             toggleLv3List.Add(inst);
         }
-
+        lv3Content.localPosition = Vector3.zero;
+        SelectLv3FirstToggle();
     }
-    public void SetInternationalLevel3List(CityInfo pCity)
+    public void SetInternationalLevel3List(SecondCityInfo pCity)
     {
 
-
+        DestroyToggleLv3List();
+        Dictionary<int, ThirdCityInfo> fCitys = controller.GetInternationalThirdCity(pCity);
+        foreach (var city in fCitys)
+        {
+            GameObject inst = Instantiate(level3Toggle.gameObject, lv3Content, false);
+            inst.GetComponent<Level3ChildToggleView>().OnInit(city.Value, false);
+            inst.SetActive(true);
+            toggleLv3List.Add(inst);
+        }
+        lv3Content.localPosition = Vector3.zero;
+        SelectLv3FirstToggle();
     }
     void OnSearchBtnClick()
     {
@@ -166,10 +233,11 @@ public class PopSelectCityView : MonoBehaviour
     }
     void OnBackBtnClick()
     {
-
+        mainView.SetThisOff();
     }
     void OnOkBtnClick()
     {
+        mainView.SetThisOff();
 
     }
     // Update is called once per frame

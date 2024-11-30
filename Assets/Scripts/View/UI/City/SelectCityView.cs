@@ -18,6 +18,12 @@ public class SelectCityView : MonoBehaviour
         popSelectCityView.SetThisOff();
         this.gameObject.SetActive(false);
     }
+    public void SetThisOn()
+    {
+        SetSelectAllCity(false);
+        this.gameObject.SetActive(true);
+        popSelectCityView.OnInit();
+    }
     // Start is called before the first frame update
     void Start()
     {

@@ -342,11 +342,19 @@ public class SelectCityController
                     //{"ja":"南極大陸","cn":"南极洲"}
                     string transName = pairs2[i]["translations"].ToString();
                     Match jaMc = r_jaRegex.Match(transName);
-                    string jaTransNameStr = jaMc.Value.Substring("\"ja\":".Length);
-                    jaTransNameStr = jaTransNameStr.Substring(0, jaTransNameStr.Length - 1);
+                    string jaTransNameStr = cInfo.name;
+                    if (!string.IsNullOrEmpty(jaMc.Value))
+                    {
+                        jaTransNameStr = jaMc.Value.Substring("\"ja\":".Length);
+                        jaTransNameStr = jaTransNameStr.Substring(0, jaTransNameStr.Length - 1).Replace("\"", "");
+                    }
+                    string cnTransNameStr = cInfo.name;
                     Match cnMc = r_cnRegex.Match(transName);
-                    string cnTransNameStr = cnMc.Value.Substring("\"cn\":".Length);
-                    cnTransNameStr = cnTransNameStr.Substring(0, cnTransNameStr.Length - 1);
+                    if (!string.IsNullOrEmpty(cnMc.Value))
+                    {
+                        cnTransNameStr = cnMc.Value.Substring("\"cn\":".Length);
+                        cnTransNameStr = cnTransNameStr.Substring(0, cnTransNameStr.Length - 1).Replace("\"", "");
+                    }
                     cInfo.transName = new Dictionary<Language, string>();
                     //            ZH_CN,      //简体中文
                     //ZH_TW,      //繁体中文
@@ -373,8 +381,18 @@ public class SelectCityController
         Debug.LogError("【性能】查询国外一级城市耗时：" + sw.ElapsedMilliseconds);
 #endif
     }
+    public Dictionary<int, SecondCityInfo> GetInternationalSecondCity(int countryID)
+    {
+        GetAllInternationalSecondAndThirdCity(countryID);
+        return internationalFirstCityInfos[countryID].secondCityInfoList;
+    }
+    public Dictionary<int, ThirdCityInfo> GetInternationalThirdCity(SecondCityInfo city)
+    {
+        GetAllInternationalSecondAndThirdCity(city.countryID);
+        return city.thirdCityInfoList;
+    }
     //获取所有国外一级城市的子二三级城市信息
-    public void GetAllInternationalSecondAndThirdCity(int countryID)
+    void GetAllInternationalSecondAndThirdCity(int countryID)
     {
         if (internationalFirstCityInfos[countryID].secondCityInfoList.Count > 0)
             return;
@@ -398,8 +416,17 @@ public class SelectCityController
                     cInfo = new SecondCityInfo();
                     cInfo.id = int.Parse(pairs2[i]["id"].ToString());
                     cInfo.name = pairs2[i]["name"].ToString();
-                    cInfo.lng = float.Parse(pairs2[i]["longitude"].ToString());
-                    cInfo.lat = float.Parse(pairs2[i]["latitude"].ToString());
+                    //??????????????有的国外二级城市没有经纬度
+                    if (pairs2[i]["longitude"] == null)//二级城市经纬度为空就取一级城市的经纬度
+                    {
+                        cInfo.lng = internationalFirstCityInfos[countryID].lng;
+                        cInfo.lat = internationalFirstCityInfos[countryID].lat;
+                    }
+                    else
+                    {
+                        cInfo.lng = float.Parse(pairs2[i]["longitude"].ToString());
+                        cInfo.lat = float.Parse(pairs2[i]["latitude"].ToString());
+                    }
                     cInfo.timeZoneOffset = internationalFirstCityInfos[countryID].timeZoneOffset;
                     cInfo.countryID = countryID;
                     internationalFirstCityInfos[countryID].secondCityInfoList.Add(cInfo.id, cInfo);
