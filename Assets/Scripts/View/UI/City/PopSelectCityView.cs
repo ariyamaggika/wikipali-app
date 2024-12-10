@@ -27,6 +27,8 @@ public class PopSelectCityView : MonoBehaviour
     //public ToggleGroup lv1TG;
     //public ToggleGroup lv2TG;
     //public ToggleGroup lv3TG;
+    public CityInfo currSelectCity;
+    public CalendarView calendarView;
 
     public void SetThisOff()
     {
@@ -237,8 +239,8 @@ public class PopSelectCityView : MonoBehaviour
     }
     void OnOkBtnClick()
     {
+        calendarView.SetIsCurrCity(false);
         mainView.SetThisOff();
-
     }
     // Update is called once per frame
     void Update()

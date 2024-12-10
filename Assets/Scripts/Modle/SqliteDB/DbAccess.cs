@@ -633,6 +633,16 @@ namespace Imdork.SQLite
             string query = "SELECT * FROM area_code WHERE level = 'province'";// ORDER BY code ASC";
             return ExecuteQuery(query);
         }
+        //根据经纬度查找范围内国内一级城市
+        public SqliteDataReader SelectAllDomesticFirstCityByLatLng(float lat, float lng)
+        {
+            float latMin = lat - SelectCityController.LAT_RANGE;
+            float latMax = lat + SelectCityController.LAT_RANGE;
+            float lngMin = lng - SelectCityController.LNG_RANGE;
+            float lngMax = lng + SelectCityController.LNG_RANGE;
+            string query = "SELECT * FROM area_code WHERE level = 'province' AND longitude > " + lngMin + " AND longitude < " + lngMax + " AND latitude > " + latMin + " AND latitude < " + latMax;// + " ORDER BY code ASC";//
+            return ExecuteQuery(query);
+        }
         //根据国内一级城市查找所有下属二级城市信息
         public SqliteDataReader SelectAllDomesticSecondCity(int codeMin, int codeMax)
         {
@@ -667,6 +677,16 @@ namespace Imdork.SQLite
             string query = "SELECT * FROM countries";
             return ExecuteQuery(query);
         }
+        //根据经纬度查找范围内国内一级城市
+        public SqliteDataReader SelectAllInternationalFirstCityByLatLng(float lat, float lng)
+        {
+            float latMin = lat - SelectCityController.LAT_RANGE;
+            float latMax = lat + SelectCityController.LAT_RANGE;
+            float lngMin = lat - SelectCityController.LNG_RANGE;
+            float lngMax = lat + SelectCityController.LNG_RANGE;
+            string query = "SELECT * FROM countries WHERE longitude > " + lngMin + " AND longitude < " + lngMax + " AND latitude > " + latMin + " AND latitude < " + latMax;// + " ORDER BY code ASC";//
+            return ExecuteQuery(query);
+        }
         //根据查找国外一级城市
         public SqliteDataReader SelectInternationalFirstCity(int countryID)
         {
@@ -696,7 +716,7 @@ namespace Imdork.SQLite
             return ExecuteQuery(query);
         }
         //模糊查找所有国外下属三级城市信息
-        public SqliteDataReader FuzzySearchInternationalCity(string input,int limit)
+        public SqliteDataReader FuzzySearchInternationalCity(string input, int limit)
         {
 
             string query = "SELECT * FROM 'cities' WHERE name LIKE " + "'%" + input + "%' limit " + limit.ToString();

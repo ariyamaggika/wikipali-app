@@ -51,7 +51,7 @@ public class Level3ChildToggleView : MonoBehaviour, IPointerClickHandler
         }
         else if (level == 3)
         {
-
+            popSelectCityView.currSelectCity = cityInfo;
         }
     }
     // Update is called once per frame

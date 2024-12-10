@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.Experimental.GlobalIllumination;
+using static SelectCityController;
 
 public class CalendarManager
 {
@@ -35,7 +36,7 @@ public class CalendarManager
         location = Input.location;
         //return (7.2f,80.1f );
 #if UNITY_EDITOR
-        return (24, 103);
+        return (24.91675f, 103.16268f);
         //return (43.9f, -79.2f);//美国
         //return (-79.2f, 43.9f);//美国
         //return (7.2f, 80.1f);
@@ -86,7 +87,5 @@ public class CalendarManager
             return true;
 
     }
-
-
 
 }
