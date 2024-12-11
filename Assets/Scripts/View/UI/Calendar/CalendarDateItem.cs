@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System;
 using static CalendarController;
 using System.Collections.Generic;
+using static SelectCityController;
 
 [CLSCompliant(false)]
 public class CalendarDateItem : MonoBehaviour
@@ -16,7 +17,7 @@ public class CalendarDateItem : MonoBehaviour
     public Image moon1Img;
     public Image moon2Img;
     public Image moon3Img;
-    public void Init(DateTime time, Dictionary<DateTime, string> trueCalenderYearHolidays)
+    public void Init(DateTime time, Dictionary<DateTime, string> trueCalenderYearHolidays,CityInfo cityInfo)
     {
         Calendar calender = new Calendar(time);
         chineseDateText.text = calender.ChineseDayString;
@@ -61,7 +62,7 @@ public class CalendarDateItem : MonoBehaviour
         }
         //chineseDateText.text = "<color=#F13423><b>" + myanmarDate.mmonth + "</b></color>";
         //经纬度
-        solarNoonText.text = CalendarManager.Instance().GetSunSolarNoonTime(time);
+        solarNoonText.text = CalendarManager.Instance().GetSunSolarNoonTime(time, cityInfo);
     }
 
     public void SetSolarNoonTextActive(bool active)

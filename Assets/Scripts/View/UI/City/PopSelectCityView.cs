@@ -239,7 +239,7 @@ public class PopSelectCityView : MonoBehaviour
     }
     void OnOkBtnClick()
     {
-        calendarView.SetIsCurrCity(false);
+        calendarView.SetSelectCity(currSelectCity);
         mainView.SetThisOff();
     }
     // Update is called once per frame

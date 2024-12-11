@@ -362,7 +362,7 @@ public class CalendarController : MonoBehaviour
                 if (thatDay.Month == firstDay.Month)
                 {
                     _dateItems[i].gameObject.SetActive(true);
-                    _dateItems[i].Init(thatDay, trueCalenderYearHolidays);
+                    _dateItems[i].Init(thatDay, trueCalenderYearHolidays, cView.nowCity);
                     //缅历不需要定位
                     if (CalendarManager.Instance().isLocationed())
                     {
@@ -395,7 +395,7 @@ public class CalendarController : MonoBehaviour
                             _dateItems[i].SetMoon(moon, "");
                         }
                         else if (calType == 2)
-                            _dateItems[i].SetMoon(MoonType.MoonOther,"");
+                            _dateItems[i].SetMoon(MoonType.MoonOther, "");
                         else if (calType == 3)
                         {
                             moon = GetMoonTypeFarmer(thatDay);
@@ -468,7 +468,7 @@ public class CalendarController : MonoBehaviour
         cView.SetEra(time);
         //不能用UTC时间
         if (CalendarManager.Instance().isLocationed())
-            cView.GetSunTime(time);//,0,0,0, DateTimeKind.Utc));
+            cView.GetSunTime(time, cView.nowCity);//,0,0,0, DateTimeKind.Utc));
 
     }
     public void ClickToday()

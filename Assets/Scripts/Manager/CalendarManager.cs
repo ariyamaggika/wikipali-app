@@ -44,21 +44,21 @@ public class CalendarManager
         return (location.lastData.latitude, location.lastData.longitude);
     }
     //日中时间
-    public string GetSunSolarNoonTime(DateTime time)//, float lat, float lng, float height = 0)
+    public string GetSunSolarNoonTime(DateTime time, CityInfo cityInfo)//, float lat, float lng, float height = 0)
     {
         //?为什么0h1m1s显示为前一天？，一定要1h1m1s才行
         DateTime newDate = new DateTime(time.Year, time.Month, time.Day, 1, 1, 0);
         SunPhase solarNoon = new SunPhase(SunPhaseName.SolarNoon, newDate);
         //时区时差
-        TimeSpan ts = TimeZoneInfo.Local.GetUtcOffset(newDate);
-        float lat = 24;
-        float lng = 103;
-        (lat, lng) = GetLocation();
+        TimeSpan ts = cityInfo.timeZoneOffset;
+        float lat = cityInfo.lat;
+        float lng = cityInfo.lng;
+        //(lat, lng) = GetLocation();
 
         var height = 0;// 2000;
         //Act
         var sunPhases = SunCalc.GetSunPhases(newDate, lat, lng, height, 0).ToList();
-        TimeSpan sp = TimeZoneInfo.Local.GetUtcOffset(time);
+        TimeSpan sp = new TimeSpan();// TimeZoneInfo.Local.GetUtcOffset(time);
         TimeSpan BaseUtcOffset = new TimeSpan(ts.Hours, ts.Minutes, ts.Seconds);
         sp = -BaseUtcOffset;// ts;// sp -  BaseUtcOffsetSriLanka;// targetTimeZone.GetUtcOffset(time);
 
