@@ -10,6 +10,10 @@ public class SelectCityView : MonoBehaviour
 
     public void SetSelectAllCity(bool isOn)
     {
+        if (isOn)
+        {
+            selectAllCityView.Init();
+        }
         selectAllCityView.gameObject.SetActive(isOn);
     }
     public void SetThisOff()

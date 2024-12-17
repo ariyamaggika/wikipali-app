@@ -716,10 +716,18 @@ namespace Imdork.SQLite
             return ExecuteQuery(query);
         }
         //模糊查找所有国外下属三级城市信息
-        public SqliteDataReader FuzzySearchInternationalCity(string input, int limit)
+        //???todo 是否需要查找一二级城市???
+        public SqliteDataReader FuzzySearchInternationalThirdCity(string input, int limit)
         {
 
             string query = "SELECT * FROM 'cities' WHERE name LIKE " + "'%" + input + "%' limit " + limit.ToString();
+            return ExecuteQuery(query);
+        }
+        //模糊查找所有国外一级城市信息根据翻译的名字
+        public SqliteDataReader FuzzySearchInternationalCityByTrans(string input, int limit)
+        {
+
+            string query = "SELECT * FROM 'countries' WHERE translations LIKE " + "'%" + input + "%' limit " + limit.ToString();
             return ExecuteQuery(query);
         }
         #endregion

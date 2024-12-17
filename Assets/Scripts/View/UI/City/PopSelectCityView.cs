@@ -231,7 +231,7 @@ public class PopSelectCityView : MonoBehaviour
     }
     void OnSearchBtnClick()
     {
-
+        mainView.SetSelectAllCity(true);
     }
     void OnBackBtnClick()
     {

@@ -283,6 +283,7 @@ public class SelectCityController
                     cInfo.timeZoneOffset = offset;
 
                     cInfo.transName = new Dictionary<Language, string>();
+                    res.Add(cInfo);
                 }
             }
             //matchedWordList = SelectDictLike(db, matchedWordDic,"", inputStr);
@@ -707,6 +708,7 @@ public class SelectCityController
     //模糊查询5个城市信息
     const int CITY_LIMIT_COUNT = 5;
     //模糊查询根据名字查国外城市信息
+    //???todo只有三级城市信息 是否需要查找一二级城市???
     public List<CityInfo> FuzzySearchInternationalCityInfoByName(string name)
     {
         List<CityInfo> res = new List<CityInfo>();
@@ -716,7 +718,7 @@ public class SelectCityController
 #endif
         dbManager.Getdb(db =>
         {
-            var reader2 = db.FuzzySearchInternationalCity(name, CITY_LIMIT_COUNT);
+            var reader2 = db.FuzzySearchInternationalThirdCity(name, CITY_LIMIT_COUNT);
             //调用SQLite工具  解析对应数据
             Dictionary<string, object>[] pairs2 = SQLiteTools.GetValues(reader2);
             if (pairs2 != null)
@@ -734,6 +736,77 @@ public class SelectCityController
                     //cInfo.timeZoneOffset = internationalFirstCityInfos[countryID].timeZoneOffset;
                     cInfo.countryID = int.Parse(pairs2[i]["country_id"].ToString());
                     cInfo.statesID = int.Parse(pairs2[i]["state_id"].ToString());
+                    res.Add(cInfo);
+                }
+            }
+            //matchedWordList = SelectDictLike(db, matchedWordDic,"", inputStr);
+        }, DBManager.CityDBurl);
+
+#if DEBUG_PERFORMANCE || UNITY_EDITOR
+        sw.Stop();
+        Debug.LogError("【性能】模糊查询国外城市耗时：" + sw.ElapsedMilliseconds);
+#endif
+        return res;
+    }
+    public List<CityInfo> FuzzySearchInternationalCityInfoByTransName(string name)
+    {
+        List<CityInfo> res = new List<CityInfo>();
+#if DEBUG_PERFORMANCE || UNITY_EDITOR
+        System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
+#endif
+        dbManager.Getdb(db =>
+        {
+            var reader2 = db.FuzzySearchInternationalCityByTrans(name, CITY_LIMIT_COUNT);
+            //调用SQLite工具  解析对应数据
+            Dictionary<string, object>[] pairs2 = SQLiteTools.GetValues(reader2);
+            if (pairs2 != null)
+            {
+                int length = pairs2.Length;
+                for (int i = 0; i < length; i++)
+                {
+                    CityInfo cInfo = new CityInfo();
+                    cInfo = new CityInfo();
+                    cInfo.id = int.Parse(pairs2[i]["id"].ToString());
+                    cInfo.name = pairs2[i]["name"].ToString();
+                    cInfo.lng = float.Parse(pairs2[i]["longitude"].ToString());
+                    cInfo.lat = float.Parse(pairs2[i]["latitude"].ToString());
+                    //{"ja":"南極大陸","cn":"南极洲"}
+                    string transName = pairs2[i]["translations"].ToString();
+                    Match jaMc = r_jaRegex.Match(transName);
+                    string jaTransNameStr = cInfo.name;
+                    if (!string.IsNullOrEmpty(jaMc.Value))
+                    {
+                        jaTransNameStr = jaMc.Value.Substring("\"ja\":".Length);
+                        jaTransNameStr = jaTransNameStr.Substring(0, jaTransNameStr.Length - 1).Replace("\"", "");
+                    }
+                    string cnTransNameStr = cInfo.name;
+                    Match cnMc = r_cnRegex.Match(transName);
+                    if (!string.IsNullOrEmpty(cnMc.Value))
+                    {
+                        cnTransNameStr = cnMc.Value.Substring("\"cn\":".Length);
+                        cnTransNameStr = cnTransNameStr.Substring(0, cnTransNameStr.Length - 1).Replace("\"", "");
+                    }
+                    cInfo.transName = new Dictionary<Language, string>();
+                    //            ZH_CN,      //简体中文
+                    //ZH_TW,      //繁体中文
+                    //EN,         //英语
+                    //JP,         //日语
+                    //MY,         //缅语
+                    //SI,         //新哈拉语（兰卡语）
+                    //TH          //泰语
+                    cInfo.transName.Add(Language.ZH_CN, cnTransNameStr);
+                    cInfo.transName.Add(Language.ZH_TW, cnTransNameStr);
+                    cInfo.transName.Add(Language.EN, cInfo.name);
+                    cInfo.transName.Add(Language.JP, jaTransNameStr);
+                    cInfo.transName.Add(Language.MY, cInfo.name);
+                    cInfo.transName.Add(Language.SI, cInfo.name);
+                    cInfo.transName.Add(Language.TH, cInfo.name);
+                    //todo 无时区信息
+                    //cInfo.timeZoneOffset = internationalFirstCityInfos[countryID].timeZoneOffset;
+                    //cInfo.countryID = int.Parse(pairs2[i]["country_id"].ToString());
+                    //cInfo.statesID = int.Parse(pairs2[i]["state_id"].ToString());
+                    res.Add(cInfo);
                 }
             }
             //matchedWordList = SelectDictLike(db, matchedWordDic,"", inputStr);
