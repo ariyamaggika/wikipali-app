@@ -57,8 +57,9 @@ public class PopSelectCityView : MonoBehaviour
     }
     public void OnInit()
     {
-        SetDomesticLevel1List();
-
+        //SetDomesticLevel1List();
+        //»áµ÷ÓÃOnToggleValueChanged()
+        domesticToggle.isOn = true;
     }
     void OnToggleValueChanged(bool value)
     {

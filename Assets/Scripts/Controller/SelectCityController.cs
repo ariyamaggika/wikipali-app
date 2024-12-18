@@ -614,7 +614,7 @@ public class SelectCityController
                     cInfo.id = int.Parse(pairs2[i]["id"].ToString());
                     cInfo.name = pairs2[i]["name"].ToString();
                     //??????????????有的国外二级城市没有经纬度
-                    if (pairs2[i]["longitude"] == null)//二级城市经纬度为空就取一级城市的经纬度
+                    if (!pairs2[i].ContainsKey("longitude") || pairs2[i]["longitude"] == null)//二级城市经纬度为空就取一级城市的经纬度
                     {
                         cInfo.lng = internationalFirstCityInfos[countryID].lng;
                         cInfo.lat = internationalFirstCityInfos[countryID].lat;
