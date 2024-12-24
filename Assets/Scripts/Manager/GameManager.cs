@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     public PreView preView;
     public LoadingTexView titleLoadingTexView;
     public PopCommandView popCommandView;
-
+    public GeoTimeZone.TimeZoneLookup timeZoneLookup;
     public string appVersion;//= Application.version;
     //public bool canUpdate = false;
     void Awake()
@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         ArticleManager.Instance().articleStarGroup = articleStarGroup;
         ArticleManager.Instance().articleView = articleView;
         LoadingViewManager.Instance().titleLoadingView = titleLoadingTexView;
+        SelectCityController.Instance().InitTimeZoneLookup(timeZoneLookup);
     }
     bool isStartUnZipProgress = false;
     bool isDownLoadProgress = false;

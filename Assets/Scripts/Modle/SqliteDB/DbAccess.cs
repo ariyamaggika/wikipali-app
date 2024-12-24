@@ -730,6 +730,24 @@ namespace Imdork.SQLite
             string query = "SELECT * FROM 'countries' WHERE translations LIKE " + "'%" + input + "%' limit " + limit.ToString();
             return ExecuteQuery(query);
         }
+        //timeZoneID转微软timeZoneID
+        public SqliteDataReader SearchMSTimeZoneIDByTimeZoneID(string input)
+        {
+            string query = "SELECT * FROM 'mapTimezones' WHERE type = '" + input + "'"/*+ " ORDER BY code ASC"*/;
+            return ExecuteQuery(query);
+        }
+        //timeZoneID转微软timeZoneID
+        //public SqliteDataReader SearchMSTimeZoneIDByTimeZoneID(string input)
+        //{
+        //    string query = "SELECT * FROM 'mapTimezones' WHERE type LIKE " + "'%" + input + "%'"/*+ " ORDER BY code ASC"*/;
+        //    return ExecuteQuery(query);
+        //}
+        //cCode转微软timeZoneID
+        public SqliteDataReader SearchMSTimeZoneIDByCcode(string input)
+        {
+            string query = "SELECT * FROM 'mapTimezones' WHERE territory = '" + input + "'"/*+ " ORDER BY code ASC"*/;
+            return ExecuteQuery(query);
+        }
         #endregion
         #endregion
         #endregion

@@ -14,6 +14,7 @@ using static SettingManager;
 
 public class SelectCityController
 {
+    public static GeoTimeZone.TimeZoneLookup tzLookup;// = new GeoTimeZone.TimeZoneLookup();
     //懒汉式单例类.在第一次调用的时候实例化自己 
     private SelectCityController() { }
     private static SelectCityController controller = null;
@@ -25,6 +26,12 @@ public class SelectCityController
             controller = new SelectCityController();
         }
         return controller;
+    }
+    public void InitTimeZoneLookup(GeoTimeZone.TimeZoneLookup timeZoneLookup)
+    {
+        tzLookup = timeZoneLookup;
+        tzLookup.LoadData();
+
     }
     public DBManager dbManager = DBManager.Instance();
     //策略，First全部读取储存，second，third饿汉式， 点到First时一起读取。
@@ -59,6 +66,7 @@ public class SelectCityController
         //city->state->country
         public int countryID;           //国外二级城市的父城市ID
         public int statesID;           //国外三级城市的父城市ID
+        public string countryCode;//国外城市获取时区用
     }
     Dictionary<int, FirstCityInfo> domesticFirstCityInfos = new Dictionary<int, FirstCityInfo>();//国内
     Dictionary<int, FirstCityInfo> internationalFirstCityInfos = new Dictionary<int, FirstCityInfo>();//国外<id，信息>
@@ -405,6 +413,38 @@ public class SelectCityController
                     cInfo.name = pairs3[i]["name"].ToString();
                     cInfo.lng = nLng;
                     cInfo.lat = nLat;
+
+                    //try
+                    //{
+
+                    //    GeoTimeZone.TimeZoneResult tzResult = tzLookup.GetTimeZone(cInfo.lat, cInfo.lng);
+                    //    Debug.LogError(tzResult.Result);
+                    //    //TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(tzResult.Result);
+                    //    TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(GetMSTZID(tzResult.Result));
+                    //    //if (info != null)
+                    //    //    Debug.LogError("@@@@" + info.BaseUtcOffset.TotalSeconds);
+                    //    if (info != null)
+                    //        cInfo.timeZoneOffset = TimeSpan.FromSeconds(info.BaseUtcOffset.TotalSeconds);
+                    //    else
+                    //        Debug.LogError("TimeZoneInfo is null!!!!!!!!!!!!!!!!!!!!!!!!" + tzResult.Result);
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    try
+                    //    {
+                    //        TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(GetMSTZIDByCCode(cInfo.countryCode));
+                    //        //if (info != null)
+                    //        //    Debug.LogError("@@@@" + info.BaseUtcOffset.TotalSeconds);
+                    //        if (info != null)
+                    //            cInfo.timeZoneOffset = TimeSpan.FromSeconds(info.BaseUtcOffset.TotalSeconds);
+                    //        else
+                    //            Debug.LogError("GetMSTZIDByCCode is null!!!!!!!!!!!!!!!!!!!!!!!!" + cInfo.countryCode);
+                    //    }
+                    //    catch (Exception e2)
+                    //    {
+                    //        Debug.LogError(e);
+
+                    //        Debug.LogError(e2);
                     //[{"zoneName":"Indian/Kerguelen","gmtOffset":18000,"gmtOffsetName":"UTC+05:00","abbreviation":"TFT","tzName":"French Southern and Antarctic Time"}]
                     string timezones = pairs3[i]["timezones"].ToString();
                     Match mc = r_timezoneRegex.Match(timezones);
@@ -413,6 +453,10 @@ public class SelectCityController
                     int gmtoffset = int.Parse(gmtoffsetStr);
                     TimeSpan offset = TimeSpan.FromSeconds(gmtoffset);
                     cInfo.timeZoneOffset = offset;
+                    //    }
+                    //}
+
+
                     //{"ja":"南極大陸","cn":"南极洲"}
                     string transName = pairs3[i]["translations"].ToString();
                     Match jaMc = r_jaRegex.Match(transName);
@@ -526,16 +570,53 @@ public class SelectCityController
                     cInfo = new FirstCityInfo();
                     cInfo.id = int.Parse(pairs2[i]["id"].ToString());
                     cInfo.name = pairs2[i]["name"].ToString();
+                    cInfo.countryCode = pairs2[i]["iso2"].ToString();
+                    //?????经纬度用double??????
                     cInfo.lng = float.Parse(pairs2[i]["longitude"].ToString());
                     cInfo.lat = float.Parse(pairs2[i]["latitude"].ToString());
+                    //try
+                    //{
+
+                    //    GeoTimeZone.TimeZoneResult tzResult = tzLookup.GetTimeZone(cInfo.lat, cInfo.lng);
+                    //    Debug.LogError(tzResult.Result);
+                    //    //TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(tzResult.Result);
+                    //    TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(GetMSTZID(tzResult.Result));
+                    //    //if (info != null)
+                    //    //    Debug.LogError("@@@@" + info.BaseUtcOffset.TotalSeconds);
+                    //    if (info != null)
+                    //        cInfo.timeZoneOffset = TimeSpan.FromSeconds(info.BaseUtcOffset.TotalSeconds);
+                    //    else
+                    //        Debug.LogError("TimeZoneInfo is null!!!!!!!!!!!!!!!!!!!!!!!!" + tzResult.Result);
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    try
+                    //    {
+                    //        TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(GetMSTZIDByCCode(cInfo.countryCode));
+                    //        //if (info != null)
+                    //        //    Debug.LogError("@@@@" + info.BaseUtcOffset.TotalSeconds);
+                    //        if (info != null)
+                    //            cInfo.timeZoneOffset = TimeSpan.FromSeconds(info.BaseUtcOffset.TotalSeconds);
+                    //        else
+                    //            Debug.LogError("GetMSTZIDByCCode is null!!!!!!!!!!!!!!!!!!!!!!!!" + cInfo.countryCode);
+                    //    }
+                    //    catch (Exception e2)
+                    //    {
+                    //        Debug.LogError(e);
+                    //        Debug.LogError(e2);
                     //[{"zoneName":"Indian/Kerguelen","gmtOffset":18000,"gmtOffsetName":"UTC+05:00","abbreviation":"TFT","tzName":"French Southern and Antarctic Time"}]
                     string timezones = pairs2[i]["timezones"].ToString();
                     Match mc = r_timezoneRegex.Match(timezones);
                     string gmtoffsetStr = mc.Value.Substring("\"gmtOffset\":".Length);
                     gmtoffsetStr = gmtoffsetStr.Substring(0, gmtoffsetStr.Length - 1);
+                    //Debug.LogError("&&&&" + gmtoffsetStr);
                     int gmtoffset = int.Parse(gmtoffsetStr);
                     TimeSpan offset = TimeSpan.FromSeconds(gmtoffset);
                     cInfo.timeZoneOffset = offset;
+                    //    }
+                    //}
+
+
                     //{"ja":"南極大陸","cn":"南极洲"}
                     string transName = pairs2[i]["translations"].ToString();
                     Match jaMc = r_jaRegex.Match(transName);
@@ -612,6 +693,8 @@ public class SelectCityController
                     SecondCityInfo cInfo = new SecondCityInfo();
                     cInfo = new SecondCityInfo();
                     cInfo.id = int.Parse(pairs2[i]["id"].ToString());
+                    cInfo.countryCode = pairs2[i]["country_code"].ToString();
+
                     cInfo.name = pairs2[i]["name"].ToString();
                     //??????????????有的国外二级城市没有经纬度
                     if (!pairs2[i].ContainsKey("longitude") || pairs2[i]["longitude"] == null)//二级城市经纬度为空就取一级城市的经纬度
@@ -642,6 +725,7 @@ public class SelectCityController
                 cInfo.fullName = internationalFirstCityInfos[countryID].fullName;
                 cInfo.lng = internationalFirstCityInfos[countryID].lng;
                 cInfo.lat = internationalFirstCityInfos[countryID].lat;
+                cInfo.countryCode = internationalFirstCityInfos[countryID].countryCode;
 
                 cInfo.timeZoneOffset = internationalFirstCityInfos[countryID].timeZoneOffset;
                 cInfo.countryID = countryID;
@@ -665,6 +749,7 @@ public class SelectCityController
                     cInfo.timeZoneOffset = internationalFirstCityInfos[countryID].timeZoneOffset;
                     cInfo.countryID = countryID;
                     cInfo.statesID = int.Parse(pairs3[i]["state_id"].ToString());
+                    cInfo.countryCode = pairs3[i]["country_code"].ToString();
 
                     internationalFirstCityInfos[countryID].secondCityInfoList[cInfo.statesID].thirdCityInfoList.Add(cInfo.id, cInfo);
                 }
@@ -686,6 +771,7 @@ public class SelectCityController
                 cInfo.fullName = city.Value.fullName;
                 cInfo.lng = city.Value.lng;
                 cInfo.lat = city.Value.lat;
+                cInfo.countryCode = city.Value.countryCode;
 
                 cInfo.timeZoneOffset = city.Value.timeZoneOffset;
 
@@ -730,10 +816,46 @@ public class SelectCityController
                     cInfo = new CityInfo();
                     cInfo.id = int.Parse(pairs2[i]["id"].ToString());
                     cInfo.name = pairs2[i]["name"].ToString();
+                    cInfo.countryCode = pairs2[i]["country_code"].ToString();
+
                     cInfo.lng = float.Parse(pairs2[i]["longitude"].ToString());
                     cInfo.lat = float.Parse(pairs2[i]["latitude"].ToString());
                     //todo 无时区信息
-                    //cInfo.timeZoneOffset = internationalFirstCityInfos[countryID].timeZoneOffset;
+                    //try
+                    //{
+
+                    //    GeoTimeZone.TimeZoneResult tzResult = tzLookup.GetTimeZone(cInfo.lat, cInfo.lng);
+                    //    Debug.LogError(tzResult.Result);
+                    //    //TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(tzResult.Result);
+                    //    TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(GetMSTZID(tzResult.Result));
+                    //    //if (info != null)
+                    //    //    Debug.LogError("@@@@" + info.BaseUtcOffset.TotalSeconds);
+                    //    if (info != null)
+                    //        cInfo.timeZoneOffset = TimeSpan.FromSeconds(info.BaseUtcOffset.TotalSeconds);
+                    //    else
+                    //        Debug.LogError("TimeZoneInfo is null!!!!!!!!!!!!!!!!!!!!!!!!" + tzResult.Result);
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    Debug.LogError(e);
+                    //    try
+                    //    {
+                    //        TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(GetMSTZIDByCCode(cInfo.countryCode));
+                    //        //if (info != null)
+                    //        //    Debug.LogError("@@@@" + info.BaseUtcOffset.TotalSeconds);
+                    //        if (info != null)
+                    //            cInfo.timeZoneOffset = TimeSpan.FromSeconds(info.BaseUtcOffset.TotalSeconds);
+                    //        else
+                    //            Debug.LogError("GetMSTZIDByCCode is null!!!!!!!!!!!!!!!!!!!!!!!!" + cInfo.countryCode);
+                    //    }
+                    //    catch (Exception e2)
+                    //    {
+                    //        Debug.LogError(e);
+                    //        Debug.LogError(e2);
+                    //    }
+                    //}
+
+                    //cInfo.timeZoneOffset = 
                     cInfo.countryID = int.Parse(pairs2[i]["country_id"].ToString());
                     cInfo.statesID = int.Parse(pairs2[i]["state_id"].ToString());
                     res.Add(cInfo);
@@ -771,6 +893,8 @@ public class SelectCityController
                     cInfo.name = pairs2[i]["name"].ToString();
                     cInfo.lng = float.Parse(pairs2[i]["longitude"].ToString());
                     cInfo.lat = float.Parse(pairs2[i]["latitude"].ToString());
+                    cInfo.countryCode = pairs2[i]["iso2"].ToString();
+
                     //{"ja":"南極大陸","cn":"南极洲"}
                     string transName = pairs2[i]["translations"].ToString();
                     Match jaMc = r_jaRegex.Match(transName);
@@ -832,14 +956,47 @@ public class SelectCityController
             Dictionary<string, object> pairs2 = SQLiteTools.GetValue(reader2);
             if (pairs2 != null)
             {
-                string timezones = pairs2["timezones"].ToString();
-                Match mc = r_timezoneRegex.Match(timezones);
-                string gmtoffsetStr = mc.Value.Substring("\"gmtOffset\":".Length);
-                gmtoffsetStr = gmtoffsetStr.Substring(0, gmtoffsetStr.Length - 1);
-                int gmtoffset = int.Parse(gmtoffsetStr);
-                TimeSpan offset = TimeSpan.FromSeconds(gmtoffset);
-                third.timeZoneOffset = offset;
 
+                //try
+                //{
+
+                //    GeoTimeZone.TimeZoneResult tzResult = tzLookup.GetTimeZone(third.lat, third.lng);
+                //    Debug.LogError(tzResult.Result);
+                //    //TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(tzResult.Result);
+                //    TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(GetMSTZID(tzResult.Result));
+                //    //if (info != null)
+                //    //    Debug.LogError("@@@@" + info.BaseUtcOffset.TotalSeconds);
+                //    if (info != null)
+                //        third.timeZoneOffset = TimeSpan.FromSeconds(info.BaseUtcOffset.TotalSeconds);
+                //    else
+                //        Debug.LogError("TimeZoneInfo is null!!!!!!!!!!!!!!!!!!!!!!!!" + tzResult.Result);
+                //}
+                //catch (Exception e)
+                //{
+                //    try
+                //    {
+                //        TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(GetMSTZIDByCCode(third.countryCode));
+                //        //if (info != null)
+                //        //    Debug.LogError("@@@@" + info.BaseUtcOffset.TotalSeconds);
+                //        if (info != null)
+                //            third.timeZoneOffset = TimeSpan.FromSeconds(info.BaseUtcOffset.TotalSeconds);
+                //        else
+                //            Debug.LogError("GetMSTZIDByCCode is null!!!!!!!!!!!!!!!!!!!!!!!!" + third.countryCode);
+                //    }
+                //    catch (Exception e2)
+                //    {
+                //        Debug.LogError(e);
+                //        Debug.LogError(e2);
+                        string timezones = pairs2["timezones"].ToString();
+                        Match mc = r_timezoneRegex.Match(timezones);
+                        string gmtoffsetStr = mc.Value.Substring("\"gmtOffset\":".Length);
+                        gmtoffsetStr = gmtoffsetStr.Substring(0, gmtoffsetStr.Length - 1);
+                        int gmtoffset = int.Parse(gmtoffsetStr);
+                        TimeSpan offset = TimeSpan.FromSeconds(gmtoffset);
+                        third.timeZoneOffset = offset;
+                //    }
+
+                //}
                 //todo 无时区信息
                 //cInfo.timeZoneOffset = internationalFirstCityInfos[countryID].timeZoneOffset;
                 //cInfo.countryID = pairs2;
@@ -852,6 +1009,40 @@ public class SelectCityController
         sw.Stop();
         Debug.LogError("【性能】查询国外一级城市耗时：" + sw.ElapsedMilliseconds);
 #endif
+    }
+    #endregion
+    #region timeZoneID转换
+    public string GetMSTZID(string tz)
+    {
+
+        string res = "";
+        dbManager.Getdb(db =>
+        {
+            var readerPali = db.SearchMSTimeZoneIDByTimeZoneID(tz);
+            Dictionary<string, object> paliPair = SQLiteTools.GetValue(readerPali);
+            if (paliPair != null)
+            {
+                res = paliPair["other"].ToString();
+            }
+
+        }, DBManager.CityDBurl);
+        return res;
+    }
+    public string GetMSTZIDByCCode(string tz)
+    {
+
+        string res = "";
+        dbManager.Getdb(db =>
+        {
+            var readerPali = db.SearchMSTimeZoneIDByCcode(tz);
+            Dictionary<string, object> paliPair = SQLiteTools.GetValue(readerPali);
+            if (paliPair != null)
+            {
+                res = paliPair["other"].ToString();
+            }
+
+        }, DBManager.CityDBurl);
+        return res;
     }
     #endregion
 }
