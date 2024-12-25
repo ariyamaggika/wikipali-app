@@ -526,6 +526,7 @@ public class SelectCityController
                 //}
                 #endregion
                 #region 直接插三级城市
+                //todo 没有3级城市，只有1级城市的就查不到了
                 minDistance = 999999;
                 var reader3 = db.SelectAllInternationalThirdCityByLatLng(lat, lng);
                 //调用SQLite工具  解析对应数据
