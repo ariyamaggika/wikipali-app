@@ -304,8 +304,8 @@ public class SelectCityController
         return res;
     }
 
-    public static int LAT_RANGE = 10;
-    public static int LNG_RANGE = 10;
+    public static int LAT_RANGE = 2;
+    public static int LNG_RANGE = 2;
     public CityInfo GetCurrCityInfo(float lat, float lng)
     {
         CityInfo minCity = null;
@@ -392,7 +392,142 @@ public class SelectCityController
             }
             else//身在国外
             {
-                var reader3 = db.SelectAllInternationalFirstCityByLatLng(lat, lng);
+                //边界容易在中国境内，todo:直接查三级城市
+                #region 查一级城市
+                //minDistance = 999999;
+                //var reader3 = db.SelectAllInternationalFirstCityByLatLng(lat, lng);
+                ////调用SQLite工具  解析对应数据
+                //Dictionary<string, object>[] pairs3 = SQLiteTools.GetValues(reader3);
+                //int length = pairs3.Length;
+                //for (int i = 0; i < length; i++)
+                //{
+                //    float nLng = float.Parse(pairs3[i]["longitude"].ToString());
+                //    float nLat = float.Parse(pairs3[i]["latitude"].ToString());
+                //    float distance = Mathf.Abs(lng - nLng) + Mathf.Abs(lat - nLat);
+                //    if (distance < minDistance)
+                //    {
+                //        minDistance = distance;
+                //    }
+                //    else
+                //        continue;
+                //    FirstCityInfo cInfo = new FirstCityInfo();
+                //    cInfo = new FirstCityInfo();
+                //    cInfo.id = int.Parse(pairs3[i]["id"].ToString());
+                //    cInfo.name = pairs3[i]["name"].ToString();
+                //    cInfo.lng = nLng;
+                //    cInfo.lat = nLat;
+
+                //    //try
+                //    //{
+
+                //    //    GeoTimeZone.TimeZoneResult tzResult = tzLookup.GetTimeZone(cInfo.lat, cInfo.lng);
+                //    //    Debug.LogError(tzResult.Result);
+                //    //    //TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(tzResult.Result);
+                //    //    TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(GetMSTZID(tzResult.Result));
+                //    //    //if (info != null)
+                //    //    //    Debug.LogError("@@@@" + info.BaseUtcOffset.TotalSeconds);
+                //    //    if (info != null)
+                //    //        cInfo.timeZoneOffset = TimeSpan.FromSeconds(info.BaseUtcOffset.TotalSeconds);
+                //    //    else
+                //    //        Debug.LogError("TimeZoneInfo is null!!!!!!!!!!!!!!!!!!!!!!!!" + tzResult.Result);
+                //    //}
+                //    //catch (Exception e)
+                //    //{
+                //    //    try
+                //    //    {
+                //    //        TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(GetMSTZIDByCCode(cInfo.countryCode));
+                //    //        //if (info != null)
+                //    //        //    Debug.LogError("@@@@" + info.BaseUtcOffset.TotalSeconds);
+                //    //        if (info != null)
+                //    //            cInfo.timeZoneOffset = TimeSpan.FromSeconds(info.BaseUtcOffset.TotalSeconds);
+                //    //        else
+                //    //            Debug.LogError("GetMSTZIDByCCode is null!!!!!!!!!!!!!!!!!!!!!!!!" + cInfo.countryCode);
+                //    //    }
+                //    //    catch (Exception e2)
+                //    //    {
+                //    //        Debug.LogError(e);
+
+                //    //        Debug.LogError(e2);
+                //    //[{"zoneName":"Indian/Kerguelen","gmtOffset":18000,"gmtOffsetName":"UTC+05:00","abbreviation":"TFT","tzName":"French Southern and Antarctic Time"}]
+                //    string timezones = pairs3[i]["timezones"].ToString();
+                //    Match mc = r_timezoneRegex.Match(timezones);
+                //    string gmtoffsetStr = mc.Value.Substring("\"gmtOffset\":".Length);
+                //    gmtoffsetStr = gmtoffsetStr.Substring(0, gmtoffsetStr.Length - 1);
+                //    int gmtoffset = int.Parse(gmtoffsetStr);
+                //    TimeSpan offset = TimeSpan.FromSeconds(gmtoffset);
+                //    cInfo.timeZoneOffset = offset;
+                //    //    }
+                //    //}
+
+
+                //    //{"ja":"南極大陸","cn":"南极洲"}
+                //    string transName = pairs3[i]["translations"].ToString();
+                //    Match jaMc = r_jaRegex.Match(transName);
+                //    string jaTransNameStr = cInfo.name;
+                //    if (!string.IsNullOrEmpty(jaMc.Value))
+                //    {
+                //        jaTransNameStr = jaMc.Value.Substring("\"ja\":".Length);
+                //        jaTransNameStr = jaTransNameStr.Substring(0, jaTransNameStr.Length - 1).Replace("\"", "");
+                //    }
+                //    string cnTransNameStr = cInfo.name;
+                //    Match cnMc = r_cnRegex.Match(transName);
+                //    if (!string.IsNullOrEmpty(cnMc.Value))
+                //    {
+                //        cnTransNameStr = cnMc.Value.Substring("\"cn\":".Length);
+                //        cnTransNameStr = cnTransNameStr.Substring(0, cnTransNameStr.Length - 1).Replace("\"", "");
+                //    }
+                //    cInfo.transName = new Dictionary<Language, string>();
+                //    //            ZH_CN,      //简体中文
+                //    //ZH_TW,      //繁体中文
+                //    //EN,         //英语
+                //    //JP,         //日语
+                //    //MY,         //缅语
+                //    //SI,         //新哈拉语（兰卡语）
+                //    //TH          //泰语
+                //    cInfo.transName.Add(Language.ZH_CN, cnTransNameStr);
+                //    cInfo.transName.Add(Language.ZH_TW, cnTransNameStr);
+                //    cInfo.transName.Add(Language.EN, cInfo.name);
+                //    cInfo.transName.Add(Language.JP, jaTransNameStr);
+                //    cInfo.transName.Add(Language.MY, cInfo.name);
+                //    cInfo.transName.Add(Language.SI, cInfo.name);
+                //    cInfo.transName.Add(Language.TH, cInfo.name);
+                //    minCity = cInfo;
+                //}
+                //minDistance = 999999;
+                ////todo 排序选一个最近的，/*然后获取所有二级城市，再选一个最近的，*/然后获取所有三级城市，再选一个最近的
+                //if (minCity != null)
+                //{
+                //    var reader31 = db.SelectAllInternationalFirstThirdCity(minCity.id);
+                //    //调用SQLite工具  解析对应数据
+                //    Dictionary<string, object>[] pairs31 = SQLiteTools.GetValues(reader31);
+                //    length = pairs31.Length;
+                //    for (int i = 0; i < length; i++)
+                //    {
+                //        float nLng = float.Parse(pairs31[i]["longitude"].ToString());
+                //        float nLat = float.Parse(pairs31[i]["latitude"].ToString());
+                //        float distance = Mathf.Abs(lng - nLng) + Mathf.Abs(lat - nLat);
+                //        if (distance < minDistance)
+                //        {
+                //            minDistance = distance;
+                //        }
+                //        else
+                //            continue;
+                //        ThirdCityInfo cInfo = new ThirdCityInfo();
+                //        cInfo = new ThirdCityInfo();
+                //        cInfo.id = int.Parse(pairs31[i]["id"].ToString());
+                //        cInfo.name = pairs31[i]["name"].ToString();
+                //        cInfo.lng = nLng;
+                //        cInfo.lat = nLat;
+                //        cInfo.timeZoneOffset = minCity.timeZoneOffset;
+                //        cInfo.countryID = minCity.id;
+                //        cInfo.statesID = int.Parse(pairs31[i]["state_id"].ToString());
+                //        minCity = cInfo;
+                //    }
+                //}
+                #endregion
+                #region 直接插三级城市
+                minDistance = 999999;
+                var reader3 = db.SelectAllInternationalThirdCityByLatLng(lat, lng);
                 //调用SQLite工具  解析对应数据
                 Dictionary<string, object>[] pairs3 = SQLiteTools.GetValues(reader3);
                 int length = pairs3.Length;
@@ -407,120 +542,18 @@ public class SelectCityController
                     }
                     else
                         continue;
-                    FirstCityInfo cInfo = new FirstCityInfo();
-                    cInfo = new FirstCityInfo();
+                    ThirdCityInfo cInfo = new ThirdCityInfo();
+                    cInfo = new ThirdCityInfo();
                     cInfo.id = int.Parse(pairs3[i]["id"].ToString());
                     cInfo.name = pairs3[i]["name"].ToString();
                     cInfo.lng = nLng;
                     cInfo.lat = nLat;
-
-                    //try
-                    //{
-
-                    //    GeoTimeZone.TimeZoneResult tzResult = tzLookup.GetTimeZone(cInfo.lat, cInfo.lng);
-                    //    Debug.LogError(tzResult.Result);
-                    //    //TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(tzResult.Result);
-                    //    TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(GetMSTZID(tzResult.Result));
-                    //    //if (info != null)
-                    //    //    Debug.LogError("@@@@" + info.BaseUtcOffset.TotalSeconds);
-                    //    if (info != null)
-                    //        cInfo.timeZoneOffset = TimeSpan.FromSeconds(info.BaseUtcOffset.TotalSeconds);
-                    //    else
-                    //        Debug.LogError("TimeZoneInfo is null!!!!!!!!!!!!!!!!!!!!!!!!" + tzResult.Result);
-                    //}
-                    //catch (Exception e)
-                    //{
-                    //    try
-                    //    {
-                    //        TimeZoneInfo info = TimeZoneInfo.FindSystemTimeZoneById(GetMSTZIDByCCode(cInfo.countryCode));
-                    //        //if (info != null)
-                    //        //    Debug.LogError("@@@@" + info.BaseUtcOffset.TotalSeconds);
-                    //        if (info != null)
-                    //            cInfo.timeZoneOffset = TimeSpan.FromSeconds(info.BaseUtcOffset.TotalSeconds);
-                    //        else
-                    //            Debug.LogError("GetMSTZIDByCCode is null!!!!!!!!!!!!!!!!!!!!!!!!" + cInfo.countryCode);
-                    //    }
-                    //    catch (Exception e2)
-                    //    {
-                    //        Debug.LogError(e);
-
-                    //        Debug.LogError(e2);
-                    //[{"zoneName":"Indian/Kerguelen","gmtOffset":18000,"gmtOffsetName":"UTC+05:00","abbreviation":"TFT","tzName":"French Southern and Antarctic Time"}]
-                    string timezones = pairs3[i]["timezones"].ToString();
-                    Match mc = r_timezoneRegex.Match(timezones);
-                    string gmtoffsetStr = mc.Value.Substring("\"gmtOffset\":".Length);
-                    gmtoffsetStr = gmtoffsetStr.Substring(0, gmtoffsetStr.Length - 1);
-                    int gmtoffset = int.Parse(gmtoffsetStr);
-                    TimeSpan offset = TimeSpan.FromSeconds(gmtoffset);
-                    cInfo.timeZoneOffset = offset;
-                    //    }
-                    //}
-
-
-                    //{"ja":"南極大陸","cn":"南极洲"}
-                    string transName = pairs3[i]["translations"].ToString();
-                    Match jaMc = r_jaRegex.Match(transName);
-                    string jaTransNameStr = cInfo.name;
-                    if (!string.IsNullOrEmpty(jaMc.Value))
-                    {
-                        jaTransNameStr = jaMc.Value.Substring("\"ja\":".Length);
-                        jaTransNameStr = jaTransNameStr.Substring(0, jaTransNameStr.Length - 1).Replace("\"", "");
-                    }
-                    string cnTransNameStr = cInfo.name;
-                    Match cnMc = r_cnRegex.Match(transName);
-                    if (!string.IsNullOrEmpty(cnMc.Value))
-                    {
-                        cnTransNameStr = cnMc.Value.Substring("\"cn\":".Length);
-                        cnTransNameStr = cnTransNameStr.Substring(0, cnTransNameStr.Length - 1).Replace("\"", "");
-                    }
-                    cInfo.transName = new Dictionary<Language, string>();
-                    //            ZH_CN,      //简体中文
-                    //ZH_TW,      //繁体中文
-                    //EN,         //英语
-                    //JP,         //日语
-                    //MY,         //缅语
-                    //SI,         //新哈拉语（兰卡语）
-                    //TH          //泰语
-                    cInfo.transName.Add(Language.ZH_CN, cnTransNameStr);
-                    cInfo.transName.Add(Language.ZH_TW, cnTransNameStr);
-                    cInfo.transName.Add(Language.EN, cInfo.name);
-                    cInfo.transName.Add(Language.JP, jaTransNameStr);
-                    cInfo.transName.Add(Language.MY, cInfo.name);
-                    cInfo.transName.Add(Language.SI, cInfo.name);
-                    cInfo.transName.Add(Language.TH, cInfo.name);
+                    //cInfo.timeZoneOffset = minCity.timeZoneOffset;
+                    cInfo.countryID = int.Parse(pairs3[i]["country_id"].ToString());
+                    cInfo.statesID = int.Parse(pairs3[i]["state_id"].ToString());
                     minCity = cInfo;
                 }
-                minDistance = 999999;
-                //todo 排序选一个最近的，/*然后获取所有二级城市，再选一个最近的，*/然后获取所有三级城市，再选一个最近的
-                if (minCity != null)
-                {
-                    var reader31 = db.SelectAllInternationalFirstThirdCity(minCity.id);
-                    //调用SQLite工具  解析对应数据
-                    Dictionary<string, object>[] pairs31 = SQLiteTools.GetValues(reader31);
-                    length = pairs31.Length;
-                    for (int i = 0; i < length; i++)
-                    {
-                        float nLng = float.Parse(pairs31[i]["longitude"].ToString());
-                        float nLat = float.Parse(pairs31[i]["latitude"].ToString());
-                        float distance = Mathf.Abs(lng - nLng) + Mathf.Abs(lat - nLat);
-                        if (distance < minDistance)
-                        {
-                            minDistance = distance;
-                        }
-                        else
-                            continue;
-                        ThirdCityInfo cInfo = new ThirdCityInfo();
-                        cInfo = new ThirdCityInfo();
-                        cInfo.id = int.Parse(pairs31[i]["id"].ToString());
-                        cInfo.name = pairs31[i]["name"].ToString();
-                        cInfo.lng = nLng;
-                        cInfo.lat = nLat;
-                        cInfo.timeZoneOffset = minCity.timeZoneOffset;
-                        cInfo.countryID = minCity.id;
-                        cInfo.statesID = int.Parse(pairs31[i]["state_id"].ToString());
-                        minCity = cInfo;
-                    }
-                }
+                #endregion
             }
             //matchedWordList = SelectDictLike(db, matchedWordDic,"", inputStr);
         }, DBManager.CityDBurl);
@@ -987,13 +1020,13 @@ public class SelectCityController
                 //    {
                 //        Debug.LogError(e);
                 //        Debug.LogError(e2);
-                        string timezones = pairs2["timezones"].ToString();
-                        Match mc = r_timezoneRegex.Match(timezones);
-                        string gmtoffsetStr = mc.Value.Substring("\"gmtOffset\":".Length);
-                        gmtoffsetStr = gmtoffsetStr.Substring(0, gmtoffsetStr.Length - 1);
-                        int gmtoffset = int.Parse(gmtoffsetStr);
-                        TimeSpan offset = TimeSpan.FromSeconds(gmtoffset);
-                        third.timeZoneOffset = offset;
+                string timezones = pairs2["timezones"].ToString();
+                Match mc = r_timezoneRegex.Match(timezones);
+                string gmtoffsetStr = mc.Value.Substring("\"gmtOffset\":".Length);
+                gmtoffsetStr = gmtoffsetStr.Substring(0, gmtoffsetStr.Length - 1);
+                int gmtoffset = int.Parse(gmtoffsetStr);
+                TimeSpan offset = TimeSpan.FromSeconds(gmtoffset);
+                third.timeZoneOffset = offset;
                 //    }
 
                 //}

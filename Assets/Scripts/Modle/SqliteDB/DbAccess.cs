@@ -677,14 +677,24 @@ namespace Imdork.SQLite
             string query = "SELECT * FROM countries";
             return ExecuteQuery(query);
         }
-        //根据经纬度查找范围内国内一级城市
+        //根据经纬度查找范国际一级城市
         public SqliteDataReader SelectAllInternationalFirstCityByLatLng(float lat, float lng)
         {
             float latMin = lat - SelectCityController.LAT_RANGE;
             float latMax = lat + SelectCityController.LAT_RANGE;
-            float lngMin = lat - SelectCityController.LNG_RANGE;
-            float lngMax = lat + SelectCityController.LNG_RANGE;
+            float lngMin = lng - SelectCityController.LNG_RANGE;
+            float lngMax = lng + SelectCityController.LNG_RANGE;
             string query = "SELECT * FROM countries WHERE longitude > " + lngMin + " AND longitude < " + lngMax + " AND latitude > " + latMin + " AND latitude < " + latMax;// + " ORDER BY code ASC";//
+            return ExecuteQuery(query);
+        }
+        //根据经纬度查找范国际三级城市
+        public SqliteDataReader SelectAllInternationalThirdCityByLatLng(float lat, float lng)
+        {
+            float latMin = lat - SelectCityController.LAT_RANGE;
+            float latMax = lat + SelectCityController.LAT_RANGE;
+            float lngMin = lng - SelectCityController.LNG_RANGE;
+            float lngMax = lng + SelectCityController.LNG_RANGE;
+            string query = "SELECT * FROM cities WHERE longitude > " + lngMin + " AND longitude < " + lngMax + " AND latitude > " + latMin + " AND latitude < " + latMax;// + " ORDER BY code ASC";//
             return ExecuteQuery(query);
         }
         //根据查找国外一级城市
