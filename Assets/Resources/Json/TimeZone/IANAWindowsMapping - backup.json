@@ -1,0 +1,2052 @@
+{
+  "info": [
+    {
+      "IANATime": "Australia/Darwin",
+      "WinTime": "AUS Central Standard Time"
+    },
+    {
+      "IANATime": "Australia/Darwin",
+      "WinTime": "AUS Central Standard Time"
+    },
+    {
+      "IANATime": "Australia/Sydney",
+      "WinTime": "AUS Eastern Standard Time"
+    },
+    {
+      "IANATime": "Australia/Sydney Australia/Melbourne",
+      "WinTime": "AUS Eastern Standard Time"
+    },
+    {
+      "IANATime": "Asia/Kabul",
+      "WinTime": "Afghanistan Standard Time"
+    },
+    {
+      "IANATime": "Asia/Kabul",
+      "WinTime": "Afghanistan Standard Time"
+    },
+    {
+      "IANATime": "America/Anchorage",
+      "WinTime": "Alaskan Standard Time"
+    },
+    {
+      "IANATime": "America/Anchorage America/Juneau America/Metlakatla America/Nome America/Sitka America/Yakutat",
+      "WinTime": "Alaskan Standard Time"
+    },
+    {
+      "IANATime": "America/Adak",
+      "WinTime": "Aleutian Standard Time"
+    },
+    {
+      "IANATime": "America/Adak",
+      "WinTime": "Aleutian Standard Time"
+    },
+    {
+      "IANATime": "Asia/Barnaul",
+      "WinTime": "Altai Standard Time"
+    },
+    {
+      "IANATime": "Asia/Barnaul",
+      "WinTime": "Altai Standard Time"
+    },
+    {
+      "IANATime": "Asia/Riyadh",
+      "WinTime": "Arab Standard Time"
+    },
+    {
+      "IANATime": "Asia/Bahrain",
+      "WinTime": "Arab Standard Time"
+    },
+    {
+      "IANATime": "Asia/Kuwait",
+      "WinTime": "Arab Standard Time"
+    },
+    {
+      "IANATime": "Asia/Qatar",
+      "WinTime": "Arab Standard Time"
+    },
+    {
+      "IANATime": "Asia/Riyadh",
+      "WinTime": "Arab Standard Time"
+    },
+    {
+      "IANATime": "Asia/Aden",
+      "WinTime": "Arab Standard Time"
+    },
+    {
+      "IANATime": "Asia/Dubai",
+      "WinTime": "Arabian Standard Time"
+    },
+    {
+      "IANATime": "Asia/Dubai",
+      "WinTime": "Arabian Standard Time"
+    },
+    {
+      "IANATime": "Asia/Muscat",
+      "WinTime": "Arabian Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT-4",
+      "WinTime": "Arabian Standard Time"
+    },
+    {
+      "IANATime": "Asia/Baghdad",
+      "WinTime": "Arabic Standard Time"
+    },
+    {
+      "IANATime": "Asia/Baghdad",
+      "WinTime": "Arabic Standard Time"
+    },
+    {
+      "IANATime": "America/Buenos_Aires",
+      "WinTime": "Argentina Standard Time"
+    },
+    {
+      "IANATime": "America/Buenos_Aires America/Argentina/La_Rioja America/Argentina/Rio_Gallegos America/Argentina/Salta America/Argentina/San_Juan America/Argentina/San_Luis America/Argentina/Tucuman America/Argentina/Ushuaia America/Catamarca America/Cordoba America/Jujuy America/Mendoza",
+      "WinTime": "Argentina Standard Time"
+    },
+    {
+      "IANATime": "Europe/Astrakhan",
+      "WinTime": "Astrakhan Standard Time"
+    },
+    {
+      "IANATime": "Europe/Astrakhan Europe/Ulyanovsk",
+      "WinTime": "Astrakhan Standard Time"
+    },
+    {
+      "IANATime": "America/Halifax",
+      "WinTime": "Atlantic Standard Time"
+    },
+    {
+      "IANATime": "Atlantic/Bermuda",
+      "WinTime": "Atlantic Standard Time"
+    },
+    {
+      "IANATime": "America/Halifax America/Glace_Bay America/Goose_Bay America/Moncton",
+      "WinTime": "Atlantic Standard Time"
+    },
+    {
+      "IANATime": "America/Thule",
+      "WinTime": "Atlantic Standard Time"
+    },
+    {
+      "IANATime": "Australia/Eucla",
+      "WinTime": "Aus Central W. Standard Time"
+    },
+    {
+      "IANATime": "Australia/Eucla",
+      "WinTime": "Aus Central W. Standard Time"
+    },
+    {
+      "IANATime": "Asia/Baku",
+      "WinTime": "Azerbaijan Standard Time"
+    },
+    {
+      "IANATime": "Asia/Baku",
+      "WinTime": "Azerbaijan Standard Time"
+    },
+    {
+      "IANATime": "Atlantic/Azores",
+      "WinTime": "Azores Standard Time"
+    },
+    {
+      "IANATime": "America/Scoresbysund",
+      "WinTime": "Azores Standard Time"
+    },
+    {
+      "IANATime": "Atlantic/Azores",
+      "WinTime": "Azores Standard Time"
+    },
+    {
+      "IANATime": "America/Bahia",
+      "WinTime": "Bahia Standard Time"
+    },
+    {
+      "IANATime": "America/Bahia",
+      "WinTime": "Bahia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Dhaka",
+      "WinTime": "Bangladesh Standard Time"
+    },
+    {
+      "IANATime": "Asia/Dhaka",
+      "WinTime": "Bangladesh Standard Time"
+    },
+    {
+      "IANATime": "Asia/Thimphu",
+      "WinTime": "Bangladesh Standard Time"
+    },
+    {
+      "IANATime": "Europe/Minsk",
+      "WinTime": "Belarus Standard Time"
+    },
+    {
+      "IANATime": "Europe/Minsk",
+      "WinTime": "Belarus Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Bougainville",
+      "WinTime": "Bougainville Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Bougainville",
+      "WinTime": "Bougainville Standard Time"
+    },
+    {
+      "IANATime": "America/Regina",
+      "WinTime": "Canada Central Standard Time"
+    },
+    {
+      "IANATime": "America/Regina America/Swift_Current",
+      "WinTime": "Canada Central Standard Time"
+    },
+    {
+      "IANATime": "Atlantic/Cape_Verde",
+      "WinTime": "Cape Verde Standard Time"
+    },
+    {
+      "IANATime": "Atlantic/Cape_Verde",
+      "WinTime": "Cape Verde Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT+1",
+      "WinTime": "Cape Verde Standard Time"
+    },
+    {
+      "IANATime": "Asia/Yerevan",
+      "WinTime": "Caucasus Standard Time"
+    },
+    {
+      "IANATime": "Asia/Yerevan",
+      "WinTime": "Caucasus Standard Time"
+    },
+    {
+      "IANATime": "Australia/Adelaide",
+      "WinTime": "Cen. Australia Standard Time"
+    },
+    {
+      "IANATime": "Australia/Adelaide Australia/Broken_Hill",
+      "WinTime": "Cen. Australia Standard Time"
+    },
+    {
+      "IANATime": "America/Guatemala",
+      "WinTime": "Central America Standard Time"
+    },
+    {
+      "IANATime": "America/Belize",
+      "WinTime": "Central America Standard Time"
+    },
+    {
+      "IANATime": "America/Costa_Rica",
+      "WinTime": "Central America Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Galapagos",
+      "WinTime": "Central America Standard Time"
+    },
+    {
+      "IANATime": "America/Guatemala",
+      "WinTime": "Central America Standard Time"
+    },
+    {
+      "IANATime": "America/Tegucigalpa",
+      "WinTime": "Central America Standard Time"
+    },
+    {
+      "IANATime": "America/Managua",
+      "WinTime": "Central America Standard Time"
+    },
+    {
+      "IANATime": "America/El_Salvador",
+      "WinTime": "Central America Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT+6",
+      "WinTime": "Central America Standard Time"
+    },
+    {
+      "IANATime": "Asia/Bishkek",
+      "WinTime": "Central Asia Standard Time"
+    },
+    {
+      "IANATime": "Antarctica/Vostok",
+      "WinTime": "Central Asia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Urumqi",
+      "WinTime": "Central Asia Standard Time"
+    },
+    {
+      "IANATime": "Indian/Chagos",
+      "WinTime": "Central Asia Standard Time"
+    },
+    {
+      "IANATime": "Indian/Chagos",
+      "WinTime": "Central Asia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Bishkek",
+      "WinTime": "Central Asia Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT-6",
+      "WinTime": "Central Asia Standard Time"
+    },
+    {
+      "IANATime": "America/Cuiaba",
+      "WinTime": "Central Brazilian Standard Time"
+    },
+    {
+      "IANATime": "America/Cuiaba America/Campo_Grande",
+      "WinTime": "Central Brazilian Standard Time"
+    },
+    {
+      "IANATime": "Europe/Budapest",
+      "WinTime": "Central Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Tirane",
+      "WinTime": "Central Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Prague",
+      "WinTime": "Central Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Budapest",
+      "WinTime": "Central Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Podgorica",
+      "WinTime": "Central Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Belgrade",
+      "WinTime": "Central Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Ljubljana",
+      "WinTime": "Central Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Bratislava",
+      "WinTime": "Central Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Belgrade",
+      "WinTime": "Central Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Warsaw",
+      "WinTime": "Central European Standard Time"
+    },
+    {
+      "IANATime": "Europe/Sarajevo",
+      "WinTime": "Central European Standard Time"
+    },
+    {
+      "IANATime": "Europe/Zagreb",
+      "WinTime": "Central European Standard Time"
+    },
+    {
+      "IANATime": "Europe/Skopje",
+      "WinTime": "Central European Standard Time"
+    },
+    {
+      "IANATime": "Europe/Warsaw",
+      "WinTime": "Central European Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Guadalcanal",
+      "WinTime": "Central Pacific Standard Time"
+    },
+    {
+      "IANATime": "Antarctica/Casey",
+      "WinTime": "Central Pacific Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Ponape Pacific/Kosrae",
+      "WinTime": "Central Pacific Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Noumea",
+      "WinTime": "Central Pacific Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Guadalcanal",
+      "WinTime": "Central Pacific Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Efate",
+      "WinTime": "Central Pacific Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT-11",
+      "WinTime": "Central Pacific Standard Time"
+    },
+    {
+      "IANATime": "America/Mexico_City",
+      "WinTime": "Central Standard Time (Mexico)"
+    },
+    {
+      "IANATime": "America/Mexico_City America/Bahia_Banderas America/Merida America/Monterrey America/Chihuahua",
+      "WinTime": "Central Standard Time (Mexico)"
+    },
+    {
+      "IANATime": "America/Chicago",
+      "WinTime": "Central Standard Time"
+    },
+    {
+      "IANATime": "America/Winnipeg America/Rankin_Inlet America/Resolute",
+      "WinTime": "Central Standard Time"
+    },
+    {
+      "IANATime": "America/Matamoros America/Ojinaga",
+      "WinTime": "Central Standard Time"
+    },
+    {
+      "IANATime": "America/Chicago America/Indiana/Knox America/Indiana/Tell_City America/Menominee America/North_Dakota/Beulah America/North_Dakota/Center America/North_Dakota/New_Salem",
+      "WinTime": "Central Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Chatham",
+      "WinTime": "Chatham Islands Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Chatham",
+      "WinTime": "Chatham Islands Standard Time"
+    },
+    {
+      "IANATime": "Asia/Shanghai",
+      "WinTime": "China Standard Time"
+    },
+    {
+      "IANATime": "Asia/Shanghai",
+      "WinTime": "China Standard Time"
+    },
+    {
+      "IANATime": "Asia/Hong_Kong",
+      "WinTime": "China Standard Time"
+    },
+    {
+      "IANATime": "Asia/Macau",
+      "WinTime": "China Standard Time"
+    },
+    {
+      "IANATime": "America/Havana",
+      "WinTime": "Cuba Standard Time"
+    },
+    {
+      "IANATime": "America/Havana",
+      "WinTime": "Cuba Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT+12",
+      "WinTime": "Dateline Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT+12",
+      "WinTime": "Dateline Standard Time"
+    },
+    {
+      "IANATime": "Africa/Nairobi",
+      "WinTime": "E. Africa Standard Time"
+    },
+    {
+      "IANATime": "Antarctica/Syowa",
+      "WinTime": "E. Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Djibouti",
+      "WinTime": "E. Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Asmera",
+      "WinTime": "E. Africa Standard Time"
+    },
+    { //后添加https://utctime.info/timezone/Africa--Asmara/
+      "IANATime": "Africa/Asmara",
+      "WinTime": "E. Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Addis_Ababa",
+      "WinTime": "E. Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Nairobi",
+      "WinTime": "E. Africa Standard Time"
+    },
+    {
+      "IANATime": "Indian/Comoro",
+      "WinTime": "E. Africa Standard Time"
+    },
+    {
+      "IANATime": "Indian/Antananarivo",
+      "WinTime": "E. Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Mogadishu",
+      "WinTime": "E. Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Dar_es_Salaam",
+      "WinTime": "E. Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Kampala",
+      "WinTime": "E. Africa Standard Time"
+    },
+    {
+      "IANATime": "Indian/Mayotte",
+      "WinTime": "E. Africa Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT-3",
+      "WinTime": "E. Africa Standard Time"
+    },
+    {
+      "IANATime": "Australia/Brisbane",
+      "WinTime": "E. Australia Standard Time"
+    },
+    {
+      "IANATime": "Australia/Brisbane Australia/Lindeman",
+      "WinTime": "E. Australia Standard Time"
+    },
+    {
+      "IANATime": "Europe/Chisinau",
+      "WinTime": "E. Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Chisinau",
+      "WinTime": "E. Europe Standard Time"
+    },
+    {
+      "IANATime": "America/Sao_Paulo",
+      "WinTime": "E. South America Standard Time"
+    },
+    {
+      "IANATime": "America/Sao_Paulo",
+      "WinTime": "E. South America Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Easter",
+      "WinTime": "Easter Island Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Easter",
+      "WinTime": "Easter Island Standard Time"
+    },
+    {
+      "IANATime": "America/Cancun",
+      "WinTime": "Eastern Standard Time (Mexico)"
+    },
+    {
+      "IANATime": "America/Cancun",
+      "WinTime": "Eastern Standard Time (Mexico)"
+    },
+    {
+      "IANATime": "America/New_York",
+      "WinTime": "Eastern Standard Time"
+    },
+    {
+      "IANATime": "America/Montreal",
+      "WinTime": "Eastern Standard Time"
+    },
+    {
+      "IANATime": "America/Nassau",
+      "WinTime": "Eastern Standard Time"
+    },
+    {
+      "IANATime": "America/Toronto America/Iqaluit",
+      "WinTime": "Eastern Standard Time"
+    },
+    {
+      "IANATime": "America/New_York America/Detroit America/Indiana/Petersburg America/Indiana/Vincennes America/Indiana/Winamac America/Kentucky/Monticello America/Louisville",
+      "WinTime": "Eastern Standard Time"
+    },
+    {
+      "IANATime": "Africa/Cairo",
+      "WinTime": "Egypt Standard Time"
+    },
+    {
+      "IANATime": "Africa/Cairo",
+      "WinTime": "Egypt Standard Time"
+    },
+    {
+      "IANATime": "Asia/Yekaterinburg",
+      "WinTime": "Ekaterinburg Standard Time"
+    },
+    {
+      "IANATime": "Asia/Yekaterinburg",
+      "WinTime": "Ekaterinburg Standard Time"
+    },
+    {
+      "IANATime": "Europe/Kiev",
+      "WinTime": "FLE Standard Time"
+    },
+    {
+      "IANATime": "Europe/Mariehamn",
+      "WinTime": "FLE Standard Time"
+    },
+    {
+      "IANATime": "Europe/Sofia",
+      "WinTime": "FLE Standard Time"
+    },
+    {
+      "IANATime": "Europe/Tallinn",
+      "WinTime": "FLE Standard Time"
+    },
+    {
+      "IANATime": "Europe/Helsinki",
+      "WinTime": "FLE Standard Time"
+    },
+    {
+      "IANATime": "Europe/Vilnius",
+      "WinTime": "FLE Standard Time"
+    },
+    {
+      "IANATime": "Europe/Riga",
+      "WinTime": "FLE Standard Time"
+    },
+    {
+      "IANATime": "Europe/Kiev",
+      "WinTime": "FLE Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Fiji",
+      "WinTime": "Fiji Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Fiji",
+      "WinTime": "Fiji Standard Time"
+    },
+    {
+      "IANATime": "Europe/London",
+      "WinTime": "GMT Standard Time"
+    },
+    {
+      "IANATime": "Atlantic/Canary",
+      "WinTime": "GMT Standard Time"
+    },
+    {
+      "IANATime": "Atlantic/Faeroe",
+      "WinTime": "GMT Standard Time"
+    },
+    {
+      "IANATime": "Europe/London",
+      "WinTime": "GMT Standard Time"
+    },
+    {
+      "IANATime": "Europe/Guernsey",
+      "WinTime": "GMT Standard Time"
+    },
+    {
+      "IANATime": "Atlantic/Canary",
+      "WinTime": "GMT Standard Time"
+    },
+    {
+      "IANATime": "Europe/Dublin",
+      "WinTime": "GMT Standard Time"
+    },
+    {
+      "IANATime": "Europe/Isle_of_Man",
+      "WinTime": "GMT Standard Time"
+    },
+    {
+      "IANATime": "Europe/Jersey",
+      "WinTime": "GMT Standard Time"
+    },
+    {
+      "IANATime": "Europe/Lisbon Atlantic/Madeira",
+      "WinTime": "GMT Standard Time"
+    },
+    {
+      "IANATime": "Europe/Bucharest",
+      "WinTime": "GTB Standard Time"
+    },
+    {
+      "IANATime": "Asia/Nicosia Asia/Famagusta",
+      "WinTime": "GTB Standard Time"
+    },
+    {
+      "IANATime": "Europe/Athens",
+      "WinTime": "GTB Standard Time"
+    },
+    {
+      "IANATime": "Europe/Bucharest",
+      "WinTime": "GTB Standard Time"
+    },
+    {
+      "IANATime": "Asia/Tbilisi",
+      "WinTime": "Georgian Standard Time"
+    },
+    {
+      "IANATime": "Asia/Tbilisi",
+      "WinTime": "Georgian Standard Time"
+    },
+    {
+      "IANATime": "America/Godthab",
+      "WinTime": "Greenland Standard Time"
+    },
+    {
+      "IANATime": "America/Godthab",
+      "WinTime": "Greenland Standard Time"
+    },
+    {
+      "IANATime": "Atlantic/Reykjavik",
+      "WinTime": "Greenwich Standard Time"
+    },
+    {
+      "IANATime": "Atlantic/St_Helena",
+      "WinTime": "Greenwich Standard Time"
+    },
+    {
+      "IANATime": "Africa/Ouagadougou",
+      "WinTime": "Greenwich Standard Time"
+    },
+    {
+      "IANATime": "Africa/Abidjan",
+      "WinTime": "Greenwich Standard Time"
+    },
+    {
+      "IANATime": "Africa/Accra",
+      "WinTime": "Greenwich Standard Time"
+    },
+    {
+      "IANATime": "America/Danmarkshavn",
+      "WinTime": "Greenwich Standard Time"
+    },
+    {
+      "IANATime": "Africa/Banjul",
+      "WinTime": "Greenwich Standard Time"
+    },
+    {
+      "IANATime": "Africa/Conakry",
+      "WinTime": "Greenwich Standard Time"
+    },
+    {
+      "IANATime": "Africa/Bissau",
+      "WinTime": "Greenwich Standard Time"
+    },
+    {
+      "IANATime": "Atlantic/Reykjavik",
+      "WinTime": "Greenwich Standard Time"
+    },
+    {
+      "IANATime": "Africa/Monrovia",
+      "WinTime": "Greenwich Standard Time"
+    },
+    {
+      "IANATime": "Africa/Bamako",
+      "WinTime": "Greenwich Standard Time"
+    },
+    {
+      "IANATime": "Africa/Nouakchott",
+      "WinTime": "Greenwich Standard Time"
+    },
+    {
+      "IANATime": "Atlantic/St_Helena",
+      "WinTime": "Greenwich Standard Time"
+    },
+    {
+      "IANATime": "Africa/Freetown",
+      "WinTime": "Greenwich Standard Time"
+    },
+    {
+      "IANATime": "Africa/Dakar",
+      "WinTime": "Greenwich Standard Time"
+    },
+    {
+      "IANATime": "Atlantic/St_Helena",
+      "WinTime": "Greenwich Standard Time"
+    },
+    {
+      "IANATime": "Africa/Lome",
+      "WinTime": "Greenwich Standard Time"
+    },
+    { //后添加
+      "IANATime": "Africa/Timbuktu",
+      "WinTime": "Greenwich Standard Time" //"Sao Tome Standard Time" 
+    },
+    {
+      "IANATime": "America/Port-au-Prince",
+      "WinTime": "Haiti Standard Time"
+    },
+    {
+      "IANATime": "America/Port-au-Prince",
+      "WinTime": "Haiti Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Honolulu",
+      "WinTime": "Hawaiian Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Rarotonga",
+      "WinTime": "Hawaiian Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Tahiti",
+      "WinTime": "Hawaiian Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Honolulu",
+      "WinTime": "Hawaiian Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT+10",
+      "WinTime": "Hawaiian Standard Time"
+    },
+    {
+      "IANATime": "Asia/Calcutta",
+      "WinTime": "India Standard Time"
+    },
+    {
+      "IANATime": "Asia/Calcutta",
+      "WinTime": "India Standard Time"
+    },
+    {
+      "IANATime": "Asia/Tehran",
+      "WinTime": "Iran Standard Time"
+    },
+    {
+      "IANATime": "Asia/Tehran",
+      "WinTime": "Iran Standard Time"
+    },
+    {
+      "IANATime": "Asia/Jerusalem",
+      "WinTime": "Israel Standard Time"
+    },
+    {
+      "IANATime": "Asia/Jerusalem",
+      "WinTime": "Israel Standard Time"
+    },
+    {
+      "IANATime": "Asia/Amman",
+      "WinTime": "Jordan Standard Time"
+    },
+    {
+      "IANATime": "Asia/Amman",
+      "WinTime": "Jordan Standard Time"
+    },
+    {
+      "IANATime": "Europe/Kaliningrad",
+      "WinTime": "Kaliningrad Standard Time"
+    },
+    {
+      "IANATime": "Europe/Kaliningrad",
+      "WinTime": "Kaliningrad Standard Time"
+    },
+    {
+      "IANATime": "Asia/Seoul",
+      "WinTime": "Korea Standard Time"
+    },
+    {
+      "IANATime": "Asia/Seoul",
+      "WinTime": "Korea Standard Time"
+    },
+    {
+      "IANATime": "Africa/Tripoli",
+      "WinTime": "Libya Standard Time"
+    },
+    {
+      "IANATime": "Africa/Tripoli",
+      "WinTime": "Libya Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Kiritimati",
+      "WinTime": "Line Islands Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Kiritimati",
+      "WinTime": "Line Islands Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT-14",
+      "WinTime": "Line Islands Standard Time"
+    },
+    {
+      "IANATime": "Australia/Lord_Howe",
+      "WinTime": "Lord Howe Standard Time"
+    },
+    {
+      "IANATime": "Australia/Lord_Howe",
+      "WinTime": "Lord Howe Standard Time"
+    },
+    {
+      "IANATime": "Asia/Magadan",
+      "WinTime": "Magadan Standard Time"
+    },
+    {
+      "IANATime": "Asia/Magadan",
+      "WinTime": "Magadan Standard Time"
+    },
+    {
+      "IANATime": "America/Punta_Arenas",
+      "WinTime": "Magallanes Standard Time"
+    },
+    {
+      "IANATime": "America/Punta_Arenas",
+      "WinTime": "Magallanes Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Marquesas",
+      "WinTime": "Marquesas Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Marquesas",
+      "WinTime": "Marquesas Standard Time"
+    },
+    {
+      "IANATime": "Indian/Mauritius",
+      "WinTime": "Mauritius Standard Time"
+    },
+    {
+      "IANATime": "Indian/Mauritius",
+      "WinTime": "Mauritius Standard Time"
+    },
+    {
+      "IANATime": "Indian/Reunion",
+      "WinTime": "Mauritius Standard Time"
+    },
+    {
+      "IANATime": "Indian/Mahe",
+      "WinTime": "Mauritius Standard Time"
+    },
+    {
+      "IANATime": "Asia/Beirut",
+      "WinTime": "Middle East Standard Time"
+    },
+    {
+      "IANATime": "Asia/Beirut",
+      "WinTime": "Middle East Standard Time"
+    },
+    {
+      "IANATime": "America/Montevideo",
+      "WinTime": "Montevideo Standard Time"
+    },
+    {
+      "IANATime": "America/Montevideo",
+      "WinTime": "Montevideo Standard Time"
+    },
+    {
+      "IANATime": "Africa/Casablanca",
+      "WinTime": "Morocco Standard Time"
+    },
+    {
+      "IANATime": "Africa/El_Aaiun",
+      "WinTime": "Morocco Standard Time"
+    },
+    {
+      "IANATime": "Africa/Casablanca",
+      "WinTime": "Morocco Standard Time"
+    },
+    {
+      "IANATime": "America/Mazatlan",
+      "WinTime": "Mountain Standard Time (Mexico)"
+    },
+    {
+      "IANATime": "America/Mazatlan",
+      "WinTime": "Mountain Standard Time (Mexico)"
+    },
+    {
+      "IANATime": "America/Denver",
+      "WinTime": "Mountain Standard Time"
+    },
+    {
+      "IANATime": "America/Yellowknife",
+      "WinTime": "Mountain Standard Time"
+    },
+    {
+      "IANATime": "America/Edmonton America/Cambridge_Bay America/Inuvik",
+      "WinTime": "Mountain Standard Time"
+    },
+    {
+      "IANATime": "America/Ciudad_Juarez",
+      "WinTime": "Mountain Standard Time"
+    },
+    {
+      "IANATime": "America/Denver America/Boise",
+      "WinTime": "Mountain Standard Time"
+    },
+    {
+      "IANATime": "Asia/Rangoon",
+      "WinTime": "Myanmar Standard Time"
+    },
+    {
+      "IANATime": "Indian/Cocos",
+      "WinTime": "Myanmar Standard Time"
+    },
+    {
+      "IANATime": "Asia/Rangoon",
+      "WinTime": "Myanmar Standard Time"
+    },
+    {
+      "IANATime": "Asia/Novosibirsk",
+      "WinTime": "N. Central Asia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Novosibirsk",
+      "WinTime": "N. Central Asia Standard Time"
+    },
+    {
+      "IANATime": "Africa/Windhoek",
+      "WinTime": "Namibia Standard Time"
+    },
+    {
+      "IANATime": "Africa/Windhoek",
+      "WinTime": "Namibia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Katmandu",
+      "WinTime": "Nepal Standard Time"
+    },
+    {
+      "IANATime": "Asia/Katmandu",
+      "WinTime": "Nepal Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Auckland",
+      "WinTime": "New Zealand Standard Time"
+    },
+    {
+      "IANATime": "Antarctica/McMurdo",
+      "WinTime": "New Zealand Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Auckland",
+      "WinTime": "New Zealand Standard Time"
+    },
+    {
+      "IANATime": "America/St_Johns",
+      "WinTime": "Newfoundland Standard Time"
+    },
+    {
+      "IANATime": "America/St_Johns",
+      "WinTime": "Newfoundland Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Norfolk",
+      "WinTime": "Norfolk Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Norfolk",
+      "WinTime": "Norfolk Standard Time"
+    },
+    {
+      "IANATime": "Asia/Irkutsk",
+      "WinTime": "North Asia East Standard Time"
+    },
+    {
+      "IANATime": "Asia/Irkutsk",
+      "WinTime": "North Asia East Standard Time"
+    },
+    {
+      "IANATime": "Asia/Krasnoyarsk",
+      "WinTime": "North Asia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Krasnoyarsk Asia/Novokuznetsk",
+      "WinTime": "North Asia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Pyongyang",
+      "WinTime": "North Korea Standard Time"
+    },
+    {
+      "IANATime": "Asia/Pyongyang",
+      "WinTime": "North Korea Standard Time"
+    },
+    {
+      "IANATime": "Asia/Omsk",
+      "WinTime": "Omsk Standard Time"
+    },
+    {
+      "IANATime": "Asia/Omsk",
+      "WinTime": "Omsk Standard Time"
+    },
+    {
+      "IANATime": "America/Santiago",
+      "WinTime": "Pacific SA Standard Time"
+    },
+    {
+      "IANATime": "America/Santiago",
+      "WinTime": "Pacific SA Standard Time"
+    },
+    {
+      "IANATime": "America/Tijuana",
+      "WinTime": "Pacific Standard Time (Mexico)"
+    },
+    {
+      "IANATime": "America/Tijuana",
+      "WinTime": "Pacific Standard Time (Mexico)"
+    },
+    {
+      "IANATime": "America/Los_Angeles",
+      "WinTime": "Pacific Standard Time"
+    },
+    {
+      "IANATime": "America/Vancouver",
+      "WinTime": "Pacific Standard Time"
+    },
+    {
+      "IANATime": "America/Los_Angeles",
+      "WinTime": "Pacific Standard Time"
+    },
+    {
+      "IANATime": "Asia/Karachi",
+      "WinTime": "Pakistan Standard Time"
+    },
+    {
+      "IANATime": "Asia/Karachi",
+      "WinTime": "Pakistan Standard Time"
+    },
+    {
+      "IANATime": "America/Asuncion",
+      "WinTime": "Paraguay Standard Time"
+    },
+    {
+      "IANATime": "America/Asuncion",
+      "WinTime": "Paraguay Standard Time"
+    },
+    {
+      "IANATime": "Asia/Qyzylorda",
+      "WinTime": "Qyzylorda Standard Time"
+    },
+    {
+      "IANATime": "Asia/Qyzylorda",
+      "WinTime": "Qyzylorda Standard Time"
+    },
+    {
+      "IANATime": "Europe/Paris",
+      "WinTime": "Romance Standard Time"
+    },
+    {
+      "IANATime": "Europe/Brussels",
+      "WinTime": "Romance Standard Time"
+    },
+    {
+      "IANATime": "Europe/Copenhagen",
+      "WinTime": "Romance Standard Time"
+    },
+    {
+      "IANATime": "Africa/Ceuta",
+      "WinTime": "Romance Standard Time"
+    },
+    {
+      "IANATime": "Europe/Madrid Africa/Ceuta",
+      "WinTime": "Romance Standard Time"
+    },
+    {
+      "IANATime": "Europe/Paris",
+      "WinTime": "Romance Standard Time"
+    },
+    {
+      "IANATime": "Asia/Srednekolymsk",
+      "WinTime": "Russia Time Zone 10"
+    },
+    {
+      "IANATime": "Asia/Srednekolymsk",
+      "WinTime": "Russia Time Zone 10"
+    },
+    {
+      "IANATime": "Asia/Kamchatka",
+      "WinTime": "Russia Time Zone 11"
+    },
+    {
+      "IANATime": "Asia/Kamchatka Asia/Anadyr",
+      "WinTime": "Russia Time Zone 11"
+    },
+    {
+      "IANATime": "Europe/Samara",
+      "WinTime": "Russia Time Zone 3"
+    },
+    {
+      "IANATime": "Europe/Samara",
+      "WinTime": "Russia Time Zone 3"
+    },
+    {
+      "IANATime": "Europe/Moscow",
+      "WinTime": "Russian Standard Time"
+    },
+    {
+      "IANATime": "Europe/Moscow Europe/Kirov",
+      "WinTime": "Russian Standard Time"
+    },
+    {
+      "IANATime": "Europe/Simferopol",
+      "WinTime": "Russian Standard Time"
+    },
+    {
+      "IANATime": "America/Cayenne",
+      "WinTime": "SA Eastern Standard Time"
+    },
+    {
+      "IANATime": "Antarctica/Rothera Antarctica/Palmer",
+      "WinTime": "SA Eastern Standard Time"
+    },
+    {
+      "IANATime": "America/Fortaleza America/Belem America/Maceio America/Recife America/Santarem",
+      "WinTime": "SA Eastern Standard Time"
+    },
+    {
+      "IANATime": "Atlantic/Stanley",
+      "WinTime": "SA Eastern Standard Time"
+    },
+    {
+      "IANATime": "America/Cayenne",
+      "WinTime": "SA Eastern Standard Time"
+    },
+    {
+      "IANATime": "America/Paramaribo",
+      "WinTime": "SA Eastern Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT+3",
+      "WinTime": "SA Eastern Standard Time"
+    },
+    {
+      "IANATime": "America/Bogota",
+      "WinTime": "SA Pacific Standard Time"
+    },
+    {
+      "IANATime": "America/Rio_Branco America/Eirunepe",
+      "WinTime": "SA Pacific Standard Time"
+    },
+    {
+      "IANATime": "America/Coral_Harbour",
+      "WinTime": "SA Pacific Standard Time"
+    },
+    {
+      "IANATime": "America/Bogota",
+      "WinTime": "SA Pacific Standard Time"
+    },
+    {
+      "IANATime": "America/Guayaquil",
+      "WinTime": "SA Pacific Standard Time"
+    },
+    {
+      "IANATime": "America/Jamaica",
+      "WinTime": "SA Pacific Standard Time"
+    },
+    {
+      "IANATime": "America/Cayman",
+      "WinTime": "SA Pacific Standard Time"
+    },
+    {
+      "IANATime": "America/Panama",
+      "WinTime": "SA Pacific Standard Time"
+    },
+    {
+      "IANATime": "America/Lima",
+      "WinTime": "SA Pacific Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT+5",
+      "WinTime": "SA Pacific Standard Time"
+    },
+    {
+      "IANATime": "America/La_Paz",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Antigua",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Anguilla",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Aruba",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Barbados",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/St_Barthelemy",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/La_Paz",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Kralendijk",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Manaus America/Boa_Vista America/Porto_Velho",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Blanc-Sablon",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Curacao",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Dominica",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Santo_Domingo",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Grenada",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Guadeloupe",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Guyana",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/St_Kitts",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/St_Lucia",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Marigot",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Martinique",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Montserrat",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Puerto_Rico",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Lower_Princes",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Port_of_Spain",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/St_Vincent",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/Tortola",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "America/St_Thomas",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT+4",
+      "WinTime": "SA Western Standard Time"
+    },
+    {
+      "IANATime": "Asia/Bangkok",
+      "WinTime": "SE Asia Standard Time"
+    },
+    {
+      "IANATime": "Antarctica/Davis",
+      "WinTime": "SE Asia Standard Time"
+    },
+    {
+      "IANATime": "Indian/Christmas",
+      "WinTime": "SE Asia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Jakarta Asia/Pontianak",
+      "WinTime": "SE Asia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Phnom_Penh",
+      "WinTime": "SE Asia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Vientiane",
+      "WinTime": "SE Asia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Bangkok",
+      "WinTime": "SE Asia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Saigon",
+      "WinTime": "SE Asia Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT-7",
+      "WinTime": "SE Asia Standard Time"
+    },
+    {
+      "IANATime": "America/Miquelon",
+      "WinTime": "Saint Pierre Standard Time"
+    },
+    {
+      "IANATime": "America/Miquelon",
+      "WinTime": "Saint Pierre Standard Time"
+    },
+    {
+      "IANATime": "Asia/Sakhalin",
+      "WinTime": "Sakhalin Standard Time"
+    },
+    {
+      "IANATime": "Asia/Sakhalin",
+      "WinTime": "Sakhalin Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Apia",
+      "WinTime": "Samoa Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Apia",
+      "WinTime": "Samoa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Sao_Tome",
+      "WinTime": "Sao Tome Standard Time"
+    },
+    {
+      "IANATime": "Africa/Sao_Tome",
+      "WinTime": "Sao Tome Standard Time"
+    },
+    {
+      "IANATime": "Europe/Saratov",
+      "WinTime": "Saratov Standard Time"
+    },
+    {
+      "IANATime": "Europe/Saratov",
+      "WinTime": "Saratov Standard Time"
+    },
+    {
+      "IANATime": "Asia/Singapore",
+      "WinTime": "Singapore Standard Time"
+    },
+    {
+      "IANATime": "Asia/Brunei",
+      "WinTime": "Singapore Standard Time"
+    },
+    {
+      "IANATime": "Asia/Makassar",
+      "WinTime": "Singapore Standard Time"
+    },
+    {
+      "IANATime": "Asia/Kuala_Lumpur Asia/Kuching",
+      "WinTime": "Singapore Standard Time"
+    },
+    {
+      "IANATime": "Asia/Manila",
+      "WinTime": "Singapore Standard Time"
+    },
+    {
+      "IANATime": "Asia/Singapore",
+      "WinTime": "Singapore Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT-8",
+      "WinTime": "Singapore Standard Time"
+    },
+    {
+      "IANATime": "Africa/Johannesburg",
+      "WinTime": "South Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Bujumbura",
+      "WinTime": "South Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Gaborone",
+      "WinTime": "South Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Lubumbashi",
+      "WinTime": "South Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Maseru",
+      "WinTime": "South Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Blantyre",
+      "WinTime": "South Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Maputo",
+      "WinTime": "South Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Kigali",
+      "WinTime": "South Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Mbabane",
+      "WinTime": "South Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Johannesburg",
+      "WinTime": "South Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Lusaka",
+      "WinTime": "South Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Harare",
+      "WinTime": "South Africa Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT-2",
+      "WinTime": "South Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Juba",
+      "WinTime": "South Sudan Standard Time"
+    },
+    {
+      "IANATime": "Africa/Juba",
+      "WinTime": "South Sudan Standard Time"
+    },
+    {
+      "IANATime": "Asia/Colombo",
+      "WinTime": "Sri Lanka Standard Time"
+    },
+    {
+      "IANATime": "Asia/Colombo",
+      "WinTime": "Sri Lanka Standard Time"
+    },
+    {
+      "IANATime": "Africa/Khartoum",
+      "WinTime": "Sudan Standard Time"
+    },
+    {
+      "IANATime": "Africa/Khartoum",
+      "WinTime": "Sudan Standard Time"
+    },
+    {
+      "IANATime": "Asia/Damascus",
+      "WinTime": "Syria Standard Time"
+    },
+    {
+      "IANATime": "Asia/Damascus",
+      "WinTime": "Syria Standard Time"
+    },
+    {
+      "IANATime": "Asia/Taipei",
+      "WinTime": "Taipei Standard Time"
+    },
+    {
+      "IANATime": "Asia/Taipei",
+      "WinTime": "Taipei Standard Time"
+    },
+    {
+      "IANATime": "Australia/Hobart",
+      "WinTime": "Tasmania Standard Time"
+    },
+    {
+      "IANATime": "Australia/Hobart Antarctica/Macquarie",
+      "WinTime": "Tasmania Standard Time"
+    },
+    {
+      "IANATime": "America/Araguaina",
+      "WinTime": "Tocantins Standard Time"
+    },
+    {
+      "IANATime": "America/Araguaina",
+      "WinTime": "Tocantins Standard Time"
+    },
+    {
+      "IANATime": "Asia/Tokyo",
+      "WinTime": "Tokyo Standard Time"
+    },
+    {
+      "IANATime": "Asia/Jayapura",
+      "WinTime": "Tokyo Standard Time"
+    },
+    {
+      "IANATime": "Asia/Tokyo",
+      "WinTime": "Tokyo Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Palau",
+      "WinTime": "Tokyo Standard Time"
+    },
+    {
+      "IANATime": "Asia/Dili",
+      "WinTime": "Tokyo Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT-9",
+      "WinTime": "Tokyo Standard Time"
+    },
+    {
+      "IANATime": "Asia/Tomsk",
+      "WinTime": "Tomsk Standard Time"
+    },
+    {
+      "IANATime": "Asia/Tomsk",
+      "WinTime": "Tomsk Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Tongatapu",
+      "WinTime": "Tonga Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Tongatapu",
+      "WinTime": "Tonga Standard Time"
+    },
+    {
+      "IANATime": "Asia/Chita",
+      "WinTime": "Transbaikal Standard Time"
+    },
+    {
+      "IANATime": "Asia/Chita",
+      "WinTime": "Transbaikal Standard Time"
+    },
+    {
+      "IANATime": "Europe/Istanbul",
+      "WinTime": "Turkey Standard Time"
+    },
+    {
+      "IANATime": "Europe/Istanbul",
+      "WinTime": "Turkey Standard Time"
+    },
+    {
+      "IANATime": "America/Grand_Turk",
+      "WinTime": "Turks And Caicos Standard Time"
+    },
+    {
+      "IANATime": "America/Grand_Turk",
+      "WinTime": "Turks And Caicos Standard Time"
+    },
+    {
+      "IANATime": "America/Indianapolis",
+      "WinTime": "US Eastern Standard Time"
+    },
+    {
+      "IANATime": "America/Indianapolis America/Indiana/Marengo America/Indiana/Vevay",
+      "WinTime": "US Eastern Standard Time"
+    },
+    {
+      "IANATime": "America/Phoenix",
+      "WinTime": "US Mountain Standard Time"
+    },
+    {
+      "IANATime": "America/Creston America/Dawson_Creek America/Fort_Nelson",
+      "WinTime": "US Mountain Standard Time"
+    },
+    {
+      "IANATime": "America/Hermosillo",
+      "WinTime": "US Mountain Standard Time"
+    },
+    {
+      "IANATime": "America/Phoenix",
+      "WinTime": "US Mountain Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT+7",
+      "WinTime": "US Mountain Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT-12",
+      "WinTime": "UTC+12"
+    },
+    {
+      "IANATime": "Pacific/Tarawa",
+      "WinTime": "UTC+12"
+    },
+    {
+      "IANATime": "Pacific/Majuro Pacific/Kwajalein",
+      "WinTime": "UTC+12"
+    },
+    {
+      "IANATime": "Pacific/Nauru",
+      "WinTime": "UTC+12"
+    },
+    {
+      "IANATime": "Pacific/Funafuti",
+      "WinTime": "UTC+12"
+    },
+    {
+      "IANATime": "Pacific/Wake",
+      "WinTime": "UTC+12"
+    },
+    {
+      "IANATime": "Pacific/Wallis",
+      "WinTime": "UTC+12"
+    },
+    {
+      "IANATime": "Etc/GMT-12",
+      "WinTime": "UTC+12"
+    },
+    {
+      "IANATime": "Etc/GMT-13",
+      "WinTime": "UTC+13"
+    },
+    {
+      "IANATime": "Pacific/Enderbury",
+      "WinTime": "UTC+13"
+    },
+    {
+      "IANATime": "Pacific/Fakaofo",
+      "WinTime": "UTC+13"
+    },
+    {
+      "IANATime": "Etc/GMT-13",
+      "WinTime": "UTC+13"
+    },
+    {
+      "IANATime": "Etc/UTC",
+      "WinTime": "UTC"
+    },
+    {
+      "IANATime": "Etc/UTC Etc/GMT",
+      "WinTime": "UTC"
+    },
+    {
+      "IANATime": "Etc/GMT+2",
+      "WinTime": "UTC-02"
+    },
+    {
+      "IANATime": "America/Noronha",
+      "WinTime": "UTC-02"
+    },
+    {
+      "IANATime": "Atlantic/South_Georgia",
+      "WinTime": "UTC-02"
+    },
+    {
+      "IANATime": "Etc/GMT+2",
+      "WinTime": "UTC-02"
+    },
+    {
+      "IANATime": "Etc/GMT+8",
+      "WinTime": "UTC-08"
+    },
+    {
+      "IANATime": "Pacific/Pitcairn",
+      "WinTime": "UTC-08"
+    },
+    {
+      "IANATime": "Etc/GMT+8",
+      "WinTime": "UTC-08"
+    },
+    {
+      "IANATime": "Etc/GMT+9",
+      "WinTime": "UTC-09"
+    },
+    {
+      "IANATime": "Pacific/Gambier",
+      "WinTime": "UTC-09"
+    },
+    {
+      "IANATime": "Etc/GMT+9",
+      "WinTime": "UTC-09"
+    },
+    {
+      "IANATime": "Etc/GMT+11",
+      "WinTime": "UTC-11"
+    },
+    {
+      "IANATime": "Pacific/Pago_Pago",
+      "WinTime": "UTC-11"
+    },
+    {
+      "IANATime": "Pacific/Niue",
+      "WinTime": "UTC-11"
+    },
+    {
+      "IANATime": "Pacific/Midway",
+      "WinTime": "UTC-11"
+    },
+    {
+      "IANATime": "Etc/GMT+11",
+      "WinTime": "UTC-11"
+    },
+    {
+      "IANATime": "Asia/Ulaanbaatar",
+      "WinTime": "Ulaanbaatar Standard Time"
+    },
+    {
+      "IANATime": "Asia/Ulaanbaatar",
+      "WinTime": "Ulaanbaatar Standard Time"
+    },
+    {
+      "IANATime": "America/Caracas",
+      "WinTime": "Venezuela Standard Time"
+    },
+    {
+      "IANATime": "America/Caracas",
+      "WinTime": "Venezuela Standard Time"
+    },
+    {
+      "IANATime": "Asia/Vladivostok",
+      "WinTime": "Vladivostok Standard Time"
+    },
+    {
+      "IANATime": "Asia/Vladivostok Asia/Ust-Nera",
+      "WinTime": "Vladivostok Standard Time"
+    },
+    {
+      "IANATime": "Europe/Volgograd",
+      "WinTime": "Volgograd Standard Time"
+    },
+    {
+      "IANATime": "Europe/Volgograd",
+      "WinTime": "Volgograd Standard Time"
+    },
+    {
+      "IANATime": "Australia/Perth",
+      "WinTime": "W. Australia Standard Time"
+    },
+    {
+      "IANATime": "Australia/Perth",
+      "WinTime": "W. Australia Standard Time"
+    },
+    {
+      "IANATime": "Africa/Lagos",
+      "WinTime": "W. Central Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Luanda",
+      "WinTime": "W. Central Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Porto-Novo",
+      "WinTime": "W. Central Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Kinshasa",
+      "WinTime": "W. Central Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Bangui",
+      "WinTime": "W. Central Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Brazzaville",
+      "WinTime": "W. Central Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Douala",
+      "WinTime": "W. Central Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Algiers",
+      "WinTime": "W. Central Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Libreville",
+      "WinTime": "W. Central Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Malabo",
+      "WinTime": "W. Central Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Niamey",
+      "WinTime": "W. Central Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Lagos",
+      "WinTime": "W. Central Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Ndjamena",
+      "WinTime": "W. Central Africa Standard Time"
+    },
+    {
+      "IANATime": "Africa/Tunis",
+      "WinTime": "W. Central Africa Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT-1",
+      "WinTime": "W. Central Africa Standard Time"
+    },
+    {
+      "IANATime": "Europe/Berlin",
+      "WinTime": "W. Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Andorra",
+      "WinTime": "W. Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Vienna",
+      "WinTime": "W. Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Zurich",
+      "WinTime": "W. Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Berlin Europe/Busingen",
+      "WinTime": "W. Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Gibraltar",
+      "WinTime": "W. Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Rome",
+      "WinTime": "W. Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Vaduz",
+      "WinTime": "W. Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Luxembourg",
+      "WinTime": "W. Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Monaco",
+      "WinTime": "W. Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Malta",
+      "WinTime": "W. Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Amsterdam",
+      "WinTime": "W. Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Oslo",
+      "WinTime": "W. Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Stockholm",
+      "WinTime": "W. Europe Standard Time"
+    },
+    {
+      "IANATime": "Arctic/Longyearbyen",
+      "WinTime": "W. Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/San_Marino",
+      "WinTime": "W. Europe Standard Time"
+    },
+    {
+      "IANATime": "Europe/Vatican",
+      "WinTime": "W. Europe Standard Time"
+    },
+    {
+      "IANATime": "Asia/Hovd",
+      "WinTime": "W. Mongolia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Hovd",
+      "WinTime": "W. Mongolia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Tashkent",
+      "WinTime": "West Asia Standard Time"
+    },
+    {
+      "IANATime": "Antarctica/Mawson",
+      "WinTime": "West Asia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Oral Asia/Almaty Asia/Aqtau Asia/Aqtobe Asia/Atyrau Asia/Qostanay",
+      "WinTime": "West Asia Standard Time"
+    },
+    {
+      "IANATime": "Indian/Maldives",
+      "WinTime": "West Asia Standard Time"
+    },
+    {
+      "IANATime": "Indian/Kerguelen",
+      "WinTime": "West Asia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Dushanbe",
+      "WinTime": "West Asia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Ashgabat",
+      "WinTime": "West Asia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Tashkent Asia/Samarkand",
+      "WinTime": "West Asia Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT-5",
+      "WinTime": "West Asia Standard Time"
+    },
+    {
+      "IANATime": "Asia/Hebron",
+      "WinTime": "West Bank Standard Time"
+    },
+    {
+      "IANATime": "Asia/Hebron Asia/Gaza",
+      "WinTime": "West Bank Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Port_Moresby",
+      "WinTime": "West Pacific Standard Time"
+    },
+    {
+      "IANATime": "Antarctica/DumontDUrville",
+      "WinTime": "West Pacific Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Truk",
+      "WinTime": "West Pacific Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Guam",
+      "WinTime": "West Pacific Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Saipan",
+      "WinTime": "West Pacific Standard Time"
+    },
+    {
+      "IANATime": "Pacific/Port_Moresby",
+      "WinTime": "West Pacific Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT-10",
+      "WinTime": "West Pacific Standard Time"
+    },
+    {
+      "IANATime": "Asia/Yakutsk",
+      "WinTime": "Yakutsk Standard Time"
+    },
+    {
+      "IANATime": "Asia/Yakutsk Asia/Khandyga",
+      "WinTime": "Yakutsk Standard Time"
+    },
+    {
+      "IANATime": "America/Whitehorse",
+      "WinTime": "Yukon Standard Time"
+    },
+    {
+      "IANATime": "America/Whitehorse America/Dawson",
+      "WinTime": "Yukon Standard Time"
+    },
+    {
+      "IANATime": "Asia/Kamchatka",
+      "WinTime": "Kamchatka Standard Time"
+    },
+    {
+      "IANATime": "Etc/GMT+2",
+      "WinTime": "Mid-Atlantic Standard Time"
+    }
+  ]
+}

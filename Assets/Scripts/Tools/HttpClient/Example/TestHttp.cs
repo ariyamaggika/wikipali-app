@@ -1,4 +1,5 @@
 using CI.HttpClient;
+using GeoTimeZone;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,21 +7,115 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using ZXing.Common;
+using static ArticleController;
+using static ArticleManager;
+using static C2SGetTimeZone;
 
 public class TestHttp : MonoBehaviour
 {
     public Button button;
     public InputField inputField;
+    public InputField inputField2;
+    public TimeZoneLookup timeZoneLookup;
+
     // Start is called before the first frame update
     void Start()
     {
+        timeZoneLookup.LoadData();
         //GetChannel();
         //PostChannel();
         button.onClick.AddListener(OnBtnClick);
+        Timezones defaultTS = JsonUtility.FromJson<Timezones>(ReadJsonFromStreamingAssetsPath("Json/TimeZone/IANATimeZone"));
+
+        for (int i = 0; i < defaultTS.info.Count; i++)
+        {
+            test.Add(defaultTS.info[i].name, defaultTS.info[i].time);
+        }
+        IANAWinNames defaultIS = JsonUtility.FromJson<IANAWinNames>(ReadJsonFromStreamingAssetsPath("Json/TimeZone/IANAWindowsMapping"));
+        for (int i = 0; i < defaultIS.info.Count; i++)
+        {
+            string[] splits = defaultIS.info[i].IANATime.Split(' ');
+            for (int j = 0; j < splits.Length; j++)
+            {
+                IANA2WIN.TryAdd(splits[j], defaultIS.info[i].WinTime);
+            }
+        }
     }
+    [Serializable]
+    public class Timezone
+    {
+        //public KeyValuePair<string, string> kvp;
+        public string name;
+        public string time;
+    }
+    [Serializable]
+    public class Timezones
+    {
+        public List<Timezone> info;
+    }
+    string ReadJsonFromStreamingAssetsPath(string jsonName)
+    {
+        TextAsset textAsset = Resources.Load<TextAsset>(jsonName);
+        return textAsset.text;
+    }
+    [Serializable]
+    public class IANAWinName
+    {
+        //public KeyValuePair<string, string> kvp;
+        public string IANATime;
+        public string WinTime;
+    }
+    [Serializable]
+    public class IANAWinNames
+    {
+        public List<IANAWinName> info;
+    }
+
+    public int CaculateTimeZone2(float lat, float log)
+    {
+
+        TimeZoneResult res = timeZoneLookup.GetTimeZone(lat, log);
+        Debug.LogError(res.Result);
+        //TimeZoneConverter
+        DateTimeOffset dateTimeOffset = DateTimeOffset.Now;
+        string tz = IANA2WIN[res.Result];
+        TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(tz);
+        TimeSpan offset = timeZoneInfo.GetUtcOffset(dateTimeOffset.DateTime);
+        Debug.LogError("windows:h:" + offset.Hours + "m:" + offset.Minutes);
+        if (res.Result.Contains("GMT"))
+        {
+            //Etc/GMT-6
+            Debug.LogError("IANA:" + res.Result);
+        }
+        else
+            Debug.LogError("IANA:" + test[res.Result]);
+        return 0;
+    }
+    static Dictionary<string, string> test = new Dictionary<string, string>();
+    static Dictionary<string, string> IANA2WIN = new Dictionary<string, string>();
     void OnBtnClick()
     {
-        Debug.LogError(CommonTool.CaculateTimeZone(float.Parse(inputField.text)));
+
+        float lat = float.Parse(inputField.text);
+        float lon = float.Parse(inputField2.text);
+        Debug.LogError(/*CommonTool.*/CaculateTimeZone2(lat, lon));
+        //筛选IANA有的IANA2Win的缺失字段
+        //foreach (KeyValuePair<string, string> iana in test)
+        //{
+        //    if (!IANA2WIN.ContainsKey(iana.Key))
+        //    {
+        //        Debug.LogError(iana.Key);
+        //    }
+        
+        //}
+
+        //C2SGetTimeZone.GetCommunityDicData(lat, lon, OnTimeZoneCallBack);
+
+    }
+    public object OnTimeZoneCallBack(TimeZoneJsonData tz)
+    {
+        Debug.LogError(tz.offset);
+        return null;
     }
     // Update is called once per frame
     void Update()
