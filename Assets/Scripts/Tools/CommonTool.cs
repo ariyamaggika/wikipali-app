@@ -729,27 +729,5 @@ public class CommonTool
         return output;
     }
     #endregion
-    #region 计算时区相关
-    /* 根据经度获取时区；例如121：+8;-121：-8;返回值为字符串（返回正数时候带+符号）
-    *https://download.csdn.net/blog/column/11112744/124842449
-    * @param currentLon
-    * @return
-    */
-    public static int CaculateTimeZone(float currentLon)
-    {
-        int timeZone;
-        int shangValue = (int)(currentLon / 15);
-        float yushuValue = Math.Abs(currentLon % 15);
-        if (yushuValue <= 7.5)
-        {
-            timeZone = shangValue;
-        }
-        else
-        {
-            timeZone = shangValue + (currentLon > 0 ? 1 : -1);
-        }
-        return timeZone >= 0 ? Math.Abs(timeZone) : -Math.Abs(timeZone);
-    }
 
-    #endregion
 }

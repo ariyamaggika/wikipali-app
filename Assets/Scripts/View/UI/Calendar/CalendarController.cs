@@ -468,8 +468,12 @@ public class CalendarController : MonoBehaviour
         cView.SetEra(time);
         //不能用UTC时间
         if (CalendarManager.Instance().isLocationed())
-            cView.GetSunTime(time, cView.nowCity);//,0,0,0, DateTimeKind.Utc));
-
+        {
+            DateTime tzTime = cView.GetDSTDateTime(time);
+            //todo bug 时区变了。明相日中计算的时区没变
+            cView.GetSunTime(tzTime, cView.nowCity);//,0,0,0, DateTimeKind.Utc));
+            cView.SetAllTimeZoneDST(tzTime, cView.nowCity);//,0,0,0, DateTimeKind.Utc));
+        }
     }
     public void ClickToday()
     {

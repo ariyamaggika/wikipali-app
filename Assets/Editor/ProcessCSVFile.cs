@@ -136,5 +136,102 @@ public class ProcessCSVFile
 
         Debug.LogError(res);
     }
+    //去掉csv文件某些不需要的列(变量)
+    [MenuItem("Assets/Tools/IANAWinCSV2Json")]
+    public static void IANAWinCSV2Json()
+    {
 
+        //支持多选
+        string[] guids = Selection.assetGUIDs;//获取当前选中的asset的GUID
+                                              //for (int i = 0; i < guids.Length; i++)
+                                              //{
+        string assetPath = AssetDatabase.GUIDToAssetPath(guids[0]);//通过GUID获取路径
+                                                                   //TextAsset textAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(assetPath);
+
+        string[] textTxt = File.ReadAllLines(assetPath);
+
+        List<string> res = new List<string>();
+        int l = textTxt.Length;
+        for (int i = 0; i < l; i++)
+        {
+            string[] split = textTxt[i].Split(',');
+            //string resT = "";
+            //for (int j = 0; j < split.Length; j++)
+            //{
+            //    if (j != 0 && j != 1)//tag_map
+            //                         //if (j != 5 && j != 7 && j != 8 && j != 10)//pali_text
+            //                         //if (j != 0 && j != 6 && j != 7 && j != 10 && j != 9 && j != 10 && j != 11)//sentence_translation
+            //    {
+            //        //if (j != 0)
+            //        //if (j != 1)
+            //        if (j != 2)
+            //            resT += ("," + split[j]);
+            //        else
+            //            resT += split[j];
+            //    }
+            //}
+            //res.Add(string.Format("{\"IANATime\": \"{0}\",\"WinTime\":\"{1}\"},", split[2], split[0]));
+            res.Add("{\"IANATime\": \""+ split[2]+"\",\"WinTime\":\"" + split[0]+"\"},");
+        }
+
+
+        //File.WriteAllLines(assetPath, res.ToArray());
+        File.WriteAllLines("Assets/Editor/IANAWinCSV2Json.json", res.ToArray());
+
+
+
+
+
+
+        //}
+    }
+    //去掉csv文件某些不需要的列(变量)
+    [MenuItem("Assets/Tools/IANAWinCSV2JsonAll")]
+    public static void IANAWinCSV2JsonAll()
+    {
+
+        //支持多选
+        string[] guids = Selection.assetGUIDs;//获取当前选中的asset的GUID
+                                              //for (int i = 0; i < guids.Length; i++)
+                                              //{
+        string assetPath = AssetDatabase.GUIDToAssetPath(guids[0]);//通过GUID获取路径
+                                                                   //TextAsset textAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(assetPath);
+
+        string[] textTxt = File.ReadAllLines(assetPath);
+
+        List<string> res = new List<string>();
+        int l = textTxt.Length;
+        for (int i = 0; i < l; i++)
+        {
+            string[] split = textTxt[i].Split(',');
+            //string resT = "";
+            //for (int j = 0; j < split.Length; j++)
+            //{
+            //    if (j != 0 && j != 1)//tag_map
+            //                         //if (j != 5 && j != 7 && j != 8 && j != 10)//pali_text
+            //                         //if (j != 0 && j != 6 && j != 7 && j != 10 && j != 9 && j != 10 && j != 11)//sentence_translation
+            //    {
+            //        //if (j != 0)
+            //        //if (j != 1)
+            //        if (j != 2)
+            //            resT += ("," + split[j]);
+            //        else
+            //            resT += split[j];
+            //    }
+            //}
+            //res.Add(string.Format("{\"IANATime\": \"{0}\",\"WinTime\":\"{1}\"},", split[2], split[0]));
+            res.Add("{\"IANATime\": \"" + split[0] + "\",\"WinTime\":\"" + split[1] + "\"},");
+        }
+
+
+        //File.WriteAllLines(assetPath, res.ToArray());
+        File.WriteAllLines("Assets/Editor/IANAWinCSV2JsonAll.json", res.ToArray());
+
+
+
+
+
+
+        //}
+    }
 }

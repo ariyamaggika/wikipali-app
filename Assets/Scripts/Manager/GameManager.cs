@@ -44,7 +44,8 @@ public class GameManager : MonoBehaviour
         ArticleManager.Instance().articleStarGroup = articleStarGroup;
         ArticleManager.Instance().articleView = articleView;
         LoadingViewManager.Instance().titleLoadingView = titleLoadingTexView;
-        SelectCityController.Instance().InitTimeZoneLookup(timeZoneLookup);
+        //SelectCityController.Instance().InitTimeZoneLookup(timeZoneLookup);
+        TimeZoneManager.Instance().InitData(timeZoneLookup);
     }
     bool isStartUnZipProgress = false;
     bool isDownLoadProgress = false;
