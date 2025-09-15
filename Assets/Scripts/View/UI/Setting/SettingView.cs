@@ -33,6 +33,7 @@ public class SettingView : MonoBehaviour
     public Button openLastSliderBtn;
     public Slider openLastSliderToggle;
     public CommonGroupView commonGroupView;
+    public CalendarView calView;
     // Start is called before the first frame update
     void Start()
     {
@@ -169,7 +170,7 @@ public class SettingView : MonoBehaviour
     {
         paliVoiceTypeText.text = SettingManager.Instance().GetPaliVoiceTypeName();
         paliVoiceGenderText.text = SettingManager.Instance().GetPaliVoiceGenderName();
-
+        calView.setCalMenuLanguage();
     }
     void OnPaliVoiceSpeedBtnClick()
     {

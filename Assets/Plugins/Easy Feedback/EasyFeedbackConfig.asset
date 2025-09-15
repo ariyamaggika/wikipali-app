@@ -35,17 +35,17 @@ MonoBehaviour:
       idBoard: 64813462e4e391c8da3523a6
       name: Low Priority
       color: green
-      uses: 0
-      order: 0
-    - id: 64813462e4e391c8da3523c7
-      idBoard: 64813462e4e391c8da3523a6
-      name: High Priority
-      color: red
-      uses: 0
+      uses: 25
       order: 0
     - id: 64813462e4e391c8da3523c4
       idBoard: 64813462e4e391c8da3523a6
       name: Medium Priority
       color: yellow
-      uses: 0
+      uses: 5
+      order: 0
+    - id: 64813462e4e391c8da3523c7
+      idBoard: 64813462e4e391c8da3523a6
+      name: High Priority
+      color: red
+      uses: 1
       order: 0

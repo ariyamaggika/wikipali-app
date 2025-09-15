@@ -9,6 +9,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using I2.Loc;
 using static SelectCityController;
+using System.Reflection;
+using ZXing;
 //using CoordinateSharp;
 
 [CLSCompliant(false)]
@@ -24,6 +26,8 @@ public class CalendarView : MonoBehaviour
     public Toggle mmCalToggle;
     public Toggle realCalToggle;
     public Toggle farmerCalToggle;
+    public Dropdown calMenu;    //缅历、农历、星宿历
+
     public Button todayBtn;
     public Button selectCityBtn;
     public Button currPosBtn;
@@ -43,6 +47,10 @@ public class CalendarView : MonoBehaviour
     public Text currCityTimeoffsetText;
     public Text currCityTimezoneText;
     public Text currCityDstText;
+    //选择其他国家后显示的当前手机设备的时区时间
+    public Text currPhoneTZsunriseText;
+    public Text currPhoneTZsolarNoonText;
+    public Text currPhoneTZsunsetText;
 
     // Start is called before the first frame update
     void Awake()
@@ -64,8 +72,10 @@ public class CalendarView : MonoBehaviour
         nowCity.lng = 0;
         nowCity.timeZone = TimeZoneInfo.FindSystemTimeZoneById("Greenwich Standard Time");
     }
+
     void Start()
     {
+        setCalMenuLanguage();
         //SunCalcTests sunCalcTests = new SunCalcTests();
         //sunCalcTests.Get_Sun_Phases_Returns_Sun_Phases_For_The_Given_Date_And_Location();
 
@@ -81,6 +91,7 @@ public class CalendarView : MonoBehaviour
         //CalendarManager.Instance().StartLocation();
         //放awake里会出现两个toggle都是on的bug
         int isMMCal = SettingManager.Instance().GetCalType();
+        calMenu.SetValueWithoutNotify(isMMCal - 1);
         if (isMMCal == 1)
         {
             mmCalToggle.isOn = true;
@@ -100,6 +111,7 @@ public class CalendarView : MonoBehaviour
             mmCalToggle.isOn = false;
         }
         mmCalToggle.onValueChanged.AddListener(OnToggleValueChanged);
+        calMenu.onValueChanged.AddListener(OnChangeCal);
         realCalToggle.onValueChanged.AddListener(OnToggleValueChanged);
         farmerCalToggle.onValueChanged.AddListener(OnToggleValueChanged);
         todayBtn.onClick.AddListener(OnClickToday);
@@ -107,6 +119,12 @@ public class CalendarView : MonoBehaviour
         currPosBtn.onClick.AddListener(OnClickCurrPosBtn);
         SetEra(DateTime.Today);
         SetIsCurrCity(true);
+    }
+    public void setCalMenuLanguage()
+    {
+        calMenu.options[0].text = LocalizationManager.GetTranslation("calendar_BurmeseCalendar");
+        calMenu.options[1].text = LocalizationManager.GetTranslation("calendar_StarCalendar");
+        calMenu.options[2].text = LocalizationManager.GetTranslation("calendar_ChineseCalendar");
     }
     public void SetIsCurrCity(bool isCurrCity)
     {
@@ -145,6 +163,11 @@ public class CalendarView : MonoBehaviour
         //UITool.ShowToastMessage(this, temp, 35);
     }
     int toggleFlag = 0;
+    void OnChangeCal(int index)
+    {
+        SettingManager.Instance().SetCalType(index + 1);
+        controllerView.Start();
+    }
     void OnToggleValueChanged(bool value)
     {
         //Debug.LogError(value);
@@ -179,7 +202,7 @@ public class CalendarView : MonoBehaviour
     //夏令时时间是凌晨两点开始算的，所以要按3点时间算
     public DateTime GetDSTDateTime(DateTime time)
     {
-        return new DateTime(time.Year, time.Month, time.Day,3,1, 0);
+        return new DateTime(time.Year, time.Month, time.Day, 3, 1, 0);
     }
     //todo 此处可能有有隐患出bug全部设置,后面考虑统一这两个
     public void SetAllTimeZoneDST(DateTime time, CityInfo cityInfo)
@@ -247,7 +270,17 @@ public class CalendarView : MonoBehaviour
         sunriseText.text = sunPhaseTimeSunrise;
         solarNoonText.text = sunPhaseTimeSolarNoon;
         sunsetText.text = sunPhaseTimeSunSet;
+        //todo时区差
+        //时区时差，本地时间与UTC时间的时差
+        TimeSpan sp_curr = -TimeZoneInfo.Local.GetUtcOffset(time);
+        string currPhoneTimeSolarNoon = (sunPhaseValueSolarNoon.PhaseTime - sp_curr).ToString("HH:mm:ss");
+        string currPhoneTimeSunrise = (lightTime - sp_curr).ToString("HH:mm:ss");
+        string currPhoneTimeSunSet = (sunPhaseValueSunSet.PhaseTime - sp_curr).ToString("HH:mm:ss");
+        currPhoneTZsunriseText.text = currPhoneTimeSunrise;
+        currPhoneTZsolarNoonText.text = currPhoneTimeSolarNoon;
+        currPhoneTZsunsetText.text = currPhoneTimeSunSet;
 
+        //Debug.LogError("本地时区" + ts_curr);
     }
     //public void GetSunTime(DateTime time)
     //{
