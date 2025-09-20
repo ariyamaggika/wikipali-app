@@ -8,23 +8,23 @@ public class SelectCityView : MonoBehaviour
     public SelectAllCityView selectAllCityView;
     public PopSelectCityView popSelectCityView;
 
-    public void SetSelectAllCity(bool isOn)
+    public void SetSelectAllCity(bool isOn,bool isHistory)
     {
         if (isOn)
         {
-            selectAllCityView.Init();
+            selectAllCityView.Init(isHistory);
         }
         selectAllCityView.gameObject.SetActive(isOn);
     }
     public void SetThisOff()
     {
-        SetSelectAllCity(false);
+        SetSelectAllCity(false,false);
         popSelectCityView.SetThisOff();
         this.gameObject.SetActive(false);
     }
     public void SetThisOn()
     {
-        SetSelectAllCity(false);
+        SetSelectAllCity(false, false);
         this.gameObject.SetActive(true);
         popSelectCityView.OnInit();
     }

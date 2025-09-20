@@ -13,6 +13,8 @@ public class SelectAllCityView : MonoBehaviour
     public SelectCityView selectCityView;
     public RectTransform scrollContent;
     public Button delBtn;
+    public Text searchTitleText;
+    public Text historyTitleText;
     bool isDelBtnOn = false;
 
     // Start is called before the first frame update
@@ -22,9 +24,22 @@ public class SelectAllCityView : MonoBehaviour
         inputField.onValueChanged.AddListener(OnSearchValueChanged);
         delBtn.onClick.AddListener(OnDelBtnClick);
     }
-    public void Init()
+    public void Init(bool isHistory)
     {
         OnDelBtnClick();
+        //查看搜索历史
+        if (isHistory)
+        {
+            historyTitleText.gameObject.SetActive(true);
+            searchTitleText.gameObject.SetActive(false);
+            inputField.gameObject.SetActive(false);
+        }
+        else
+        {
+            historyTitleText.gameObject.SetActive(false);
+            searchTitleText.gameObject.SetActive(true);
+            inputField.gameObject.SetActive(true);
+        }
     }
     public void OnDelBtnClick()
     {
@@ -33,7 +48,7 @@ public class SelectAllCityView : MonoBehaviour
     }
     void OnCloseBtnClick()
     {
-        selectCityView.SetSelectAllCity(false);
+        selectCityView.SetSelectAllCity(false, false);
     }
     public void OnSearchValueChanged(string value)
     {

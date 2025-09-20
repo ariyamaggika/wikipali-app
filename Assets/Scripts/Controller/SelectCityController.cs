@@ -55,7 +55,7 @@ public class SelectCityController
     {
         public int id;
         public string name;
-        public string level;
+        //public string level;
         public string pName;
         public int pCode;
         public string fullName;
@@ -103,7 +103,7 @@ public class SelectCityController
                     cInfo = new FirstCityInfo();
                     cInfo.id = int.Parse(pairs2[i]["code"].ToString());
                     cInfo.name = pairs2[i]["name"].ToString();
-                    cInfo.level = pairs2[i]["level"].ToString();
+                    //cInfo.level = pairs2[i]["level"].ToString();
                     cInfo.pName = pairs2[i]["pname"].ToString();
                     //cInfo.pCode = int.Parse(pairs2[i]["pcode"].ToString());
                     cInfo.fullName = pairs2[i]["fullname"].ToString();
@@ -161,7 +161,7 @@ public class SelectCityController
                     cInfo = new SecondCityInfo();
                     cInfo.id = int.Parse(pairs2[i]["code"].ToString());
                     cInfo.name = pairs2[i]["name"].ToString();
-                    cInfo.level = pairs2[i]["level"].ToString();
+                    //cInfo.level = pairs2[i]["level"].ToString();
                     cInfo.pName = pairs2[i]["pname"].ToString();
                     cInfo.pCode = int.Parse(pairs2[i]["pcode"].ToString());
                     cInfo.fullName = pairs2[i]["fullname"].ToString();
@@ -212,7 +212,7 @@ public class SelectCityController
                     cInfo = new ThirdCityInfo();
                     cInfo.id = int.Parse(pairs3[i]["code"].ToString());
                     cInfo.name = pairs3[i]["name"].ToString();
-                    cInfo.level = pairs3[i]["level"].ToString();
+                    //cInfo.level = pairs3[i]["level"].ToString();
                     cInfo.pName = pairs3[i]["pname"].ToString();
                     cInfo.pCode = int.Parse(pairs3[i]["pcode"].ToString());
                     cInfo.fullName = pairs3[i]["fullname"].ToString();
@@ -284,7 +284,7 @@ public class SelectCityController
                     cInfo = new CityInfo();
                     cInfo.id = int.Parse(pairs2[i]["code"].ToString());
                     cInfo.name = pairs2[i]["name"].ToString();
-                    cInfo.level = pairs2[i]["level"].ToString();
+                    //cInfo.level = pairs2[i]["level"].ToString();
                     cInfo.pName = pairs2[i]["pname"].ToString();
                     cInfo.pCode = int.Parse(pairs2[i]["pcode"].ToString());
                     cInfo.fullName = pairs2[i]["fullname"].ToString();
@@ -348,7 +348,7 @@ public class SelectCityController
                     cInfo = new FirstCityInfo();
                     cInfo.id = int.Parse(pairs2[i]["code"].ToString());
                     cInfo.name = pairs2[i]["name"].ToString();
-                    cInfo.level = pairs2[i]["level"].ToString();
+                    //cInfo.level = pairs2[i]["level"].ToString();
                     cInfo.pName = pairs2[i]["pname"].ToString();
                     //cInfo.pCode = int.Parse(pairs2[i]["pcode"].ToString());
                     cInfo.fullName = pairs2[i]["fullname"].ToString();
@@ -383,7 +383,7 @@ public class SelectCityController
                         cInfo = new ThirdCityInfo();
                         cInfo.id = int.Parse(pairs21[i]["code"].ToString());
                         cInfo.name = pairs21[i]["name"].ToString();
-                        cInfo.level = pairs21[i]["level"].ToString();
+                        //cInfo.level = pairs21[i]["level"].ToString();
                         cInfo.pName = pairs21[i]["pname"].ToString();
                         //cInfo.pCode = int.Parse(pairs21[i]["pcode"].ToString());
                         cInfo.fullName = pairs21[i]["fullname"].ToString();

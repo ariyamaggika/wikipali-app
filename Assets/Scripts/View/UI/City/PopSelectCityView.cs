@@ -14,6 +14,7 @@ public class PopSelectCityView : MonoBehaviour
     public Button okBtn;
     public Button cancelBtn;
     public Button backBtn;
+    public Button historyBtn;
     public GameObject level3Group;
     public GameObject letters26Group;
 
@@ -43,6 +44,7 @@ public class PopSelectCityView : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        historyBtn.onClick.AddListener(OnHistoryBtnClick);
         searchBtn.onClick.AddListener(OnSearchBtnClick);
         okBtn.onClick.AddListener(OnOkBtnClick);
         cancelBtn.onClick.AddListener(OnBackBtnClick);
@@ -232,7 +234,11 @@ public class PopSelectCityView : MonoBehaviour
     }
     void OnSearchBtnClick()
     {
-        mainView.SetSelectAllCity(true);
+        mainView.SetSelectAllCity(true, false);
+    }
+    void OnHistoryBtnClick()
+    {
+        mainView.SetSelectAllCity(true, true);
     }
     void OnBackBtnClick()
     {
