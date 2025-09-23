@@ -132,7 +132,7 @@ public class CalendarManager
 
     public void AddCityHistorySave(CityInfo ci)
     {
-
+        //todo 查重，并且提升到第一位
         //todo Dictionary<Language, string> transName
         idSt.Push(ci.id);
         if (idSt.Count > CITY_HISTORY_COUNT)
@@ -182,6 +182,46 @@ public class CalendarManager
     public List<CityInfo> GetCityHistorySave()
     {
         List<CityInfo> cityInfos = new List<CityInfo>();
+
+        int[] idA = idSt.ToArray();
+        string[] nameA = nameSt.ToArray();
+        string[] pNameA = pNameSt.ToArray();
+        int[] pCodeA = pCodeSt.ToArray();
+        string[] fullNameA = fullNameSt.ToArray();
+        float[] lngA = lngSt.ToArray();
+        float[] latA = latSt.ToArray();
+        string[] timeZoneIDA = timeZoneIDSt.ToArray();
+        int[] countryIDA = countryIDSt.ToArray();
+        int[] statesIDA = statesIDSt.ToArray();
+        string[] countryCodeA = countryCodeSt.ToArray();
+
+        for (int i = 0; i < idA.Length; i++)
+        {
+            CityInfo ci = new CityInfo();
+            ci.id = idA[i];
+            if (nameA != null && nameA.Length > i)
+                ci.name = nameA[i];
+            if (pNameA != null && pNameA.Length > i)
+                ci.pName = pNameA[i];
+            if (pCodeA != null && pCodeA.Length > i)
+                ci.pCode = pCodeA[i];
+            if (fullNameA != null && fullNameA.Length > i)
+                ci.fullName = fullNameA[i];
+            if (lngA != null && lngA.Length > i)
+                ci.lng = lngA[i];
+            if (latA != null && latA.Length > i)
+                ci.lat = latA[i];
+            if (timeZoneIDA != null && timeZoneIDA.Length > i)
+                ci.timeZone = TimeZoneInfo.FindSystemTimeZoneById(timeZoneIDA[i]);
+            if (countryIDA != null && countryIDA.Length > i)
+                ci.countryID = countryIDA[i];
+            if (statesIDA != null && statesIDA.Length > i)
+                ci.statesID = statesIDA[i];
+            if (countryCodeA != null && countryCodeA.Length > i)
+                ci.countryCode = countryCodeA[i];
+            ci.transName = new Dictionary<SettingManager.Language, string>();
+            cityInfos.Add(ci);
+        }
 
         return cityInfos;
     }

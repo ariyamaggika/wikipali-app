@@ -33,12 +33,26 @@ public class SelectAllCityView : MonoBehaviour
             historyTitleText.gameObject.SetActive(true);
             searchTitleText.gameObject.SetActive(false);
             inputField.gameObject.SetActive(false);
+            InitHistory();
         }
         else
         {
             historyTitleText.gameObject.SetActive(false);
             searchTitleText.gameObject.SetActive(true);
             inputField.gameObject.SetActive(true);
+        }
+    }
+    void InitHistory()
+    {
+        List<CityInfo> cityInfoArr = CalendarManager.Instance().GetCityHistorySave();
+        int length = cityInfoArr.Count;// matchedWordArr.Length > DictManager.LIMIT_COUNT ? LIMIT_COUNT : matchedWordArr.Length;
+        for (int i = 0; i < length; i++)
+        {
+            GameObject inst = Instantiate(itemBtn.gameObject, scrollContent, false);
+            inst.transform.position = itemBtn.transform.position;
+            inst.GetComponent<ItemCityView>().Init(cityInfoArr[i]);
+            inst.SetActive(true);
+            itemList.Add(inst);
         }
     }
     public void OnDelBtnClick()

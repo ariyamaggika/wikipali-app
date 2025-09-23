@@ -143,6 +143,7 @@ public class CalendarView : MonoBehaviour
     {
         SetIsCurrCity(false);
         SetSelectLocationTime(cityInfo);
+        CalendarManager.Instance().AddCityHistorySave(cityInfo);
     }
     void OnClickSelectCity()
     {
