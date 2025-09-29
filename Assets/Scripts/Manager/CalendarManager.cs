@@ -7,6 +7,9 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.Experimental.GlobalIllumination;
 using static SelectCityController;
+using Org.BouncyCastle.Crypto;
+using System.Security.Cryptography;
+using static ZXing.QrCode.Internal.Mode;
 
 public class CalendarManager
 {
@@ -90,17 +93,17 @@ public class CalendarManager
     }
     //保存10个查询历史
     const int CITY_HISTORY_COUNT = 10;
-    Stack<int> idSt;
-    Stack<string> nameSt;
-    Stack<string> pNameSt;
-    Stack<int> pCodeSt;
-    Stack<string> fullNameSt;
-    Stack<float> lngSt;
-    Stack<float> latSt;
-    Stack<string> timeZoneIDSt;
-    Stack<int> countryIDSt;
-    Stack<int> statesIDSt;
-    Stack<string> countryCodeSt;
+    List<int> idSt;
+    List<string> nameSt;
+    List<string> pNameSt;
+    List<int> pCodeSt;
+    List<string> fullNameSt;
+    List<float> lngSt;
+    List<float> latSt;
+    List<string> timeZoneIDSt;
+    List<int> countryIDSt;
+    List<int> statesIDSt;
+    List<string> countryCodeSt;
     //饿汉式，先读取
     public void LoadCityHistory()
     {
@@ -116,17 +119,17 @@ public class CalendarManager
         int[] countryIDs = PlayerPrefsX.GetIntArray("cityHistory_countryID");
         int[] statesIDs = PlayerPrefsX.GetIntArray("cityHistory_statesID");
         string[] countryCodes = PlayerPrefsX.GetStringArray("cityHistory_countryCode");
-        idSt = new Stack<int>(ids);
-        nameSt = new Stack<string>(names);
-        pNameSt = new Stack<string>(pNames);
-        pCodeSt = new Stack<int>(pCodes);
-        fullNameSt = new Stack<string>(fullNames);
-        lngSt = new Stack<float>(lngs);
-        latSt = new Stack<float>(lats);
-        timeZoneIDSt = new Stack<string>(timeZoneIDs);
-        countryIDSt = new Stack<int>(countryIDs);
-        statesIDSt = new Stack<int>(statesIDs);
-        countryCodeSt = new Stack<string>(countryCodes);
+        idSt = new List<int>(ids);
+        nameSt = new List<string>(names);
+        pNameSt = new List<string>(pNames);
+        pCodeSt = new List<int>(pCodes);
+        fullNameSt = new List<string>(fullNames);
+        lngSt = new List<float>(lngs);
+        latSt = new List<float>(lats);
+        timeZoneIDSt = new List<string>(timeZoneIDs);
+        countryIDSt = new List<int>(countryIDs);
+        statesIDSt = new List<int>(statesIDs);
+        countryCodeSt = new List<string>(countryCodes);
 
     }
 
@@ -134,49 +137,68 @@ public class CalendarManager
     {
         //todo 查重，并且提升到第一位
         //todo Dictionary<Language, string> transName
-        idSt.Push(ci.id);
+        if (idSt.Contains(ci.id) && nameSt.Contains(ci.name))
+        {
+            int idi = idSt.IndexOf(ci.id);
+            int idn = nameSt.IndexOf(ci.name);
+            if (idi == idn)
+            {
+                idSt.RemoveAt(idi);
+                nameSt.RemoveAt(idi);
+                pNameSt.RemoveAt(idi);
+                pCodeSt.RemoveAt(idi);
+                fullNameSt.RemoveAt(idi);
+                lngSt.RemoveAt(idi);
+                latSt.RemoveAt(idi);
+                timeZoneIDSt.RemoveAt(idi);
+                countryIDSt.RemoveAt(idi);
+                statesIDSt.RemoveAt(idi);
+                countryCodeSt.RemoveAt(idi);
+            }
+        }
+        idSt.Add(ci.id);
         if (idSt.Count > CITY_HISTORY_COUNT)
-            idSt.Pop();
+            idSt.RemoveAt(0);
         PlayerPrefsX.SetIntArray("cityHistory_id", idSt.ToArray());
-        nameSt.Push(ci.name);
+        nameSt.Add(ci.name);
         if (nameSt.Count > CITY_HISTORY_COUNT)
-            nameSt.Pop();
+            nameSt.RemoveAt(0);
         PlayerPrefsX.SetStringArray("cityHistory_name", nameSt.ToArray());
-        pNameSt.Push(ci.pName);
+        pNameSt.Add(ci.pName);
         if (pNameSt.Count > CITY_HISTORY_COUNT)
-            pNameSt.Pop();
+            pNameSt.RemoveAt(0);
         PlayerPrefsX.SetStringArray("cityHistory_pName", pNameSt.ToArray());
-        pCodeSt.Push(ci.pCode);
+        pCodeSt.Add(ci.pCode);
         if (pCodeSt.Count > CITY_HISTORY_COUNT)
-            pCodeSt.Pop();
+            pCodeSt.RemoveAt(0);
         PlayerPrefsX.SetIntArray("cityHistory_pCode", pCodeSt.ToArray());
-        fullNameSt.Push(ci.fullName);
+        fullNameSt.Add(ci.fullName);
         if (fullNameSt.Count > CITY_HISTORY_COUNT)
-            fullNameSt.Pop();
+            fullNameSt.RemoveAt(0);
         PlayerPrefsX.SetStringArray("cityHistory_fullName", fullNameSt.ToArray());
-        lngSt.Push(ci.lng);
+        lngSt.Add(ci.lng);
         if (lngSt.Count > CITY_HISTORY_COUNT)
-            lngSt.Pop();
+            lngSt.RemoveAt(0);
         PlayerPrefsX.SetFloatArray("cityHistory_lng", lngSt.ToArray());
-        latSt.Push(ci.lat);
+        latSt.Add(ci.lat);
         if (latSt.Count > CITY_HISTORY_COUNT)
-            latSt.Pop();
+            latSt.RemoveAt(0);
         PlayerPrefsX.SetFloatArray("cityHistory_lat", latSt.ToArray());
-        timeZoneIDSt.Push(ci.timeZone.Id);
+        timeZoneIDSt.Add(ci.timeZone.Id);
         if (timeZoneIDSt.Count > CITY_HISTORY_COUNT)
-            timeZoneIDSt.Pop();
+            timeZoneIDSt.RemoveAt(0);
         PlayerPrefsX.SetStringArray("cityHistory_timeZoneID", timeZoneIDSt.ToArray());
-        countryIDSt.Push(ci.countryID);
+        countryIDSt.Add(ci.countryID);
         if (countryIDSt.Count > CITY_HISTORY_COUNT)
-            countryIDSt.Pop();
+            countryIDSt.RemoveAt(0);
         PlayerPrefsX.SetIntArray("cityHistory_countryID", countryIDSt.ToArray());
-        statesIDSt.Push(ci.statesID);
+        statesIDSt.Add(ci.statesID);
         if (statesIDSt.Count > CITY_HISTORY_COUNT)
-            statesIDSt.Pop();
+            statesIDSt.RemoveAt(0);
         PlayerPrefsX.SetIntArray("cityHistory_statesID", statesIDSt.ToArray());
-        countryCodeSt.Push(ci.countryCode);
+        countryCodeSt.Add(ci.countryCode);
         if (countryCodeSt.Count > CITY_HISTORY_COUNT)
-            countryCodeSt.Pop();
+            countryCodeSt.RemoveAt(0);
         PlayerPrefsX.SetStringArray("cityHistory_countryCode", countryCodeSt.ToArray());
     }
     public List<CityInfo> GetCityHistorySave()
@@ -195,7 +217,7 @@ public class CalendarManager
         int[] statesIDA = statesIDSt.ToArray();
         string[] countryCodeA = countryCodeSt.ToArray();
 
-        for (int i = 0; i < idA.Length; i++)
+        for (int i = idA.Length - 1; i > -1; i--)
         {
             CityInfo ci = new CityInfo();
             ci.id = idA[i];

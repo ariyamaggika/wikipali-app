@@ -51,6 +51,7 @@ public class CalendarView : MonoBehaviour
     public Text currPhoneTZsunriseText;
     public Text currPhoneTZsolarNoonText;
     public Text currPhoneTZsunsetText;
+    public GameObject tzTitleParent;
 
     // Start is called before the first frame update
     void Awake()
@@ -132,11 +133,19 @@ public class CalendarView : MonoBehaviour
         {
             selectCityPart.SetActive(false);
             currCityPart.SetActive(true);
+            tzTitleParent.SetActive(false);
+            currPhoneTZsunriseText.gameObject.SetActive(false);
+            currPhoneTZsolarNoonText.gameObject.SetActive(false);
+            currPhoneTZsunsetText.gameObject.SetActive(false);
         }
         else
         {
             selectCityPart.SetActive(true);
             currCityPart.SetActive(false);
+            tzTitleParent.SetActive(true);
+            currPhoneTZsunriseText.gameObject.SetActive(true);
+            currPhoneTZsolarNoonText.gameObject.SetActive(true);
+            currPhoneTZsunsetText.gameObject.SetActive(true);
         }
     }
     public void SetSelectCity(CityInfo cityInfo)
