@@ -52,6 +52,13 @@ public class CalendarView : MonoBehaviour
     public Text currPhoneTZsolarNoonText;
     public Text currPhoneTZsunsetText;
     public GameObject tzTitleParent;
+    //显示时区详细信息
+    public Button detailBtn;
+    public Text detailBtnText;
+    public RectTransform CitySpaceRT;
+    public GameObject selectCityParent;
+    public GameObject checkParent;
+    public GameObject latlngParent;
 
     // Start is called before the first frame update
     void Awake()
@@ -118,6 +125,7 @@ public class CalendarView : MonoBehaviour
         todayBtn.onClick.AddListener(OnClickToday);
         selectCityBtn.onClick.AddListener(OnClickSelectCity);
         currPosBtn.onClick.AddListener(OnClickCurrPosBtn);
+        detailBtn.onClick.AddListener(OnClickDetialBtn);
         SetEra(DateTime.Today);
         SetIsCurrCity(true);
     }
@@ -163,6 +171,18 @@ public class CalendarView : MonoBehaviour
     {
         SetCurrLocationTime();
         SetIsCurrCity(true);
+    }
+    bool isDetial = false;
+    void OnClickDetialBtn()
+    {
+        isDetial = !isDetial;
+        if (isDetial)
+            CitySpaceRT.sizeDelta = new Vector2(CitySpaceRT.sizeDelta.x, 298);
+        else
+            CitySpaceRT.sizeDelta = new Vector2(CitySpaceRT.sizeDelta.x, 100);
+        selectCityParent.SetActive(isDetial);
+        checkParent.SetActive(isDetial);
+        latlngParent.SetActive(isDetial);
     }
     void OnClickToday()
     {
