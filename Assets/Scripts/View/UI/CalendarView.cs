@@ -11,6 +11,8 @@ using I2.Loc;
 using static SelectCityController;
 using System.Reflection;
 using ZXing;
+using NodaTime;
+using static TimeZoneManager;
 //using CoordinateSharp;
 
 [CLSCompliant(false)]
@@ -78,7 +80,20 @@ public class CalendarView : MonoBehaviour
         nowCity = new CityInfo();
         nowCity.lat = 0;
         nowCity.lng = 0;
-        nowCity.timeZone = TimeZoneInfo.FindSystemTimeZoneById("Greenwich Standard Time");
+#if DEBUG_PERFORMANCE || UNITY_EDITOR
+        Instant now = SystemClock.Instance.GetCurrentInstant();
+        //nowCity.timeZone = TimeZoneInfo.FindSystemTimeZoneById("Greenwich Standard Time");
+        Debug.LogError("nodatimeTest");
+        NodaTime.DateTimeZone tz = DateTimeZoneProviders.Tzdb["Asia/Taipei"];
+        Debug.LogError(tz.GetUtcOffset(now).Seconds / 3600);
+#else
+        Instant now = SystemClock.Instance.GetCurrentInstant();
+        //nowCity.timeZone = TimeZoneInfo.FindSystemTimeZoneById("Greenwich Standard Time");
+        Debug.LogError("nodatimeTest");
+        NodaTime.DateTimeZone tz = DateTimeZoneProviders.Tzdb["Asia/Taipei"];
+        Debug.LogError(tz.GetUtcOffset(now).Seconds / 3600);
+        //nowCity.timeZone = TimeZoneInfo.FindSystemTimeZoneById("Asia/Taipei");
+#endif
     }
 
     void Start()
@@ -187,6 +202,7 @@ public class CalendarView : MonoBehaviour
     void OnClickToday()
     {
         controllerView.ClickToday();
+        todayBtn.gameObject.SetActive(false);
         //test
         //string temp = CommonTool.GetClipboard();
         //Debug.LogError("+" + temp);
@@ -227,20 +243,22 @@ public class CalendarView : MonoBehaviour
     //todo 整理到CalendarManager中
     public void GetSunTime(DateTime time, CityInfo cityInfo)
     {
-        GetSunTime(time, cityInfo.lat, cityInfo.lng, cityInfo.timeZone);
+        GetSunTime(time, cityInfo.lat, cityInfo.lng, cityInfo.timeZoneName);
     }
     //夏令时时间是凌晨两点开始算的，所以要按3点时间算
     public DateTime GetDSTDateTime(DateTime time)
     {
-        return new DateTime(time.Year, time.Month, time.Day, 3, 1, 0);
+        return new DateTime(time.Year, time.Month, time.Day, 3, 1, 0, DateTimeKind.Utc);
     }
     //todo 此处可能有有隐患出bug全部设置,后面考虑统一这两个
     public void SetAllTimeZoneDST(DateTime time, CityInfo cityInfo)
     {
         DateTime tzTime = GetDSTDateTime(time);
-        currCityTimeoffsetText.text = cityInfo.timeZone.GetUtcOffset(tzTime).ToString();
-        selectCityTimeoffsetText.text = cityInfo.timeZone.GetUtcOffset(tzTime).ToString();
-        if (cityInfo.timeZone.IsDaylightSavingTime(tzTime))
+        TimezoneSpan tzs = TimeZoneManager.Instance().GetTimeZoneByAddress(cityInfo.timeZoneName, time);
+        currCityTimeoffsetText.text = tzs.time.ToString();
+        selectCityTimeoffsetText.text = tzs.time.ToString();
+        //if (cityInfo.timeZone.IsDaylightSavingTime(tzTime))
+        if (TimeZoneManager.Instance().GetIsDayLightSavingTimeByAddress(cityInfo.timeZoneName, time))
         {
             currCityDstText.gameObject.SetActive(true);
             selectCityDstText.gameObject.SetActive(true);
@@ -253,7 +271,7 @@ public class CalendarView : MonoBehaviour
         //currCityDstText.text = cityInfo.timeZone.IsDaylightSavingTime(tzTime) ? "Y" : "N";
         //selectCityDstText.text = cityInfo.timeZone.IsDaylightSavingTime(tzTime) ? "Y" : "N";
     }
-    public void GetSunTime(DateTime time, float lat, float lng, TimeZoneInfo tz)
+    public void GetSunTime(DateTime time, float lat, float lng, string tz)
     {
         SunPhase solarNoon = new SunPhase(SunPhaseName.SolarNoon, time);
         SunPhase sunset = new SunPhase(SunPhaseName.Sunset, time);//日落
@@ -274,7 +292,8 @@ public class CalendarView : MonoBehaviour
         //TimeSpan ts = TimeZoneInfo.Local.GetUtcOffset(time);
         //Act
         var sunPhases = SunCalc.GetSunPhases(time, lat, lng, height, 0).ToList();// ts.Hours).ToList();
-        TimeSpan ts = tz.GetUtcOffset(time);
+        //TimeSpan ts = tz.GetUtcOffset(time);
+        TimeSpan ts = TimeZoneManager.Instance().GetTimeSpanByAddress(tz, time);
         //TimeZoneInfo targetTimeZone1 = TimeZoneInfo.FindSystemTimeZoneById("UTC");
         //TimeZoneInfo targetTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Sri Lanka Standard Time");
         TimeSpan BaseUtcOffset = new TimeSpan(ts.Hours, ts.Minutes, ts.Seconds);
@@ -360,23 +379,27 @@ public class CalendarView : MonoBehaviour
         //TimeSpan ts = TimeZoneInfo.Local.GetUtcOffset(DateTime.UtcNow);
         //TimeSpan BaseUtcOffset = new TimeSpan(ts.Hours, ts.Minutes, ts.Seconds);
         //TimeSpan sp = BaseUtcOffset;//-BaseUtcOffset;
-        nowCity.timeZone = TimeZoneInfo.Local;
-        cityInfo.timeZone = TimeZoneInfo.Local;
+        string timeZoneName = TimeZoneManager.Instance().CaculateTimeZoneName(lat, lng);// TimeZoneInfo.Local;
+        nowCity.timeZoneName = timeZoneName;
+        cityInfo.timeZoneName = timeZoneName;
 
         currCityLatText.text = lat.ToString("#0.0");// lat.ToString();
         currCityLngText.text = lng.ToString("#0.0");
-        GetSunTime(new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 0, 1, 0), lat, lng, cityInfo.timeZone);
+        GetSunTime(new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 3, 1, 0, DateTimeKind.Utc), lat, lng, cityInfo.timeZoneName);
         //todo
         CalendarManager.Instance().StopLocation();
         controllerView.Start();
         SetIsCurrCity(true);
         DateTime tzTime = GetDSTDateTime(DateTime.Today);
-        currCityTimeoffsetText.text = cityInfo.timeZone.GetUtcOffset(tzTime).ToString();
-        if (cityInfo.timeZone.IsDaylightSavingTime(tzTime))
+        TimeSpan tzs = TimeZoneManager.Instance().GetTimeSpanByAddress(cityInfo.timeZoneName, tzTime);
+        currCityTimeoffsetText.text = tzs.ToString();
+        //if (cityInfo.timeZone.IsDaylightSavingTime(tzTime))
+        if (TimeZoneManager.Instance().GetIsDayLightSavingTimeByAddress(cityInfo.timeZoneName, tzTime))
             currCityDstText.gameObject.SetActive(true);
         else
             currCityDstText.gameObject.SetActive(false);
-        currCityTimezoneText.text = cityInfo.timeZone.DisplayName;
+        //currCityTimezoneText.text = cityInfo.timeZone.DisplayName;
+        currCityTimezoneText.text = cityInfo.timeZoneName;
         if (string.IsNullOrEmpty(cityInfo.fullName))
             currCityText.text = cityInfo.name;
         else
@@ -399,12 +422,14 @@ public class CalendarView : MonoBehaviour
         //currCityTimezoneText.text = sCityInfo.timeZone.GetUtcOffset(DateTime.Today).ToString();
         //currCityDstText.text = sCityInfo.timeZone.IsDaylightSavingTime(DateTime.Today) ? "Y" : "N";
         DateTime tzTime = GetDSTDateTime(DateTime.Today);
-        selectCityTimeoffsetText.text = sCityInfo.timeZone.GetUtcOffset(tzTime).ToString();
-        if (sCityInfo.timeZone.IsDaylightSavingTime(tzTime))
+        TimeSpan tzs = TimeZoneManager.Instance().GetTimeSpanByAddress(sCityInfo.timeZoneName, tzTime);
+        selectCityTimeoffsetText.text = tzs.ToString();// sCityInfo.timeZone.GetUtcOffset(tzTime).ToString();
+        //if (sCityInfo.timeZone.IsDaylightSavingTime(tzTime))
+        if (TimeZoneManager.Instance().GetIsDayLightSavingTimeByAddress(sCityInfo.timeZoneName, tzTime))
             selectCityDstText.gameObject.SetActive(true);
         else
             selectCityDstText.gameObject.SetActive(false);
-        selectCityTimezoneText.text = sCityInfo.timeZone.DisplayName;
+        selectCityTimezoneText.text = sCityInfo.timeZoneName;//.DisplayName;
         if (string.IsNullOrEmpty(sCityInfo.fullName))
             selectCityText.text = sCityInfo.name;
         else

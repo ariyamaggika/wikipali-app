@@ -10,6 +10,7 @@ using ZXing.Common;
 using static ArticleController;
 using static ArticleManager;
 using static C2SGetTimeZone;
+using static TimeZoneManager;
 
 public class TestHttp : MonoBehaviour
 {
@@ -78,9 +79,16 @@ public class TestHttp : MonoBehaviour
         Debug.LogError(res.Result);
         //TimeZoneConverter
         DateTimeOffset dateTimeOffset = DateTimeOffset.Now;
-        string tz = IANA2WIN[res.Result];
-        TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(tz);
-        TimeSpan offset = timeZoneInfo.GetUtcOffset(dateTimeOffset.DateTime);
+        //string tz = IANA2WIN[res.Result];
+#if DEBUG_PERFORMANCE || UNITY_EDITOR
+        //string tz = IANA2WIN[res.Result];
+        string tz = res.Result;
+#else
+        string tz = res.Result;
+#endif
+        //TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(tz);
+        TimezoneSpan timeZoneInfo = TimeZoneManager.Instance().GetTimeZoneByAddress(tz, dateTimeOffset.DateTime);
+        TimeSpan offset = timeZoneInfo.time;// timeZoneInfo.GetUtcOffset(dateTimeOffset.DateTime);
         Debug.LogError("windows:h:" + offset.Hours + "m:" + offset.Minutes);
         if (res.Result.Contains("GMT"))
         {

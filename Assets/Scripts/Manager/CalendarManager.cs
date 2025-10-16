@@ -10,6 +10,9 @@ using static SelectCityController;
 using Org.BouncyCastle.Crypto;
 using System.Security.Cryptography;
 using static ZXing.QrCode.Internal.Mode;
+using NodaTime;
+using NodaTime.Extensions;
+using static TimeZoneManager;
 
 public class CalendarManager
 {
@@ -51,10 +54,10 @@ public class CalendarManager
     public string GetSunSolarNoonTime(DateTime time, CityInfo cityInfo)//, float lat, float lng, float height = 0)
     {
         //?为什么0h1m1s显示为前一天？，一定要1h1m1s才行
-        DateTime newDate = new DateTime(time.Year, time.Month, time.Day, 3, 1, 0);
+        DateTime newDate = new DateTime(time.Year, time.Month, time.Day, 3, 1, 0, DateTimeKind.Utc);
         SunPhase solarNoon = new SunPhase(SunPhaseName.SolarNoon, newDate);
         //时区时差
-        TimeSpan ts = cityInfo.timeZone.GetUtcOffset(time);
+        TimeSpan ts = TimeZoneManager.Instance().GetTimeZoneByAddress(cityInfo.timeZoneName, time).time;// cityInfo.timeZone.GetUtcOffset(time);
         float lat = cityInfo.lat;
         float lng = cityInfo.lng;
         //(lat, lng) = GetLocation();
@@ -100,7 +103,8 @@ public class CalendarManager
     List<string> fullNameSt;
     List<float> lngSt;
     List<float> latSt;
-    List<string> timeZoneIDSt;
+    List<string> timeZoneNameSt;
+    //List<int> timeOffsetSecondSt;
     List<int> countryIDSt;
     List<int> statesIDSt;
     List<string> countryCodeSt;
@@ -115,7 +119,7 @@ public class CalendarManager
         string[] fullNames = PlayerPrefsX.GetStringArray("cityHistory_fullName");
         float[] lngs = PlayerPrefsX.GetFloatArray("cityHistory_lng");
         float[] lats = PlayerPrefsX.GetFloatArray("cityHistory_lat");
-        string[] timeZoneIDs = PlayerPrefsX.GetStringArray("cityHistory_timeZoneID");
+        string[] timeZoneNames = PlayerPrefsX.GetStringArray("cityHistory_timeZoneName");
         int[] countryIDs = PlayerPrefsX.GetIntArray("cityHistory_countryID");
         int[] statesIDs = PlayerPrefsX.GetIntArray("cityHistory_statesID");
         string[] countryCodes = PlayerPrefsX.GetStringArray("cityHistory_countryCode");
@@ -126,7 +130,7 @@ public class CalendarManager
         fullNameSt = new List<string>(fullNames);
         lngSt = new List<float>(lngs);
         latSt = new List<float>(lats);
-        timeZoneIDSt = new List<string>(timeZoneIDs);
+        timeZoneNameSt = new List<string>(timeZoneNames);
         countryIDSt = new List<int>(countryIDs);
         statesIDSt = new List<int>(statesIDs);
         countryCodeSt = new List<string>(countryCodes);
@@ -150,7 +154,8 @@ public class CalendarManager
                 fullNameSt.RemoveAt(idi);
                 lngSt.RemoveAt(idi);
                 latSt.RemoveAt(idi);
-                timeZoneIDSt.RemoveAt(idi);
+                timeZoneNameSt.RemoveAt(idi);
+                //timeOffsetSecondSt.RemoveAt(idi);
                 countryIDSt.RemoveAt(idi);
                 statesIDSt.RemoveAt(idi);
                 countryCodeSt.RemoveAt(idi);
@@ -184,10 +189,14 @@ public class CalendarManager
         if (latSt.Count > CITY_HISTORY_COUNT)
             latSt.RemoveAt(0);
         PlayerPrefsX.SetFloatArray("cityHistory_lat", latSt.ToArray());
-        timeZoneIDSt.Add(ci.timeZone.Id);
-        if (timeZoneIDSt.Count > CITY_HISTORY_COUNT)
-            timeZoneIDSt.RemoveAt(0);
-        PlayerPrefsX.SetStringArray("cityHistory_timeZoneID", timeZoneIDSt.ToArray());
+        timeZoneNameSt.Add(ci.timeZoneName);
+        if (timeZoneNameSt.Count > CITY_HISTORY_COUNT)
+            timeZoneNameSt.RemoveAt(0);
+        PlayerPrefsX.SetStringArray("cityHistory_timeZoneName", timeZoneNameSt.ToArray());
+        //timeOffsetSecondSt.Add(ci.timeOffsetSecond);
+        //if (timeOffsetSecondSt.Count > CITY_HISTORY_COUNT)
+        //    timeOffsetSecondSt.RemoveAt(0);
+        //PlayerPrefsX.SetIntArray("cityHistory_timeZoneSecond", timeOffsetSecondSt.ToArray());
         countryIDSt.Add(ci.countryID);
         if (countryIDSt.Count > CITY_HISTORY_COUNT)
             countryIDSt.RemoveAt(0);
@@ -212,7 +221,8 @@ public class CalendarManager
         string[] fullNameA = fullNameSt.ToArray();
         float[] lngA = lngSt.ToArray();
         float[] latA = latSt.ToArray();
-        string[] timeZoneIDA = timeZoneIDSt.ToArray();
+        string[] timeZoneNameA = timeZoneNameSt.ToArray();
+        //int[] timeOffsetSecondA = timeOffsetSecondSt.ToArray();
         int[] countryIDA = countryIDSt.ToArray();
         int[] statesIDA = statesIDSt.ToArray();
         string[] countryCodeA = countryCodeSt.ToArray();
@@ -233,8 +243,10 @@ public class CalendarManager
                 ci.lng = lngA[i];
             if (latA != null && latA.Length > i)
                 ci.lat = latA[i];
-            if (timeZoneIDA != null && timeZoneIDA.Length > i)
-                ci.timeZone = TimeZoneInfo.FindSystemTimeZoneById(timeZoneIDA[i]);
+            if (timeZoneNameA != null && timeZoneNameA.Length > i)
+                ci.timeZoneName = timeZoneNameA[i];
+            //if (timeOffsetSecondA != null && timeOffsetSecondA.Length > i)
+            //    ci.timeOffsetSecond = timeOffsetSecondA[i];
             if (countryIDA != null && countryIDA.Length > i)
                 ci.countryID = countryIDA[i];
             if (statesIDA != null && statesIDA.Length > i)
@@ -247,4 +259,6 @@ public class CalendarManager
 
         return cityInfos;
     }
+
+
 }

@@ -1,4 +1,6 @@
 using GeoTimeZone;
+using NodaTime.Extensions;
+using NodaTime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -48,6 +50,12 @@ public class TimeZoneManager
     {
         public List<IANAWinName> info;
     }
+    public class TimezoneSpan
+    {
+        //public KeyValuePair<string, string> kvp;
+        public string name;
+        public TimeSpan time;
+    }
     //挂在camera
     public TimeZoneLookup timeZoneLookup;
     static Dictionary<string, string> IANATime = new Dictionary<string, string>();
@@ -73,15 +81,38 @@ public class TimeZoneManager
             }
         }
     }
-
-    public TimeZoneInfo CaculateTimeZone(float lat,float log)
+    public String CaculateTimeZoneName(float lat, float log)
     {
         TimeZoneResult res = timeZoneLookup.GetTimeZone(lat, log);
         Debug.LogError(res.Result);
         //TimeZoneConverter
         DateTimeOffset dateTimeOffset = DateTimeOffset.Now;
-        string tz = IANA2WIN[res.Result];
-        TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(tz);
+#if DEBUG_PERFORMANCE || UNITY_EDITOR
+        //string tz = IANA2WIN[res.Result];
+        string tz = res.Result;
+
+#else
+        string tz = res.Result;
+#endif
+
+        return tz;
+
+    }
+    public TimezoneSpan CaculateTimeZone(float lat, float log)
+    {
+        TimeZoneResult res = timeZoneLookup.GetTimeZone(lat, log);
+        Debug.LogError(res.Result);
+        //TimeZoneConverter
+        DateTimeOffset dateTimeOffset = DateTimeOffset.Now;
+#if DEBUG_PERFORMANCE || UNITY_EDITOR
+        //string tz = IANA2WIN[res.Result];
+        string tz = res.Result;
+
+#else
+        string tz = res.Result;
+#endif
+        TimezoneSpan timeZoneInfo = TimeZoneManager.Instance().GetTimeZoneByAddress(tz, dateTimeOffset.DateTime);
+        //TimeZoneInfo.FindSystemTimeZoneById(tz);
         //TimeSpan offset = timeZoneInfo.GetUtcOffset(dateTimeOffset.DateTime);
         return timeZoneInfo;
         //Debug.LogError("windows:h:" + offset.Hours + "m:" + offset.Minutes);
@@ -94,11 +125,12 @@ public class TimeZoneManager
         //    Debug.LogError("IANA:" + test[res.Result]);
         //return 0;
     }
-    public TimeZoneInfo GetTimeZoneByName(string name)
-    {
-        TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(name);
-        return timeZoneInfo;
-    }
+    //public TimezoneSpan GetTimeZoneByName(string name, DateTime dt)
+    //{
+    //    TimezoneSpan timeZoneInfo = CalendarManager.Instance().GetTimeZoneByAddress(name, dt);
+    //    //TimeZoneInfo.FindSystemTimeZoneById(name);
+    //    return timeZoneInfo;
+    //}
     /* 根据经度获取时区；例如121：+8;-121：-8;返回值为字符串（返回正数时候带+符号）
 *https://download.csdn.net/blog/column/11112744/124842449
 * @param currentLon
@@ -119,4 +151,46 @@ public class TimeZoneManager
     //    }
     //    return timeZone >= 0 ? Math.Abs(timeZone) : -Math.Abs(timeZone);
     //}
+
+    #region 获取时区时差
+
+    public TimeSpan GetTimeSpanByAddress(string name, DateTime dt)
+    {
+        Instant dti = dt.ToInstant();// SystemClock.Instance.GetCurrentInstant();
+        //nowCity.timeZone = TimeZoneInfo.FindSystemTimeZoneById("Greenwich Standard Time");
+        //"Asia/Taipei"
+        NodaTime.DateTimeZone tz = DateTimeZoneProviders.Tzdb[name];
+        TimeSpan ts = TimeSpan.FromSeconds(tz.GetUtcOffset(dti).Seconds);
+        //Debug.LogError(tz.GetUtcOffset(dti).Seconds / 3600);
+        return ts;
+    }
+    public TimezoneSpan GetTimeZoneByAddress(string name, DateTime dt)
+    {
+        Instant dti = dt.ToInstant();// SystemClock.Instance.GetCurrentInstant();
+        //nowCity.timeZone = TimeZoneInfo.FindSystemTimeZoneById("Greenwich Standard Time");
+        //"Asia/Taipei"
+        NodaTime.DateTimeZone tz = DateTimeZoneProviders.Tzdb[name];
+        TimeSpan ts = TimeSpan.FromSeconds(tz.GetUtcOffset(dti).Seconds);
+        //Debug.LogError(tz.GetUtcOffset(dti).Seconds / 3600);
+        TimezoneSpan tzs = new TimezoneSpan();
+        tzs.time = ts;
+        tzs.name = name;
+        return tzs;
+    }
+    public bool GetIsDayLightSavingTimeByAddress(string name, DateTime dt)
+    {
+        Instant dti = dt.ToInstant();// SystemClock.Instance.GetCurrentInstant();
+        //nowCity.timeZone = TimeZoneInfo.FindSystemTimeZoneById("Greenwich Standard Time");
+        //"Asia/Taipei"
+        NodaTime.DateTimeZone tz = DateTimeZoneProviders.Tzdb[name];
+        ZonedDateTime now = new ZonedDateTime(dti, tz);
+        var daylight = now.IsDaylightSavingTime();
+        //TimeSpan ts = TimeSpan.FromSeconds(tz.GetUtcOffset(dti).Seconds);
+        ////Debug.LogError(tz.GetUtcOffset(dti).Seconds / 3600);
+        //TimezoneSpan tzs = new TimezoneSpan();
+        //tzs.time = ts;
+        //tzs.name = name;
+        return daylight;
+    }
+    #endregion
 }

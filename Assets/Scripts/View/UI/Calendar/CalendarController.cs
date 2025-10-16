@@ -333,7 +333,7 @@ public class CalendarController : MonoBehaviour
 
             _dateItems.Add(dItem);
         }
-        _dateTime = DateTime.Now;
+        _dateTime = DateTime.UtcNow;
 
         CreateCalendar();
         InitToday();
@@ -464,7 +464,12 @@ public class CalendarController : MonoBehaviour
     {
         //_target.text = _yearNumText.text + "年" + _monthNumText.text + "月" + day + "日";
         //_calendarPanel.SetActive(false);
-        DateTime time = new DateTime(int.Parse(_yearNumText.text), int.Parse(_monthNumText.text), int.Parse(day), 0, 1, 0);
+        DateTime time = new DateTime(int.Parse(_yearNumText.text), int.Parse(_monthNumText.text), int.Parse(day), 3, 1, 0, DateTimeKind.Utc);
+        if (DateTime.Today.Year != time.Year || DateTime.Today.Month != time.Month || DateTime.Today.Day != time.Day)
+            cView.todayBtn.gameObject.SetActive(true);
+        else
+            cView.todayBtn.gameObject.SetActive(false);
+
         cView.SetEra(time);
         //不能用UTC时间
         if (CalendarManager.Instance().isLocationed())
@@ -477,7 +482,7 @@ public class CalendarController : MonoBehaviour
     }
     public void ClickToday()
     {
-        _dateTime = DateTime.Today;
+        _dateTime = DateTime.UtcNow;
         CreateCalendar();
         int day = DateTime.Today.Day;
         OnDateItemClick(day.ToString());

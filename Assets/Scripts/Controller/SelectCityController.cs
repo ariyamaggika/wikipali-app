@@ -11,6 +11,7 @@ using static ArticleManager;
 using static DictManager;
 using static SelectCityController;
 using static SettingManager;
+using static TimeZoneManager;
 
 public class SelectCityController
 {
@@ -61,7 +62,8 @@ public class SelectCityController
         public string fullName;
         public float lng;
         public float lat;
-        public TimeZoneInfo timeZone;   //时区//有根据datetime 计算出来的时区&根据datetime的当前是否是夏令时
+        public string timeZoneName;   //时区//有根据datetime 计算出来的时区&根据datetime的当前是否是夏令时
+        //public int timeOffsetSecond;   //时区//有根据datetime 计算出来的时区&根据datetime的当前是否是夏令时
         public Dictionary<Language, string> transName;  //翻译后的名字
         //city->state->country
         public int countryID;           //国外二级城市的父城市ID
@@ -111,7 +113,8 @@ public class SelectCityController
                     cInfo.lat = float.Parse(pairs2[i]["latitude"].ToString());
 
                     //TimeSpan offset = TimeSpan.FromHours(8);
-                    cInfo.timeZone = TimeZoneManager.Instance().GetTimeZoneByName("China Standard Time");
+                    cInfo.timeZoneName = "Asia/Shanghai";
+                    //cInfo.timeZoneName = TimeZoneManager.Instance().GetTimeZoneByName("China Standard Time");
 
                     cInfo.transName = new Dictionary<Language, string>();
 
@@ -169,7 +172,8 @@ public class SelectCityController
                     cInfo.lat = float.Parse(pairs2[i]["latitude"].ToString());
 
                     //TimeSpan offset = TimeSpan.FromHours(8);
-                    cInfo.timeZone = TimeZoneManager.Instance().GetTimeZoneByName("China Standard Time");
+                    cInfo.timeZoneName = "Asia/Shanghai";
+                    //cInfo.timeZoneName = TimeZoneManager.Instance().GetTimeZoneByName("China Standard Time");
                     //cInfo.timeZone = offset;
 
                     cInfo.transName = new Dictionary<Language, string>();
@@ -193,7 +197,8 @@ public class SelectCityController
 
                 //TimeSpan offset = TimeSpan.FromHours(8);
                 //cInfo.timeZone = offset;
-                cInfo.timeZone = TimeZoneManager.Instance().GetTimeZoneByName("China Standard Time");
+                cInfo.timeZoneName = "Asia/Shanghai";
+                //cInfo.timeZoneName = TimeZoneManager.Instance().GetTimeZoneByName("China Standard Time");
 
                 cInfo.transName = new Dictionary<Language, string>();
 
@@ -220,7 +225,8 @@ public class SelectCityController
                     cInfo.lat = float.Parse(pairs3[i]["latitude"].ToString());
 
                     //TimeSpan offset = TimeSpan.FromHours(8);
-                    cInfo.timeZone = TimeZoneManager.Instance().GetTimeZoneByName("China Standard Time");
+                    cInfo.timeZoneName = "Asia/Shanghai";
+                    //cInfo.timeZoneName = TimeZoneManager.Instance().GetTimeZoneByName("China Standard Time");
                     //cInfo.timeZone = offset;
 
                     cInfo.transName = new Dictionary<Language, string>();
@@ -248,7 +254,8 @@ public class SelectCityController
 
                 //TimeSpan offset = TimeSpan.FromHours(8);
                 //cInfo.timeZone = offset;
-                cInfo.timeZone = TimeZoneManager.Instance().GetTimeZoneByName("China Standard Time");
+                cInfo.timeZoneName = "Asia/Shanghai";
+                //cInfo.timeZoneName = TimeZoneManager.Instance().GetTimeZoneByName("China Standard Time");
 
                 cInfo.transName = new Dictionary<Language, string>();
                 city.Value.thirdCityInfoList.Add(cInfo.id, cInfo);
@@ -293,7 +300,8 @@ public class SelectCityController
 
                     //TimeSpan offset = TimeSpan.FromHours(8);
                     //cInfo.timeZone = offset;
-                    cInfo.timeZone = TimeZoneManager.Instance().GetTimeZoneByName("China Standard Time");
+                    cInfo.timeZoneName = "Asia/Shanghai";
+                    //cInfo.timeZoneName = TimeZoneManager.Instance().GetTimeZoneByName("China Standard Time");
 
                     cInfo.transName = new Dictionary<Language, string>();
                     res.Add(cInfo);
@@ -356,7 +364,8 @@ public class SelectCityController
                     cInfo.lat = nLat;
                     //TimeSpan offset = TimeSpan.FromHours(8);
                     //cInfo.timeZone = offset;
-                    cInfo.timeZone = TimeZoneManager.Instance().GetTimeZoneByName("China Standard Time");
+                    cInfo.timeZoneName = "Asia/Shanghai";
+                    //cInfo.timeZoneName = TimeZoneManager.Instance().GetTimeZoneByName("China Standard Time");
                     cInfo.transName = new Dictionary<Language, string>();
                     minCity = cInfo;
                 }
@@ -391,7 +400,8 @@ public class SelectCityController
                         cInfo.lat = nLat;
                         //TimeSpan offset = TimeSpan.FromHours(8);
                         //cInfo.timeZone = offset;
-                        cInfo.timeZone = TimeZoneManager.Instance().GetTimeZoneByName("China Standard Time");
+                        cInfo.timeZoneName = "Asia/Shanghai";
+                        //cInfo.timeZoneName = TimeZoneManager.Instance().GetTimeZoneByName("China Standard Time");
                         cInfo.transName = new Dictionary<Language, string>();
                         minCity = cInfo;
                     }
@@ -615,17 +625,9 @@ public class SelectCityController
                     //?????经纬度用double??????
                     cInfo.lng = float.Parse(pairs2[i]["longitude"].ToString());
                     cInfo.lat = float.Parse(pairs2[i]["latitude"].ToString());
-                 
-                    //string timezones = pairs2[i]["timezones"].ToString();
-                    //Match mc = r_timezoneRegex.Match(timezones);
-                    //string gmtoffsetStr = mc.Value.Substring("\"gmtOffset\":".Length);
-                    //gmtoffsetStr = gmtoffsetStr.Substring(0, gmtoffsetStr.Length - 1);
-                    ////Debug.LogError("&&&&" + gmtoffsetStr);
-                    //int gmtoffset = int.Parse(gmtoffsetStr);
-                    //TimeSpan offset = TimeSpan.FromSeconds(gmtoffset);
-                    //cInfo.timeZone = offset;
-                    TimeZoneInfo timeZone = TimeZoneManager.Instance().CaculateTimeZone(cInfo.lat, cInfo.lng);
-                    cInfo.timeZone = timeZone;
+
+
+                    cInfo.timeZoneName = TimeZoneManager.Instance().CaculateTimeZoneName(cInfo.lat, cInfo.lng);
                     //    }
                     //}
 
@@ -720,9 +722,9 @@ public class SelectCityController
                         cInfo.lng = float.Parse(pairs2[i]["longitude"].ToString());
                         cInfo.lat = float.Parse(pairs2[i]["latitude"].ToString());
                     }
-                    TimeZoneInfo timeZone = TimeZoneManager.Instance().CaculateTimeZone(cInfo.lat, cInfo.lng);
+                    //TimeZoneInfo timeZone = TimeZoneManager.Instance().CaculateTimeZone(cInfo.lat, cInfo.lng);
                     //cInfo.timeZoneOffset = internationalFirstCityInfos[countryID].timeZoneOffset;
-                    cInfo.timeZone = timeZone;
+                    cInfo.timeZoneName = TimeZoneManager.Instance().CaculateTimeZoneName(cInfo.lat, cInfo.lng);
                     cInfo.countryID = countryID;
                     internationalFirstCityInfos[countryID].secondCityInfoList.Add(cInfo.id, cInfo);
                 }
@@ -742,7 +744,7 @@ public class SelectCityController
                 cInfo.lat = internationalFirstCityInfos[countryID].lat;
                 cInfo.countryCode = internationalFirstCityInfos[countryID].countryCode;
 
-                cInfo.timeZone = internationalFirstCityInfos[countryID].timeZone;
+                cInfo.timeZoneName = internationalFirstCityInfos[countryID].timeZoneName;
                 cInfo.countryID = countryID;
                 internationalFirstCityInfos[countryID].secondCityInfoList.Add(cInfo.id, cInfo);
             }
@@ -762,8 +764,8 @@ public class SelectCityController
                     cInfo.lng = float.Parse(pairs3[i]["longitude"].ToString());
                     cInfo.lat = float.Parse(pairs3[i]["latitude"].ToString());
                     //cInfo.timeZoneOffset = internationalFirstCityInfos[countryID].timeZoneOffset;
-                    TimeZoneInfo timeZone = TimeZoneManager.Instance().CaculateTimeZone(cInfo.lat, cInfo.lng);
-                    cInfo.timeZone = timeZone;
+                    //TimeZoneInfo timeZone = TimeZoneManager.Instance().CaculateTimeZone(cInfo.lat, cInfo.lng);
+                    cInfo.timeZoneName = TimeZoneManager.Instance().CaculateTimeZoneName(cInfo.lat, cInfo.lng);
                     cInfo.countryID = countryID;
                     cInfo.statesID = int.Parse(pairs3[i]["state_id"].ToString());
                     cInfo.countryCode = pairs3[i]["country_code"].ToString();
@@ -790,7 +792,7 @@ public class SelectCityController
                 cInfo.lat = city.Value.lat;
                 cInfo.countryCode = city.Value.countryCode;
 
-                cInfo.timeZone = city.Value.timeZone;
+                cInfo.timeZoneName = city.Value.timeZoneName;
 
                 cInfo.transName = new Dictionary<Language, string>();
 
@@ -837,8 +839,8 @@ public class SelectCityController
 
                     cInfo.lng = float.Parse(pairs2[i]["longitude"].ToString());
                     cInfo.lat = float.Parse(pairs2[i]["latitude"].ToString());
-                    TimeZoneInfo timeZone = TimeZoneManager.Instance().CaculateTimeZone(cInfo.lat, cInfo.lng);
-                    cInfo.timeZone = timeZone;
+                    //TimeZoneInfo timeZone = TimeZoneManager.Instance().CaculateTimeZone(cInfo.lat, cInfo.lng);
+                    cInfo.timeZoneName = TimeZoneManager.Instance().CaculateTimeZoneName(cInfo.lat, cInfo.lng);
                     //todo 无时区信息
                     //try
                     //{
@@ -912,8 +914,8 @@ public class SelectCityController
                     cInfo.name = pairs2[i]["name"].ToString();
                     cInfo.lng = float.Parse(pairs2[i]["longitude"].ToString());
                     cInfo.lat = float.Parse(pairs2[i]["latitude"].ToString());
-                    TimeZoneInfo timeZone = TimeZoneManager.Instance().CaculateTimeZone(cInfo.lat, cInfo.lng);
-                    cInfo.timeZone = timeZone;
+                    // TimeZoneInfo timeZone = TimeZoneManager.Instance().CaculateTimeZone(cInfo.lat, cInfo.lng);
+                    cInfo.timeZoneName = TimeZoneManager.Instance().CaculateTimeZoneName(cInfo.lat, cInfo.lng);
                     cInfo.countryCode = pairs2[i]["iso2"].ToString();
 
                     //{"ja":"南極大陸","cn":"南极洲"}
