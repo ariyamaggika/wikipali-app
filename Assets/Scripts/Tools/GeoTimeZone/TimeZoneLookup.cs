@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Threading;
 using System.IO;
 using System.Linq;
+using UnityEditor;
+using I2.Loc.SimpleJSON;
 
 namespace GeoTimeZone
 {
@@ -179,20 +181,25 @@ namespace GeoTimeZone
 		 */
 
 		public void LoadData() {
-			StartCoroutine (LoadDataCoroutine ());
-		}
+			//StartCoroutine (LoadDataCoroutine ());
+			LoadDataCoroutine();
 
-		IEnumerator LoadDataCoroutine() {
+        }
+
+		void LoadDataCoroutine() {
 
 			tzPath = System.IO.Path.Combine (Application.streamingAssetsPath, "Res/GeoTimeZone-TZ.dat");
 			tzlPath = System.IO.Path.Combine (Application.streamingAssetsPath, "Res/GeoTimeZone-TZL.dat");
 
-			Thread loadThread = new Thread(new ThreadStart(LoadDataThread));
-			loadThread.Start ();
+			//Thread loadThread = new Thread(new ThreadStart(LoadDataThread));
+			LoadDataThread();
 
-			while (!dataIsReady) {
-				yield return null;
-			}
+            //loadThread.Start ();
+
+			//while (!dataIsReady) {
+
+			//	yield return null;
+			//}
 
 			Debug.LogFormat ("TZL Data Contains {0} Lines", tzlData.Count);
 			Debug.LogFormat ("TZ Data Contains {0} Lines", tzData.Count);
@@ -206,11 +213,18 @@ namespace GeoTimeZone
 		}
 
 		void LoadDataThread() {
-			tzlData = new List<string> (System.IO.File.ReadAllLines (tzlPath));
-			tzData = new List<string> (System.IO.File.ReadAllLines (tzPath));
 
+			TextAsset tzlDataTA = GameManager.Instance().tzl;// Resources.Load<TextAsset>("GeoTimeZone/GeoTimeZone-TZL");
+            string[] tzlLines = tzlDataTA.text.Split("\n");
+            TextAsset tzDataTA = GameManager.Instance().tz;//Resources.Load<TextAsset>("GeoTimeZone/GeoTimeZone-TZ");
+            string[] tzLines = tzDataTA.text.Split("\n");
+            //tzlData = new List<string> (System.IO.File.ReadAllLines (tzlPath));
+            //tzData = new List<string> (System.IO.File.ReadAllLines (tzPath));
 
-			dataIsReady = true;
+            tzlData = new List<string>(tzlLines);// new List<string>(System.IO.File.ReadAllLines(tz));
+            tzData = new List<string>(tzLines); //new List<string>(System.IO.File.ReadAllLines(tzPath));
+
+            dataIsReady = true;
 		}
 
 

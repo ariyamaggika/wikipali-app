@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text.RegularExpressions;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Android;
 using static ArticleController;
@@ -36,6 +37,8 @@ public class GameManager : MonoBehaviour
     public GeoTimeZone.TimeZoneLookup timeZoneLookup;
     public string appVersion;//= Application.version;
     //public bool canUpdate = false;
+    public TextAsset tzl;
+    public TextAsset tz;
     void Awake()
     {
         appVersion = Application.version;

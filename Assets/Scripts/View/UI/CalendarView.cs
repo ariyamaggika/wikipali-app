@@ -359,8 +359,8 @@ public class CalendarView : MonoBehaviour
     {
         if (!locationed && CalendarManager.Instance().isLocationed())
         {
-            SetCurrLocationTime();
             locationed = true;
+            SetCurrLocationTime();
         }
 
     }
@@ -379,7 +379,12 @@ public class CalendarView : MonoBehaviour
         //TimeSpan ts = TimeZoneInfo.Local.GetUtcOffset(DateTime.UtcNow);
         //TimeSpan BaseUtcOffset = new TimeSpan(ts.Hours, ts.Minutes, ts.Seconds);
         //TimeSpan sp = BaseUtcOffset;//-BaseUtcOffset;
+        Debug.LogError("CaculateTimeZoneName");
+        Debug.LogError("lat, lng" + lat + "," + lng);
+        //string timeZoneName = TimeZoneManager.Instance().CaculateTimeZoneName(24.78705f, 103.0473f);// TimeZoneInfo.Local;
         string timeZoneName = TimeZoneManager.Instance().CaculateTimeZoneName(lat, lng);// TimeZoneInfo.Local;
+        //string timeZoneName = TimeZoneManager.Instance().Win2Iana(TimeZoneInfo.Local.Id);
+
         nowCity.timeZoneName = timeZoneName;
         cityInfo.timeZoneName = timeZoneName;
 

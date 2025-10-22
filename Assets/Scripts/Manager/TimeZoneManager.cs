@@ -60,6 +60,7 @@ public class TimeZoneManager
     public TimeZoneLookup timeZoneLookup;
     static Dictionary<string, string> IANATime = new Dictionary<string, string>();
     static Dictionary<string, string> IANA2WIN = new Dictionary<string, string>();
+    static Dictionary<string, string> WIN2IANA = new Dictionary<string, string>();
     public void InitData(TimeZoneLookup _timeZoneLookup)
     {
         timeZoneLookup = _timeZoneLookup;
@@ -78,6 +79,7 @@ public class TimeZoneManager
             for (int j = 0; j < splits.Length; j++)
             {
                 IANA2WIN.TryAdd(splits[j], defaultIS.info[i].WinTime);
+                WIN2IANA.TryAdd(defaultIS.info[i].WinTime, splits[j]);
             }
         }
     }
@@ -97,6 +99,10 @@ public class TimeZoneManager
 
         return tz;
 
+    }
+    public string Win2Iana(string name)
+    {
+        return WIN2IANA[name];
     }
     public TimezoneSpan CaculateTimeZone(float lat, float log)
     {
@@ -166,6 +172,8 @@ public class TimeZoneManager
     }
     public TimezoneSpan GetTimeZoneByAddress(string name, DateTime dt)
     {
+        Debug.LogError(name);
+        Debug.LogError(dt);
         Instant dti = dt.ToInstant();// SystemClock.Instance.GetCurrentInstant();
         //nowCity.timeZone = TimeZoneInfo.FindSystemTimeZoneById("Greenwich Standard Time");
         //"Asia/Taipei"

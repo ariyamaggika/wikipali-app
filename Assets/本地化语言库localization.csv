@@ -5,8 +5,8 @@ PopSentenceSelectView_SelectAll,Text,,全部选择,全部選擇,Select all,す�
 PopSentenceSelectView_ShareSentence,Text,,逐句分享,逐句分享,Share by sentence,一言ずつ分かち合う,ပြစ်ဒဏ်ဖြင့် ဝေမျှပါ,වාක්‍යයෙන් වාක්‍ය බෙදාගන්න,แบ่งปัน แต่ละบรรทัด
 article_Article,Text,,圣典,聖典,Pāli,聖典,မြင့်မြတ်သောကျမ်းစာ,ශුද්ධ පොත,พระคัมภีร์
 calendar_BuddhistCalendar,Text,,佛历：,佛曆：,Buddhist Calendar：,仏暦：,ဗုဒ္ဓဝါဒီပြက္ခဒိန်-,බෞද්ධ දින දර්ශනය:,ปฏิทินทางพุทธศาสนา:
-calendar_BurmeseCalendar,Text,,缅历,緬曆,Burmese calendar,ビルマ暦,မြန်မာပြက္ခဒိန်,බුරුම දින දර්ශනය,เมนู Name
-calendar_ChineseCalendar,Text,,农历,農曆,Chinese calendar,旧暦,လ,චන්ද්ර දිනදර්ශනය,จันทรคติ
+calendar_BurmeseCalendar,Text,,缅历,緬曆,BurmeseCalendar,ビルマ暦,မြန်မာပြက္ခဒိန်,බුරුම දින දර්ශනය,เมนู Name
+calendar_ChineseCalendar,Text,,农历,農曆,Chinese Calendar,旧暦,လ,චන්ද්ර දිනදර්ශනය,จันทรคติ
 calendar_Latitude,Text,,纬度,緯度,Lat,緯度,လတ်လတ်ဆတ်ဆတ်,අක්ෂාංශ,ละติจูด
 calendar_Longitude,Text,,经度,經度,Lng,経度,ရှည်လျားမှု,දේශාංශ,ลองติจูด
 calendar_Month,Text,,月,月,Month,げつ,လ,සඳ,เดือน
@@ -14,6 +14,7 @@ calendar_SolarNoon,Text,,日中：,日中：,SolarNoon：,日中：,ဂျပန
 calendar_StarCalendar,Text,,星宿历,星宿曆,Almanac,星曆,နက္ခရှာထရာပြက္ခဒိန်,ජ්යෝතිඃ ශාස්ත්රීය දින දර්ශනය,ปฏิทินจันทรคติ
 calendar_Sunrise,Text,,明相：,明相：,Dawn：,日の出：,တောက်ပတဲ့ အဆင့် -,හිරු උදාව:,อากิระ:
 calendar_Sunset,Text,,日落：,日落：,Sunset：,日の入り：,နေဝင် - နေဝင် -,හිරු බැස යෑම:,พระอาทิตย์ตก
+calendar_ViewToday,Text,,查看今天,查看今天,Today,今日,ယနေ့,අද,วันนี้
 calendar_WestCalendar,Text,,西历：,西曆：,Calendar：,西曆：,အနောက်ပြက္ခဒိန်-,බටහිර දින දර්ශනය:,ปฏิทิน:
 calendar_Year,Text,,年,年,Year,ねん,နှစ်,අවුරුදු,ปี
 calendar_week1,Text,,一,一,Mon,月,တစ်,එක,หนึ่ง.
