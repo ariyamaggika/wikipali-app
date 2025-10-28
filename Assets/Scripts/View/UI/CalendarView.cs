@@ -321,6 +321,7 @@ public class CalendarView : MonoBehaviour
         sunsetText.text = sunPhaseTimeSunSet;
         //todo时区差
         //时区时差，本地时间与UTC时间的时差
+        //????????????????TimeZoneInfo.Local在手机上是可以的吗？
         TimeSpan sp_curr = -TimeZoneInfo.Local.GetUtcOffset(time);
         string currPhoneTimeSolarNoon = (sunPhaseValueSolarNoon.PhaseTime - sp_curr).ToString("HH:mm:ss");
         string currPhoneTimeSunrise = (lightTime - sp_curr).ToString("HH:mm:ss");

@@ -17,7 +17,7 @@ public class CalendarDateItem : MonoBehaviour
     public Image moon1Img;
     public Image moon2Img;
     public Image moon3Img;
-    public void Init(DateTime time, Dictionary<DateTime, string> trueCalenderYearHolidays,CityInfo cityInfo)
+    public void Init(DateTime time, Dictionary<DateTime, string> trueCalenderYearHolidays, CityInfo cityInfo)
     {
         Calendar calender = new Calendar(time);
         chineseDateText.text = calender.ChineseDayString;
@@ -62,7 +62,10 @@ public class CalendarDateItem : MonoBehaviour
         }
         //chineseDateText.text = "<color=#F13423><b>" + myanmarDate.mmonth + "</b></color>";
         //经纬度
-        solarNoonText.text = CalendarManager.Instance().GetSunSolarNoonTime(time, cityInfo);
+        if (string.IsNullOrEmpty(cityInfo.timeZoneName))
+            solarNoonText.text = "";
+        else
+            solarNoonText.text = CalendarManager.Instance().GetSunSolarNoonTime(time, cityInfo);
     }
 
     public void SetSolarNoonTextActive(bool active)
@@ -74,7 +77,7 @@ public class CalendarDateItem : MonoBehaviour
         CalendarController._calendarInstance.OnDateItemClick(gameObject.GetComponentInChildren<Text>().text);
     }
 
-    public void SetMoon(MoonType moonType,string time)
+    public void SetMoon(MoonType moonType, string time)
     {
         moon0Img.gameObject.SetActive(false);
         moon1Img.gameObject.SetActive(false);

@@ -172,6 +172,13 @@ public class TimeZoneManager
     }
     public TimezoneSpan GetTimeZoneByAddress(string name, DateTime dt)
     {
+        if (string.IsNullOrEmpty(name))
+        {
+            TimezoneSpan tzn = new TimezoneSpan();
+            tzn.time = new TimeSpan();
+            tzn.name = "";
+            return tzn;
+        }
         Debug.LogError(name);
         Debug.LogError(dt);
         Instant dti = dt.ToInstant();// SystemClock.Instance.GetCurrentInstant();
