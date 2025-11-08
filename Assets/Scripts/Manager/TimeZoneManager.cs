@@ -159,7 +159,7 @@ public class TimeZoneManager
     //}
 
     #region 获取时区时差
-
+    //这个API算时差一定要用local time才准，如果是选择了有夏令时的地区，需要根据UTC时间加上时差才行，所以要算两次时差
     public TimeSpan GetTimeSpanByAddress(string name, DateTime dt)
     {
         Instant dti = dt.ToInstant();// SystemClock.Instance.GetCurrentInstant();
@@ -167,6 +167,17 @@ public class TimeZoneManager
         //"Asia/Taipei"
         NodaTime.DateTimeZone tz = DateTimeZoneProviders.Tzdb[name];
         TimeSpan ts = TimeSpan.FromSeconds(tz.GetUtcOffset(dti).Seconds);
+        //todo 可能有未知bug
+        //美国等时区,获取准确的夏令时冬令时，这个API需要local time
+        //if (ts.Hours < 0)
+        {
+            dt -= ts;
+            dti = dt.ToInstant();// SystemClock.Instance.GetCurrentInstant();
+                                 //nowCity.timeZone = TimeZoneInfo.FindSystemTimeZoneById("Greenwich Standard Time");
+                                 //"Asia/Taipei"
+            ts = TimeSpan.FromSeconds(tz.GetUtcOffset(dti).Seconds);
+        }
+
         //Debug.LogError(tz.GetUtcOffset(dti).Seconds / 3600);
         return ts;
     }
@@ -186,6 +197,18 @@ public class TimeZoneManager
         //"Asia/Taipei"
         NodaTime.DateTimeZone tz = DateTimeZoneProviders.Tzdb[name];
         TimeSpan ts = TimeSpan.FromSeconds(tz.GetUtcOffset(dti).Seconds);
+        //todo 可能有未知bug
+        //美国等时区,获取准确的夏令时冬令时，这个API需要local time
+        //if (ts.Hours < 0)
+        {
+            dt -= ts;
+            dti = dt.ToInstant();// SystemClock.Instance.GetCurrentInstant();
+                                 //nowCity.timeZone = TimeZoneInfo.FindSystemTimeZoneById("Greenwich Standard Time");
+                                 //"Asia/Taipei"
+            ts = TimeSpan.FromSeconds(tz.GetUtcOffset(dti).Seconds);
+        }
+
+
         //Debug.LogError(tz.GetUtcOffset(dti).Seconds / 3600);
         TimezoneSpan tzs = new TimezoneSpan();
         tzs.time = ts;
@@ -198,6 +221,17 @@ public class TimeZoneManager
         //nowCity.timeZone = TimeZoneInfo.FindSystemTimeZoneById("Greenwich Standard Time");
         //"Asia/Taipei"
         NodaTime.DateTimeZone tz = DateTimeZoneProviders.Tzdb[name];
+        //todo 可能有未知bug
+        //美国等时区,获取准确的夏令时冬令时，这个API需要local time
+        TimeSpan ts = TimeSpan.FromSeconds(tz.GetUtcOffset(dti).Seconds);
+        //if (ts.Hours < 0)
+        {
+            dt -= ts;
+            dti = dt.ToInstant();// SystemClock.Instance.GetCurrentInstant();
+                                 //nowCity.timeZone = TimeZoneInfo.FindSystemTimeZoneById("Greenwich Standard Time");
+                                 //"Asia/Taipei"
+        }
+
         ZonedDateTime now = new ZonedDateTime(dti, tz);
         var daylight = now.IsDaylightSavingTime();
         //TimeSpan ts = TimeSpan.FromSeconds(tz.GetUtcOffset(dti).Seconds);

@@ -464,7 +464,7 @@ public class CalendarController : MonoBehaviour
     {
         //_target.text = _yearNumText.text + "年" + _monthNumText.text + "月" + day + "日";
         //_calendarPanel.SetActive(false);
-        DateTime time = new DateTime(int.Parse(_yearNumText.text), int.Parse(_monthNumText.text), int.Parse(day), 3, 1, 0, DateTimeKind.Utc);
+        DateTime time = new DateTime(int.Parse(_yearNumText.text), int.Parse(_monthNumText.text), int.Parse(day), CalendarView.HOUR_OFFSET, 1, 0, DateTimeKind.Utc);
         if (DateTime.Today.Year != time.Year || DateTime.Today.Month != time.Month || DateTime.Today.Day != time.Day)
             cView.todayBtn.gameObject.SetActive(true);
         else

@@ -1,0 +1,12 @@
+Font: SimHei  Style: Regular
+Point Size: 23   SP/PD Ratio: 17.4%
+
+Characters included: 8640/8640
+Missing characters: 0
+Excluded characters: 0
+
+Characters missing from font file:
+----------------------------------------
+
+Characters excluded from packing:
+----------------------------------------

@@ -245,10 +245,12 @@ public class CalendarView : MonoBehaviour
     {
         GetSunTime(time, cityInfo.lat, cityInfo.lng, cityInfo.timeZoneName);
     }
+    //todo 改为+时差
+    public static int HOUR_OFFSET = 3;//当前时差+2，，变到夏令时是冬令时时差+2，变到冬令时是夏令时时差+2
     //夏令时时间是凌晨两点开始算的，所以要按3点时间算
     public DateTime GetDSTDateTime(DateTime time)
     {
-        return new DateTime(time.Year, time.Month, time.Day, 3, 1, 0, DateTimeKind.Utc);
+        return new DateTime(time.Year, time.Month, time.Day, HOUR_OFFSET, 1, 0, DateTimeKind.Utc);
     }
     //todo 此处可能有有隐患出bug全部设置,后面考虑统一这两个
     public void SetAllTimeZoneDST(DateTime time, CityInfo cityInfo)
@@ -391,7 +393,7 @@ public class CalendarView : MonoBehaviour
 
         currCityLatText.text = lat.ToString("#0.0");// lat.ToString();
         currCityLngText.text = lng.ToString("#0.0");
-        GetSunTime(new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 3, 1, 0, DateTimeKind.Utc), lat, lng, cityInfo.timeZoneName);
+        GetSunTime(new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, HOUR_OFFSET, 1, 0, DateTimeKind.Utc), lat, lng, cityInfo.timeZoneName);
         //todo
         CalendarManager.Instance().StopLocation();
         controllerView.Start();

@@ -54,10 +54,10 @@ public class CalendarManager
     public string GetSunSolarNoonTime(DateTime time, CityInfo cityInfo)//, float lat, float lng, float height = 0)
     {
         //?为什么0h1m1s显示为前一天？，一定要1h1m1s才行
-        DateTime newDate = new DateTime(time.Year, time.Month, time.Day, 3, 1, 0, DateTimeKind.Utc);
+        DateTime newDate = new DateTime(time.Year, time.Month, time.Day, CalendarView.HOUR_OFFSET, 1, 0, DateTimeKind.Utc);
         SunPhase solarNoon = new SunPhase(SunPhaseName.SolarNoon, newDate);
         //时区时差
-        TimeSpan ts = TimeZoneManager.Instance().GetTimeZoneByAddress(cityInfo.timeZoneName, time).time;// cityInfo.timeZone.GetUtcOffset(time);
+        TimeSpan ts = TimeZoneManager.Instance().GetTimeZoneByAddress(cityInfo.timeZoneName, newDate).time;// cityInfo.timeZone.GetUtcOffset(time);
         float lat = cityInfo.lat;
         float lng = cityInfo.lng;
         //(lat, lng) = GetLocation();
